@@ -1,3 +1,7 @@
+<p align="center">
+  <img src = "https://media1.tenor.com/m/Rd0jrWH5JjgAAAAd/cat-scuba.gif"/>   
+</p>
+
 <h1 align="center"> PawPair 🐾 </h1>
 
 PawPair is an end‑to‑end pet adoption and post‑adoption companion platform. Instead of simply listing animals like existing adoption sites, this app focuses on ensuring compatibility and long‑term success. The goal is to reduce failed adoptions, increase responsible pet ownership, and make the adoption journey more personalized, transparent, and fun.
@@ -15,6 +19,59 @@ PawPair is an end‑to‑end pet adoption and post‑adoption companion platform
 
 
 ## Milestones 📆
+<table>
+  <tr>
+    <th>Week</th>
+    <th>Frontend</th>
+    <th>Backend</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Decide roles, discuss project plan, design day</td>
+    <td>Start studying Firebase auth and API setup/usage</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Set up Expo + React Native, design wireframes in Figma</td>
+    <td>Set up FirebaseAuth, connect to DB, design schemas</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Build onboarding screens (login/signup) and profile page</td>
+    <td>Implement authentication & user creation in DB and UI, create quiz logic</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Quiz UI, pet listings display</td>
+    <td>CRUD routes for user data, finalize quiz results/analyzing</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Pet browsing and dashboard UI</td>
+    <td>Create Firestore collections for routines, tasks, and pet profiles</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Complete dashboard, Camera scanning UI</td>
+    <td>Set up ML object detection, design hazard rules, test model</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Hazard detection results UI</td>
+    <td>Connect object detection with AI for refined results</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Polish UI (animations, error handling), presentation prep</td>
+    <td>Finalize features and integration, presentation prep</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td colspan="2" align="center">✨ Presentation Prep ✨</td>
+  </tr>
+</table>
+
+---
 
 ## Tech Stack 💻
 
