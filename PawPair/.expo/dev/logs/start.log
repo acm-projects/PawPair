@@ -224,3 +224,4 @@
 {"_e":"metro:bundling:progress","_t":1792029276594,"id":"3","progress":0.9953106746897661,"total":3408,"current":3400}
 {"_e":"metro:bundling:progress","_t":1792029276696,"id":"3","progress":0.999,"total":3413,"current":3413}
 {"_e":"metro:bundling:done","_t":1792029276866,"id":"3","total":3413,"ms":6291.053083}
+{"_e":"metro:server_log","_t":1792029546416,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
