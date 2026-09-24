@@ -138,6 +138,7 @@ Backend: Firebase
 | git pull origin "branch" | Pull updates from a specific branch |
 
 ## Developers ⭐
+- Ariyan Biswas
 - Bhuvana Bachu
 - Sanskriti Agarwal
 
