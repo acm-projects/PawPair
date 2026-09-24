@@ -139,6 +139,7 @@ Backend: Firebase
 
 ## Developers ⭐
 - Bhuvana Bachu
+- Ariyan Biswas
 
 <strong> Project Manager: </strong> Jazmin Gutierrez  
 <strong> Industry Mentor: </strong> Avanthi Reddy  
