@@ -139,7 +139,7 @@ Backend: Firebase
 
 ## Developers ⭐
 - Navyashree Balasubramaniyan Nagarajan
-- Ariyan Biswas
+- Ariyan Biswasgi
 - Bhuvana Bachu
 
 <strong> Project Manager: </strong> Jazmin Gutierrez  
