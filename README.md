@@ -138,7 +138,7 @@ Backend: Firebase
 | git pull origin "branch" | Pull updates from a specific branch |
 
 ## Developers ⭐
-- 
+- Navyashree Balasubramaniyan Nagarajan
 
 <strong> Project Manager: </strong> Jazmin Gutierrez  
 <strong> Industry Mentor: </strong> Avanthi Reddy  
