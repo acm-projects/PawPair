@@ -136,9 +136,10 @@ Backend: Firebase
 | git commit -m "Testing123" | Commit with message |
 | git push origin "branch" | Push to branch |
 | git pull origin "branch" | Pull updates from a specific branch |
-
+git add
 ## Developers ⭐
 - Ariyan Biswas
+- Bhuvana Bachu
 
 <strong> Project Manager: </strong> Jazmin Gutierrez  
 <strong> Industry Mentor: </strong> Avanthi Reddy  
