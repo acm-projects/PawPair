@@ -138,6 +138,7 @@ Backend: Firebase
 | git pull origin "branch" | Pull updates from a specific branch |
 
 ## Developers ⭐
+- Bhuvana Bachu
 - Sanskriti Agarwal
 
 <strong> Project Manager: </strong> Jazmin Gutierrez  
