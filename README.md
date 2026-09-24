@@ -143,7 +143,6 @@ git add
 =======
 - Navyashree Balasubramaniyan Nagarajan
 - Ariyan Biswasgi
->>>>>>> dbf6fbeb (chat idk)
 - Bhuvana Bachu
 - Sanskriti Agarwal
 - Navyashree Balasubramaniyan Nagarajan
