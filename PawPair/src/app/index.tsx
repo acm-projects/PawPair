@@ -9,8 +9,8 @@ export default function Index() {
       async function testFirestore() {
         try {
           const docRef = await addDoc(collection(db, "users"), {
-            first: "Ada",
-            last: "Lovelace",
+            first: "Sanskriti",
+            last: "Agarwal",
             born: 1815
           });
           console.log("Document written with ID: ", docRef.id);

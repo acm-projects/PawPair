@@ -142,6 +142,7 @@ Backend: Firebase
 - Ariyan Biswas
 - Bhuvana Bachu
 - Sanskriti Agarwal
+- Navyashree Balasubramaniyan Nagarajan
 
 <strong> Project Manager: </strong> Jazmin Gutierrez  
 <strong> Industry Mentor: </strong> Avanthi Reddy  
