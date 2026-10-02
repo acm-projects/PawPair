@@ -136,11 +136,12 @@ Backend: Firebase
 | git commit -m "Testing123" | Commit with message |
 | git push origin "branch" | Push to branch |
 | git pull origin "branch" | Pull updates from a specific branch |
-
+git add
 ## Developers ⭐
-- Navyashree Balasubramaniyan Nagarajan
-- Ariyan Biswasgi
+- Ariyan Biswas
 - Bhuvana Bachu
+- Sanskriti Agarwal
+- Navyashree Balasubramaniyan Nagarajan
 
 <strong> Project Manager: </strong> Jazmin Gutierrez  
 <strong> Industry Mentor: </strong> Avanthi Reddy  
