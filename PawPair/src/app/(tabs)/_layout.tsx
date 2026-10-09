@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { House } from 'lucide-react-native';
+import { House, User, Camera, Dog } from 'lucide-react-native';
 
 export default function TabLayout() {
   return (
@@ -9,13 +9,28 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color, size }) => (
-            <House size={size} color="currentColor" strokeWidth={1.75} />
+            <User size={size} color="currentColor" strokeWidth={1.75} />
           ),
         }}
       />
-      <Tabs.Screen name="homepage" options={{ title: 'Home' }} />
-      <Tabs.Screen name="scrollview" options={{ title: 'Find more Pets' }} />
-      <Tabs.Screen name="camera" options={{ title: 'Camera' }} />
+      <Tabs.Screen name="homepage" options={{
+          title: 'Homepage',
+          tabBarIcon: ({ color, size }) => (
+            <House size={size} color="currentColor" strokeWidth={1.75} />
+          ),
+        }} />
+      <Tabs.Screen name="scrollview" options={{
+          title: 'Scrollview',
+          tabBarIcon: ({ color, size }) => (
+            <Dog size={size} color="currentColor" strokeWidth={1.75} />
+          ),
+        }} />
+      <Tabs.Screen name="camera" options={{
+          title: 'Camera',
+          tabBarIcon: ({ color, size }) => (
+            <Camera size={size} color="currentColor" strokeWidth={1.75} />
+          ),
+        }} />
     </Tabs>
   );
 }
