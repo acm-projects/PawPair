@@ -11,68 +11,14 @@ import {getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword} from 
 export default function Index() {
     const router = useRouter();
     
-    const [loading, setLoading] = useState(false)
-
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-
-    async function registerAndLogin() {
-      setLoading(true);
-      try {
-        const auth = getAuth(app);
-        await createUserWithEmailAndPassword(auth, email, password);
-        const response = await signInWithEmailAndPassword(auth, email, password);
-        setLoading(false);
-        Alert.alert('Success', response.user.uid);
-        return;
-
-      } catch (error) {
-        setLoading(false);
-        Alert.alert('Oops', 'something went wrong');
-      }
-    }
-
-    // useEffect(() => {
-    //   async function testFirestore() {
-    //     try {
-    //       const docRef = await addDoc(collection(db, "users"), {
-    //         first: "Ariyan",
-    //         last: "Biswas",
-    //         born: 1815
-    //       });
-    //       console.log("Document written with ID: ", docRef.id);
-    //     } catch (e) {
-    //       console.error("Error adding document: ", e);
-    //     }
-    //   }
-    //   testFirestore();
-    // }, []);
-    
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder="Email"
-        onChangeText={setEmail}
-      />
-      <TextInput 
-        style={[styles.input, {marginTop: 15}]}
-        placeholder="Password"
-        onChangeText={setPassword}
-        />
-
-      <TouchableOpacity style={styles.button} onPress={registerAndLogin}>
-        { loading ? (
-        <ActivityIndicator 
-          size={"small"} 
-          color={"white"} 
-          animating={loading}
-         /> 
-        ) : (
-          <Text style={{ color: 'white' }}>Login</Text>
-        )}
-      </TouchableOpacity>
 
       <TouchableOpacity onPress={() => router.push('/login')}>
         <Text style={{ color: 'teal', marginTop: 10 }}>login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => router.push('/signup' as any)}>
+        <Text style={{ color: 'teal', marginTop: 10 }}>sign up</Text>
       </TouchableOpacity>
     </View>
   );
