@@ -1,9 +1,5 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { useEffect } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase.js";
 import { useRouter } from "expo-router";
-import { Button } from "expo-router/build/react-navigation/index.js";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
  
