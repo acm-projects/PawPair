@@ -8,12 +8,10 @@ import {
   StyleSheet,
 } from "react-native";
 import { useState } from "react";
-import { Ionicons } from "@expo/vector-icons"; // comes with Expo, no install needed
-
+import { Ionicons } from "@expo/vector-icons"; 
 // 1) THE DATA ---------------------------------------------------------------
-// Each dog is one object. Later you can replace this array with data from
-// Firestore (that's what your firebase imports were for) and the screen
-// below will not need to change.
+// Each dog is one object.  can replace this array with data from
+
 type Dog = {
   id: string;
   name: string;
