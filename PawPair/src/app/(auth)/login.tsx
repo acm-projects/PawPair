@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 
 import {
   Text,
@@ -20,36 +21,47 @@ import {
 import { Link } from "expo-router";
 
 export default function Login() {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleLogin() {
-    if (!email.trim() || !password) {
-      Alert.alert("Error", "Please enter your email and password.");
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const auth = getAuth(app);
-
-      const response = await signInWithEmailAndPassword(
-        auth,
-        email.trim(),
-        password
-      );
-
-      Alert.alert("Login Successful", response.user.email ?? "");
-
-    } catch (error) {
-      console.error(error);
-      Alert.alert("Login Failed", "Check your email and password.");
-    } finally {
-      setLoading(false);
-    }
+  
+async function handleLogin() {
+  if (!email.trim() || !password) {
+    Alert.alert("Error", "Please enter your email and password.");
+    return;
   }
+
+  setLoading(true);
+
+  try {
+    const auth = getAuth(app);
+
+    const response = await signInWithEmailAndPassword(
+      auth,
+      email.trim(),
+      password
+    );
+
+    console.log("Login successful:", response.user.email);
+
+    // Redirect user to Discover Pets
+    router.replace("/discover");
+
+  } catch (error: any) {
+    console.error("Login error:", error.code, error.message);
+
+    Alert.alert(
+      "Login Failed",
+      "Check your email and password."
+    );
+
+  } finally {
+    setLoading(false);
+  }
+}
+
 
   return (
     <View style={styles.container}>
