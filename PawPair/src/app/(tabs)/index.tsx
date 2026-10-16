@@ -2,9 +2,7 @@ import { useRouter } from "expo-router";
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator, Alert } from "react-native";
 import { useEffect, useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase.js";
-
-import { app } from "../firebase.js";
+import { db, app } from "../../firebase.js";
 
 import {getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword} from 'firebase/auth'
 
