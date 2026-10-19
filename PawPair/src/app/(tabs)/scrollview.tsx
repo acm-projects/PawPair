@@ -6,9 +6,22 @@ import {
   FlatList,
   TouchableOpacity,
   StyleSheet,
+  
 } from "react-native";
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons"; 
+import { Tabs } from "react-native-screens";
+import { useRouter } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
+
+
+
+
+<Tabs.Screen options={{ tabBarStyle: { display: "none" } }} />
+
+
 // 1) THE DATA ---------------------------------------------------------------
 // Each dog is one object.  can replace this array with data from
 
@@ -156,8 +169,16 @@ function Attribute({
   );
 }
 
+const NAV_ITEMS = [
+  { href: "/profile", label: "Profile", Icon: User },
+  { href: "/homepage", label: "Homepage", Icon: House },
+  { href: "/scrollview", label: "Scrollview", Icon: Dog },
+  { href: "/camera", label: "Camera", Icon: CameraIcon },
+] as const;
+
 // 3) THE SCREEN -------------------------------------------------------------
 export default function Scrollview() {
+  const router = useRouter();
   // "State" = a value React remembers. When it changes, the screen redraws.
   const [search, setSearch] = useState("");
 
@@ -193,6 +214,19 @@ export default function Scrollview() {
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
       />
+            <LinearGradient colors={["#F5C0B3", "#E98F78"]} style={styles.navBarBackground}>
+        <SafeAreaView style={styles.navBar} edges={["bottom"]}>
+          {NAV_ITEMS.map(({ href, label, Icon }) => {
+            const isActive = href === "/scrollview";
+            return (
+              <TouchableOpacity key={href} style={styles.navItem} onPress={() => router.navigate(href)}>
+                <Icon size={40} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
+                <Text style={[styles.navLabel, isActive && styles.navLabelActive]}>{label}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </SafeAreaView>
+      </LinearGradient>
     </View>
   );
 }
@@ -200,8 +234,20 @@ export default function Scrollview() {
 // 4) THE STYLES -------------------------------------------------------------
 // Like CSS, but: camelCase names, numbers instead of "16px", and every View
 // is already a flexbox that stacks its children top-to-bottom.
+const NAV_RADIUS = 20;
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#f2ede8", paddingTop: 56 },
+
+    navBarBackground: {
+    borderTopLeftRadius: NAV_RADIUS,
+    borderTopRightRadius: NAV_RADIUS,
+    overflow: "hidden",
+    marginTop: -NAV_RADIUS,
+  },
+  navBar: { flexDirection: "row", paddingTop: 8 },
+  navItem: { flex: 1, alignItems: "center", gap: 2, paddingBottom: 4 },
+  navLabel: { color: "transparent", fontSize: 4 },
+  navLabelActive: { fontWeight: "bold" },
 
   searchRow: {
     flexDirection: "row", // put children side by side

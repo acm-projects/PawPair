@@ -1189,3 +1189,339 @@
 {"_e":"metro:server_log","_t":1792185304401,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
 {"_e":"metro:server_log","_t":1792186124887,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
 {"_e":"metro:server_log","_t":1792186323758,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792206005267,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792207931236,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792217742320,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792219010669,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792219185038,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792219661749,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792219750206,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792219862326,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792220182227,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792220389068,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792220697445,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792221027228,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792221148863,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792221285390,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792228429232,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792229374236,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792230319049,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792231289131,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792232234155,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792233247197,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792234192201,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792234492215,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792238384190,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792239366180,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792240380190,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792244977135,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792245644167,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792250205117,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792254829090,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792255845082,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792256504114,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792257057920,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792258347204,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792259318137,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792260164136,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792261203141,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792265639064,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792266628075,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792267424084,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792268468082,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792270457077,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792272131067,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792274045042,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792275308193,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792275526425,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792299984747,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792301003806,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792301133749,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792301302828,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792301463485,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792301758323,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792302100482,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792302172243,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792302412602,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792302551661,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792302703700,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792302879919,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792302990558,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792303059318,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792303580178,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792303695693,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792304413868,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792305215945,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792305342930,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792305481892,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792306420897,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792307668038,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792307970904,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792308058000,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792308209381,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792309240905,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792311252905,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792311468920,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792311561038,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792311631900,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792312596900,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792313465995,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792314372675,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792315292898,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792315901998,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792316510579,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792321550830,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792323572876,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792325481799,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792326511730,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792327756714,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792328698703,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792330747749,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792332373744,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792333438665,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792335061651,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792336039660,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792337989666,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792339696749,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792341699733,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792342864451,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792343924726,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792345909739,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792346983745,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792349068747,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792350694756,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792352601693,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792354300688,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792356258624,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"metro:server_log","_t":1792357470605,"level":"error","data":["[timeout] connection terminated with Device for app='%s' on device='%s' after not responding for %s seconds.","host.exp.exponent","sdk_gphone64_arm64 - 17 - API 37","60"]}
+{"_e":"root:init","_t":1792440398930,"format":"v0-jsonl","version":"57.0.27"}
+{"_e":"env:mode","_t":1792440398931,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1792440398932,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1792440401697,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../src/app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1792440401933,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1792440402113,"plugins":[]}
+{"_e":"metro:instantiate","_t":1792440402808,"atlas":false,"workers":7,"host":"::","port":8082}
+{"_e":"metro:bundling:started","_t":1792440416498,"id":"2","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1792440416499,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1792440416500,"id":"3","platform":"web","environment":"node","entry":"node_modules/expo/node_modules/@expo/cli/node_modules/@expo/router-server/node/render.js"}
+{"_e":"metro:bundling:progress","_t":1792440416500,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440416500,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440416503,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440416503,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440416604,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440416604,"id":"3","progress":0.1088319693910086,"total":97,"current":32}
+{"_e":"metro:bundling:progress","_t":1792440416703,"id":"2","progress":0.17627177903385582,"total":262,"current":110}
+{"_e":"metro:bundling:progress","_t":1792440416703,"id":"3","progress":0.1088319693910086,"total":97,"current":32}
+{"_e":"metro:bundling:progress","_t":1792440416803,"id":"2","progress":0.28374770387457815,"total":306,"current":163}
+{"_e":"metro:bundling:progress","_t":1792440416803,"id":"3","progress":0.1088319693910086,"total":97,"current":32}
+{"_e":"metro:bundling:progress","_t":1792440416903,"id":"2","progress":0.28374770387457815,"total":306,"current":163}
+{"_e":"metro:bundling:progress","_t":1792440416903,"id":"3","progress":0.19968965542843142,"total":367,"current":164}
+{"_e":"metro:bundling:progress","_t":1792440417003,"id":"2","progress":0.28374770387457815,"total":306,"current":163}
+{"_e":"metro:bundling:progress","_t":1792440417003,"id":"3","progress":0.37345679012345684,"total":504,"current":308}
+{"_e":"metro:bundling:progress","_t":1792440417103,"id":"2","progress":0.28374770387457815,"total":306,"current":163}
+{"_e":"metro:bundling:progress","_t":1792440417103,"id":"3","progress":0.4107322731296359,"total":543,"current":348}
+{"_e":"metro:bundling:progress","_t":1792440417204,"id":"2","progress":0.28374770387457815,"total":306,"current":163}
+{"_e":"metro:bundling:progress","_t":1792440417204,"id":"3","progress":0.5405294807604776,"total":676,"current":497}
+{"_e":"metro:bundling:progress","_t":1792440417306,"id":"2","progress":0.28374770387457815,"total":306,"current":163}
+{"_e":"metro:bundling:progress","_t":1792440417306,"id":"3","progress":0.62035009425919,"total":711,"current":560}
+{"_e":"metro:bundling:progress","_t":1792440417406,"id":"2","progress":0.28374770387457815,"total":306,"current":163}
+{"_e":"metro:bundling:progress","_t":1792440417407,"id":"3","progress":0.727889761256209,"total":790,"current":674}
+{"_e":"metro:bundling:progress","_t":1792440417532,"id":"2","progress":0.8458280759215013,"total":772,"current":710}
+{"_e":"metro:bundling:progress","_t":1792440417532,"id":"3","progress":0.727889761256209,"total":790,"current":674}
+{"_e":"metro:bundling:progress","_t":1792440417632,"id":"2","progress":0.9234741225461034,"total":820,"current":788}
+{"_e":"metro:bundling:progress","_t":1792440417632,"id":"3","progress":0.727889761256209,"total":790,"current":674}
+{"_e":"metro:bundling:progress","_t":1792440417732,"id":"2","progress":0.9234741225461034,"total":820,"current":788}
+{"_e":"metro:bundling:progress","_t":1792440417732,"id":"3","progress":0.9686376097739176,"total":949,"current":934}
+{"_e":"metro:bundling:progress","_t":1792440417833,"id":"2","progress":0.9234741225461034,"total":820,"current":788}
+{"_e":"metro:bundling:progress","_t":1792440417833,"id":"3","progress":0.9979068556234753,"total":955,"current":954}
+{"_e":"metro:bundling:progress","_t":1792440418107,"id":"2","progress":0.9977464795893077,"total":887,"current":886}
+{"_e":"metro:bundling:progress","_t":1792440418107,"id":"3","progress":0.9979068556234753,"total":955,"current":954}
+{"_e":"metro:bundling:progress","_t":1792440418208,"id":"2","progress":0.9979497698882314,"total":975,"current":974}
+{"_e":"metro:bundling:progress","_t":1792440418208,"id":"3","progress":0.9979068556234753,"total":955,"current":954}
+{"_e":"metro:bundling:progress","_t":1792440418641,"id":"2","progress":0.9979497698882314,"total":975,"current":974}
+{"_e":"metro:bundling:progress","_t":1792440418641,"id":"3","progress":0.999,"total":955,"current":955}
+{"_e":"metro:bundling:progress","_t":1792440418818,"id":"2","progress":0.9979497698882314,"total":975,"current":974}
+{"_e":"metro:bundling:progress","_t":1792440418818,"id":"3","progress":0.999,"total":2849,"current":955}
+{"_e":"metro:bundling:progress","_t":1792440419113,"id":"2","progress":0.9979497698882314,"total":975,"current":974}
+{"_e":"metro:bundling:progress","_t":1792440419113,"id":"3","progress":0.999,"total":2849,"current":956}
+{"_e":"metro:bundling:progress","_t":1792440419213,"id":"2","progress":0.9979497698882314,"total":975,"current":974}
+{"_e":"metro:bundling:progress","_t":1792440419213,"id":"3","progress":0.999,"total":2849,"current":964}
+{"_e":"metro:bundling:progress","_t":1792440419318,"id":"2","progress":0.9979497698882314,"total":975,"current":974}
+{"_e":"metro:bundling:progress","_t":1792440419318,"id":"3","progress":0.999,"total":2849,"current":972}
+{"_e":"metro:bundling:progress","_t":1792440419423,"id":"2","progress":0.9979497698882314,"total":975,"current":974}
+{"_e":"metro:bundling:progress","_t":1792440419423,"id":"3","progress":0.999,"total":2849,"current":984}
+{"_e":"metro:bundling:progress","_t":1792440419524,"id":"2","progress":0.9979497698882314,"total":975,"current":974}
+{"_e":"metro:bundling:progress","_t":1792440419524,"id":"3","progress":0.999,"total":2849,"current":994}
+{"_e":"metro:bundling:progress","_t":1792440419729,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440419729,"id":"3","progress":0.999,"total":2849,"current":994}
+{"_e":"metro:bundling:progress","_t":1792440419832,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440419833,"id":"3","progress":0.999,"total":2849,"current":1006}
+{"_e":"metro:bundling:progress","_t":1792440419932,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440419932,"id":"3","progress":0.999,"total":2849,"current":1032}
+{"_e":"metro:bundling:progress","_t":1792440420032,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420032,"id":"3","progress":0.999,"total":2849,"current":1076}
+{"_e":"metro:bundling:progress","_t":1792440420132,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420133,"id":"3","progress":0.999,"total":2849,"current":1116}
+{"_e":"metro:bundling:progress","_t":1792440420232,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420232,"id":"3","progress":0.999,"total":2849,"current":1186}
+{"_e":"metro:bundling:progress","_t":1792440420332,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420332,"id":"3","progress":0.999,"total":2849,"current":1227}
+{"_e":"metro:bundling:progress","_t":1792440420432,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420432,"id":"3","progress":0.999,"total":2849,"current":1294}
+{"_e":"metro:bundling:progress","_t":1792440420533,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420533,"id":"3","progress":0.999,"total":2849,"current":1345}
+{"_e":"metro:bundling:progress","_t":1792440420633,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420633,"id":"3","progress":0.999,"total":2849,"current":1411}
+{"_e":"metro:bundling:progress","_t":1792440420733,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420733,"id":"3","progress":0.999,"total":2849,"current":1454}
+{"_e":"metro:bundling:progress","_t":1792440420834,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420834,"id":"3","progress":0.999,"total":2849,"current":1540}
+{"_e":"metro:bundling:progress","_t":1792440420934,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440420934,"id":"3","progress":0.999,"total":2849,"current":1594}
+{"_e":"metro:bundling:progress","_t":1792440421034,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421034,"id":"3","progress":0.999,"total":2849,"current":1677}
+{"_e":"metro:bundling:progress","_t":1792440421140,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421140,"id":"3","progress":0.999,"total":2849,"current":1741}
+{"_e":"metro:bundling:progress","_t":1792440421241,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421241,"id":"3","progress":0.999,"total":2849,"current":1803}
+{"_e":"metro:bundling:progress","_t":1792440421341,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421341,"id":"3","progress":0.999,"total":2849,"current":1873}
+{"_e":"metro:bundling:progress","_t":1792440421441,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421441,"id":"3","progress":0.999,"total":2849,"current":1946}
+{"_e":"metro:bundling:progress","_t":1792440421541,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421541,"id":"3","progress":0.999,"total":2849,"current":2001}
+{"_e":"metro:bundling:progress","_t":1792440421641,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421641,"id":"3","progress":0.999,"total":2849,"current":2073}
+{"_e":"metro:bundling:progress","_t":1792440421741,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421741,"id":"3","progress":0.999,"total":2849,"current":2128}
+{"_e":"metro:bundling:progress","_t":1792440421842,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421842,"id":"3","progress":0.999,"total":2849,"current":2221}
+{"_e":"metro:bundling:progress","_t":1792440421943,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440421943,"id":"3","progress":0.999,"total":2849,"current":2281}
+{"_e":"metro:bundling:progress","_t":1792440422043,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440422043,"id":"3","progress":0.999,"total":2849,"current":2371}
+{"_e":"metro:bundling:progress","_t":1792440422145,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440422145,"id":"3","progress":0.999,"total":2849,"current":2443}
+{"_e":"metro:bundling:progress","_t":1792440422245,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440422245,"id":"3","progress":0.999,"total":2849,"current":2510}
+{"_e":"metro:bundling:progress","_t":1792440422345,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440422345,"id":"3","progress":0.999,"total":2849,"current":2574}
+{"_e":"metro:bundling:progress","_t":1792440422445,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440422445,"id":"3","progress":0.999,"total":2849,"current":2670}
+{"_e":"metro:bundling:progress","_t":1792440422545,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440422545,"id":"3","progress":0.999,"total":2849,"current":2723}
+{"_e":"metro:bundling:progress","_t":1792440422648,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440422648,"id":"3","progress":0.999,"total":2849,"current":2800}
+{"_e":"metro:bundling:progress","_t":1792440422748,"id":"2","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440422748,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440422848,"id":"2","progress":0.999,"total":2869,"current":1105}
+{"_e":"metro:bundling:progress","_t":1792440422848,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440422949,"id":"2","progress":0.999,"total":2869,"current":1220}
+{"_e":"metro:bundling:progress","_t":1792440422949,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423050,"id":"2","progress":0.999,"total":2869,"current":1318}
+{"_e":"metro:bundling:progress","_t":1792440423050,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423151,"id":"2","progress":0.999,"total":2869,"current":1398}
+{"_e":"metro:bundling:progress","_t":1792440423151,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423252,"id":"2","progress":0.999,"total":2869,"current":1459}
+{"_e":"metro:bundling:progress","_t":1792440423252,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423363,"id":"2","progress":0.999,"total":2869,"current":1536}
+{"_e":"metro:bundling:progress","_t":1792440423365,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423464,"id":"2","progress":0.999,"total":2869,"current":1622}
+{"_e":"metro:bundling:progress","_t":1792440423464,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423563,"id":"2","progress":0.999,"total":2869,"current":1706}
+{"_e":"metro:bundling:progress","_t":1792440423563,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423663,"id":"2","progress":0.999,"total":2869,"current":1778}
+{"_e":"metro:bundling:progress","_t":1792440423663,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423763,"id":"2","progress":0.999,"total":2869,"current":1866}
+{"_e":"metro:bundling:progress","_t":1792440423763,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423863,"id":"2","progress":0.999,"total":2869,"current":1948}
+{"_e":"metro:bundling:progress","_t":1792440423863,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440423963,"id":"2","progress":0.999,"total":2869,"current":2011}
+{"_e":"metro:bundling:progress","_t":1792440423963,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424063,"id":"2","progress":0.999,"total":2869,"current":2113}
+{"_e":"metro:bundling:progress","_t":1792440424063,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424163,"id":"2","progress":0.999,"total":2869,"current":2185}
+{"_e":"metro:bundling:progress","_t":1792440424163,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424265,"id":"2","progress":0.999,"total":2869,"current":2289}
+{"_e":"metro:bundling:progress","_t":1792440424265,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424367,"id":"2","progress":0.999,"total":2869,"current":2358}
+{"_e":"metro:bundling:progress","_t":1792440424367,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424467,"id":"2","progress":0.999,"total":2869,"current":2447}
+{"_e":"metro:bundling:progress","_t":1792440424467,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424567,"id":"2","progress":0.999,"total":2869,"current":2526}
+{"_e":"metro:bundling:progress","_t":1792440424567,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424667,"id":"2","progress":0.999,"total":2869,"current":2621}
+{"_e":"metro:bundling:progress","_t":1792440424667,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424767,"id":"2","progress":0.999,"total":2869,"current":2675}
+{"_e":"metro:bundling:progress","_t":1792440424767,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424867,"id":"2","progress":0.999,"total":2869,"current":2766}
+{"_e":"metro:bundling:progress","_t":1792440424867,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440424967,"id":"2","progress":0.999,"total":2869,"current":2822}
+{"_e":"metro:bundling:progress","_t":1792440424967,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:progress","_t":1792440425093,"id":"2","progress":0.999,"total":2887,"current":2881}
+{"_e":"metro:bundling:progress","_t":1792440425093,"id":"3","progress":0.999,"total":2862,"current":2851}
+{"_e":"metro:bundling:done","_t":1792440425180,"id":"3","total":2862,"ms":8679.724833}
+{"_e":"metro:bundling:progress","_t":1792440425180,"id":"2","progress":0.999,"total":2887,"current":2881}
+{"_e":"metro:bundling:progress","_t":1792440425235,"id":"2","progress":0.999,"total":2894,"current":2890}
+{"_e":"metro:bundling:progress","_t":1792440425934,"id":"2","progress":0.999,"total":2894,"current":2891}
+{"_e":"metro:bundling:progress","_t":1792440426041,"id":"2","progress":0.999,"total":2901,"current":2901}
+{"_e":"metro:bundling:done","_t":1792440426055,"id":"2","total":2901,"ms":9556.207042}
+{"_e":"metro:bundling:started","_t":1792440426108,"id":"4","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1792440426108,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440426109,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440426209,"id":"4","progress":0.2331437402969904,"total":379,"current":183}
+{"_e":"metro:bundling:progress","_t":1792440426309,"id":"4","progress":0.4403463156132444,"total":541,"current":359}
+{"_e":"metro:bundling:progress","_t":1792440426434,"id":"4","progress":0.7856404958677686,"total":704,"current":624}
+{"_e":"metro:bundling:progress","_t":1792440426536,"id":"4","progress":0.9979497698882314,"total":975,"current":974}
+{"_e":"metro:bundling:progress","_t":1792440427028,"id":"4","progress":0.999,"total":975,"current":975}
+{"_e":"metro:bundling:progress","_t":1792440427160,"id":"4","progress":0.999,"total":2869,"current":976}
+{"_e":"metro:bundling:progress","_t":1792440427263,"id":"4","progress":0.999,"total":2869,"current":1035}
+{"_e":"metro:bundling:progress","_t":1792440427363,"id":"4","progress":0.999,"total":2869,"current":1121}
+{"_e":"metro:bundling:progress","_t":1792440427463,"id":"4","progress":0.999,"total":2869,"current":1193}
+{"_e":"metro:bundling:progress","_t":1792440427563,"id":"4","progress":0.999,"total":2869,"current":1278}
+{"_e":"metro:bundling:progress","_t":1792440427665,"id":"4","progress":0.999,"total":2869,"current":1338}
+{"_e":"metro:bundling:progress","_t":1792440427765,"id":"4","progress":0.999,"total":2869,"current":1411}
+{"_e":"metro:bundling:progress","_t":1792440427865,"id":"4","progress":0.999,"total":2869,"current":1468}
+{"_e":"metro:bundling:progress","_t":1792440427966,"id":"4","progress":0.999,"total":2869,"current":1544}
+{"_e":"metro:bundling:progress","_t":1792440428066,"id":"4","progress":0.999,"total":2869,"current":1628}
+{"_e":"metro:bundling:progress","_t":1792440428166,"id":"4","progress":0.999,"total":2869,"current":1689}
+{"_e":"metro:bundling:progress","_t":1792440428267,"id":"4","progress":0.999,"total":2869,"current":1787}
+{"_e":"metro:bundling:progress","_t":1792440428371,"id":"4","progress":0.999,"total":2869,"current":1877}
+{"_e":"metro:bundling:progress","_t":1792440428473,"id":"4","progress":0.999,"total":2869,"current":1982}
+{"_e":"metro:bundling:progress","_t":1792440428573,"id":"4","progress":0.999,"total":2869,"current":2089}
+{"_e":"metro:bundling:progress","_t":1792440428673,"id":"4","progress":0.999,"total":2869,"current":2170}
+{"_e":"metro:bundling:progress","_t":1792440428774,"id":"4","progress":0.999,"total":2869,"current":2243}
+{"_e":"metro:bundling:progress","_t":1792440428874,"id":"4","progress":0.999,"total":2869,"current":2345}
+{"_e":"metro:bundling:progress","_t":1792440428974,"id":"4","progress":0.999,"total":2869,"current":2411}
+{"_e":"metro:bundling:progress","_t":1792440429075,"id":"4","progress":0.999,"total":2869,"current":2508}
+{"_e":"metro:bundling:progress","_t":1792440429174,"id":"4","progress":0.999,"total":2869,"current":2593}
+{"_e":"metro:bundling:progress","_t":1792440429274,"id":"4","progress":0.999,"total":2869,"current":2688}
+{"_e":"metro:bundling:progress","_t":1792440429375,"id":"4","progress":0.999,"total":2894,"current":2776}
+{"_e":"metro:bundling:progress","_t":1792440429479,"id":"4","progress":0.999,"total":2895,"current":2864}
+{"_e":"metro:bundling:progress","_t":1792440429579,"id":"4","progress":0.999,"total":2901,"current":2900}
+{"_e":"metro:bundling:done","_t":1792440429664,"id":"4","total":2901,"ms":3556.465375}
+{"_e":"metro:client_log","_t":1792440429887,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1792440429888,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1792440429981,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1792440432139,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:started","_t":1792440611161,"id":"7","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1792440611161,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1792440611161,"id":"8","platform":"web","environment":"node","entry":"node_modules/expo/node_modules/@expo/cli/node_modules/@expo/router-server/node/render.js"}
+{"_e":"metro:bundling:progress","_t":1792440611161,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440611161,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440611162,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440611162,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440611263,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440611263,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440611290,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440611291,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1792440611391,"id":"8","total":1,"ms":230.159709}
+{"_e":"metro:bundling:progress","_t":1792440611392,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792440612003,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1792440612051,"id":"7","total":1,"ms":889.989792}
+{"_e":"metro:bundling:started","_t":1792440612092,"id":"9","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1792440612092,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1792440612168,"id":"9","total":1,"ms":75.894958}
+{"_e":"metro:client_log","_t":1792440612447,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1792440612447,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1792440612553,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
