@@ -1,41 +1,8 @@
-import { Tabs } from 'expo-router';
-import { House, User, Camera, Dog } from 'lucide-react-native';
+import { Stack } from "expo-router";
 
-export default function TabLayout() {
-  return (
-    <Tabs>
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: 'Profile',
-          tabBarIcon: ({ color, size }) => (
-            <User size={size} color="currentColor" strokeWidth={1.75} />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="homepage"
-        options={{
-          title: 'Homepage',
-          tabBarIcon: ({ color, size }) => (
-            <House size={size} color="currentColor" strokeWidth={1.75} />
-          ),
-        }}
-      />
-      <Tabs.Screen name="scrollview" options={{
-          title: 'Scrollview',
-          tabBarIcon: ({ color, size }) => (
-            <Dog size={size} color="currentColor" strokeWidth={1.75} />
-          ),
-        }} />
-      <Tabs.Screen name="camera" options={{
-          headerShown: false,
-          title: 'Camera',
-          tabBarIcon: ({ color, size }) => (
-            <Camera size={size} color="currentColor" strokeWidth={1.75} />
-          ),
-        }} />
-    </Tabs>
-  );
+export default function RootLayout() {
+  return ( <Stack>
+    <Stack.Screen name="index" options={{headerShown: true}}/>
+    <Stack.Screen name="(tabs)" options={{headerShown: false}}/>
+  </Stack> );
 }
