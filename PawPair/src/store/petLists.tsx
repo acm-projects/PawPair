@@ -24,7 +24,7 @@ let hydrating: Promise<void> | null = null;
 export function hydrate() {
   if (!hydrating) {
     hydrating = AsyncStorage.getItem(KEY)
-      .then((raw) => {
+      .then((raw: string | null) => {
         const saved = raw ? JSON.parse(raw) : {};
         const merge = (a: number[] = [], b: number[] = []) => [
           ...a,
