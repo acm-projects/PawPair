@@ -1,0 +1,113 @@
+{
+  "potted plant": {
+    "title": "Houseplant",
+    "pets": ["cat", "dog", "small_animal", "bird"],
+    "severity": "high",
+    "reasons": {
+      "cat": "Many common houseplants, especially lilies, are toxic to cats even in small amounts.",
+      "dog": "Plants like pothos, aloe, and sago palm can make dogs sick if chewed.",
+      "default": "Some houseplants are toxic to pets if chewed or eaten."
+    },
+    "suggestion": "Check that the plant is pet-safe, or move it somewhere your pet can't reach."
+  },
+  "knife": {
+    "title": "Sharp Knife",
+    "pets": ["all"],
+    "severity": "high",
+    "reasons": {
+      "dog": "Dogs may grab knives off counters while searching for food.",
+      "cat": "Cats jump on counters and can knock knives off or cut their paws.",
+      "default": "Sharp objects can cause serious cuts."
+    },
+    "suggestion": "Store knives in a drawer or knife block, not on open counters."
+  },
+  "scissors": {
+    "title": "Scissors",
+    "pets": ["all"],
+    "severity": "medium",
+    "reasons": {
+      "default": "Pets can injure themselves on sharp edges if scissors are left out."
+    },
+    "suggestion": "Keep scissors in a closed drawer when not in use."
+  },
+  "bottle": {
+    "title": "Bottle",
+    "pets": ["dog", "cat", "small_animal"],
+    "severity": "medium",
+    "reasons": {
+      "dog": "Dogs may chew bottles or lick spills from cleaners, alcohol, or medicine.",
+      "cat": "Cats may knock bottles over and lick spilled liquids.",
+      "default": "Bottles may contain liquids that are dangerous if spilled or chewed."
+    },
+    "suggestion": "Keep bottles, especially cleaners and alcohol, in closed cabinets."
+  },
+  "wine glass": {
+    "title": "Wine Glass",
+    "pets": ["dog", "cat"],
+    "severity": "medium",
+    "reasons": {
+      "cat": "Cats often knock glasses off tables, and broken glass can cut paws.",
+      "default": "Glass can break, and alcohol is toxic to pets."
+    },
+    "suggestion": "Don't leave glasses on low tables or edges."
+  },
+  "vase": {
+    "title": "Vase",
+    "pets": ["cat", "dog"],
+    "severity": "low",
+    "reasons": {
+      "cat": "Cats like to knock things over, and vase water or flowers can be toxic.",
+      "default": "Vases can tip over and break."
+    },
+    "suggestion": "Place vases on stable, high surfaces and keep toxic flowers out of the home."
+  },
+  "remote": {
+    "title": "Remote Control",
+    "pets": ["dog", "small_animal"],
+    "severity": "medium",
+    "reasons": {
+      "dog": "Dogs often chew remotes, and swallowed batteries can cause serious burns.",
+      "default": "Chewing on remotes can expose pets to batteries."
+    },
+    "suggestion": "Keep remotes on high shelves or in a drawer."
+  },
+  "laptop": {
+    "title": "Charging Cords",
+    "pets": ["dog", "cat", "small_animal"],
+    "severity": "medium",
+    "reasons": {
+      "small_animal": "Rabbits and other small pets love to chew cords, which can cause electric shocks.",
+      "default": "Laptop and charger cords can be chewed, causing shocks or burns."
+    },
+    "suggestion": "Use cord covers and unplug chargers when not in use."
+  },
+  "tv": {
+    "title": "TV and Cords",
+    "pets": ["dog", "cat", "small_animal"],
+    "severity": "low",
+    "reasons": {
+      "cat": "Cats may climb TV stands, and unsecured TVs can tip over.",
+      "default": "Cords behind TVs are easy for pets to chew."
+    },
+    "suggestion": "Anchor the TV and hide cords behind a cover."
+  },
+  "oven": {
+    "title": "Oven",
+    "pets": ["dog", "cat"],
+    "severity": "medium",
+    "reasons": {
+      "cat": "Cats may jump onto hot stovetops.",
+      "default": "Hot surfaces can burn curious pets."
+    },
+    "suggestion": "Keep pets out of the kitchen while cooking and use stove knob covers."
+  },
+  "toaster": {
+    "title": "Toaster",
+    "pets": ["dog", "cat"],
+    "severity": "low",
+    "reasons": {
+      "default": "Toasters get hot, and their cords can be pulled down."
+    },
+    "suggestion": "Unplug toasters and push them to the back of the counter."
+  }
+}
