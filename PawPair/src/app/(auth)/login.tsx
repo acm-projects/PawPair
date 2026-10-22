@@ -118,14 +118,15 @@ const styles = StyleSheet.create({
     height: 45,
     borderRadius: 6,
     paddingHorizontal: 10,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#E98F78",
     width: "90%"
   },
   button: {
     width: "90%",
     height: 45,
-    backgroundColor: "teal",
+    backgroundColor: "#F2EDE8",
     borderRadius: 6,
+    opacity:.5,
     justifyContent: "center",
     alignItems: "center"
   }

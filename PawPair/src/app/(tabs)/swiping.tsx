@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image, ScrollView, Pressable, Animated, Dimensi
 import { LinearGradient } from "expo-linear-gradient";
 import { PETS_DATA } from "../../data/pets";
 import { matchPet, starPet } from "../../store/petLists";
+import { useRouter } from "expo-router";
 
 const paw = require("../../../assets/images/paw-watermark.png");
 const pawIcon = require("../../../assets/images/paw-icon.png");
@@ -12,6 +13,8 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 export default function Scrollview() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const busy = useRef(false); 
+  const router = useRouter();
+
 
   const position = useMemo(() => new Animated.ValueXY({ x: 0, y: 0 }), []);
 
@@ -47,11 +50,12 @@ export default function Scrollview() {
   };
 
   if (currentIndex >= PETS_DATA.length) {
-    return (
-      <View style={[s.outer, { justifyContent: "center", alignItems: "center" }]}>
-        <Text style={{ color: "#fff", fontSize: 16, fontWeight: "bold" }}>All caught up on reccs :)!</Text>
-      </View>
-    );
+    router.replace("/homepage");
+    // return (
+    //   <View style={[s.outer, { justifyContent: "center", alignItems: "center" }]}>
+    //     <Text style={{ color: "#fff", fontSize: 16, fontWeight: "bold" }}>All caught up on reccs :)!</Text>
+    //   </View>
+    // );
   }
 
   const currentPet = PETS_DATA[currentIndex];

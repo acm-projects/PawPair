@@ -17,7 +17,7 @@ import {
   createUserWithEmailAndPassword
 } from "firebase/auth";
 
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 export default function Signup() {
   const [loading, setLoading] = useState(false);
@@ -66,6 +66,8 @@ try {
       "Success",
       "Your PawPair account and profile were created!"
     );
+
+    router.replace("/quiz");
   } catch (profileError) {
     console.error("Profile creation failed:", profileError);
 
