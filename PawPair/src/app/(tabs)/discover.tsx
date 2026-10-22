@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import {
   View,
@@ -10,17 +10,25 @@ import {
   TouchableOpacity
 } from "react-native";
 
-import { getAuth } from "firebase/auth";
+import { useFocusEffect } from "expo-router";
+
+import {
+  getAuth,
+  onAuthStateChanged
+} from "firebase/auth";
+
 import { app } from "../../firebase.js";
 
-import { getAnimals } from "../../services/animalServices";
+import {
+  getAnimals
+} from "../../services/animalServices";
 
 import {
   addFavorite,
   getFavorites
 } from "../../services/favoriteServices";
 
-// Define the structure of each animal
+// Structure of each pet
 type Pet = {
   id: string;
   name: string;
@@ -34,77 +42,131 @@ type Pet = {
 
 export default function DiscoverScreen() {
 
-  // Store animals retrieved from Firestore
+  // Store animals from Firestore
   const [animals, setAnimals] = useState<Pet[]>([]);
 
-  // Track loading and errors
+  // Loading and error states
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   // Store favorite pet IDs
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
 
-  // Track which pet is currently being saved
+  // Track the pet currently being saved
   const [savingPetId, setSavingPetId] = useState<string | null>(null);
 
   // Display confirmation messages
   const [message, setMessage] = useState("");
 
-  // Retrieve animals when the screen loads
+  // STEP 1: Retrieve animals from Firestore
   useEffect(() => {
+    let active = true;
 
     async function loadAnimals() {
       try {
         const data = await getAnimals();
 
-        setAnimals(data as Pet[]);
-
-        console.log("Animals retrieved:", data);
-        console.log("Total animals:", data.length);
-
-        // Retrieve the current user's favorites
-        const auth = getAuth(app);
-        const uid = auth.currentUser?.uid;
-
-        if (uid) {
-          try {
-            const savedFavorites = await getFavorites(uid);
-            setFavoriteIds(savedFavorites);
-          } catch (favoriteError) {
-            console.error(
-              "Error retrieving favorites:",
-              favoriteError
-            );
-          }
+        if (active) {
+          setAnimals(data as Pet[]);
+          console.log("Animals retrieved:", data);
+          console.log("Total animals:", data.length);
         }
 
-      } catch (error) {
-        console.error("Error retrieving animals:", error);
-        setError("Could not load animals.");
+      } catch (err) {
+        console.error("Error retrieving animals:", err);
+
+        if (active) {
+          setError("Could not load animals.");
+        }
 
       } finally {
-        setLoading(false);
+        if (active) {
+          setLoading(false);
+        }
       }
     }
 
     loadAnimals();
 
+    return () => {
+      active = false;
+    };
   }, []);
 
-  // Add a pet to the user's favorites
+  // STEP 2: Refresh favorites every time Discover opens
+  useFocusEffect(
+    useCallback(() => {
+      let active = true;
+
+      const auth = getAuth(app);
+
+      const unsubscribe = onAuthStateChanged(
+        auth,
+        async (user) => {
+
+          if (!user) {
+            if (active) {
+              setFavoriteIds([]);
+            }
+            return;
+          }
+
+          try {
+            // Get updated favorites from Firestore
+            const updatedFavorites = await getFavorites(
+              user.uid
+            );
+
+            if (active) {
+              setFavoriteIds(updatedFavorites);
+            }
+
+            console.log(
+              "Updated favorites:",
+              updatedFavorites
+            );
+
+          } catch (err) {
+            console.error(
+              "Error refreshing favorites:",
+              err
+            );
+
+            if (active) {
+              setMessage(
+                "Could not refresh favorites."
+              );
+            }
+          }
+        }
+      );
+
+      return () => {
+        active = false;
+        unsubscribe();
+      };
+
+    }, [])
+  );
+
+  // STEP 3: Add a pet to favorites
   async function handleFavorite(petId: string) {
 
     const auth = getAuth(app);
     const uid = auth.currentUser?.uid;
 
-    // Make sure the user is logged in
     if (!uid) {
       setMessage("Please log in to save pets.");
       return;
     }
 
-    // Avoid saving a pet that is already favorited
+    // Prevent duplicate favorites
     if (favoriteIds.includes(petId)) {
+      return;
+    }
+
+    // Prevent multiple simultaneous saves
+    if (savingPetId !== null) {
       return;
     }
 
@@ -112,42 +174,52 @@ export default function DiscoverScreen() {
     setMessage("");
 
     try {
-
       // Save the favorite in Firestore
       await addFavorite(uid, petId);
 
-      // Update the screen immediately
-      setFavoriteIds(previous => [...previous, petId]);
+      // Update button immediately
+      setFavoriteIds(previous =>
+        previous.includes(petId)
+          ? previous
+          : [...previous, petId]
+      );
 
-      const pet = animals.find(item => item.id === petId);
+      const pet = animals.find(
+        item => item.id === petId
+      );
 
       setMessage(
         `${pet?.name || "Pet"} added to favorites!`
       );
 
-      console.log("Pet added to favorites:", petId);
+      console.log("Favorite saved:", petId);
 
-    } catch (error) {
-      console.error("Error saving favorite:", error);
+    } catch (err) {
+      console.error("Error saving favorite:", err);
 
-      setMessage("Could not save favorite. Please try again.");
+      setMessage(
+        "Could not save favorite. Please try again."
+      );
 
     } finally {
       setSavingPetId(null);
     }
   }
 
-  // Display loading screen
+  // STEP 4: Loading screen
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="teal" />
+        <ActivityIndicator
+          size="large"
+          color="teal"
+        />
         <Text>Loading available pets...</Text>
       </View>
     );
   }
 
-  // Display the Discover Pets screen
+  // STEP 5: Display Discover screen
   return (
     <View style={styles.container}>
 
@@ -159,14 +231,12 @@ export default function DiscoverScreen() {
         Find your perfect companion!
       </Text>
 
-      {/* Confirmation or error message */}
       {message !== "" && (
         <Text style={styles.message}>
           {message}
         </Text>
       )}
 
-      {/* Display Firestore loading errors */}
       {error !== "" ? (
         <Text style={styles.error}>
           {error}
@@ -176,7 +246,6 @@ export default function DiscoverScreen() {
         <Text>No available pets found.</Text>
 
       ) : (
-
         <FlatList
           data={animals}
           keyExtractor={(item) => item.id}
@@ -184,7 +253,10 @@ export default function DiscoverScreen() {
 
           renderItem={({ item }) => {
 
-            const isFavorite = favoriteIds.includes(item.id);
+            const isFavorite = favoriteIds.includes(
+              item.id
+            );
+
             const isSaving = savingPetId === item.id;
 
             return (
@@ -194,13 +266,21 @@ export default function DiscoverScreen() {
                   {item.name}
                 </Text>
 
-                <Text>Species: {item.species}</Text>
+                <Text>
+                  Species: {item.species}
+                </Text>
 
-                <Text>Breed: {item.breed}</Text>
+                <Text>
+                  Breed: {item.breed}
+                </Text>
 
-                <Text>Age: {item.age} years</Text>
+                <Text>
+                  Age: {item.age} years
+                </Text>
 
-                <Text>Size: {item.size}</Text>
+                <Text>
+                  Size: {item.size}
+                </Text>
 
                 <Text>
                   Status: {item.adoptionStatus}
@@ -217,7 +297,10 @@ export default function DiscoverScreen() {
                     isFavorite && styles.savedButton
                   ]}
                   onPress={() => handleFavorite(item.id)}
-                  disabled={isFavorite || savingPetId !== null}
+                  disabled={
+                    isFavorite ||
+                    savingPetId !== null
+                  }
                 >
 
                   {isSaving ? (
@@ -237,14 +320,13 @@ export default function DiscoverScreen() {
             );
           }}
         />
-
       )}
 
     </View>
   );
 }
 
-// Styling
+// STYLING
 const styles = StyleSheet.create({
 
   container: {
@@ -255,8 +337,8 @@ const styles = StyleSheet.create({
 
   loadingContainer: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
     gap: 12
   },
 
