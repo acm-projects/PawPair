@@ -36,7 +36,6 @@ type Dog = {
   tags: string[];
   matchLabel: string;
   matchPercent: number; // 0 to 1
-  points: number;
   photoUrl: string;
 };
 
@@ -52,7 +51,7 @@ const DOGS: Dog[] = [
     tags: ["Verified Health Records", "Previous Owner Check", "Fully Vaccinated"],
     matchLabel: "Very High",
     matchPercent: 0.78,
-    points: 20,
+    
     // Placeholder photo. Swap for your own image later.
     photoUrl: "https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg",
   },
@@ -67,7 +66,6 @@ const DOGS: Dog[] = [
     tags: ["Verified Health Records", "Fully Vaccinated"],
     matchLabel: "High",
     matchPercent: 0.6,
-    points: 15,
     photoUrl: "https://brownvethospital.com/wp-content/uploads/2024/02/when-do-dogs-stop-growing.jpg",
   },
   {
@@ -81,7 +79,6 @@ const DOGS: Dog[] = [
     tags: ["Verified Health Records", "Fully Vaccinated", "Neutered/Spayed"],
     matchLabel: "Medium",
     matchPercent: 0.5,
-    points: 15,
     photoUrl: "https://hips.hearstapps.com/hmg-prod/images/cat-is-playing-with-a-toy-at-the-lucky-cat-house-pet-hotel-news-photo-1760987522.pjpeg?crop=0.668xw:1.00xh;0.243xw,0&resize=640:*",
   },
 ];
@@ -89,6 +86,13 @@ const DOGS: Dog[] = [
 // 2) ONE DOG CARD -----------------------------------------------------------
 // A "component" is a function that returns what to draw. We write the card
 // once, then reuse it for every dog.
+function getMatchColor(percent: number) {
+  if (percent < 0.25) return "#D9534F"; // red
+  if (percent < 0.5) return "#F0C040"; // yellow
+  if (percent < 0.75) return "#9BD16B"; // light green
+  return "#2E8B57"; // dark green
+}
+
 function DogCard({ dog }: { dog: Dog }) {
   return (
     <View style={styles.card}>
@@ -141,7 +145,7 @@ function DogCard({ dog }: { dog: Dog }) {
             <Text style={styles.bold}>Matches: </Text>
             <Text style={styles.matchValue}>{dog.matchLabel}</Text>
           </Text>
-          <Text style={styles.bold}>{dog.points} points</Text>
+          <Text style={styles.bold}>{Math.round(dog.matchPercent * 100)}%</Text>
         </View>
       </View>
     </View>
@@ -188,7 +192,7 @@ export default function Scrollview() {
   );
 
   return (
-    <View style={styles.container}>
+    <LinearGradient colors={[ "#F5C0B3","#E98F78"]} style={styles.container}>
       {/* Search bar + filter button */}
       <View style={styles.searchRow}>
         <View style={styles.searchBar}>
@@ -197,7 +201,7 @@ export default function Scrollview() {
             style={styles.searchInput}
             value={search}
             onChangeText={setSearch}
-            placeholder="Search dogs"
+            placeholder="Search animals"
             placeholderTextColor="#786862"
           />
         </View>
@@ -214,7 +218,7 @@ export default function Scrollview() {
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
       />
-            <LinearGradient colors={["#F5C0B3", "#E98F78"]} style={styles.navBarBackground}>
+      <LinearGradient colors={["#F5C0B3", "#F5C0B3"]} style={styles.navBarBackground}>
         <SafeAreaView style={styles.navBar} edges={["bottom"]}>
           {NAV_ITEMS.map(({ href, label, Icon }) => {
             const isActive = href === "/scrollview";
@@ -227,7 +231,7 @@ export default function Scrollview() {
           })}
         </SafeAreaView>
       </LinearGradient>
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -236,7 +240,7 @@ export default function Scrollview() {
 // is already a flexbox that stacks its children top-to-bottom.
 const NAV_RADIUS = 20;
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f2ede8", paddingTop: 56 },
+  container: { flex: 1, paddingTop: 56 },
 
     navBarBackground: {
     borderTopLeftRadius: NAV_RADIUS,
