@@ -17,7 +17,7 @@ import { app } from "../../firebase.js";
 
 import {
   getAuth,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 import { Link } from "expo-router";
