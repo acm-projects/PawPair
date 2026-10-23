@@ -13,12 +13,16 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen name="homepage" options={{
+
+      <Tabs.Screen
+        name="homepage"
+        options={{
           title: 'Homepage',
           tabBarIcon: ({ color, size }) => (
             <House size={size} color="currentColor" strokeWidth={1.75} />
           ),
-        }} />
+        }}
+      />
       <Tabs.Screen name="scrollview" options={{
           title: 'Scrollview',
           tabBarIcon: ({ color, size }) => (
@@ -26,6 +30,7 @@ export default function TabLayout() {
           ),
         }} />
       <Tabs.Screen name="camera" options={{
+          headerShown: false,
           title: 'Camera',
           tabBarIcon: ({ color, size }) => (
             <Camera size={size} color="currentColor" strokeWidth={1.75} />
