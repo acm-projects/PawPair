@@ -10,7 +10,11 @@ import {
   TouchableOpacity
 } from "react-native";
 
-import { useFocusEffect } from "expo-router";
+import {
+  useFocusEffect,
+  useRouter,
+  type Href
+} from "expo-router";
 
 import {
   getAuth,
@@ -19,16 +23,14 @@ import {
 
 import { app } from "../../firebase.js";
 
-import {
-  getAnimals
-} from "../../services/animalServices";
+import { getAnimals } from "../../services/animalServices";
 
 import {
   addFavorite,
   getFavorites
 } from "../../services/favoriteServices";
 
-// Structure of each pet
+// Define the structure of each pet
 type Pet = {
   id: string;
   name: string;
@@ -42,7 +44,10 @@ type Pet = {
 
 export default function DiscoverScreen() {
 
-  // Store animals from Firestore
+  // Router for navigating to individual pet pages
+  const router = useRouter();
+
+  // Store animals retrieved from Firestore
   const [animals, setAnimals] = useState<Pet[]>([]);
 
   // Loading and error states
@@ -51,11 +56,12 @@ export default function DiscoverScreen() {
 
   // Store favorite pet IDs
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
+  const [favoritesLoading, setFavoritesLoading] = useState(true);
 
-  // Track the pet currently being saved
+  // Track pet currently being saved
   const [savingPetId, setSavingPetId] = useState<string | null>(null);
 
-  // Display confirmation messages
+  // Confirmation messages
   const [message, setMessage] = useState("");
 
   // STEP 1: Retrieve animals from Firestore
@@ -68,6 +74,7 @@ export default function DiscoverScreen() {
 
         if (active) {
           setAnimals(data as Pet[]);
+
           console.log("Animals retrieved:", data);
           console.log("Total animals:", data.length);
         }
@@ -91,12 +98,16 @@ export default function DiscoverScreen() {
     return () => {
       active = false;
     };
+
   }, []);
 
-  // STEP 2: Refresh favorites every time Discover opens
+  // STEP 2: Refresh Favorites whenever Discover opens
   useFocusEffect(
     useCallback(() => {
       let active = true;
+
+      setFavoritesLoading(true);
+      setMessage("");
 
       const auth = getAuth(app);
 
@@ -107,12 +118,12 @@ export default function DiscoverScreen() {
           if (!user) {
             if (active) {
               setFavoriteIds([]);
+              setFavoritesLoading(false);
             }
             return;
           }
 
           try {
-            // Get updated favorites from Firestore
             const updatedFavorites = await getFavorites(
               user.uid
             );
@@ -133,9 +144,12 @@ export default function DiscoverScreen() {
             );
 
             if (active) {
-              setMessage(
-                "Could not refresh favorites."
-              );
+              setMessage("Could not refresh favorites.");
+            }
+
+          } finally {
+            if (active) {
+              setFavoritesLoading(false);
             }
           }
         }
@@ -149,7 +163,7 @@ export default function DiscoverScreen() {
     }, [])
   );
 
-  // STEP 3: Add a pet to favorites
+  // STEP 3: Add a pet to Favorites
   async function handleFavorite(petId: string) {
 
     const auth = getAuth(app);
@@ -165,8 +179,8 @@ export default function DiscoverScreen() {
       return;
     }
 
-    // Prevent multiple simultaneous saves
-    if (savingPetId !== null) {
+    // Prevent saving while a request is ongoing
+    if (savingPetId !== null || favoritesLoading) {
       return;
     }
 
@@ -174,10 +188,11 @@ export default function DiscoverScreen() {
     setMessage("");
 
     try {
-      // Save the favorite in Firestore
+
+      // Save favorite in Firestore
       await addFavorite(uid, petId);
 
-      // Update button immediately
+      // Update the button immediately
       setFavoriteIds(previous =>
         previous.includes(petId)
           ? previous
@@ -206,20 +221,30 @@ export default function DiscoverScreen() {
     }
   }
 
-  // STEP 4: Loading screen
+  // STEP 4: Navigate to individual pet details
+  function handleViewDetails(petId: string) {
+
+    router.push(`/pets/${petId}` as Href);
+
+  }
+
+  // STEP 5: Display loading screen
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
+
         <ActivityIndicator
           size="large"
           color="teal"
         />
+
         <Text>Loading available pets...</Text>
+
       </View>
     );
   }
 
-  // STEP 5: Display Discover screen
+  // STEP 6: Display Discover Pets screen
   return (
     <View style={styles.container}>
 
@@ -231,12 +256,14 @@ export default function DiscoverScreen() {
         Find your perfect companion!
       </Text>
 
+      {/* Confirmation and error messages */}
       {message !== "" && (
         <Text style={styles.message}>
           {message}
         </Text>
       )}
 
+      {/* Display available animals */}
       {error !== "" ? (
         <Text style={styles.error}>
           {error}
@@ -262,10 +289,12 @@ export default function DiscoverScreen() {
             return (
               <View style={styles.card}>
 
+                {/* Pet name */}
                 <Text style={styles.name}>
                   {item.name}
                 </Text>
 
+                {/* Pet information */}
                 <Text>
                   Species: {item.species}
                 </Text>
@@ -286,11 +315,24 @@ export default function DiscoverScreen() {
                   Status: {item.adoptionStatus}
                 </Text>
 
+                {/* Description */}
                 <Text style={styles.description}>
                   {item.description}
                 </Text>
 
-                {/* Add to Favorites button */}
+                {/* VIEW DETAILS BUTTON */}
+                <TouchableOpacity
+                  style={styles.detailsButton}
+                  onPress={() =>
+                    handleViewDetails(item.id)
+                  }
+                >
+                  <Text style={styles.detailsButtonText}>
+                    View Details
+                  </Text>
+                </TouchableOpacity>
+
+                {/* ADD TO FAVORITES BUTTON */}
                 <TouchableOpacity
                   style={[
                     styles.favoriteButton,
@@ -299,7 +341,8 @@ export default function DiscoverScreen() {
                   onPress={() => handleFavorite(item.id)}
                   disabled={
                     isFavorite ||
-                    savingPetId !== null
+                    savingPetId !== null ||
+                    favoritesLoading
                   }
                 >
 
@@ -377,10 +420,28 @@ const styles = StyleSheet.create({
     lineHeight: 20
   },
 
+  // View Details button
+  detailsButton: {
+    backgroundColor: "#e0f2f1",
+    padding: 12,
+    marginTop: 15,
+    borderRadius: 6,
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "teal"
+  },
+
+  detailsButtonText: {
+    color: "teal",
+    fontSize: 15,
+    fontWeight: "bold"
+  },
+
+  // Favorites button
   favoriteButton: {
     backgroundColor: "teal",
     padding: 12,
-    marginTop: 15,
+    marginTop: 10,
     borderRadius: 6,
     alignItems: "center"
   },
