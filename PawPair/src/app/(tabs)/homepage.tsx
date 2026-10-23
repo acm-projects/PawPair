@@ -9,7 +9,7 @@ export default function Homepage() {
     
   return (
     <View>
-        <Text>home page</Text>
+        <Text>homepage</Text>
     </View>
   );
 
