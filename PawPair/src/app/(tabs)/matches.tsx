@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Image, ScrollView, Pressable, TouchableOpacity } from "react-native";
 import { User, House, Dog, Camera as CameraIcon, Check, X } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
