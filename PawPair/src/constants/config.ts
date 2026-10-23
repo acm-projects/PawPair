@@ -1,0 +1,1 @@
+export const SERVER_URL = "https://some-random-words.trycloudflare.com";

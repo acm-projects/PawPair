@@ -1,47 +1,17 @@
-<<<<<<< HEAD
-node_modules
-=======
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# Python
+.venv/
+__pycache__/
+*.pyc
 
-# dependencies
-node_modules/
+# Secrets
+serviceAccountKey.json
 
-# Expo
-.expo/
-dist/
-web-build/
-expo-env.d.ts
+# ML data
+runs/
+backend/ml-server/test_images/*
+training/datasets/*
 
-# Native
-.kotlin/
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-
-# Metro
-.metro-health-check*
-
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
-
-# macOS
+# Editor / Mac
+.vscode/
 .DS_Store
-*.pem
-
-# local env files
-.env*.local
-
-# typescript
-*.tsbuildinfo
-
-example
-
-# generated native folders
-/ios
-/android
->>>>>>> origin/Agarwal
+node_modules
