@@ -1,19 +1,174 @@
 {
   "potted plant": {
     "title": "Houseplant",
-    "pets": ["cat", "dog", "small_animal", "bird"],
+    "pets": [
+      "cat",
+      "dog",
+      "small_animal",
+      "bird"
+    ],
     "severity": "high",
+    "rooms": [
+      "living_room",
+      "bedroom",
+      "kitchen",
+      "bathroom"
+    ],
     "reasons": {
       "cat": "Many common houseplants, especially lilies, are toxic to cats even in small amounts.",
       "dog": "Plants like pothos, aloe, and sago palm can make dogs sick if chewed.",
+      "bird": "Birds nibble on leaves, and many houseplants are toxic to them.",
       "default": "Some houseplants are toxic to pets if chewed or eaten."
     },
     "suggestion": "Check that the plant is pet-safe, or move it somewhere your pet can't reach."
   },
+  "tv": {
+    "title": "TV and Cords",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "low",
+    "rooms": [
+      "living_room",
+      "bedroom"
+    ],
+    "reasons": {
+      "cat": "Cats may climb TV stands, and unsecured TVs can tip over.",
+      "default": "Cords behind TVs are easy for pets to chew."
+    },
+    "suggestion": "Anchor the TV and hide cords behind a cover."
+  },
+  "remote": {
+    "title": "Remote Control",
+    "pets": [
+      "dog",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "living_room",
+      "bedroom"
+    ],
+    "reasons": {
+      "dog": "Dogs often chew remotes, and swallowed batteries can cause serious burns.",
+      "default": "Chewing on remotes can expose pets to batteries."
+    },
+    "suggestion": "Keep remotes on high shelves or in a drawer."
+  },
+  "laptop": {
+    "title": "Charging Cords",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "living_room",
+      "bedroom"
+    ],
+    "reasons": {
+      "small_animal": "Rabbits and other small pets love to chew cords, which can cause electric shocks.",
+      "default": "Laptop and charger cords can be chewed, causing shocks or burns."
+    },
+    "suggestion": "Use cord covers and unplug chargers when not in use."
+  },
+  "cell phone": {
+    "title": "Phone and Charger",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "living_room",
+      "bedroom"
+    ],
+    "reasons": {
+      "dog": "Dogs may chew phones, and a punctured battery can cause burns.",
+      "small_animal": "Small pets like to chew charging cables, which can cause electric shocks.",
+      "default": "Phones and charging cables can be chewed, exposing pets to batteries and live wires."
+    },
+    "suggestion": "Keep phones off the floor and unplug chargers when not in use.",
+    "min_confidence": 0.6
+  },
+  "couch": {
+    "title": "Couch or Recliner",
+    "pets": [
+      "small_animal",
+      "cat"
+    ],
+    "severity": "low",
+    "rooms": [
+      "living_room"
+    ],
+    "reasons": {
+      "small_animal": "Small pets can hide under or inside couches and recliners and get crushed when someone sits or the footrest closes.",
+      "cat": "Kittens like to hide inside recliners and sofa beds.",
+      "default": "Small pets may hide inside or under furniture."
+    },
+    "suggestion": "Check under and inside furniture, especially recliners, before sitting or closing footrests.",
+    "min_confidence": 0.6
+  },
+  "vase": {
+    "title": "Vase",
+    "pets": [
+      "cat",
+      "dog"
+    ],
+    "severity": "low",
+    "rooms": [
+      "living_room"
+    ],
+    "reasons": {
+      "cat": "Cats like to knock things over, and vase water or flowers can be toxic.",
+      "default": "Vases can tip over and break."
+    },
+    "suggestion": "Place vases on stable, high surfaces and keep toxic flowers out of the home."
+  },
+  "teddy bear": {
+    "title": "Stuffed Toy",
+    "pets": [
+      "dog"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "living_room",
+      "bedroom"
+    ],
+    "reasons": {
+      "dog": "Dogs can tear stuffed toys apart and swallow stuffing, squeakers, or plastic eyes, which can cause blockages.",
+      "default": "Small parts of plush toys can be swallowed."
+    },
+    "suggestion": "Keep children's stuffed toys out of reach and give pets toys made for them."
+  },
+  "sports ball": {
+    "title": "Small Ball",
+    "pets": [
+      "dog"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "living_room",
+      "general"
+    ],
+    "reasons": {
+      "default": "Balls small enough to fit in a dog's mouth can be swallowed or block the airway."
+    },
+    "suggestion": "Choose balls too big to swallow, and put away kids' small balls after play."
+  },
   "knife": {
     "title": "Sharp Knife",
-    "pets": ["all"],
+    "pets": [
+      "all"
+    ],
     "severity": "high",
+    "rooms": [
+      "kitchen"
+    ],
     "reasons": {
       "dog": "Dogs may grab knives off counters while searching for food.",
       "cat": "Cats jump on counters and can knock knives off or cut their paws.",
@@ -23,91 +178,420 @@
   },
   "scissors": {
     "title": "Scissors",
-    "pets": ["all"],
+    "pets": [
+      "all"
+    ],
     "severity": "medium",
+    "rooms": [
+      "kitchen",
+      "general"
+    ],
     "reasons": {
       "default": "Pets can injure themselves on sharp edges if scissors are left out."
     },
     "suggestion": "Keep scissors in a closed drawer when not in use."
   },
+  "fork": {
+    "title": "Fork and Utensils",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "low",
+    "rooms": [
+      "kitchen"
+    ],
+    "reasons": {
+      "dog": "Dogs licking food off utensils, especially in an open dishwasher, can be cut by sharp points.",
+      "default": "Pets licking food off utensils can be injured by sharp points."
+    },
+    "suggestion": "Clear utensils after meals, load sharp ones point-down, and keep the dishwasher closed."
+  },
+  "oven": {
+    "title": "Oven and Stove",
+    "pets": [
+      "dog",
+      "cat",
+      "bird"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "kitchen"
+    ],
+    "reasons": {
+      "cat": "Cats may jump onto hot stovetops.",
+      "bird": "Overheated nonstick (PTFE/Teflon) cookware releases fumes that can be deadly to birds within minutes.",
+      "default": "Hot surfaces can burn curious pets."
+    },
+    "suggestion": "Keep pets out of the kitchen while cooking, use stove knob covers, and keep birds far from the kitchen."
+  },
+  "toaster": {
+    "title": "Toaster",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "low",
+    "rooms": [
+      "kitchen"
+    ],
+    "reasons": {
+      "default": "Toasters get hot, and their cords can be pulled down."
+    },
+    "suggestion": "Unplug toasters and push them to the back of the counter."
+  },
+  "sink": {
+    "title": "Sink and Cabinet",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "low",
+    "rooms": [
+      "kitchen",
+      "bathroom"
+    ],
+    "reasons": {
+      "default": "Cleaning products are often stored in the cabinet under the sink, where curious pets can get into them."
+    },
+    "suggestion": "Use childproof latches on cabinets under sinks.",
+    "min_confidence": 0.6
+  },
+  "dining table": {
+    "title": "Food on the Table",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "low",
+    "rooms": [
+      "kitchen"
+    ],
+    "reasons": {
+      "dog": "Dogs may grab food left on tables, including foods toxic to them like onions, grapes, or chocolate.",
+      "cat": "Cats jump onto tables and may eat food or knock over dishes.",
+      "default": "Food left on tables can be reached by pets."
+    },
+    "suggestion": "Clear food and dishes promptly after meals.",
+    "min_confidence": 0.55
+  },
+  "cup": {
+    "title": "Cup or Hot Drink",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "kitchen",
+      "living_room"
+    ],
+    "reasons": {
+      "default": "Coffee and tea contain caffeine, which is toxic to pets, and hot drinks can scald."
+    },
+    "suggestion": "Don't leave drinks on low tables or near edges.",
+    "min_confidence": 0.6
+  },
   "bottle": {
     "title": "Bottle",
-    "pets": ["dog", "cat", "small_animal"],
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
     "severity": "medium",
+    "rooms": [
+      "kitchen",
+      "bathroom"
+    ],
     "reasons": {
       "dog": "Dogs may chew bottles or lick spills from cleaners, alcohol, or medicine.",
       "cat": "Cats may knock bottles over and lick spilled liquids.",
       "default": "Bottles may contain liquids that are dangerous if spilled or chewed."
     },
-    "suggestion": "Keep bottles, especially cleaners and alcohol, in closed cabinets."
+    "suggestion": "Keep bottles, especially cleaners and alcohol, in closed cabinets.",
+    "min_confidence": 0.65
   },
   "wine glass": {
     "title": "Wine Glass",
-    "pets": ["dog", "cat"],
+    "pets": [
+      "dog",
+      "cat"
+    ],
     "severity": "medium",
+    "rooms": [
+      "kitchen",
+      "living_room"
+    ],
     "reasons": {
       "cat": "Cats often knock glasses off tables, and broken glass can cut paws.",
       "default": "Glass can break, and alcohol is toxic to pets."
     },
-    "suggestion": "Don't leave glasses on low tables or edges."
+    "suggestion": "Don't leave glasses on low tables or edges.",
+    "min_confidence": 0.6
   },
-  "vase": {
-    "title": "Vase",
-    "pets": ["cat", "dog"],
-    "severity": "low",
+  "cake": {
+    "title": "Cake or Sweets",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "high",
+    "rooms": [
+      "kitchen"
+    ],
     "reasons": {
-      "cat": "Cats like to knock things over, and vase water or flowers can be toxic.",
-      "default": "Vases can tip over and break."
+      "dog": "Baked goods may contain chocolate or xylitol, which are toxic to dogs, and rich fatty foods can cause pancreatitis.",
+      "default": "Sugary, fatty baked goods can make pets sick, and some contain chocolate or xylitol."
     },
-    "suggestion": "Place vases on stable, high surfaces and keep toxic flowers out of the home."
+    "suggestion": "Keep desserts covered and out of reach."
   },
-  "remote": {
-    "title": "Remote Control",
-    "pets": ["dog", "small_animal"],
+  "donut": {
+    "title": "Donuts or Pastries",
+    "pets": [
+      "dog",
+      "cat"
+    ],
     "severity": "medium",
+    "rooms": [
+      "kitchen"
+    ],
     "reasons": {
-      "dog": "Dogs often chew remotes, and swallowed batteries can cause serious burns.",
-      "default": "Chewing on remotes can expose pets to batteries."
+      "default": "Pastries are high in sugar and fat, which can cause stomach upset or pancreatitis, and some contain chocolate."
     },
-    "suggestion": "Keep remotes on high shelves or in a drawer."
+    "suggestion": "Keep pastries in closed containers or cabinets."
   },
-  "laptop": {
-    "title": "Charging Cords",
-    "pets": ["dog", "cat", "small_animal"],
+  "pizza": {
+    "title": "Pizza",
+    "pets": [
+      "dog",
+      "cat"
+    ],
     "severity": "medium",
+    "rooms": [
+      "kitchen",
+      "living_room"
+    ],
     "reasons": {
-      "small_animal": "Rabbits and other small pets love to chew cords, which can cause electric shocks.",
-      "default": "Laptop and charger cords can be chewed, causing shocks or burns."
+      "default": "Pizza often contains garlic and onion, which are toxic to dogs and cats, and greasy food can cause pancreatitis."
     },
-    "suggestion": "Use cord covers and unplug chargers when not in use."
+    "suggestion": "Don't leave pizza boxes or slices where pets can reach them."
   },
-  "tv": {
-    "title": "TV and Cords",
-    "pets": ["dog", "cat", "small_animal"],
-    "severity": "low",
-    "reasons": {
-      "cat": "Cats may climb TV stands, and unsecured TVs can tip over.",
-      "default": "Cords behind TVs are easy for pets to chew."
-    },
-    "suggestion": "Anchor the TV and hide cords behind a cover."
-  },
-  "oven": {
-    "title": "Oven",
-    "pets": ["dog", "cat"],
+  "sandwich": {
+    "title": "Sandwich",
+    "pets": [
+      "dog",
+      "cat"
+    ],
     "severity": "medium",
+    "rooms": [
+      "kitchen",
+      "living_room"
+    ],
     "reasons": {
-      "cat": "Cats may jump onto hot stovetops.",
-      "default": "Hot surfaces can burn curious pets."
+      "default": "Sandwiches may contain onions, garlic, or fatty meats that can make pets sick."
     },
-    "suggestion": "Keep pets out of the kitchen while cooking and use stove knob covers."
+    "suggestion": "Keep plates of food out of reach, and don't share human food without checking with a vet."
   },
-  "toaster": {
-    "title": "Toaster",
-    "pets": ["dog", "cat"],
-    "severity": "low",
+  "hot dog": {
+    "title": "Hot Dog",
+    "pets": [
+      "dog"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "kitchen"
+    ],
     "reasons": {
-      "default": "Toasters get hot, and their cords can be pulled down."
+      "default": "Hot dogs are salty and fatty, and their shape is a choking hazard for dogs."
     },
-    "suggestion": "Unplug toasters and push them to the back of the counter."
+    "suggestion": "Keep hot dogs out of reach, and never give them whole to a dog."
+  },
+  "apple": {
+    "title": "Apple Core",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "low",
+    "rooms": [
+      "kitchen"
+    ],
+    "reasons": {
+      "default": "Apple seeds contain small amounts of cyanide compounds, and cores can be a choking hazard."
+    },
+    "suggestion": "Throw away apple cores, and only offer sliced, seedless pieces if your vet approves."
+  },
+  "orange": {
+    "title": "Citrus Fruit",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "low",
+    "rooms": [
+      "kitchen"
+    ],
+    "reasons": {
+      "default": "Citrus peels and seeds contain oils that can upset pets' stomachs."
+    },
+    "suggestion": "Keep citrus fruits and peels out of reach."
+  },
+  "toilet": {
+    "title": "Open Toilet",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "bathroom"
+    ],
+    "reasons": {
+      "dog": "Dogs may drink from the toilet and swallow cleaning chemicals.",
+      "cat": "Kittens can fall into open toilets.",
+      "small_animal": "Small pets can fall into toilets and drown.",
+      "default": "Open toilets can contain cleaning chemicals, and small pets can fall in."
+    },
+    "suggestion": "Keep the toilet lid closed and avoid in-bowl cleaning tablets."
+  },
+  "toothbrush": {
+    "title": "Toothbrush and Toothpaste",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "bathroom"
+    ],
+    "reasons": {
+      "dog": "Human toothpaste can contain xylitol, which is very toxic to dogs, and dogs may chew and swallow toothbrush pieces.",
+      "default": "Human toothpaste isn't safe for pets."
+    },
+    "suggestion": "Store toothbrushes and toothpaste in a cabinet, and only use pet toothpaste on pets."
+  },
+  "hair drier": {
+    "title": "Hair Dryer",
+    "pets": [
+      "all"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "bathroom",
+      "bedroom"
+    ],
+    "reasons": {
+      "default": "Hair dryers get hot, and their cords can be chewed or pulled, knocking the dryer down."
+    },
+    "suggestion": "Unplug and put away hair dryers and styling tools after use."
+  },
+  "bed": {
+    "title": "Bed",
+    "pets": [
+      "small_animal",
+      "dog"
+    ],
+    "severity": "low",
+    "rooms": [
+      "bedroom"
+    ],
+    "reasons": {
+      "small_animal": "Small pets can be hurt jumping or falling from beds, or get trapped underneath.",
+      "dog": "Puppies and small or senior dogs can be injured jumping off high beds.",
+      "default": "Pets can be injured jumping off high furniture."
+    },
+    "suggestion": "Use pet stairs or a ramp, and check under the bed before moving it.",
+    "min_confidence": 0.6
+  },
+  "handbag": {
+    "title": "Purse or Bag",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "bedroom",
+      "living_room"
+    ],
+    "reasons": {
+      "dog": "Bags often hold gum, mints, or medications, and sugar-free gum with xylitol is very toxic to dogs.",
+      "default": "Bags may contain medications or gum that can poison pets."
+    },
+    "suggestion": "Hang bags up or keep them in a closed closet."
+  },
+  "backpack": {
+    "title": "Backpack",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "bedroom",
+      "living_room"
+    ],
+    "reasons": {
+      "dog": "Backpacks often hold snacks, gum, or medications, and sugar-free gum with xylitol is very toxic to dogs.",
+      "default": "Backpacks may contain food or medications that can harm pets."
+    },
+    "suggestion": "Zip backpacks closed and hang them out of reach."
+  },
+  "suitcase": {
+    "title": "Open Suitcase",
+    "pets": [
+      "cat",
+      "small_animal"
+    ],
+    "severity": "low",
+    "rooms": [
+      "bedroom"
+    ],
+    "reasons": {
+      "default": "Cats and small pets like to crawl into open suitcases and can get zipped inside."
+    },
+    "suggestion": "Check inside before closing a suitcase, and keep it closed when not packing."
+  },
+  "cat": {
+    "title": "Cat (Other Pet)",
+    "pets": [
+      "bird",
+      "small_animal"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "bird": "Cats are natural predators of birds, and even a small scratch can cause a dangerous infection.",
+      "small_animal": "Cats may chase or injure small pets like hamsters, rabbits, and guinea pigs.",
+      "default": "Cats can see smaller pets as prey."
+    },
+    "suggestion": "Supervise any contact, and keep cages secure in a room the cat can't enter.",
+    "min_confidence": 0.6
+  },
+  "dog": {
+    "title": "Dog (Other Pet)",
+    "pets": [
+      "small_animal",
+      "bird",
+      "cat"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "small_animal": "Dogs may chase or injure small pets.",
+      "bird": "Many dogs see birds as prey.",
+      "cat": "Make sure the dog is cat-friendly before introducing them.",
+      "default": "Introductions between pets should be supervised."
+    },
+    "suggestion": "Introduce pets slowly and supervise them until you know they get along.",
+    "min_confidence": 0.6
   }
 }

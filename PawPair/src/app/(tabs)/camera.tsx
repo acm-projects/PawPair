@@ -1,29 +1,68 @@
 import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
-import { Pencil, PawPrint, Plus, User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
+import { PawPrint, Plus, User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect, useRef, useState } from "react";
-import { CameraView, useCameraPermissions, useMicrophonePermissions } from "expo-camera";
+import { CameraView, useCameraPermissions } from "expo-camera";
 import { useIsFocused, Tabs, router } from "expo-router";
 
-import { uploadScan } from "@/services/scanApi";
+import { getNextScanName, uploadScan } from "@/services/scanApi";
+import ScanNameEditor from "@/components/ScanNameEditor";
 import type { PetType } from "@/types/scan";
+
 
 type ScanStatus = "idle" | "starting" | "recording" | "uploading";
 
-const MAX_SECONDS = 10;
+const SNAPSHOT_EVERY_MS = 1500;
+const MAX_SNAPSHOTS = 12;
+const MAX_SNAPSHOT_CHARS = 900_000;
 const PET_TYPE: PetType = "dog";
+
+function pickSmallPictureSize(sizes: string[]): string | undefined {
+  const parsed = sizes
+    .map((s) => {
+      const m = s.match(/^(\d+)x(\d+)$/);
+      return m ? { s, long: Math.max(+m[1], +m[2]) } : null;
+    })
+    .filter((x): x is { s: string; long: number } => x !== null)
+    .sort((a, b) => a.long - b.long);
+  const good = parsed.find((p) => p.long >= 640);
+  if (good) return good.s;
+  return sizes.find((s) => s === "Medium") ?? sizes.find((s) => s === "Low");
+}
 
 export default function Camera() {
   const cameraRef = useRef<CameraView>(null);
   const isFocused = useIsFocused();
-
   const [camPermission, requestCamPermission] = useCameraPermissions();
-  const [micPermission, requestMicPermission] = useMicrophonePermissions();
 
   const [status, setStatus] = useState<ScanStatus>("idle");
   const [seconds, setSeconds] = useState(0);
+  const [snapshotCount, setSnapshotCount] = useState(0);
+  const [pictureSize, setPictureSize] = useState<string | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
+
+  const [scanName, setScanName] = useState("Environment Scan");
+  const renamedRef = useRef(false);
+  const scanNameRef = useRef(scanName);
+  scanNameRef.current = scanName;
+
+  const renameScanDraft = (name: string) => {
+    renamedRef.current = true;
+    setScanName(name);
+  };
+
+  useEffect(() => {
+    if (!isFocused || status !== "idle" || renamedRef.current) return;
+    getNextScanName().then((name) => {
+      if (!renamedRef.current) setScanName(name);
+    });
+  }, [isFocused, status]);
+
+  const snapshotsRef = useRef<string[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const capturingRef = useRef(false);
+  const finishingRef = useRef(false);
 
   const startScan = async () => {
     setError(null);
@@ -31,36 +70,77 @@ export default function Camera() {
       const result = await requestCamPermission();
       if (!result.granted) return;
     }
-    if (!micPermission?.granted) {
-      const result = await requestMicPermission();
-      if (!result.granted) return;
-    }
     setStatus("starting");
   };
 
+  const takeSnapshot = async () => {
+    if (capturingRef.current || finishingRef.current || !cameraRef.current) return;
+    capturingRef.current = true;
+    try {
+      const photo = await cameraRef.current.takePictureAsync({
+        quality: 0.4,
+        base64: true,
+        shutterSound: false,
+      });
+      if (!photo?.base64) return;
+      if (photo.base64.length > MAX_SNAPSHOT_CHARS) {
+        console.warn(`Snapshot too large (${photo.width}x${photo.height}), skipping`);
+        return;
+      }
+      snapshotsRef.current.push(photo.base64);
+      setSnapshotCount(snapshotsRef.current.length);
+      if (snapshotsRef.current.length >= MAX_SNAPSHOTS) finishScan();
+    } catch (e) {
+      console.warn("Snapshot failed", e);
+    } finally {
+      capturingRef.current = false;
+    }
+  };
+
   const onCameraReady = async () => {
-    if (status !== "starting" || !cameraRef.current) return;
+    if (status !== "starting") return;
+    snapshotsRef.current = [];
+    finishingRef.current = false;
+    setSnapshotCount(0);
     setSeconds(0);
     setStatus("recording");
 
     try {
-      const video = await cameraRef.current.recordAsync({ maxDuration: MAX_SECONDS });
-      if (!video?.uri) throw new Error("No video was recorded.");
+      const sizes = (await cameraRef.current?.getAvailablePictureSizesAsync()) ?? [];
+      setPictureSize(pickSmallPictureSize(sizes));
+    } catch (e) {
+      console.warn("Couldn't read picture sizes", e);
+    }
 
+    timerRef.current = setInterval(takeSnapshot, SNAPSHOT_EVERY_MS);
+  };
 
-      setStatus("uploading");
-      const scanId = await uploadScan(video.uri, PET_TYPE);
+  const finishScan = async () => {
+    if (finishingRef.current) return;
+    finishingRef.current = true;
+    if (timerRef.current) clearInterval(timerRef.current);
+
+    const snapshots = snapshotsRef.current;
+    if (snapshots.length === 0) {
+      setError("No snapshots were taken. Hold the camera steady and try again.");
       setStatus("idle");
-      router.push({ pathname: "/cameraResults", params: { scanId } });
+      return;
+    }
+
+    setStatus("uploading");
+    try {
+      const scanId = await uploadScan(snapshots, PET_TYPE, scanNameRef.current);
+      renamedRef.current = false;
+      setStatus("idle");
+      router.push({ pathname: "/cameraResults", params: { scanId, name: scanNameRef.current } });
     } catch (e: any) {
       console.error(e);
       setError(e?.message ?? "Something went wrong. Please try again.");
       setStatus("idle");
     }
   };
-  const stopScan = () => {
-    cameraRef.current?.stopRecording();
-  };
+
+  const stopScan = () => finishScan();
 
   useEffect(() => {
     if (status !== "recording") return;
@@ -69,8 +149,16 @@ export default function Camera() {
   }, [status]);
 
   useEffect(() => {
-    if (!isFocused && status === "recording") stopScan();
+    if (!isFocused && status === "recording") {
+      if (timerRef.current) clearInterval(timerRef.current);
+      finishingRef.current = true;
+      setStatus("idle");
+    }
   }, [isFocused, status]);
+
+  useEffect(() => () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+  }, []);
 
   const showCamera =
     isFocused && camPermission?.granted && (status === "starting" || status === "recording");
@@ -85,10 +173,12 @@ export default function Camera() {
         ))}
       </View>
       <SafeAreaView style={styles.container} edges={["top"]}>
-        <View style={styles.titleRow}>
-          <Pencil size={20} color="white" />
-          <Text style={styles.title}>Environment Scan1</Text>
-        </View>
+        <ScanNameEditor
+          value={scanName}
+          onSave={renameScanDraft}
+          color="white"
+          disabled={status !== "idle"}
+        />
 
         <Tabs.Screen options={{ tabBarStyle: { display: "none" } }} />
         <View style={styles.viewfinder}>
@@ -97,9 +187,8 @@ export default function Camera() {
               ref={cameraRef}
               style={StyleSheet.absoluteFill}
               facing="back"
-              mode="video"
-              mute
-              videoQuality="720p"
+              mode="picture"
+              pictureSize={pictureSize}
               onCameraReady={onCameraReady}
             />
           )}
@@ -107,7 +196,7 @@ export default function Camera() {
           {status === "uploading" && (
             <View style={styles.uploadingOverlay}>
               <ActivityIndicator size="large" color="white" />
-              <Text style={styles.uploadingText}>Uploading your scan…</Text>
+              <Text style={styles.uploadingText}>Saving your scan…</Text>
             </View>
           )}
 
@@ -130,7 +219,7 @@ export default function Camera() {
               <View style={styles.recBadge}>
                 <View style={styles.recDot} />
                 <Text style={styles.recText}>
-                  REC 0:{String(seconds).padStart(2, "0")} / 0:{MAX_SECONDS}
+                  SCANNING 0:{String(seconds).padStart(2, "0")} · {snapshotCount}/{MAX_SNAPSHOTS}
                 </Text>
               </View>
             )}
@@ -163,6 +252,7 @@ export default function Camera() {
               <Text style={styles.scanText}>STOP SCAN</Text>
             </TouchableOpacity>
           )}
+
           {status === "uploading" && (
             <View style={[styles.button, styles.scanButton]}>
               <Text style={styles.smallButtonText}>PROCESSING…</Text>
@@ -310,7 +400,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 12,
   },
-  // NEW
   uploadingText: {
     color: "white",
     fontSize: 16,
@@ -353,7 +442,6 @@ const styles = StyleSheet.create({
     minHeight: 60,
     justifyContent: "center",
   },
-  // NEW: red STOP SCAN button
   stopButton: {
     backgroundColor: "#E5737F",
   },

@@ -1,43 +1,72 @@
 import { signInAnonymously } from "firebase/auth";
-import { doc, onSnapshot } from "firebase/firestore";
-import * as FileSystem from "expo-file-system/legacy";
+import {
+  collection,
+  doc,
+  getCountFromServer,
+  onSnapshot,
+  query,
+  serverTimestamp,
+  updateDoc,
+  where,
+  writeBatch,
+} from "firebase/firestore";
 
-import { SERVER_URL } from "@/constants/config";
 import { auth, db } from "@/firebase";
 import type { PetType, ScanDoc } from "@/types/scan";
 
+const DEFAULT_SCAN_NAME = "Environment Scan";
 
-export async function uploadScan(videoUri: string, petType: PetType): Promise<string> {
-  const user = auth.currentUser ?? (await signInAnonymously(auth)).user;
-  const token = await user.getIdToken();
 
-  let res: FileSystem.FileSystemUploadResult;
+async function getUser() {
+  return auth.currentUser ?? (await signInAnonymously(auth)).user;
+}
+
+export async function getNextScanName(): Promise<string> {
   try {
-    res = await FileSystem.uploadAsync(`${SERVER_URL}/scan-video`, videoUri, {
-      httpMethod: "POST",
-      uploadType: FileSystem.FileSystemUploadType.MULTIPART,
-      fieldName: "video",
-      mimeType: "video/mp4",
-      parameters: { pet_type: petType },
-      headers: { Authorization: `Bearer ${token}` },
-      sessionType: FileSystem.FileSystemSessionType.FOREGROUND,
-    });
+    const user = await getUser();
+    const mine = query(collection(db, "scans"), where("uid", "==", user.uid));
+    const count = (await getCountFromServer(mine)).data().count;
+    return `${DEFAULT_SCAN_NAME} ${count + 1}`;
+  } catch (e) {
+    console.warn("Couldn't count previous scans", e);
+    return DEFAULT_SCAN_NAME;
+  }
+}
+
+export async function uploadScan(frames: string[], petType: PetType, name: string): Promise<string> {
+  const user = await getUser();
+
+  const scanRef = doc(collection(db, "scans"));
+  const batch = writeBatch(db);
+
+  batch.set(scanRef, {
+    uid: user.uid,
+    name: name.trim() || DEFAULT_SCAN_NAME,
+    pet_type: petType,
+    status: "uploaded",
+    frame_count: frames.length,
+    created_at: serverTimestamp(),
+  });
+  frames.forEach((jpeg, index) => {
+    batch.set(doc(scanRef, "frames", String(index).padStart(3, "0")), { index, jpeg });
+  });
+
+  try {
+    await batch.commit();
   } catch (e: any) {
-    throw new Error(`Couldn't reach ${SERVER_URL} (${e?.message ?? "unknown error"})`);
+    throw new Error(`Couldn't save the scan to Firestore (${e?.code ?? e?.message})`);
   }
+  return scanRef.id;
+}
 
-  if (res.status < 200 || res.status >= 300) {
-    throw new Error(`Scan failed (${res.status}): ${res.body}`);
-  }
-
-  const { scan_id } = JSON.parse(res.body);
-  return scan_id;
+export async function renameScan(scanId: string, name: string): Promise<void> {
+  await updateDoc(doc(db, "scans", scanId), { name: name.trim() });
 }
 
 export function listenToScan(scanId: string, onChange: (scan: ScanDoc | null) => void) {
-  const user = auth.currentUser;
-  if (!user) throw new Error("Not logged in");
-  return onSnapshot(doc(db, "users", user.uid, "scans", scanId), (snap) =>
-    onChange(snap.exists() ? (snap.data() as ScanDoc) : null)
+  return onSnapshot(
+    doc(db, "scans", scanId),
+    (snap) => onChange(snap.exists() ? (snap.data() as ScanDoc) : null),
+    (error) => console.error("Couldn't read scan results:", error.code)
   );
 }

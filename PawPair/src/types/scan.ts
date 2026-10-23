@@ -1,6 +1,6 @@
 export type PetType = "dog" | "cat" | "small_animal" | "bird";
 
-export type ScanStatus = "processing" | "done" | "error";
+export type ScanStatus = "uploaded" | "processing" | "done" | "error";
 
 export type Hazard = {
   id: number;
@@ -11,16 +11,26 @@ export type Hazard = {
   box: [number, number, number, number];
   reason: string;
   suggestion: string;
-  frame_width: number;
-  frame_height: number;
-  frame_jpeg: string;
+  rooms: string[];
+  frame_index: number;
+};
+
+export type Snapshot = {
+  index: number;
+  jpeg: string;
+  width: number;
+  height: number;
 };
 
 export type ScanDoc = {
+  uid: string;
+  name?: string;
   status: ScanStatus;
   pet_type: PetType;
+  frame_count: number;
   hazard_count?: number;
   frames_checked?: number;
   hazards?: Hazard[];
+  snapshots?: Snapshot[];
   error?: string;
 };

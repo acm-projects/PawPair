@@ -10,6 +10,8 @@ with open(RULES_PATH) as f:
 
 SEVERITY_ORDER = {"high": 0, "medium": 1, "low": 2}
 
+DEFAULT_MIN_CONFIDENCE = 0.5
+
 
 def filter_hazards(detections: list[dict], pet_type: str) -> list[dict]:
     """Keep only detections that are hazards for this pet, with a reason and fix."""
@@ -19,9 +21,11 @@ def filter_hazards(detections: list[dict], pet_type: str) -> list[dict]:
     for d in detections:
         rule = RULES.get(d["label"])
         if not rule:
-            continue  # not a hazard for any pet
+            continue
         if pet not in rule["pets"] and "all" not in rule["pets"]:
-            continue  # a hazard, but not for this pet
+            continue 
+        if d["confidence"] < rule.get("min_confidence", DEFAULT_MIN_CONFIDENCE):
+            continue
 
         hazards.append(
             {
@@ -30,6 +34,7 @@ def filter_hazards(detections: list[dict], pet_type: str) -> list[dict]:
                 "severity": rule["severity"],
                 "reason": rule["reasons"].get(pet, rule["reasons"]["default"]),
                 "suggestion": rule["suggestion"],
+                "rooms": rule.get("rooms", ["general"]),
             }
         )
 
