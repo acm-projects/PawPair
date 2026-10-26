@@ -9,9 +9,13 @@ import {
   Alert,
   Image,
   Pressable,
+  Animated,
+  Easing,
 } from "react-native";
+const pepoGoat = require("../../../assets/images/pepo-goat.png");
 
-import { useEffect, useState } from "react";
+
+import { useEffect, useRef, useState } from "react";
 import { app } from "../../firebase.js";
 
 import {
@@ -35,6 +39,44 @@ function loadFont() {
 }
 
 export default function Signup() {
+  const sway = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(sway, {
+          toValue: 1,
+          duration: 1200,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+        Animated.timing(sway, {
+          toValue: -1,
+          duration: 2400,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+        Animated.timing(sway, {
+          toValue: 0,
+          duration: 1200,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+      ])
+    );
+    loop.start();
+    return () => loop.stop();
+  }, []);
+
+  const translateX = sway.interpolate({
+    inputRange: [-1, 1],
+    outputRange: [-15, 15],
+  });
+
+  const rotate = sway.interpolate({
+    inputRange: [-1, 1],
+    outputRange: ["-4deg", "4deg"],
+  });
   const router = useRouter();
   const [focusedInput, setFocusedInput] = useState<"email" | "password" | "confirmPassword" |null>(null);
   const [loading, setLoading] = useState(false);
@@ -131,6 +173,18 @@ if (!fontsLoaded) return null;
           style={[styles.paw, position]}
         />
       ))}
+      <Animated.Image
+        source={pepoGoat}
+        style={{
+          position: "absolute",
+          bottom: -12,
+          alignSelf: "center",
+          width: 85,
+          height: 85,
+          resizeMode: "contain",
+          transform: [{ translateX }, { rotate }],
+        }}
+        />
       <Text style={styles.title}>Create PawPair Account</Text>
 
       <TextInput

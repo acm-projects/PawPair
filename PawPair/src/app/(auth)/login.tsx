@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router";
 
-
 import {
   Text,
   View,
@@ -10,9 +9,12 @@ import {
   Alert,
   Pressable,
   Image,
+  Animated,
+  Easing,
 } from "react-native";
+const pepoGoat = require("../../../assets/images/pepo-goat.png");
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { app } from "../../firebase.js";
 
 import {
@@ -40,6 +42,45 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const sway = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(sway, {
+          toValue: 1,
+          duration: 1200,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+        Animated.timing(sway, {
+          toValue: -1,
+          duration: 2400,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+        Animated.timing(sway, {
+          toValue: 0,
+          duration: 1200,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+      ])
+    );
+    loop.start();
+    return () => loop.stop();
+  }, []);
+
+  const translateX = sway.interpolate({
+    inputRange: [-1, 1],
+    outputRange: [-15, 15],
+  });
+
+  const rotate = sway.interpolate({
+    inputRange: [-1, 1],
+    outputRange: ["-4deg", "4deg"],
+  });
 
   const isEmailValid = /^\S+@\S+\.\S+$/.test(email.trim());
   const isPasswordValid = password.length >= 6;
@@ -102,6 +143,18 @@ if (!fontsLoaded) return null;
         style={[styles.paw, position]}
       />
     ))}
+      <Animated.Image
+        source={pepoGoat}
+        style={{
+          position: "absolute",
+          bottom: -12,
+          alignSelf: "center",
+          width: 85,
+          height: 85,
+          resizeMode: "contain",
+          transform: [{ translateX }, { rotate }],
+        }}
+      />
       <Text style={styles.title}>Login to PawPair</Text>
 
       <TextInput
