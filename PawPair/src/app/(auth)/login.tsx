@@ -36,13 +36,13 @@ function loadFont() {
 
 export default function Login() {
   const router = useRouter();
-  const [focusedInput, setFocusedInput] = useState<"email" | "password" | null>(null);
+  const [focusedInput, setFocusedInput] = useState<"email" | "password" |null>(null);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const isEmailValid = /^\S+@\S+\.\S+$/.test(email.trim());
-  const isPasswordValid = password.length >= 8;
+  const isPasswordValid = password.length >= 6;
   const isFormValid = isEmailValid && isPasswordValid;
   const [fontsLoaded] = useFonts({
   HeadingFont: require("../../../assets/Fonts/Matcha Style.ttf"),
@@ -157,7 +157,7 @@ const paws = [
 
 
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   outer: {
     flex: 1,
     backgroundColor: "#6b6b6b",

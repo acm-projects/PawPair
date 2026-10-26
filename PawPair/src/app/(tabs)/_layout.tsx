@@ -8,9 +8,9 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color, size }) => (
-            <User size={size} color="currentColor" strokeWidth={1.75} />
-          ),
+          href: null,                         
+          headerShown: false,                  
+          tabBarStyle: { display: "none" },
         }}
       />
 
@@ -18,17 +18,37 @@ export default function TabLayout() {
         name="homepage"
         options={{
           title: 'Homepage',
-          tabBarIcon: ({ color, size }) => (
-            <House size={size} color="currentColor" strokeWidth={1.75} />
-          ),
+          href: null,                         
+          headerShown: false,                  
+          tabBarStyle: { display: "none" },
+          
+        }}
+      />
+      <Tabs.Screen
+        name="swiping"
+        options={{
+          title: 'Swiping',
+          href: null,                         
+          headerShown: false,                  
+          tabBarStyle: { display: "none" },
+          
         }}
       />
       <Tabs.Screen name="scrollview" options={{
           title: 'Scrollview',
-          tabBarIcon: ({ color, size }) => (
-            <Dog size={size} color="currentColor" strokeWidth={1.75} />
-          ),
+          href: null,                         
+          headerShown: false,                  
+          tabBarStyle: { display: "none" },
         }} />
+      <Tabs.Screen
+        name="quiz"
+        options={{
+        href: null,                         
+        headerShown: false,                  
+        tabBarStyle: { display: "none" },    
+      }}
+  />
+        
       <Tabs.Screen name="camera" options={{
           headerShown: false,
           title: 'Camera',
