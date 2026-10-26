@@ -9,14 +9,14 @@ export default function Homepage() {
   
   const [homepageVersion, setHomepageVersion] = useState<"pre" | "post">("pre");
 
-  // 👑 2. Use a useEffect to monitor the state and route automatically
+  
   useEffect(() => {
     if (homepageVersion === "post") {
       router.replace("/homepages/PostHomepage");
     } else {
       router.replace("/homepages/PreHomepage");
     }
-  }, [homepageVersion]); // This triggers immediately whenever homepageVersion changes
+  }, [homepageVersion]);
     
   return (
     <View style={styles.container}>
