@@ -12,6 +12,14 @@ export default function Index() {
   return (
     <View style={styles.container}>
 
+      <TouchableOpacity
+        onPress={() => router.push("/quiz" as any)}
+      >
+        <Text style={{ color: "teal", marginTop: 10 }}>
+          Find My PawPair Match
+        </Text>
+      </TouchableOpacity>
+
       <TouchableOpacity onPress={() => router.push('/login')}>
         <Text style={{ color: 'teal', marginTop: 10 }}>login</Text>
       </TouchableOpacity>
