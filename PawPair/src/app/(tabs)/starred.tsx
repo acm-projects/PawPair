@@ -6,6 +6,7 @@ import { Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View 
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getPet } from "../../data/pets";
 import { clearList, removePet, usePetLists } from "../../store/petLists";
+import PawNavBar from "@/components/PawNavBar";
 
 const paw = require("../../../assets/images/paw-watermark.png");
 
@@ -97,24 +98,9 @@ export default function Starred() {
         <Pressable style={s.clear} onPress={() => clearList("starred")}>
           <Text style={s.clearText}>Clear All Starred</Text>
         </Pressable>
-
-        <View style={s.navBarBackground}>
-          <SafeAreaView style={s.navBar} edges={["bottom"]}>
-            {NAV_ITEMS.map(({ href, label, Icon }) => {
-              const isActive = href === CURRENT_HREF;
-              return (
-                <TouchableOpacity
-                  key={href}
-                  accessibilityLabel={label}
-                  style={[s.navItem, isActive && s.navItemActive]}
-                  onPress={() => router.navigate(href)}
-                >
-                  <Icon size={32} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
-                </TouchableOpacity>
-              );
-            })}
-          </SafeAreaView>
-        </View>
+          <View style={s.navWrapper}>
+            <PawNavBar active="/homepage" />
+          </View>
       </SafeAreaView>
     </View>
   );
@@ -190,5 +176,11 @@ const s = StyleSheet.create({
     backgroundColor: "rgba(214, 110, 90, 0.35)",
     borderTopLeftRadius: 14,
     borderTopRightRadius: 14,
+  },
+  navWrapper: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
 });

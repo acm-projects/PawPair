@@ -8578,3 +8578,807 @@
 {"_e":"metro:client_log","_t":1793035914908,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
 {"_e":"metro:client_log","_t":1793035914951,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
 {"_e":"metro:client_log","_t":1793035914951,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"root:init","_t":1793216043397,"format":"v0-jsonl","version":"57.0.28"}
+{"_e":"env:mode","_t":1793216043400,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793216043405,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793216044619,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793216045566,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793216046390,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793216062633,"atlas":false,"workers":6,"host":"::","port":8081}
+{"_e":"root:init","_t":1793216109377,"format":"v0-jsonl","version":"57.0.28"}
+{"_e":"env:mode","_t":1793216109379,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793216109384,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793216110295,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793216110985,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793216111603,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793216126535,"atlas":false,"workers":6,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1793216128186,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216128186,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793216128187,"id":"3","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793216128187,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216128187,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216128203,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216128203,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216128311,"id":"2","progress":0.04251248804336273,"total":97,"current":20}
+{"_e":"metro:bundling:progress","_t":1793216128311,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216128410,"id":"2","progress":0.04737024221453287,"total":170,"current":37}
+{"_e":"metro:bundling:progress","_t":1793216128411,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216128510,"id":"2","progress":0.13892561983471075,"total":220,"current":82}
+{"_e":"metro:bundling:progress","_t":1793216128510,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216128612,"id":"2","progress":0.13892561983471075,"total":220,"current":82}
+{"_e":"metro:bundling:progress","_t":1793216128612,"id":"3","progress":0.06774254081441171,"total":219,"current":57}
+{"_e":"metro:bundling:progress","_t":1793216128712,"id":"2","progress":0.13892561983471075,"total":220,"current":82}
+{"_e":"metro:bundling:progress","_t":1793216128712,"id":"3","progress":0.16724437513922924,"total":335,"current":137}
+{"_e":"metro:bundling:progress","_t":1793216128812,"id":"2","progress":0.17292422311538083,"total":303,"current":126}
+{"_e":"metro:bundling:progress","_t":1793216128812,"id":"3","progress":0.16724437513922924,"total":335,"current":137}
+{"_e":"metro:bundling:progress","_t":1793216128912,"id":"2","progress":0.35932804494346754,"total":357,"current":214}
+{"_e":"metro:bundling:progress","_t":1793216128913,"id":"3","progress":0.16724437513922924,"total":335,"current":137}
+{"_e":"metro:bundling:progress","_t":1793216129012,"id":"2","progress":0.35932804494346754,"total":460,"current":274}
+{"_e":"metro:bundling:progress","_t":1793216129012,"id":"3","progress":0.16724437513922924,"total":335,"current":137}
+{"_e":"metro:bundling:progress","_t":1793216129112,"id":"2","progress":0.35932804494346754,"total":460,"current":274}
+{"_e":"metro:bundling:progress","_t":1793216129112,"id":"3","progress":0.26698280266466934,"total":449,"current":232}
+{"_e":"metro:bundling:progress","_t":1793216129212,"id":"2","progress":0.35932804494346754,"total":460,"current":274}
+{"_e":"metro:bundling:progress","_t":1793216129212,"id":"3","progress":0.3245665227914362,"total":581,"current":331}
+{"_e":"metro:bundling:progress","_t":1793216129312,"id":"2","progress":0.4190981952787525,"total":553,"current":358}
+{"_e":"metro:bundling:progress","_t":1793216129312,"id":"3","progress":0.3245665227914362,"total":581,"current":331}
+{"_e":"metro:bundling:progress","_t":1793216129412,"id":"2","progress":0.4190981952787525,"total":553,"current":358}
+{"_e":"metro:bundling:progress","_t":1793216129412,"id":"3","progress":0.3471543256339718,"total":611,"current":360}
+{"_e":"metro:bundling:progress","_t":1793216129512,"id":"2","progress":0.4190981952787525,"total":553,"current":358}
+{"_e":"metro:bundling:progress","_t":1793216129512,"id":"3","progress":0.41351558033692426,"total":734,"current":472}
+{"_e":"metro:bundling:progress","_t":1793216129616,"id":"2","progress":0.4190981952787525,"total":553,"current":358}
+{"_e":"metro:bundling:progress","_t":1793216129616,"id":"3","progress":0.5185420565863033,"total":811,"current":584}
+{"_e":"metro:bundling:progress","_t":1793216129773,"id":"2","progress":0.4190981952787525,"total":553,"current":358}
+{"_e":"metro:bundling:progress","_t":1793216129773,"id":"3","progress":0.5185420565863033,"total":812,"current":584}
+{"_e":"metro:bundling:progress","_t":1793216129896,"id":"2","progress":0.4190981952787525,"total":553,"current":358}
+{"_e":"metro:bundling:progress","_t":1793216129896,"id":"3","progress":0.5185420565863033,"total":2717,"current":587}
+{"_e":"metro:bundling:progress","_t":1793216130031,"id":"2","progress":0.4190981952787525,"total":553,"current":358}
+{"_e":"metro:bundling:progress","_t":1793216130032,"id":"3","progress":0.5185420565863033,"total":2717,"current":590}
+{"_e":"metro:bundling:progress","_t":1793216130179,"id":"2","progress":0.4190981952787525,"total":553,"current":358}
+{"_e":"metro:bundling:progress","_t":1793216130179,"id":"3","progress":0.5185420565863033,"total":2717,"current":591}
+{"_e":"metro:bundling:progress","_t":1793216130279,"id":"2","progress":0.5428362122788762,"total":775,"current":571}
+{"_e":"metro:bundling:progress","_t":1793216130279,"id":"3","progress":0.5185420565863033,"total":2717,"current":591}
+{"_e":"metro:bundling:progress","_t":1793216130379,"id":"2","progress":0.5428362122788762,"total":775,"current":571}
+{"_e":"metro:bundling:progress","_t":1793216130379,"id":"3","progress":0.5185420565863033,"total":2792,"current":725}
+{"_e":"metro:bundling:progress","_t":1793216130483,"id":"2","progress":0.6791747683139315,"total":796,"current":656}
+{"_e":"metro:bundling:progress","_t":1793216130483,"id":"3","progress":0.5185420565863033,"total":2792,"current":725}
+{"_e":"metro:bundling:progress","_t":1793216130583,"id":"2","progress":0.6791747683139315,"total":1572,"current":656}
+{"_e":"metro:bundling:progress","_t":1793216130583,"id":"3","progress":0.5185420565863033,"total":2792,"current":725}
+{"_e":"metro:bundling:progress","_t":1793216130683,"id":"2","progress":0.6791747683139315,"total":1572,"current":656}
+{"_e":"metro:bundling:progress","_t":1793216130683,"id":"3","progress":0.5185420565863033,"total":2846,"current":837}
+{"_e":"metro:bundling:progress","_t":1793216130783,"id":"2","progress":0.6791747683139315,"total":1572,"current":656}
+{"_e":"metro:bundling:progress","_t":1793216130783,"id":"3","progress":0.5408398269766496,"total":2846,"current":2093}
+{"_e":"metro:bundling:progress","_t":1793216130883,"id":"2","progress":0.6791747683139315,"total":2713,"current":667}
+{"_e":"metro:bundling:progress","_t":1793216130884,"id":"3","progress":0.5408398269766496,"total":2846,"current":2093}
+{"_e":"metro:bundling:progress","_t":1793216130983,"id":"2","progress":0.6791747683139315,"total":2742,"current":747}
+{"_e":"metro:bundling:progress","_t":1793216130983,"id":"3","progress":0.5408398269766496,"total":2846,"current":2093}
+{"_e":"metro:bundling:progress","_t":1793216131083,"id":"2","progress":0.6791747683139315,"total":2742,"current":747}
+{"_e":"metro:bundling:progress","_t":1793216131083,"id":"3","progress":0.9227839416400826,"total":2920,"current":2805}
+{"_e":"metro:bundling:progress","_t":1793216131183,"id":"2","progress":0.6791747683139315,"total":2762,"current":2122}
+{"_e":"metro:bundling:progress","_t":1793216131183,"id":"3","progress":0.9227839416400826,"total":2920,"current":2805}
+{"_e":"metro:bundling:progress","_t":1793216131316,"id":"2","progress":0.9556003096917358,"total":2806,"current":2743}
+{"_e":"metro:bundling:progress","_t":1793216131316,"id":"3","progress":0.9227839416400826,"total":2920,"current":2805}
+{"_e":"metro:bundling:progress","_t":1793216131423,"id":"2","progress":0.9556003096917358,"total":2806,"current":2743}
+{"_e":"metro:bundling:progress","_t":1793216131423,"id":"3","progress":0.9635006902046568,"total":2986,"current":2931}
+{"_e":"metro:bundling:progress","_t":1793216131526,"id":"2","progress":0.969730002493024,"total":2885,"current":2841}
+{"_e":"metro:bundling:progress","_t":1793216131527,"id":"3","progress":0.9635006902046568,"total":2986,"current":2931}
+{"_e":"metro:bundling:progress","_t":1793216131626,"id":"2","progress":0.969730002493024,"total":2885,"current":2841}
+{"_e":"metro:bundling:progress","_t":1793216131626,"id":"3","progress":0.9838634243498852,"total":3086,"current":3061}
+{"_e":"metro:bundling:progress","_t":1793216131726,"id":"2","progress":0.969730002493024,"total":2885,"current":2841}
+{"_e":"metro:bundling:progress","_t":1793216131726,"id":"3","progress":0.9987204096000001,"total":3125,"current":3123}
+{"_e":"metro:bundling:progress","_t":1793216131854,"id":"2","progress":0.969730002493024,"total":2885,"current":2841}
+{"_e":"metro:bundling:progress","_t":1793216131854,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:done","_t":1793216131904,"id":"3","total":3126,"ms":3717.104}
+{"_e":"metro:bundling:progress","_t":1793216131904,"id":"2","progress":0.969730002493024,"total":2885,"current":2841}
+{"_e":"metro:bundling:done","_t":1793216132912,"id":"2","total":2885,"ms":4725.7778}
+{"_e":"metro:bundling:started","_t":1793216132981,"id":"4","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216132981,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216132986,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216133086,"id":"4","progress":0.10452823788795296,"total":133,"current":43}
+{"_e":"metro:bundling:progress","_t":1793216133186,"id":"4","progress":0.18209348989298454,"total":232,"current":99}
+{"_e":"metro:bundling:progress","_t":1793216133286,"id":"4","progress":0.3355131535728149,"total":366,"current":212}
+{"_e":"metro:bundling:progress","_t":1793216133387,"id":"4","progress":0.36647513831022477,"total":484,"current":293}
+{"_e":"metro:bundling:progress","_t":1793216133487,"id":"4","progress":0.46346380332947823,"total":614,"current":418}
+{"_e":"metro:bundling:progress","_t":1793216133587,"id":"4","progress":0.5287479043820095,"total":744,"current":541}
+{"_e":"metro:bundling:progress","_t":1793216133727,"id":"4","progress":0.6733468826795591,"total":797,"current":654}
+{"_e":"metro:bundling:progress","_t":1793216133850,"id":"4","progress":0.6733468826795591,"total":2704,"current":657}
+{"_e":"metro:bundling:progress","_t":1793216133949,"id":"4","progress":0.6733468826795591,"total":2744,"current":718}
+{"_e":"metro:bundling:progress","_t":1793216134050,"id":"4","progress":0.6733468826795591,"total":2762,"current":1470}
+{"_e":"metro:bundling:progress","_t":1793216134149,"id":"4","progress":0.9332134276351081,"total":2826,"current":2730}
+{"_e":"metro:bundling:progress","_t":1793216134256,"id":"4","progress":0.9696882988173361,"total":2881,"current":2837}
+{"_e":"metro:bundling:progress","_t":1793216134357,"id":"4","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:started","_t":1793216134383,"id":"6","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216134383,"id":"4","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793216134383,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793216134384,"id":"7","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793216134384,"id":"4","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793216134384,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216134384,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216134457,"id":"4","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793216134457,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216134457,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135075,"id":"4","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793216135075,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135075,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216135333,"id":"4","total":2965,"ms":2351.4199}
+{"_e":"metro:bundling:progress","_t":1793216135333,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135333,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135598,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135598,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135698,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135698,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135798,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135798,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135898,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135898,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135998,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216135998,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136098,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136098,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136198,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136198,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136301,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136301,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136402,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136402,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136505,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136505,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136632,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136633,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136821,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136821,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136858,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216136858,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216136917,"id":"7","total":1,"ms":2533.6388}
+{"_e":"metro:bundling:progress","_t":1793216136917,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216137388,"id":"6","total":1,"ms":3004.2719}
+{"_e":"metro:bundling:started","_t":1793216137427,"id":"8","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216137428,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216137430,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216137539,"id":"8","total":1,"ms":111.2321}
+{"_e":"metro:client_log","_t":1793216138052,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793216138055,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793216138233,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216138237,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793216138238,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216138258,"level":"warn","data":["Route \"./homepages/PostHomepage.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216138278,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216138281,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216140061,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793216140062,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793216142065,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216142071,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793216142071,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216142098,"level":"warn","data":["Route \"./homepages/PostHomepage.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216142214,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216142214,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216142240,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793216142470,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793216142470,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:bundling:started","_t":1793216143566,"id":"h","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216143567,"id":"h","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793216143567,"id":"i","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793216143567,"id":"h","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216143567,"id":"i","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216143739,"id":"i","total":1,"ms":172.0973}
+{"_e":"metro:bundling:progress","_t":1793216143740,"id":"h","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216144928,"id":"h","total":1,"ms":1361.0837}
+{"_e":"metro:bundling:started","_t":1793216145031,"id":"j","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216145031,"id":"j","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216145177,"id":"j","total":1,"ms":145.7265}
+{"_e":"metro:client_log","_t":1793216145800,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793216145800,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793216145943,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216145947,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793216145948,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216145970,"level":"warn","data":["Route \"./homepages/PostHomepage.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216145992,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216145992,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216147896,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793216147944,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793216150544,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216150545,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216155809,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216155810,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:bundling:started","_t":1793216158595,"id":"p","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216158595,"id":"p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793216158596,"id":"q","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793216158596,"id":"p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216158596,"id":"q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216158803,"id":"q","total":1,"ms":207.1338}
+{"_e":"metro:bundling:progress","_t":1793216158806,"id":"p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216160119,"id":"p","total":1,"ms":1523.3676}
+{"_e":"metro:bundling:started","_t":1793216160187,"id":"r","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216160187,"id":"r","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216160375,"id":"r","total":1,"ms":188.0271}
+{"_e":"metro:client_log","_t":1793216160933,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793216160936,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793216161078,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216161083,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793216161083,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216161103,"level":"warn","data":["Route \"./homepages/PostHomepage.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216161124,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216161125,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216161190,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793216161215,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793216161216,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:bundling:started","_t":1793216188415,"id":"11","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216188415,"id":"11","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793216188416,"id":"12","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793216188416,"id":"11","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216188416,"id":"12","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216188609,"id":"12","total":1,"ms":192.7415}
+{"_e":"metro:bundling:progress","_t":1793216188609,"id":"11","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216189731,"id":"11","total":1,"ms":1315.3974}
+{"_e":"metro:bundling:started","_t":1793216189815,"id":"13","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216189815,"id":"13","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216189985,"id":"13","total":1,"ms":169.9801}
+{"_e":"metro:client_log","_t":1793216190383,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793216190385,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793216190409,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216190410,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793216190411,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216190420,"level":"warn","data":["Route \"./homepages/PostHomepage.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216190434,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:bundling:started","_t":1793216205708,"id":"16","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216205709,"id":"16","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793216205709,"id":"17","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793216205709,"id":"16","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216205709,"id":"17","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216205883,"id":"17","total":1,"ms":174.2324}
+{"_e":"metro:bundling:progress","_t":1793216205884,"id":"16","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216206928,"id":"16","total":1,"ms":1219.9509}
+{"_e":"metro:bundling:started","_t":1793216206993,"id":"18","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216206993,"id":"18","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216207178,"id":"18","total":1,"ms":184.9979}
+{"_e":"metro:client_log","_t":1793216207743,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793216207743,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793216207868,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216207871,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793216207872,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216207891,"level":"warn","data":["Route \"./homepages/PostHomepage.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216207922,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216207922,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216207942,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793216217671,"level":"warn","data":["An error occurred in the <Scrollview(./(tabs)/swiping.tsx)> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.\n"]}
+{"_e":"metro:client_log","_t":1793216217871,"level":"error","data":["\n\n\u001b[1mCode: swiping.tsx\u001b[22m\n\u001b[0m \u001b[90m 51 |\u001b[39m\n \u001b[90m 52 |\u001b[39m   \u001b[36mif\u001b[39m (currentIndex \u001b[33m>=\u001b[39m \u001b[33mPETS_DATA\u001b[39m\u001b[33m.\u001b[39mlength) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 53 |\u001b[39m     router\u001b[33m.\u001b[39mreplace(\u001b[32m\"/homepage\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 54 |\u001b[39m   }\n \u001b[90m 55 |\u001b[39m\n \u001b[90m 56 |\u001b[39m   \u001b[36mconst\u001b[39m currentPet \u001b[33m=\u001b[39m \u001b[33mPETS_DATA\u001b[39m[currentIndex]\u001b[33m;\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Scrollview (src\\app\\(tabs)\\swiping.tsx:53:11)\u001b[39m\n\u001b[90m  TabLayout (src\\app\\(tabs)\\_layout.tsx:6:5)\u001b[39m\n\u001b[90m  RootLayout (src\\app\\_layout.tsx:4:12)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1793216217877,"level":"error","data":["[TypeError: Cannot read properties of undefined (reading 'image')]","\n\n\u001b[1mCode: swiping.tsx\u001b[22m\n\u001b[0m \u001b[90m 63 |\u001b[39m         showsVerticalScrollIndicator\u001b[33m=\u001b[39m{\u001b[36mfalse\u001b[39m}\n \u001b[90m 64 |\u001b[39m       \u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 65 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33mAnimated\u001b[39m\u001b[33m.\u001b[39m\u001b[33mView\u001b[39m style\u001b[33m=\u001b[39m{[s\u001b[33m.\u001b[39mcard\u001b[33m,\u001b[39m animatedCardStyle]}\u001b[33m>\u001b[39m\n \u001b[90m    |\u001b[39m                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 66 |\u001b[39m           \n \u001b[90m 67 |\u001b[39m           {\u001b[90m/* 👑 Wrapped the image and button inside a relative image block container */\u001b[39m}\n \u001b[90m 68 |\u001b[39m           \u001b[33m<\u001b[39m\u001b[33mView\u001b[39m style\u001b[33m=\u001b[39m{s\u001b[33m.\u001b[39mimageContainer}\u001b[33m>\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Scrollview (src\\app\\(tabs)\\swiping.tsx:65:58)\u001b[39m","\n\n\u001b[1mCode: _layout.tsx\u001b[22m\n\u001b[0m \u001b[90m 4 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[36mfunction\u001b[39m \u001b[33mTabLayout\u001b[39m() {\n \u001b[90m 5 |\u001b[39m   \u001b[36mreturn\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 6 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mTabs\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m   |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 7 |\u001b[39m       \u001b[33m<\u001b[39m\u001b[33mTabs\u001b[39m\u001b[33m.\u001b[39m\u001b[33mScreen\u001b[39m\n \u001b[90m 8 |\u001b[39m         name\u001b[33m=\u001b[39m\u001b[32m\"profile\"\u001b[39m\n \u001b[90m 9 |\u001b[39m         options\u001b[33m=\u001b[39m{{\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  TabLayout (src\\app\\(tabs)\\_layout.tsx:6:5)\u001b[39m\n\u001b[90m  RootLayout (src\\app\\_layout.tsx:4:12)\u001b[39m"]}
+{"_e":"metro:bundling:started","_t":1793216221147,"id":"1m","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216221147,"id":"1m","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793216221148,"id":"1n","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793216221148,"id":"1m","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216221148,"id":"1n","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216221149,"id":"1m","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216221149,"id":"1n","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216221249,"id":"1m","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216221250,"id":"1n","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216221348,"id":"1n","total":1,"ms":199.9081}
+{"_e":"metro:bundling:progress","_t":1793216221348,"id":"1m","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216221460,"id":"1m","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216222476,"id":"1m","total":1,"ms":1328.3974}
+{"_e":"metro:bundling:started","_t":1793216222769,"id":"1q","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216222769,"id":"1q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216222895,"id":"1q","total":1,"ms":125.9049}
+{"_e":"metro:client_log","_t":1793216223556,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793216223556,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793216223679,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216223682,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793216223683,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216223704,"level":"warn","data":["Route \"./homepages/PostHomepage.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216223732,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216223732,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216223753,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793216223753,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:bundling:started","_t":1793216230918,"id":"1v","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216230918,"id":"1v","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793216230919,"id":"1w","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793216230919,"id":"1v","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793216230919,"id":"1w","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216231170,"id":"1w","total":1,"ms":251.389}
+{"_e":"metro:bundling:progress","_t":1793216231170,"id":"1v","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216232287,"id":"1v","total":1,"ms":1368.8596}
+{"_e":"metro:bundling:started","_t":1793216232379,"id":"1z","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793216232380,"id":"1z","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793216232627,"id":"1z","total":1,"ms":246.9248}
+{"_e":"metro:client_log","_t":1793216233012,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793216233012,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793216233037,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216233038,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793216233039,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216233046,"level":"warn","data":["Route \"./homepages/PostHomepage.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793216233052,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216233052,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793216233061,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793216233062,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793216239503,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"root:init","_t":1793238996184,"format":"v0-jsonl","version":"57.0.28"}
+{"_e":"env:mode","_t":1793238996186,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793238996190,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793238997359,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793238998426,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793238999188,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793239018995,"atlas":false,"workers":6,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1793246714126,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793246714127,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793246714128,"id":"3","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793246714128,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246714128,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246714174,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246714174,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246714288,"id":"2","progress":0.12851548593805623,"total":53,"current":19}
+{"_e":"metro:bundling:progress","_t":1793246714288,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246714391,"id":"2","progress":0.12851548593805623,"total":53,"current":19}
+{"_e":"metro:bundling:progress","_t":1793246714391,"id":"3","progress":0.07543146201150566,"total":142,"current":39}
+{"_e":"metro:bundling:progress","_t":1793246714491,"id":"2","progress":0.15656539516588167,"total":278,"current":110}
+{"_e":"metro:bundling:progress","_t":1793246714491,"id":"3","progress":0.07543146201150566,"total":142,"current":39}
+{"_e":"metro:bundling:progress","_t":1793246714758,"id":"2","progress":0.16630199688144456,"total":282,"current":115}
+{"_e":"metro:bundling:progress","_t":1793246714758,"id":"3","progress":0.07543146201150566,"total":142,"current":39}
+{"_e":"metro:bundling:progress","_t":1793246714875,"id":"2","progress":0.16630199688144456,"total":282,"current":115}
+{"_e":"metro:bundling:progress","_t":1793246714875,"id":"3","progress":0.11306039167826701,"total":229,"current":77}
+{"_e":"metro:bundling:progress","_t":1793246714975,"id":"2","progress":0.16838287752675385,"total":290,"current":119}
+{"_e":"metro:bundling:progress","_t":1793246714975,"id":"3","progress":0.11306039167826701,"total":229,"current":77}
+{"_e":"metro:bundling:progress","_t":1793246715076,"id":"2","progress":0.2993407527205943,"total":382,"current":209}
+{"_e":"metro:bundling:progress","_t":1793246715076,"id":"3","progress":0.11306039167826701,"total":229,"current":77}
+{"_e":"metro:bundling:progress","_t":1793246715176,"id":"2","progress":0.2993407527205943,"total":382,"current":209}
+{"_e":"metro:bundling:progress","_t":1793246715176,"id":"3","progress":0.18163266889611349,"total":359,"current":153}
+{"_e":"metro:bundling:progress","_t":1793246715276,"id":"2","progress":0.2993407527205943,"total":382,"current":209}
+{"_e":"metro:bundling:progress","_t":1793246715276,"id":"3","progress":0.3059744869489739,"total":508,"current":281}
+{"_e":"metro:bundling:progress","_t":1793246715377,"id":"2","progress":0.36132474589100344,"total":544,"current":327}
+{"_e":"metro:bundling:progress","_t":1793246715377,"id":"3","progress":0.3059744869489739,"total":508,"current":281}
+{"_e":"metro:bundling:progress","_t":1793246715478,"id":"2","progress":0.4651617150502241,"total":651,"current":444}
+{"_e":"metro:bundling:progress","_t":1793246715478,"id":"3","progress":0.3059744869489739,"total":508,"current":281}
+{"_e":"metro:bundling:progress","_t":1793246715619,"id":"2","progress":0.4651617150502241,"total":651,"current":444}
+{"_e":"metro:bundling:progress","_t":1793246715620,"id":"3","progress":0.3382965431070387,"total":588,"current":342}
+{"_e":"metro:bundling:progress","_t":1793246715857,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246715857,"id":"3","progress":0.3382965431070387,"total":588,"current":342}
+{"_e":"metro:bundling:progress","_t":1793246715957,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246715958,"id":"3","progress":0.3821487603305785,"total":605,"current":374}
+{"_e":"metro:bundling:progress","_t":1793246716132,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246716132,"id":"3","progress":0.42250000000000004,"total":620,"current":403}
+{"_e":"metro:bundling:progress","_t":1793246716288,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246716288,"id":"3","progress":0.4245993756503642,"total":620,"current":404}
+{"_e":"metro:bundling:progress","_t":1793246716397,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246716397,"id":"3","progress":0.43243775999999995,"total":625,"current":411}
+{"_e":"metro:bundling:progress","_t":1793246716537,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246716537,"id":"3","progress":0.4331574273494677,"total":626,"current":412}
+{"_e":"metro:bundling:progress","_t":1793246716643,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246716643,"id":"3","progress":0.4331574273494677,"total":651,"current":425}
+{"_e":"metro:bundling:progress","_t":1793246716749,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246716750,"id":"3","progress":0.4424536543621987,"total":669,"current":445}
+{"_e":"metro:bundling:progress","_t":1793246716849,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246716849,"id":"3","progress":0.4585835173905795,"total":697,"current":472}
+{"_e":"metro:bundling:progress","_t":1793246716952,"id":"2","progress":0.49384899241522906,"total":656,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246716952,"id":"3","progress":0.4751081155220566,"total":737,"current":508}
+{"_e":"metro:bundling:progress","_t":1793246717051,"id":"2","progress":0.4956665124977378,"total":669,"current":471}
+{"_e":"metro:bundling:progress","_t":1793246717051,"id":"3","progress":0.4751081155220566,"total":737,"current":508}
+{"_e":"metro:bundling:progress","_t":1793246717151,"id":"2","progress":0.5585177116342237,"total":752,"current":562}
+{"_e":"metro:bundling:progress","_t":1793246717151,"id":"3","progress":0.4751081155220566,"total":737,"current":508}
+{"_e":"metro:bundling:progress","_t":1793246717252,"id":"2","progress":0.6739312617178368,"total":793,"current":651}
+{"_e":"metro:bundling:progress","_t":1793246717252,"id":"3","progress":0.4751081155220566,"total":737,"current":508}
+{"_e":"metro:bundling:progress","_t":1793246717540,"id":"2","progress":0.6739312617178368,"total":793,"current":651}
+{"_e":"metro:bundling:progress","_t":1793246717540,"id":"3","progress":0.5203194059487231,"total":811,"current":585}
+{"_e":"metro:bundling:progress","_t":1793246717933,"id":"2","progress":0.6784447588652933,"total":794,"current":654}
+{"_e":"metro:bundling:progress","_t":1793246717933,"id":"3","progress":0.5203194059487231,"total":811,"current":585}
+{"_e":"metro:bundling:progress","_t":1793246718353,"id":"2","progress":0.6784447588652933,"total":795,"current":654}
+{"_e":"metro:bundling:progress","_t":1793246718353,"id":"3","progress":0.5203194059487231,"total":811,"current":585}
+{"_e":"metro:bundling:progress","_t":1793246718601,"id":"2","progress":0.6784447588652933,"total":2700,"current":654}
+{"_e":"metro:bundling:progress","_t":1793246718602,"id":"3","progress":0.5203194059487231,"total":811,"current":585}
+{"_e":"metro:bundling:progress","_t":1793246719579,"id":"2","progress":0.6784447588652933,"total":2700,"current":655}
+{"_e":"metro:bundling:progress","_t":1793246719579,"id":"3","progress":0.5203194059487231,"total":811,"current":585}
+{"_e":"metro:bundling:progress","_t":1793246719681,"id":"2","progress":0.6784447588652933,"total":2700,"current":655}
+{"_e":"metro:bundling:progress","_t":1793246719682,"id":"3","progress":0.5203194059487231,"total":2764,"current":634}
+{"_e":"metro:bundling:progress","_t":1793246719782,"id":"2","progress":0.6784447588652933,"total":2700,"current":655}
+{"_e":"metro:bundling:progress","_t":1793246719782,"id":"3","progress":0.5203194059487231,"total":2769,"current":635}
+{"_e":"metro:bundling:progress","_t":1793246719881,"id":"2","progress":0.6784447588652933,"total":2700,"current":655}
+{"_e":"metro:bundling:progress","_t":1793246719881,"id":"3","progress":0.5203194059487231,"total":2785,"current":677}
+{"_e":"metro:bundling:progress","_t":1793246719983,"id":"2","progress":0.6784447588652933,"total":2700,"current":655}
+{"_e":"metro:bundling:progress","_t":1793246719983,"id":"3","progress":0.5203194059487231,"total":2827,"current":739}
+{"_e":"metro:bundling:progress","_t":1793246720089,"id":"2","progress":0.6784447588652933,"total":2709,"current":663}
+{"_e":"metro:bundling:progress","_t":1793246720089,"id":"3","progress":0.5203194059487231,"total":2827,"current":739}
+{"_e":"metro:bundling:started","_t":1793246720324,"id":"5","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793246720324,"id":"2","progress":0.6784447588652933,"total":2709,"current":663}
+{"_e":"metro:bundling:progress","_t":1793246720324,"id":"3","progress":0.5203194059487231,"total":2827,"current":739}
+{"_e":"metro:bundling:progress","_t":1793246720324,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793246720324,"id":"6","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793246720325,"id":"2","progress":0.6784447588652933,"total":2709,"current":663}
+{"_e":"metro:bundling:progress","_t":1793246720325,"id":"3","progress":0.5203194059487231,"total":2827,"current":739}
+{"_e":"metro:bundling:progress","_t":1793246720325,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720325,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720329,"id":"2","progress":0.6784447588652933,"total":2732,"current":690}
+{"_e":"metro:bundling:progress","_t":1793246720330,"id":"3","progress":0.5203194059487231,"total":2827,"current":739}
+{"_e":"metro:bundling:progress","_t":1793246720330,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720330,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720371,"id":"2","progress":0.6784447588652933,"total":2732,"current":691}
+{"_e":"metro:bundling:progress","_t":1793246720371,"id":"3","progress":0.5203194059487231,"total":2827,"current":739}
+{"_e":"metro:bundling:progress","_t":1793246720371,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720371,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720499,"id":"2","progress":0.6784447588652933,"total":2761,"current":792}
+{"_e":"metro:bundling:progress","_t":1793246720499,"id":"3","progress":0.5203194059487231,"total":2827,"current":739}
+{"_e":"metro:bundling:progress","_t":1793246720499,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720499,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720599,"id":"2","progress":0.6784447588652933,"total":2761,"current":792}
+{"_e":"metro:bundling:progress","_t":1793246720599,"id":"3","progress":0.5203194059487231,"total":2846,"current":1079}
+{"_e":"metro:bundling:progress","_t":1793246720599,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720599,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720699,"id":"2","progress":0.6784447588652933,"total":2761,"current":792}
+{"_e":"metro:bundling:progress","_t":1793246720699,"id":"3","progress":0.5203194059487231,"total":2846,"current":1822}
+{"_e":"metro:bundling:progress","_t":1793246720699,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720699,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720799,"id":"2","progress":0.6784447588652933,"total":2761,"current":792}
+{"_e":"metro:bundling:progress","_t":1793246720799,"id":"3","progress":0.7685485515788455,"total":2846,"current":2495}
+{"_e":"metro:bundling:progress","_t":1793246720799,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720799,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720899,"id":"2","progress":0.6784447588652933,"total":2761,"current":809}
+{"_e":"metro:bundling:progress","_t":1793246720899,"id":"3","progress":0.7685485515788455,"total":2846,"current":2495}
+{"_e":"metro:bundling:progress","_t":1793246720899,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720899,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720999,"id":"2","progress":0.6784447588652933,"total":2761,"current":870}
+{"_e":"metro:bundling:progress","_t":1793246720999,"id":"3","progress":0.7685485515788455,"total":2846,"current":2495}
+{"_e":"metro:bundling:progress","_t":1793246720999,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246720999,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721099,"id":"2","progress":0.6784447588652933,"total":2761,"current":1066}
+{"_e":"metro:bundling:progress","_t":1793246721099,"id":"3","progress":0.7685485515788455,"total":2846,"current":2495}
+{"_e":"metro:bundling:progress","_t":1793246721099,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721099,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721203,"id":"2","progress":0.6784447588652933,"total":2761,"current":1328}
+{"_e":"metro:bundling:progress","_t":1793246721204,"id":"3","progress":0.7685485515788455,"total":2846,"current":2495}
+{"_e":"metro:bundling:progress","_t":1793246721204,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721204,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721303,"id":"2","progress":0.6784447588652933,"total":2761,"current":1619}
+{"_e":"metro:bundling:progress","_t":1793246721303,"id":"3","progress":0.7685485515788455,"total":2846,"current":2495}
+{"_e":"metro:bundling:progress","_t":1793246721303,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721303,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721436,"id":"2","progress":0.6784447588652933,"total":2761,"current":2195}
+{"_e":"metro:bundling:progress","_t":1793246721436,"id":"3","progress":0.7685485515788455,"total":2846,"current":2495}
+{"_e":"metro:bundling:progress","_t":1793246721436,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721436,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721560,"id":"2","progress":0.9507659011744463,"total":2768,"current":2699}
+{"_e":"metro:bundling:progress","_t":1793246721560,"id":"3","progress":0.7685485515788455,"total":2846,"current":2495}
+{"_e":"metro:bundling:progress","_t":1793246721560,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721560,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721729,"id":"2","progress":0.9507659011744463,"total":2768,"current":2699}
+{"_e":"metro:bundling:progress","_t":1793246721729,"id":"3","progress":0.9435571806435504,"total":2864,"current":2782}
+{"_e":"metro:bundling:progress","_t":1793246721729,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721729,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721826,"id":"2","progress":0.9507659011744463,"total":2768,"current":2699}
+{"_e":"metro:bundling:progress","_t":1793246721826,"id":"3","progress":0.952576,"total":2875,"current":2806}
+{"_e":"metro:bundling:progress","_t":1793246721826,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721826,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721938,"id":"2","progress":0.9543732782593056,"total":2773,"current":2709}
+{"_e":"metro:bundling:progress","_t":1793246721938,"id":"3","progress":0.952576,"total":2875,"current":2806}
+{"_e":"metro:bundling:progress","_t":1793246721938,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246721938,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722038,"id":"2","progress":0.9543732782593056,"total":2799,"current":2734}
+{"_e":"metro:bundling:progress","_t":1793246722038,"id":"3","progress":0.952576,"total":2875,"current":2806}
+{"_e":"metro:bundling:progress","_t":1793246722038,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722038,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722144,"id":"2","progress":0.9543732782593056,"total":2799,"current":2734}
+{"_e":"metro:bundling:progress","_t":1793246722144,"id":"3","progress":0.952576,"total":2931,"current":2852}
+{"_e":"metro:bundling:progress","_t":1793246722145,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722145,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722244,"id":"2","progress":0.9543732782593056,"total":2799,"current":2734}
+{"_e":"metro:bundling:progress","_t":1793246722244,"id":"3","progress":0.9623942545245618,"total":2950,"current":2894}
+{"_e":"metro:bundling:progress","_t":1793246722244,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722244,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722345,"id":"2","progress":0.9563387104932454,"total":2854,"current":2791}
+{"_e":"metro:bundling:progress","_t":1793246722345,"id":"3","progress":0.9623942545245618,"total":2950,"current":2894}
+{"_e":"metro:bundling:progress","_t":1793246722345,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722345,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722447,"id":"2","progress":0.9723005160585034,"total":2868,"current":2828}
+{"_e":"metro:bundling:progress","_t":1793246722447,"id":"3","progress":0.9623942545245618,"total":2950,"current":2894}
+{"_e":"metro:bundling:progress","_t":1793246722448,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722448,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722561,"id":"2","progress":0.9723005160585034,"total":2868,"current":2828}
+{"_e":"metro:bundling:progress","_t":1793246722561,"id":"3","progress":0.9635006902046568,"total":2986,"current":2931}
+{"_e":"metro:bundling:progress","_t":1793246722562,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722562,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722662,"id":"2","progress":0.9723005160585034,"total":2885,"current":2840}
+{"_e":"metro:bundling:progress","_t":1793246722663,"id":"3","progress":0.9635006902046568,"total":2986,"current":2931}
+{"_e":"metro:bundling:progress","_t":1793246722663,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722663,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722765,"id":"2","progress":0.9723005160585034,"total":2933,"current":2875}
+{"_e":"metro:bundling:progress","_t":1793246722767,"id":"3","progress":0.9635006902046568,"total":2986,"current":2931}
+{"_e":"metro:bundling:progress","_t":1793246722767,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722767,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722864,"id":"2","progress":0.9783424354641692,"total":2939,"current":2907}
+{"_e":"metro:bundling:progress","_t":1793246722864,"id":"3","progress":0.9635006902046568,"total":2986,"current":2931}
+{"_e":"metro:bundling:progress","_t":1793246722864,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722864,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722966,"id":"2","progress":0.9783424354641692,"total":2939,"current":2907}
+{"_e":"metro:bundling:progress","_t":1793246722966,"id":"3","progress":0.975595010974499,"total":3095,"current":3057}
+{"_e":"metro:bundling:progress","_t":1793246722966,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246722966,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246723067,"id":"2","progress":0.9783424354641692,"total":2939,"current":2907}
+{"_e":"metro:bundling:progress","_t":1793246723067,"id":"3","progress":0.9878459469009352,"total":3117,"current":3098}
+{"_e":"metro:bundling:progress","_t":1793246723067,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246723067,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246723183,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246723183,"id":"3","progress":0.9878459469009352,"total":3117,"current":3098}
+{"_e":"metro:bundling:progress","_t":1793246723183,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246723183,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246723289,"id":"2","progress":0.999,"total":1486,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246723289,"id":"3","progress":0.9878459469009352,"total":3117,"current":3098}
+{"_e":"metro:bundling:progress","_t":1793246723289,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246723289,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246724249,"id":"2","progress":0.999,"total":2965,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246724249,"id":"3","progress":0.9878459469009352,"total":3117,"current":3098}
+{"_e":"metro:bundling:progress","_t":1793246724249,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246724249,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246725109,"id":"2","progress":0.999,"total":2965,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246725109,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246725109,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246725109,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246725881,"id":"2","progress":0.999,"total":2965,"current":1}
+{"_e":"metro:bundling:progress","_t":1793246725881,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246725881,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246725881,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246725982,"id":"2","progress":0.999,"total":2965,"current":66}
+{"_e":"metro:bundling:progress","_t":1793246725982,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246725982,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246725982,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726098,"id":"2","progress":0.999,"total":2965,"current":74}
+{"_e":"metro:bundling:progress","_t":1793246726098,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246726098,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726098,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726205,"id":"2","progress":0.999,"total":2965,"current":105}
+{"_e":"metro:bundling:progress","_t":1793246726205,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246726205,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726205,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726331,"id":"2","progress":0.999,"total":2965,"current":109}
+{"_e":"metro:bundling:progress","_t":1793246726331,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246726331,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726331,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726480,"id":"2","progress":0.999,"total":2965,"current":110}
+{"_e":"metro:bundling:progress","_t":1793246726480,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246726480,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726480,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726583,"id":"2","progress":0.999,"total":2965,"current":122}
+{"_e":"metro:bundling:progress","_t":1793246726584,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246726584,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726584,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726686,"id":"2","progress":0.999,"total":2965,"current":135}
+{"_e":"metro:bundling:progress","_t":1793246726686,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246726686,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726686,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726789,"id":"2","progress":0.999,"total":2965,"current":155}
+{"_e":"metro:bundling:progress","_t":1793246726789,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246726789,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726789,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726924,"id":"2","progress":0.999,"total":2965,"current":181}
+{"_e":"metro:bundling:progress","_t":1793246726924,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246726924,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246726924,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727031,"id":"2","progress":0.999,"total":2965,"current":182}
+{"_e":"metro:bundling:progress","_t":1793246727031,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246727031,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727031,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727140,"id":"2","progress":0.999,"total":2965,"current":202}
+{"_e":"metro:bundling:progress","_t":1793246727140,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246727140,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727140,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727248,"id":"2","progress":0.999,"total":2965,"current":220}
+{"_e":"metro:bundling:progress","_t":1793246727248,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246727248,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727248,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727359,"id":"2","progress":0.999,"total":2965,"current":221}
+{"_e":"metro:bundling:progress","_t":1793246727359,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246727359,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727359,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727459,"id":"2","progress":0.999,"total":2965,"current":225}
+{"_e":"metro:bundling:progress","_t":1793246727459,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246727459,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727459,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727567,"id":"2","progress":0.999,"total":2965,"current":241}
+{"_e":"metro:bundling:progress","_t":1793246727567,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246727567,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727567,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727667,"id":"2","progress":0.999,"total":2965,"current":300}
+{"_e":"metro:bundling:progress","_t":1793246727667,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246727667,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727667,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727767,"id":"2","progress":0.999,"total":2965,"current":341}
+{"_e":"metro:bundling:progress","_t":1793246727767,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246727767,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246727767,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246728857,"id":"2","progress":0.999,"total":2965,"current":370}
+{"_e":"metro:bundling:progress","_t":1793246728857,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246728857,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246728857,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246728962,"id":"2","progress":0.999,"total":2965,"current":389}
+{"_e":"metro:bundling:progress","_t":1793246728963,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246728963,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246728963,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729125,"id":"2","progress":0.999,"total":2965,"current":397}
+{"_e":"metro:bundling:progress","_t":1793246729125,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246729126,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729126,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729229,"id":"2","progress":0.999,"total":2965,"current":461}
+{"_e":"metro:bundling:progress","_t":1793246729229,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246729229,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729229,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729328,"id":"2","progress":0.999,"total":2965,"current":535}
+{"_e":"metro:bundling:progress","_t":1793246729328,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246729328,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729328,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729428,"id":"2","progress":0.999,"total":2965,"current":575}
+{"_e":"metro:bundling:progress","_t":1793246729428,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246729428,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729428,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729532,"id":"2","progress":0.999,"total":2965,"current":608}
+{"_e":"metro:bundling:progress","_t":1793246729532,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246729532,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729532,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729632,"id":"2","progress":0.999,"total":2965,"current":644}
+{"_e":"metro:bundling:progress","_t":1793246729632,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246729632,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729632,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729732,"id":"2","progress":0.999,"total":2965,"current":716}
+{"_e":"metro:bundling:progress","_t":1793246729732,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246729732,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729733,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729834,"id":"2","progress":0.999,"total":2965,"current":777}
+{"_e":"metro:bundling:progress","_t":1793246729834,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246729834,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729834,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729933,"id":"2","progress":0.999,"total":2965,"current":851}
+{"_e":"metro:bundling:progress","_t":1793246729933,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246729933,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246729933,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730033,"id":"2","progress":0.999,"total":2965,"current":902}
+{"_e":"metro:bundling:progress","_t":1793246730033,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246730033,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730033,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730133,"id":"2","progress":0.999,"total":2965,"current":1203}
+{"_e":"metro:bundling:progress","_t":1793246730133,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246730133,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730133,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730234,"id":"2","progress":0.999,"total":2965,"current":1652}
+{"_e":"metro:bundling:progress","_t":1793246730235,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246730235,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730235,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730339,"id":"2","progress":0.999,"total":2965,"current":2146}
+{"_e":"metro:bundling:progress","_t":1793246730339,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246730339,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730339,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730438,"id":"2","progress":0.999,"total":2965,"current":2557}
+{"_e":"metro:bundling:progress","_t":1793246730438,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246730438,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730438,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730538,"id":"2","progress":0.999,"total":2965,"current":2829}
+{"_e":"metro:bundling:progress","_t":1793246730538,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246730538,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730538,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730638,"id":"2","progress":0.999,"total":2965,"current":2875}
+{"_e":"metro:bundling:progress","_t":1793246730638,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246730638,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730638,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730740,"id":"2","progress":0.999,"total":2965,"current":2953}
+{"_e":"metro:bundling:progress","_t":1793246730740,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246730740,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246730740,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731057,"id":"2","progress":0.999,"total":2965,"current":2958}
+{"_e":"metro:bundling:progress","_t":1793246731057,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793246731057,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731057,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731087,"id":"2","progress":0.999,"total":2965,"current":2958}
+{"_e":"metro:bundling:progress","_t":1793246731087,"id":"3","progress":0.999,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731088,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731088,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731190,"id":"2","progress":0.999,"total":2965,"current":2958}
+{"_e":"metro:bundling:progress","_t":1793246731191,"id":"3","progress":0.999,"total":1777,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731191,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731191,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793246731722,"id":"3","total":1777,"ms":17594.4406}
+{"_e":"metro:bundling:progress","_t":1793246731723,"id":"2","progress":0.999,"total":2965,"current":2958}
+{"_e":"metro:bundling:progress","_t":1793246731723,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731723,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731869,"id":"2","progress":0.999,"total":2965,"current":2958}
+{"_e":"metro:bundling:progress","_t":1793246731869,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731869,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731881,"id":"2","progress":0.999,"total":2965,"current":2959}
+{"_e":"metro:bundling:progress","_t":1793246731883,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246731883,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246732188,"id":"2","progress":0.999,"total":2965,"current":2963}
+{"_e":"metro:bundling:progress","_t":1793246732188,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246732188,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246732493,"id":"2","progress":0.999,"total":2965,"current":2964}
+{"_e":"metro:bundling:progress","_t":1793246732493,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246732493,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733250,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246733250,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733250,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733666,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246733666,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733666,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733782,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246733782,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733782,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733882,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246733882,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733882,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733981,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246733981,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246733981,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734081,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734081,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734081,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734181,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734181,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734181,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734286,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734286,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734286,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734387,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734387,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734387,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734487,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734487,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734487,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734587,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734587,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734587,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734689,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734689,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734689,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734790,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734790,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734790,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734892,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734892,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734892,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734993,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246734993,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246734993,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735092,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246735092,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735092,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735194,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246735194,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735194,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735294,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246735294,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735294,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735419,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246735419,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735419,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735519,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246735519,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735519,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735618,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246735618,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735618,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735718,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246735718,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735718,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735818,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246735818,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735818,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735921,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246735921,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246735921,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246736030,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246736030,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246736030,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246738312,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246738312,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246738312,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246738416,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246738416,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246738416,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246738978,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246738978,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246738978,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246739039,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246739039,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793246739039,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793246739181,"id":"6","total":1,"ms":18856.5216}
+{"_e":"metro:bundling:progress","_t":1793246739181,"id":"2","progress":0.999,"total":2965,"current":2965}
+{"_e":"metro:bundling:progress","_t":1793246739181,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793246740022,"id":"2","total":2965,"ms":25895.3534}
+{"_e":"metro:bundling:progress","_t":1793246740022,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793246740062,"id":"5","total":1,"ms":19738.6877}
+{"_e":"root:init","_t":1793376599935,"format":"v0-jsonl","version":"57.0.28"}
+{"_e":"env:mode","_t":1793376599937,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793376599941,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793376600855,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793376601889,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793376602742,"plugins":[]}
