@@ -1,1 +1,17 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets
+serviceAccountKey.json
+
+# ML data
+runs/
+backend/ml-server/test_images/*
+training/datasets/*
+
+# Editor / Mac
+.vscode/
+.DS_Store
 node_modules

@@ -1,60 +1,64 @@
-
-import { Tabs } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
+import { Tabs } from 'expo-router';
+import { House, User, Camera, Dog } from 'lucide-react-native';
 
 export default function TabLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: "teal",
-        tabBarInactiveTintColor: "gray",
-        headerShown: false,
+    <Tabs>
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          href: null,                         
+          headerShown: false,                  
+          tabBarStyle: { display: "none" },
+        }}
+      />
+
+      <Tabs.Screen
+        name="homepage"
+        options={{
+          title: 'Homepage',
+          href: null,                         
+          headerShown: false,                  
+          tabBarStyle: { display: "none" },
+          
+        }}
+      />
+      <Tabs.Screen
+        name="swiping"
+        options={{
+          title: 'Swiping',
+          href: null,                         
+          headerShown: false,                  
+          tabBarStyle: { display: "none" },
+          
+        }}
+      />
+      <Tabs.Screen name="scrollview" options={{
+          title: 'Scrollview',
+          href: null,                         
+          headerShown: false,                  
+          tabBarStyle: { display: "none" },
+        }} />
+      <Tabs.Screen
+        name="quiz"
+        options={{
+        href: null,                         
+        headerShown: false,                  
+        tabBarStyle: { display: "none" },    
       }}
-    >
-      {/* Home Tab */}
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
+  />
+        
+      <Tabs.Screen name="camera" options={{
+          headerShown: false,
+          title: 'Camera',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="home"
-              size={size}
-              color={color}
-            />
+            <Camera size={size} color="currentColor" strokeWidth={1.75} />
           ),
-        }}
-      />
-
-      {/* Discover Pets Tab */}
-      <Tabs.Screen
-        name="discover"
-        options={{
-          title: "Discover",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="paw"
-              size={size}
-              color={color}
-            />
-          ),
-        }}
-      />
-
-      {/* Favorites Tab */}
-      <Tabs.Screen
-        name="favorites"
-        options={{
-          title: "Favorites",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="heart"
-              size={size}
-              color={color}
-            />
-          ),
-        }}
-      />
+        }} />
     </Tabs>
   );
 }
+
+
+
