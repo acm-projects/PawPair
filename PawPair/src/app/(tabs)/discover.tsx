@@ -1,4 +1,8 @@
 
+export default function Discover() {
+  return null;
+}
+
 // import { useEffect, useState } from "react";
 
 // import {

@@ -1,6 +1,16 @@
 {
+  "name": "pawpair-workspace",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix PawPair run start",
+    "android": "npm --prefix PawPair run android",
+    "ios": "npm --prefix PawPair run ios",
+    "web": "npm --prefix PawPair run web",
+    "lint": "npm --prefix PawPair run lint",
+    "typecheck": "npm --prefix PawPair run typecheck"
+  },
   "dependencies": {
-    "expo": "^57.0.26",
+    "expo": "^57.0.31",
     "firebase": "^12.19.0"
   }
 }

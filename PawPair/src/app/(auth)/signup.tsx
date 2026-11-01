@@ -251,21 +251,20 @@ const paws = [
 
 const styles = StyleSheet.create({
   outer: {
-      flex: 1,
-      backgroundColor: "#6b6b6b",
-      alignItems: "center",
-    },
-    container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      gap: 15,
-      width: "100%",            
-      maxWidth: 380,            
-      backgroundColor: "#F3EDE8", 
-      overflow: "hidden",
-
-    },
+    flex: 1,
+    backgroundColor: "#F3EDE8",
+    alignItems: "center",
+  },
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 15,
+    width: "100%",            
+    maxWidth: 420,            
+    backgroundColor: "#F3EDE8", 
+    overflow: "hidden",
+  },
     title: {
       fontSize: 38,
       fontWeight: "bold",
