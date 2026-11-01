@@ -117,7 +117,7 @@ async function handleLogin() {
     console.log("Login successful:", response.user.email);
 
 
-    router.replace("/discover");
+    router.replace("/homepage");
 
   } catch (error: any) {
     console.error("Login error:", error.code, error.message);

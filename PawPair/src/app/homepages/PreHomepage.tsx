@@ -204,11 +204,11 @@ const NAV_RADIUS = 20;
 const CARD_HEIGHT = 120;
 
 const s = StyleSheet.create({
-  outer: { flex: 1, backgroundColor: "#6b6b6b", alignItems: "center" },
+  outer: { flex: 1, backgroundColor: "#F3EDE8", alignItems: "center" },
   container: { 
     flex: 1, 
     width: "100%", 
-    maxWidth: 380, 
+    maxWidth: 420, 
     backgroundColor: "#F3EDE8", 
     overflow: "hidden",
     paddingBottom: 80, 

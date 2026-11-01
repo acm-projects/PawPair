@@ -71,7 +71,7 @@ export default function Scrollview() {
             {/* 👑 Placed back button inside this box so it sticks over the top-left photo corner */}
             <Pressable 
               style={s.backButton} 
-              onPress={() => router.navigate("homepages/PreHomepage" as any)}
+              onPress={() => router.navigate("/homepages/PreHomepage")}
             >
               <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
             </Pressable>
