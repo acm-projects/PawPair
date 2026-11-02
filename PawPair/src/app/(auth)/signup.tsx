@@ -185,7 +185,7 @@ if (!fontsLoaded) return null;
           transform: [{ translateX }, { rotate }],
         }}
         />
-      <Text style={styles.title}>Create PawPair Account</Text>
+      <Text style={styles.title}>Create Account</Text>
 
       <TextInput
         style={[styles.input, focusedInput === "email" && styles.inputFocused]}

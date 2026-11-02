@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons"; 
-import { Tabs } from "react-native-screens";
 import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,7 +18,6 @@ import { User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
 
 
 
-<Tabs.Screen options={{ tabBarStyle: { display: "none" } }} />
 
 
 // 1) THE DATA ---------------------------------------------------------------

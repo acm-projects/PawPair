@@ -117,7 +117,7 @@ async function handleLogin() {
     console.log("Login successful:", response.user.email);
 
 
-    router.replace("/discover");
+    router.replace("/homepages/PreHomepage");
 
   } catch (error: any) {
     console.error("Login error:", error.code, error.message);
@@ -155,7 +155,7 @@ if (!fontsLoaded) return null;
           transform: [{ translateX }, { rotate }],
         }}
       />
-      <Text style={styles.title}>Login to PawPair</Text>
+      <Text style={styles.title}>Login</Text>
 
       <TextInput
         style={[styles.input, focusedInput === "email" && styles.inputFocused]}

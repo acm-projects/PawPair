@@ -54,6 +54,13 @@ export default function Scrollview() {
   }
 
   const currentPet = PETS_DATA[currentIndex];
+  if (!currentPet) {
+  return (
+    <View style={s.outer}>
+      <Text>No more pets to swipe!</Text>
+    </View>
+  );
+}
 
   return (
     <View style={s.mainWrapper}>

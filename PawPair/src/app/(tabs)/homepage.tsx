@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet } from "react-native";
-import { useEffect, useState } from "react"; // 👑 Added useState
+import { useEffect, useState } from "react"; 
 import { collection, addDoc } from "firebase/firestore";
 import { useRouter } from "expo-router";
 import PawNavBar from "@/components/PawNavBar";
@@ -8,7 +8,6 @@ export default function Homepage() {
   const router = useRouter();
   
   const [homepageVersion, setHomepageVersion] = useState<"pre" | "post">("pre");
-
   
   useEffect(() => {
     if (homepageVersion === "post") {
