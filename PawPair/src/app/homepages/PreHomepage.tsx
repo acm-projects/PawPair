@@ -85,7 +85,7 @@ function IconCircle({
       <View style={[s.circle, { borderColor: color }]}>
         <Icon size={28} color={color} strokeWidth={2} />
       </View>
-      <View style={s.divider} />
+      
       {count > 0 && (
         <View style={[s.count, { backgroundColor: color }]}>
           <Text style={s.countText}>{count > 9 ? "9+" : count}</Text>
@@ -478,13 +478,4 @@ const s = StyleSheet.create({
   swipeText: { fontFamily: "NameFont", fontSize: 32, lineHeight: 38, color: "#000" },
 
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
-  divider: {
-    width: 2,
-    height: "95%",
-    borderRadius: 1,
-    backgroundColor: "#EAD9D1",
-    marginHorizontal: "-10%",
-    position: "absolute",
-    top: "5%",
-  },
 });
