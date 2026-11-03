@@ -30,6 +30,7 @@ import { getPet } from "../../data/pets";
 import { statusFor, useStatuses } from "../../data/petStatus";
 import { usePetLists } from "../../store/petLists";
 import PawNavBar from "@/components/PawNavBar";
+import useHadAdopted from "@/data/hadAdopted";
 
 const pepoGoat = require("../../../assets/images/pepo-goat.png");
 const paw = require("../../../assets/images/paw-watermark.png");
@@ -38,7 +39,7 @@ const CORAL = "#E98F78";
 const GREEN = "#6EE08F";
 const BG = "#F3EDE8";
 const FONT = "'Open Sans', system-ui, sans-serif";
-const OUTER = 64* 2 + 6;
+const OUTER = 64 * 2 + 6;
 
 function loadFont() {
   if (typeof document === "undefined") return;
@@ -52,7 +53,7 @@ function loadFont() {
 
 const paws = [
   { top: 0, left: "80%" },
-  {top: "10%", left: "60%" },
+  { top: "10%", left: "60%" },
   { top: "85%", left: "85%" },
   { top: "82%", left: "10%" },
   { top: "78%", left: "73%" },
@@ -85,7 +86,7 @@ function IconCircle({
       <View style={[s.circle, { borderColor: color }]}>
         <Icon size={28} color={color} strokeWidth={2} />
       </View>
-      
+
       {count > 0 && (
         <View style={[s.count, { backgroundColor: color }]}>
           <Text style={s.countText}>{count > 9 ? "9+" : count}</Text>
@@ -98,6 +99,7 @@ function IconCircle({
 function TopRow() {
   const statuses = useStatuses();
   const matches = useMatchedPets();
+  const hasAdopted = useHadAdopted();
   const applied = matches.filter((p) => statusFor(statuses, p.id).stage >= 1);
 
   return (
@@ -114,6 +116,16 @@ function TopRow() {
         count={applied.length}
         onPress={() => router.navigate("/status" as any)}
       />
+
+      {/* only appears once a pet has been adopted */}
+      {hasAdopted && (
+        <Pressable
+          style={s.switchBtn}
+          onPress={() => router.replace("/homepages/PostHomepage" as any)}
+        >
+          <Text style={s.switchText}>I adopted!</Text>
+        </Pressable>
+      )}
     </View>
   );
 }
@@ -176,7 +188,7 @@ function MatchesHero() {
             style={{ height: cardH, flexGrow: 0 }}
             renderItem={({ item }) => {
               const stage = statusFor(statuses, item.id).stage;
-              const Icon = STAGE_ICONS[stage];
+              const Icon = Check;
               const trait = item.traits?.[0]?.text;
               return (
                 <Pressable
@@ -361,7 +373,7 @@ const s = StyleSheet.create({
   },
   greeting: { flexDirection: "row", alignItems: "center", gap: 4 },
   headerPaw: { width: 38, height: 38, resizeMode: "contain", opacity: 0.6 },
-  hello: { position: "absolute", left:"55%", fontFamily: "HeadingFont", fontSize: 32, color: "#1F1F1F" },
+  hello: { position: "absolute", left: "55%", fontFamily: "HeadingFont", fontSize: 32, color: "#1F1F1F" },
   pepo: { width: 52, height: 52, resizeMode: "contain" },
 
   row: {
@@ -396,6 +408,20 @@ const s = StyleSheet.create({
     justifyContent: "center",
   },
   countText: { fontFamily: FONT, fontSize: 12, fontWeight: "600", color: "#fff" },
+
+  switchBtn: {
+    marginLeft: "auto",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 12,
+    height: 34,
+    borderRadius: 17,
+    borderWidth: 1.5,
+    borderColor: CORAL,
+    backgroundColor: "#fff",
+  },
+  switchText: { fontFamily: FONT, fontSize: 12, fontWeight: "600", color: CORAL },
 
   hero: { flex: 1, marginTop: 2 },
   heroCard: {

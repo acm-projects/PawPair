@@ -1,4 +1,4 @@
-import { useFonts } from "expo-font";
+/*import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 import { Tabs, router } from "expo-router";
 import { Camera as CameraIcon, Check, Dog, House, User, X } from "lucide-react-native";
@@ -184,3 +184,4 @@ const s = StyleSheet.create({
     right: 0,
   },
 });
+*/

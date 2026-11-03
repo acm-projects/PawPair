@@ -3,8 +3,6 @@ import { useSyncExternalStore } from "react";
 export const STAGES = [
   "Matched",
   "Applied",
-  "Meet & Greet",
-  "Home Visit",
   "Approved",
   "Adopted",
 ] as const;

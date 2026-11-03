@@ -23,7 +23,10 @@ const paws = [
 export default function Status() {
   const navigation = useNavigation();
   useLayoutEffect(() => {
-    navigation.setOptions({ headerShown: false });
+    navigation.setOptions({
+      headerShown: false,
+      tabBarStyle: { display: "none" },
+    });
   }, [navigation]);
 
   const [fontsLoaded] = useFonts({
@@ -47,7 +50,7 @@ const [openId, setOpenId] = useState<string | number | null>(null);
           ))}
         </View>
 
-        <Text style={s.heading}>MY APPLICATIONS</Text>
+        <Text style={s.heading}>applications</Text>
 
         <ScrollView
           style={{ flex: 1 }}
@@ -56,9 +59,9 @@ const [openId, setOpenId] = useState<string | number | null>(null);
         >
           {pets.length === 0 && (
             <View style={s.emptyBox}>
-              <Text style={s.empty}>Match with a pet to start tracking their adoption.</Text>
+              <Text style={s.empty}>No matches yet</Text>
               <Pressable style={s.emptyBtn} onPress={() => router.navigate("/swiping" as any)}>
-                <Text style={s.emptyBtnText}>Start Swiping</Text>
+                <Text style={s.emptyBtnText}>Swipe Now</Text>
               </Pressable>
             </View>
           )}
@@ -156,6 +159,7 @@ const s = StyleSheet.create({
     textAlign: "center",
     marginTop: 24,
     marginBottom: 14,
+    letterSpacing:1,
   },
 
   card: { borderRadius: 20, marginBottom: 12, overflow: "hidden" },
@@ -210,7 +214,7 @@ const s = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 22,
   },
-  emptyBtnText: { color: "#fff", fontWeight: "700" },
+  emptyBtnText: { color: "#fff", fontWeight: "500" },
 
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });
