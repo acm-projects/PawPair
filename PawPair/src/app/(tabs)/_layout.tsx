@@ -1,4 +1,4 @@
-import { Tabs } from "expo-router";
+import { Tabs } from 'expo-router';
 import { House, User, Camera, Dog } from 'lucide-react-native';
 
 export default function TabLayout() {
@@ -62,41 +62,3 @@ export default function TabLayout() {
 
 
 
-
-// import { Tabs } from "expo-router";
-
-// export default function TabLayout() {
-//   return (
-//     <Tabs>
-//       <Tabs.Screen
-//         name="profile"
-//         options={{ title: "Profile" }}
-//       />
-
-//       <Tabs.Screen
-//         name="camera"
-//         options={{ title: "Camera" }}
-//       />
-
-//       <Tabs.Screen
-//         name="matches"
-//         options={{ title: "Matches" }}
-//       />
-
-//       <Tabs.Screen
-//         name="starred"
-//         options={{ title: "Starred" }}
-//       />
-
-//       <Tabs.Screen
-//         name="discover"
-//         options={{ title: "Discover" }}
-//       />
-
-//       <Tabs.Screen
-//         name="favorites"
-//         options={{ title: "Favorites" }}
-//       />
-//     </Tabs>
-//   );
-// }
