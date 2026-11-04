@@ -1,12 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useSyncExternalStore } from "react";
 
-type ListName = "matches" | "starred";
-type State = { matches: number[]; starred: number[]; hydrated: boolean };
+type ListName = "matches";
+type State = { matches: number[]; hydrated: boolean };
 
 const KEY = "pawpair-lists-v1";
 
-let state: State = { matches: [], starred: [], hydrated: false };
+let state: State = { matches: [],  hydrated: false };
 const listeners = new Set<() => void>();
 
 function setState(patch: Partial<State>) {
@@ -15,7 +15,7 @@ function setState(patch: Partial<State>) {
   if (state.hydrated) {
     AsyncStorage.setItem(
       KEY,
-      JSON.stringify({ matches: state.matches, starred: state.starred })
+      JSON.stringify({ matches: state.matches})
     ).catch(() => {});
   }
 }
@@ -32,7 +32,6 @@ export function hydrate() {
         ];
         setState({
           matches: merge(saved.matches, state.matches),
-          starred: merge(saved.starred, state.starred),
           hydrated: true,
         });
       })
@@ -47,7 +46,7 @@ function add(list: ListName, id: number) {
 }
 
 export const matchPet = (id: number) => add("matches", id);
-export const starPet = (id: number) => add("starred", id);
+
 
 export const removePet = (list: ListName, id: number) =>
   setState({ [list]: state[list].filter((x) => x !== id) } as Partial<State>);
