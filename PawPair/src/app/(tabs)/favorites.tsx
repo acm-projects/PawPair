@@ -294,12 +294,23 @@
 
 // });
 
+// import { View, Text } from "react-native";
+
+// export default function FavoritesScreen() {
+//   return (
+//     <View style={{ flex: 1, padding: 20 }}>
+//       <Text>FAVORITES TEST SCREEN</Text>
+//     </View>
+//   );
+// }
+
+
 import { View, Text } from "react-native";
 
 export default function FavoritesScreen() {
   return (
     <View style={{ flex: 1, padding: 20 }}>
-      <Text>FAVORITES TEST SCREEN</Text>
+      <Text>Favorites is working!</Text>
     </View>
   );
 }
