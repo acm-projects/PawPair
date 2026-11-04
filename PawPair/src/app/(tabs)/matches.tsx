@@ -9,6 +9,7 @@ import { getPet } from "../../data/pets";
 import { usePetLists, removePet, clearList } from "../../store/petLists";
 
 const paw = require("../../../assets/images/paw-watermark.png");
+import PawNavBar from "@/components/PawNavBar";
 
 const CURRENT_HREF: string = "/homepage";
 const FONT = "'Open Sans', system-ui, sans-serif";
@@ -114,24 +115,9 @@ export default function Matches() {
         <Pressable style={s.clear} onPress={() => clearList("matches")}>
           <Text style={s.clearText}>Clear All Matches</Text>
         </Pressable>
-
-        <View style={s.navBarBackground}>
-          <SafeAreaView style={s.navBar} edges={["bottom"]}>
-            {NAV_ITEMS.map(({ href, label, Icon }) => {
-              const isActive = href === CURRENT_HREF;
-              return (
-                <TouchableOpacity
-                  key={href}
-                  accessibilityLabel={label}
-                  style={[s.navItem, isActive && s.navItemActive]}
-                  onPress={() => router.navigate(href)}
-                >
-                  <Icon size={32} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
-                </TouchableOpacity>
-              );
-            })}
-          </SafeAreaView>
-        </View>
+          <View style={s.navWrapper}>
+              <PawNavBar active="/homepage" />
+          </View>
       </SafeAreaView>
     </View>
   );
@@ -207,5 +193,11 @@ const s = StyleSheet.create({
     backgroundColor: "rgba(214, 110, 90, 0.35)",
     borderTopLeftRadius: 14,
     borderTopRightRadius: 14,
+  },
+  navWrapper: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
 });
