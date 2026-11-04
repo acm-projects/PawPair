@@ -1,8 +1,11 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import { Text, View, StyleSheet, Image, ScrollView, Pressable, Animated, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { PETS_DATA } from "../../data/pets";
-import { matchPet, starPet } from "../../store/petLists";
+import { matchPet } from "../../store/petLists";
+import { markSwiped, useSwiped } from "../../store/swiped";
+import { useRouter } from "expo-router";
+import { ChevronLeft } from "lucide-react-native";
 
 const paw = require("../../../assets/images/paw-watermark.png");
 const pawIcon = require("../../../assets/images/paw-icon.png");
@@ -10,20 +13,23 @@ const pawIcon = require("../../../assets/images/paw-icon.png");
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export default function Scrollview() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const busy = useRef(false); 
+  const busy = useRef(false);
+  const router = useRouter();
+  const swiped = useSwiped();
 
   const position = useMemo(() => new Animated.ValueXY({ x: 0, y: 0 }), []);
 
-  const handleAction = (actionType: "reject" | "star" | "match") => {
-    if (busy.current) return;
+  // only pets that haven't been swiped yet; the first one is always on top
+  const deck = PETS_DATA.filter((p) => !swiped.has(p.id));
+  const currentPet = deck[0];
+
+  const handleAction = (actionType: "reject" | "match") => {
+    if (busy.current || !currentPet) return;
     busy.current = true;
 
-    const pet = PETS_DATA[currentIndex];
+    const pet = currentPet;
 
     if (actionType === "match") matchPet(pet.id);
-    if (actionType === "star") starPet(pet.id);
-
     const xTarget = actionType === "reject" ? -SCREEN_WIDTH * 1.2 : SCREEN_WIDTH * 1.2;
 
     Animated.timing(position, {
@@ -31,7 +37,7 @@ export default function Scrollview() {
       duration: 250,
       useNativeDriver: false,
     }).start(() => {
-      setCurrentIndex((prev) => prev + 1);
+      markSwiped(pet.id); // remember it so it never shows again
       position.setValue({ x: 0, y: 0 });
       busy.current = false;
     });
@@ -46,100 +52,163 @@ export default function Scrollview() {
     transform: [{ translateX: position.x }, { translateY: position.y }, { rotate }],
   };
 
-  if (currentIndex >= PETS_DATA.length) {
+  if (!currentPet) {
     return (
-      <View style={[s.outer, { justifyContent: "center", alignItems: "center" }]}>
-        <Text style={{ color: "#fff", fontSize: 16, fontWeight: "bold" }}>All caught up on reccs :)!</Text>
+      <View style={[s.outer, s.emptyWrap]}>
+        <Text style={s.emptyText}>That's all the pets!</Text>
+        <Pressable style={s.emptyBtn} onPress={() => router.replace("/homepage" as any)}>
+          <Text style={s.emptyBtnText}>Home</Text>
+        </Pressable>
       </View>
     );
   }
 
-  const currentPet = PETS_DATA[currentIndex];
-
   return (
-    <ScrollView style={s.outer} contentContainerStyle={{ padding: 16, alignItems: "center" }}>
-      <Animated.View style={[s.card, animatedCardStyle]}>
-        <Image source={{ uri: currentPet.image }} style={{ width: "100%", height: 285 }} />
+    <View style={s.mainWrapper}>
+      <ScrollView
+        style={s.outer}
+        contentContainerStyle={{ padding: 16, paddingTop: 12, alignItems: "center" }}
+        showsVerticalScrollIndicator={false}
+      >
+        <Animated.View style={[s.card, animatedCardStyle]}>
+          <View style={s.imageContainer}>
+            <Image source={{ uri: currentPet.image }} style={s.petImage} />
 
-        <View style={{ padding: 16 }}>
-          <Image source={paw} style={[s.paw, { top: 35, right: 20 }]} />
-
-          <View style={{ flexDirection: "row", alignItems: "baseline" }}>
-            <Text style={s.name}>{currentPet.name}</Text>
-            <Text style={s.age}>{currentPet.age}</Text>
+            <Pressable
+              style={s.backButton}
+              onPress={() => router.navigate("homepages/PreHomepage" as any)}
+            >
+              <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
+            </Pressable>
           </View>
 
-          {currentPet.traits.map((t, i) => (
-            <View key={i} style={s.trait}>
-              <View style={s.iconBox}>
-                <Image source={t.icon} style={{ width: t.size, height: t.size }} />
-              </View>
-              <Text style={s.small}>{t.text}</Text>
+          <View style={{ padding: 16 }}>
+            <Image source={paw} style={[s.paw, { top: 35, right: 20 }]} />
+
+            <View style={{ flexDirection: "row", alignItems: "baseline" }}>
+              <Text style={s.name}>{currentPet.name}</Text>
+              <Text style={s.age}>{currentPet.age}</Text>
             </View>
-          ))}
 
-          <LinearGradient
-            colors={["#F5C0B8", "#F6C69F"]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={s.contact}
-          >
-            <Image source={pawIcon} style={s.contactIcon} />
-            <View>
-              <Text style={s.small}>You can contact me at:</Text>
-              <Text style={[s.small, { fontWeight: "bold" }]}>{currentPet.email}</Text>
-            </View>
-          </LinearGradient>
-        </View>
-
-        <View style={s.section}>
-          <Text style={s.title}>About me</Text>
-          <Text style={s.body}>{currentPet.about}</Text>
-        </View>
-
-        <View style={s.section}>
-          <Image source={paw} style={[s.paw, { bottom: 70, right: 20 }]} />
-
-          <Text style={s.title}>Loves:</Text>
-          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 10 }}>
-            {currentPet.loves.map((l, i) => (
-              <View key={i} style={s.pill}>
-                <Text style={s.pillText}>{l}</Text>
+            {currentPet.traits.map((t, i) => (
+              <View key={i} style={s.trait}>
+                <View style={s.iconBox}>
+                  <Image source={t.icon} style={{ width: t.size, height: t.size }} />
+                </View>
+                <Text style={s.small}>{t.text}</Text>
               </View>
             ))}
+
+            <LinearGradient
+              colors={["#F5C0B8", "#F6C69F"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={s.contact}
+            >
+              <Image source={pawIcon} style={s.contactIcon} />
+              <View>
+                <Text style={s.small}>You can contact me at:</Text>
+                <Text style={[s.small, { fontWeight: "bold" }]}>{currentPet.email}</Text>
+              </View>
+            </LinearGradient>
           </View>
 
-          <View style={s.actions}>
-            <Pressable
-              onPress={() => handleAction("reject")}
-              style={[s.btn, { borderColor: "#D32F2F", backgroundColor: "#FBEFEF" }]}
-            >
-              <Text style={[s.actionSymbol, { color: "#D32F2F" }]}>✕</Text>
-            </Pressable>
-
-            <Pressable
-              onPress={() => handleAction("star")}
-              style={[s.btn, { borderColor: "#6366F1", backgroundColor: "#ECEBFA" }]}
-            >
-              <Text style={[s.actionSymbol, { color: "#6366F1" }]}>★</Text>
-            </Pressable>
-
-            <Pressable
-              onPress={() => handleAction("match")}
-              style={[s.btn, { borderColor: "#2E7D32", backgroundColor: "#EAF7EE" }]}
-            >
-              <Text style={[s.actionSymbol, { color: "#2E7D32" }]}>✓</Text>
-            </Pressable>
+          <View style={s.section}>
+            <Text style={s.title}>About me</Text>
+            <Text style={s.body}>{currentPet.about}</Text>
           </View>
-        </View>
-      </Animated.View>
-    </ScrollView>
+
+          <View style={s.section}>
+            <Image source={paw} style={[s.paw, { bottom: 70, right: 20 }]} />
+
+            <Text style={s.title}>Loves:</Text>
+            <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 10 }}>
+              {currentPet.loves.map((l, i) => (
+                <View key={i} style={s.pill}>
+                  <Text style={s.pillText}>{l}</Text>
+                </View>
+              ))}
+            </View>
+
+            <View style={s.actions}>
+              <Pressable
+                onPress={() => handleAction("reject")}
+                style={[s.btn, { borderColor: "#D32F2F", backgroundColor: "#FBEFEF" }]}
+              >
+                <Text style={[s.actionSymbol, { color: "#D32F2F" }]}>✕</Text>
+              </Pressable>
+
+              <Pressable
+                onPress={() => handleAction("match")}
+                style={[s.btn, { borderColor: "#2E7D32", backgroundColor: "#EAF7EE" }]}
+              >
+                <Text style={[s.actionSymbol, { color: "#2E7D32" }]}>✓</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Animated.View>
+      </ScrollView>
+    </View>
   );
 }
 
 const s = StyleSheet.create({
-  outer: { flex: 1, backgroundColor: "#6b6b6b" },
-  card: { width: "100%", maxWidth: 340, backgroundColor: "#F6F3EF", overflow: "hidden" },
+  mainWrapper: {
+    flex: 1,
+    backgroundColor: "#6b6b6b",
+  },
+  outer: {
+    flex: 1,
+    backgroundColor: "#6b6b6b",
+  },
+  emptyWrap: {
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 16,
+  },
+  emptyText: { color: "#fff", fontSize: 16 },
+  emptyBtn: {
+    paddingHorizontal: 22,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: "#F4BFB2",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  emptyBtnText: { fontSize: 14, fontWeight: "600", color: "#000" },
+  card: {
+    width: "100%",
+    maxWidth: 340,
+    backgroundColor: "#F6F3EF",
+    overflow: "hidden",
+    marginTop: 12,
+  },
+  imageContainer: {
+    position: "relative",
+    width: "100%",
+    height: 285,
+  },
+  petImage: {
+    width: "100%",
+    height: "100%",
+  },
+  backButton: {
+    position: "absolute",
+    top: 14,
+    left: 14,
+    zIndex: 99,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: "rgba(246, 243, 239, 0.95)",
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 4,
+  },
   paw: { position: "absolute", width: 60, height: 60, resizeMode: "contain" },
   name: { fontSize: 22, fontWeight: "bold" },
   age: { fontSize: 17, marginLeft: 22 },

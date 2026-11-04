@@ -2,6 +2,8 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { useEffect } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { useRouter } from "expo-router";
+import PawNavBar from "@/components/PawNavBar";
+
 
 export default function Profile() {
  
@@ -10,6 +12,7 @@ export default function Profile() {
   return (
     <View>
         <Text>profile</Text>
+        <PawNavBar active="/profile" />
     </View>
   );
 
