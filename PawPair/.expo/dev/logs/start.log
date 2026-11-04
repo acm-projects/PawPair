@@ -18861,3 +18861,435 @@
 {"_e":"devserver:start","_t":1793679661098,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
 {"_e":"metro:config","_t":1793679661900,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
 {"_e":"expo:dev-tools-plugin:load","_t":1793679662576,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793679679834,"atlas":false,"workers":6,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1793679685567,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793679685568,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793679685570,"id":"3","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793679685570,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679685570,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679685574,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679685575,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679685675,"id":"2","progress":0.12098298676748581,"total":46,"current":16}
+{"_e":"metro:bundling:progress","_t":1793679685675,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679685775,"id":"2","progress":0.12098298676748581,"total":211,"current":70}
+{"_e":"metro:bundling:progress","_t":1793679685775,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679685875,"id":"2","progress":0.18069904939965278,"total":287,"current":122}
+{"_e":"metro:bundling:progress","_t":1793679685875,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679685975,"id":"2","progress":0.23068383120192193,"total":406,"current":195}
+{"_e":"metro:bundling:progress","_t":1793679685975,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679686075,"id":"2","progress":0.35847296036350357,"total":471,"current":282}
+{"_e":"metro:bundling:progress","_t":1793679686075,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679686176,"id":"2","progress":0.405909173023153,"total":609,"current":388}
+{"_e":"metro:bundling:progress","_t":1793679686176,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679686275,"id":"2","progress":0.405909173023153,"total":609,"current":388}
+{"_e":"metro:bundling:progress","_t":1793679686275,"id":"3","progress":0.16000000000000003,"total":210,"current":84}
+{"_e":"metro:bundling:progress","_t":1793679686375,"id":"2","progress":0.5482113799914724,"total":678,"current":502}
+{"_e":"metro:bundling:progress","_t":1793679686375,"id":"3","progress":0.16000000000000003,"total":210,"current":84}
+{"_e":"metro:bundling:progress","_t":1793679686478,"id":"2","progress":0.6788101736481944,"total":795,"current":655}
+{"_e":"metro:bundling:progress","_t":1793679686478,"id":"3","progress":0.16000000000000003,"total":210,"current":84}
+{"_e":"metro:bundling:progress","_t":1793679686662,"id":"2","progress":0.6788101736481944,"total":800,"current":659}
+{"_e":"metro:bundling:progress","_t":1793679686662,"id":"3","progress":0.16000000000000003,"total":210,"current":84}
+{"_e":"metro:bundling:progress","_t":1793679686779,"id":"2","progress":0.6788101736481944,"total":2705,"current":659}
+{"_e":"metro:bundling:progress","_t":1793679686779,"id":"3","progress":0.16000000000000003,"total":210,"current":84}
+{"_e":"metro:bundling:progress","_t":1793679686823,"id":"2","progress":0.6788101736481944,"total":2705,"current":659}
+{"_e":"metro:bundling:progress","_t":1793679686823,"id":"3","progress":0.17917904183884295,"total":352,"current":149}
+{"_e":"metro:bundling:progress","_t":1793679686923,"id":"2","progress":0.6788101736481944,"total":2705,"current":659}
+{"_e":"metro:bundling:progress","_t":1793679686923,"id":"3","progress":0.28909785507775393,"total":491,"current":264}
+{"_e":"metro:bundling:progress","_t":1793679687023,"id":"2","progress":0.6788101736481944,"total":2705,"current":659}
+{"_e":"metro:bundling:progress","_t":1793679687023,"id":"3","progress":0.34398833826223346,"total":578,"current":339}
+{"_e":"metro:bundling:progress","_t":1793679687123,"id":"2","progress":0.6788101736481944,"total":2745,"current":760}
+{"_e":"metro:bundling:progress","_t":1793679687123,"id":"3","progress":0.34398833826223346,"total":578,"current":339}
+{"_e":"metro:bundling:progress","_t":1793679687224,"id":"2","progress":0.6788101736481944,"total":2765,"current":1384}
+{"_e":"metro:bundling:progress","_t":1793679687224,"id":"3","progress":0.34398833826223346,"total":578,"current":339}
+{"_e":"metro:bundling:progress","_t":1793679687324,"id":"2","progress":0.6788101736481944,"total":2765,"current":1384}
+{"_e":"metro:bundling:progress","_t":1793679687324,"id":"3","progress":0.38180062270226717,"total":581,"current":359}
+{"_e":"metro:bundling:progress","_t":1793679687424,"id":"2","progress":0.6788101736481944,"total":2765,"current":1384}
+{"_e":"metro:bundling:progress","_t":1793679687424,"id":"3","progress":0.5264133388468808,"total":736,"current":534}
+{"_e":"metro:bundling:progress","_t":1793679687530,"id":"2","progress":0.6788101736481944,"total":2765,"current":1384}
+{"_e":"metro:bundling:progress","_t":1793679687530,"id":"3","progress":0.5264133388468808,"total":805,"current":578}
+{"_e":"metro:bundling:progress","_t":1793679687692,"id":"2","progress":0.6788101736481944,"total":2765,"current":1384}
+{"_e":"metro:bundling:progress","_t":1793679687692,"id":"3","progress":0.5264133388468808,"total":806,"current":578}
+{"_e":"metro:bundling:progress","_t":1793679687809,"id":"2","progress":0.949851347946586,"total":2835,"current":2763}
+{"_e":"metro:bundling:progress","_t":1793679687809,"id":"3","progress":0.5264133388468808,"total":806,"current":578}
+{"_e":"metro:bundling:progress","_t":1793679687909,"id":"2","progress":0.949851347946586,"total":2835,"current":2763}
+{"_e":"metro:bundling:progress","_t":1793679687909,"id":"3","progress":0.5264133388468808,"total":2779,"current":637}
+{"_e":"metro:bundling:progress","_t":1793679688009,"id":"2","progress":0.952576,"total":2875,"current":2806}
+{"_e":"metro:bundling:progress","_t":1793679688009,"id":"3","progress":0.5264133388468808,"total":2779,"current":637}
+{"_e":"metro:bundling:progress","_t":1793679688109,"id":"2","progress":0.952576,"total":2875,"current":2806}
+{"_e":"metro:bundling:progress","_t":1793679688109,"id":"3","progress":0.5736147631691074,"total":2848,"current":2157}
+{"_e":"metro:bundling:progress","_t":1793679688243,"id":"2","progress":0.9696674038602952,"total":2879,"current":2835}
+{"_e":"metro:bundling:progress","_t":1793679688243,"id":"3","progress":0.5736147631691074,"total":2848,"current":2157}
+{"_e":"metro:bundling:progress","_t":1793679688366,"id":"2","progress":0.9696674038602952,"total":2879,"current":2835}
+{"_e":"metro:bundling:progress","_t":1793679688366,"id":"3","progress":0.9406942637280811,"total":2923,"current":2835}
+{"_e":"metro:bundling:progress","_t":1793679688467,"id":"2","progress":0.9696674038602952,"total":2934,"current":2880}
+{"_e":"metro:bundling:progress","_t":1793679688467,"id":"3","progress":0.9406942637280811,"total":2923,"current":2835}
+{"_e":"metro:bundling:progress","_t":1793679688567,"id":"2","progress":0.9709524074695165,"total":2939,"current":2896}
+{"_e":"metro:bundling:progress","_t":1793679688567,"id":"3","progress":0.9406942637280811,"total":2923,"current":2835}
+{"_e":"metro:bundling:progress","_t":1793679688667,"id":"2","progress":0.9709524074695165,"total":2939,"current":2896}
+{"_e":"metro:bundling:progress","_t":1793679688667,"id":"3","progress":0.9702089315510327,"total":3065,"current":3019}
+{"_e":"metro:bundling:progress","_t":1793679688833,"id":"2","progress":0.9709524074695165,"total":2939,"current":2896}
+{"_e":"metro:bundling:progress","_t":1793679688834,"id":"3","progress":0.9968066442227838,"total":3129,"current":3124}
+{"_e":"metro:bundling:done","_t":1793679688973,"id":"3","total":3129,"ms":3403.3315}
+{"_e":"metro:bundling:progress","_t":1793679688973,"id":"2","progress":0.9709524074695165,"total":2939,"current":2896}
+{"_e":"metro:bundling:progress","_t":1793679689081,"id":"2","progress":0.9709524074695165,"total":2939,"current":2896}
+{"_e":"metro:bundling:done","_t":1793679690076,"id":"2","total":2939,"ms":4509.0634}
+{"_e":"metro:bundling:started","_t":1793679690521,"id":"6","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793679690521,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679690527,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679690627,"id":"6","progress":0.2874359517716162,"total":429,"current":230}
+{"_e":"metro:bundling:progress","_t":1793679690727,"id":"6","progress":0.5004481226521234,"total":687,"current":486}
+{"_e":"metro:bundling:progress","_t":1793679690899,"id":"6","progress":0.5004481226521234,"total":2688,"current":638}
+{"_e":"metro:bundling:progress","_t":1793679691016,"id":"6","progress":0.5004481226521234,"total":2748,"current":765}
+{"_e":"metro:bundling:progress","_t":1793679691115,"id":"6","progress":0.6170216341104809,"total":2760,"current":2168}
+{"_e":"metro:bundling:progress","_t":1793679691216,"id":"6","progress":0.935145058811174,"total":2760,"current":2669}
+{"_e":"metro:bundling:progress","_t":1793679691341,"id":"6","progress":0.9539343969754254,"total":2875,"current":2808}
+{"_e":"metro:bundling:progress","_t":1793679691453,"id":"6","progress":0.999,"total":2969,"current":2969}
+{"_e":"metro:bundling:done","_t":1793679691589,"id":"6","total":2969,"ms":1067.371}
+{"_e":"metro:client_log","_t":1793679692514,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793679692516,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793679693173,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793679693174,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793679693184,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793679693602,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793679693604,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793679693654,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793679693657,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793679693755,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:started","_t":1793679739288,"id":"b","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793679739288,"id":"b","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793679739288,"id":"c","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793679739288,"id":"b","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679739288,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793679739534,"id":"c","total":1,"ms":246.2051}
+{"_e":"metro:bundling:progress","_t":1793679739535,"id":"b","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793679740223,"id":"b","total":1,"ms":934.5314}
+{"_e":"metro:bundling:started","_t":1793679740274,"id":"f","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793679740274,"id":"f","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793679740363,"id":"f","total":1,"ms":88.8786}
+{"_e":"metro:client_log","_t":1793679740989,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793679740989,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793679741158,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793679741160,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793679741166,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793679741223,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793679741224,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793679741235,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793679741252,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:started","_t":1793679746039,"id":"l","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793679746039,"id":"l","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793679746040,"id":"m","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793679746040,"id":"l","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679746040,"id":"m","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793679746227,"id":"m","total":1,"ms":186.7217}
+{"_e":"metro:bundling:progress","_t":1793679746227,"id":"l","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793679747076,"id":"l","total":1,"ms":1037.4631}
+{"_e":"metro:bundling:started","_t":1793679747358,"id":"p","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793679747358,"id":"p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793679747467,"id":"p","total":1,"ms":108.2139}
+{"_e":"metro:client_log","_t":1793679748223,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793679748223,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793679748471,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793679748471,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793679748476,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793679748575,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793679748575,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793679748588,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793679748603,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793679761919,"level":"log","data":["Login successful:","bhuvana67@gmail.com"]}
+{"_e":"metro:client_log","_t":1793679761937,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793679779954,"level":"error","data":["\n\n\u001b[1mCode: swiping.tsx\u001b[22m\n\u001b[0m \u001b[90m 51 |\u001b[39m\n \u001b[90m 52 |\u001b[39m   \u001b[36mif\u001b[39m (currentIndex \u001b[33m>=\u001b[39m \u001b[33mPETS_DATA\u001b[39m\u001b[33m.\u001b[39mlength) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 53 |\u001b[39m     router\u001b[33m.\u001b[39mreplace(\u001b[32m\"/homepage\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 54 |\u001b[39m   }\n \u001b[90m 55 |\u001b[39m\n \u001b[90m 56 |\u001b[39m   \u001b[36mconst\u001b[39m currentPet \u001b[33m=\u001b[39m \u001b[33mPETS_DATA\u001b[39m[currentIndex]\u001b[33m;\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Scrollview (src\\app\\(tabs)\\swiping.tsx:53:11)\u001b[39m\n\u001b[90m  TabLayout (src\\app\\(tabs)\\_layout.tsx:6:5)\u001b[39m\n\u001b[90m  RootLayout (src\\app\\_layout.tsx:4:12)\u001b[39m"]}
+{"_e":"metro:bundling:started","_t":1793679961731,"id":"17","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793679961732,"id":"17","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793679961732,"id":"18","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793679961732,"id":"17","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679961732,"id":"18","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679961735,"id":"17","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679961736,"id":"18","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679961850,"id":"17","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679961850,"id":"18","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679962054,"id":"17","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679962054,"id":"18","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679962191,"id":"17","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679962191,"id":"18","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793679962262,"id":"18","total":1,"ms":529.3852}
+{"_e":"metro:bundling:progress","_t":1793679962262,"id":"17","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793679962367,"id":"17","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793679964200,"id":"17","total":1,"ms":2468.6854}
+{"_e":"metro:bundling:started","_t":1793679964344,"id":"1b","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793679964345,"id":"1b","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793679964480,"id":"1b","total":1,"ms":135.1162}
+{"_e":"metro:client_log","_t":1793679965043,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793679965047,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793679965230,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793679965231,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793679965237,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793679965309,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793679965310,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793679965353,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793679965357,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793679965393,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:failed","_t":1793680120843,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\store\\petLists.tsx: Unterminated string constant. (4:16)\n\n  2 | import { useEffect, useSyncExternalStore } from \"react\";\n  3 |\n> 4 | type ListName = \"matches;\n    |                 ^\n  5 | type State = { matches: number[]; starred: number[]; hydrated: boolean };\n  6 |\n  7 | const KEY = \"pawpair-lists-v1\";","importStack":null,"filename":"src\\store\\petLists.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793680120853,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\store\\petLists.tsx: Unterminated string constant. (4:16)\n\n  2 | import { useEffect, useSyncExternalStore } from \"react\";\n  3 |\n> 4 | type ListName = \"matches;\n    |                 ^\n  5 | type State = { matches: number[]; starred: number[]; hydrated: boolean };\n  6 |\n  7 | const KEY = \"pawpair-lists-v1\";]"]}
+{"_e":"metro:client_log","_t":1793680120854,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\store\\petLists.tsx: Unterminated string constant. (4:16)\n\n  2 | import { useEffect, useSyncExternalStore } from \"react\";\n  3 |\n> 4 | type ListName = \"matches;\n    |                 ^\n  5 | type State = { matches: number[]; starred: number[]; hydrated: boolean };\n  6 |\n  7 | const KEY = \"pawpair-lists-v1\";]"]}
+{"_e":"metro:bundling:failed","_t":1793680128552,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\store\\petLists.tsx: Unexpected token, expected \";\" (5:33)\n\n  3 |\n  4 | type ListName = \"matches\";\n> 5 | type State = { matches: number[] hydrated: boolean };\n    |                                  ^\n  6 |\n  7 | const KEY = \"pawpair-lists-v1\";\n  8 |","importStack":null,"filename":"src\\store\\petLists.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793680128560,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\store\\petLists.tsx: Unexpected token, expected \";\" (5:33)\n\n  3 |\n  4 | type ListName = \"matches\";\n> 5 | type State = { matches: number[] hydrated: boolean };\n    |                                  ^\n  6 |\n  7 | const KEY = \"pawpair-lists-v1\";\n  8 |]"]}
+{"_e":"metro:client_log","_t":1793680128563,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\store\\petLists.tsx: Unexpected token, expected \";\" (5:33)\n\n  3 |\n  4 | type ListName = \"matches\";\n> 5 | type State = { matches: number[] hydrated: boolean };\n    |                                  ^\n  6 |\n  7 | const KEY = \"pawpair-lists-v1\";\n  8 |]"]}
+{"_e":"metro:bundling:started","_t":1793680198638,"id":"1u","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680198638,"id":"1u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793680198638,"id":"1v","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793680198638,"id":"1u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198638,"id":"1v","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198640,"id":"1u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198640,"id":"1v","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793680198659,"id":"1x","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680198659,"id":"1u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198659,"id":"1v","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198659,"id":"1x","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793680198659,"id":"1y","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793680198659,"id":"1u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198659,"id":"1v","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198659,"id":"1x","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198659,"id":"1y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198817,"id":"1u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198817,"id":"1v","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198817,"id":"1x","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198817,"id":"1y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680198931,"id":"1v","total":1,"ms":293.0033}
+{"_e":"metro:bundling:progress","_t":1793680198932,"id":"1u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198932,"id":"1x","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198932,"id":"1y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680198985,"id":"1y","total":1,"ms":325.251}
+{"_e":"metro:bundling:progress","_t":1793680198985,"id":"1u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680198985,"id":"1x","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680199146,"id":"1u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680199146,"id":"1x","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680200916,"id":"1u","total":1,"ms":2278.4653}
+{"_e":"metro:bundling:progress","_t":1793680200916,"id":"1x","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680200960,"id":"1x","total":1,"ms":2300.3821}
+{"_e":"metro:bundling:started","_t":1793680201016,"id":"21","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680201016,"id":"21","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680201116,"id":"21","total":1,"ms":99.667}
+{"_e":"metro:bundling:started","_t":1793680201163,"id":"24","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680201163,"id":"24","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680201250,"id":"24","total":1,"ms":86.2606}
+{"_e":"metro:client_log","_t":1793680202158,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793680202159,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793680202355,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793680202355,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793680202781,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793680202787,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680202801,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680202863,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680202926,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793680202927,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680202943,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680202965,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680202968,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680203008,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680203009,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793680203069,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793680203554,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680203555,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680203564,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680203564,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680206325,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680206326,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680206457,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793680206459,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793680206562,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:failed","_t":1793680207191,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\starred.tsx: Unterminated regular expression. (1:1)\n\n> 1 | /import { useFonts } from \"expo-font\";\n    |  ^\n  2 | import { LinearGradient } from \"expo-linear-gradient\";\n  3 | import { Tabs, router } from \"expo-router\";\n  4 | import { Camera as CameraIcon, Check, Dog, House, User, X } from \"lucide-react-native\";","importStack":null,"filename":"src\\app\\(tabs)\\starred.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793680207199,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\starred.tsx: Unterminated regular expression. (1:1)\n\n> 1 | /import { useFonts } from \"expo-font\";\n    |  ^\n  2 | import { LinearGradient } from \"expo-linear-gradient\";\n  3 | import { Tabs, router } from \"expo-router\";\n  4 | import { Camera as CameraIcon, Check, Dog, House, User, X } from \"lucide-react-native\";]"]}
+{"_e":"metro:client_log","_t":1793680207199,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\starred.tsx: Unterminated regular expression. (1:1)\n\n> 1 | /import { useFonts } from \"expo-font\";\n    |  ^\n  2 | import { LinearGradient } from \"expo-linear-gradient\";\n  3 | import { Tabs, router } from \"expo-router\";\n  4 | import { Camera as CameraIcon, Check, Dog, House, User, X } from \"lucide-react-native\";]"]}
+{"_e":"metro:bundling:failed","_t":1793680209753,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\starred.tsx: Unterminated comment. (1:0)\n\n> 1 | /*import { useFonts } from \"expo-font\";\n    | ^\n  2 | import { LinearGradient } from \"expo-linear-gradient\";\n  3 | import { Tabs, router } from \"expo-router\";\n  4 | import { Camera as CameraIcon, Check, Dog, House, User, X } from \"lucide-react-native\";","importStack":null,"filename":"src\\app\\(tabs)\\starred.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793680209833,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\starred.tsx: Unterminated comment. (1:0)\n\n> 1 | /*import { useFonts } from \"expo-font\";\n    | ^\n  2 | import { LinearGradient } from \"expo-linear-gradient\";\n  3 | import { Tabs, router } from \"expo-router\";\n  4 | import { Camera as CameraIcon, Check, Dog, House, User, X } from \"lucide-react-native\";]"]}
+{"_e":"metro:client_log","_t":1793680209836,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\starred.tsx: Unterminated comment. (1:0)\n\n> 1 | /*import { useFonts } from \"expo-font\";\n    | ^\n  2 | import { LinearGradient } from \"expo-linear-gradient\";\n  3 | import { Tabs, router } from \"expo-router\";\n  4 | import { Camera as CameraIcon, Check, Dog, House, User, X } from \"lucide-react-native\";]"]}
+{"_e":"metro:bundling:started","_t":1793680216076,"id":"2i","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680216076,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793680216077,"id":"2j","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793680216077,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680216077,"id":"2j","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680216078,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680216078,"id":"2j","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680216218,"id":"2j","total":1,"ms":141.3572}
+{"_e":"metro:bundling:progress","_t":1793680216218,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680216323,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1793680216852,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:progress","_t":1793680216853,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1793680216853,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:progress","_t":1793680216853,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1793680216853,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:bundling:progress","_t":1793680216853,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1793680216853,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:bundling:progress","_t":1793680216853,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:client_log","_t":1793680216853,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:bundling:progress","_t":1793680216853,"id":"2i","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680216900,"id":"2i","total":1,"ms":823.8597}
+{"_e":"metro:bundling:started","_t":1793680216957,"id":"2m","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680216957,"id":"2m","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680217050,"id":"2m","total":1,"ms":92.7754}
+{"_e":"metro:client_log","_t":1793680217437,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793680217439,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793680217585,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793680217587,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680217601,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680217640,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680217685,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680217686,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680217708,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793680217750,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:started","_t":1793680276722,"id":"2r","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680276722,"id":"2r","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793680276723,"id":"2s","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793680276723,"id":"2r","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680276723,"id":"2s","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680276724,"id":"2r","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680276724,"id":"2s","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680276829,"id":"2r","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680276830,"id":"2s","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680277057,"id":"2r","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680277057,"id":"2s","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680277185,"id":"2r","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680277185,"id":"2s","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680277232,"id":"2s","total":1,"ms":509.3534}
+{"_e":"metro:bundling:progress","_t":1793680277233,"id":"2r","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680278822,"id":"2r","total":1,"ms":2100.368}
+{"_e":"metro:bundling:started","_t":1793680278896,"id":"2t","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680278897,"id":"2t","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680279005,"id":"2t","total":1,"ms":108.3708}
+{"_e":"metro:client_log","_t":1793680279598,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793680279598,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793680279833,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793680279834,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680279838,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680279859,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680279902,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680279903,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680279928,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793680284730,"level":"error","data":["\n\n\u001b[1mCode: swiping.tsx\u001b[22m\n\u001b[0m \u001b[90m 49 |\u001b[39m\n \u001b[90m 50 |\u001b[39m   \u001b[36mif\u001b[39m (currentIndex \u001b[33m>=\u001b[39m \u001b[33mPETS_DATA\u001b[39m\u001b[33m.\u001b[39mlength) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m     router\u001b[33m.\u001b[39mreplace(\u001b[32m\"/homepage\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m   }\n \u001b[90m 53 |\u001b[39m\n \u001b[90m 54 |\u001b[39m   \u001b[36mconst\u001b[39m currentPet \u001b[33m=\u001b[39m \u001b[33mPETS_DATA\u001b[39m[currentIndex]\u001b[33m;\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Scrollview (src\\app\\(tabs)\\swiping.tsx:51:11)\u001b[39m\n\u001b[90m  TabLayout (src\\app\\(tabs)\\_layout.tsx:6:5)\u001b[39m\n\u001b[90m  RootLayout (src\\app\\_layout.tsx:4:12)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1793680284744,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793680284844,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:failed","_t":1793680757992,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\status.tsx: Unexpected token, expected \",\" (162:10)\n\n  160 |     marginTop: 24,\n  161 |     marginBottom: 14,\n> 162 |     letter-spacing\n      |           ^\n  163 |   },\n  164 |\n  165 |   card: { borderRadius: 20, marginBottom: 12, overflow: \"hidden\" },","importStack":null,"filename":"src\\app\\(tabs)\\status.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793680757996,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\status.tsx: Unexpected token, expected \",\" (162:10)\n\n  160 |     marginTop: 24,\n  161 |     marginBottom: 14,\n> 162 |     letter-spacing\n      |           ^\n  163 |   },\n  164 |\n  165 |   card: { borderRadius: 20, marginBottom: 12, overflow: \"hidden\" },]"]}
+{"_e":"metro:client_log","_t":1793680758007,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\status.tsx: Unexpected token, expected \",\" (162:10)\n\n  160 |     marginTop: 24,\n  161 |     marginBottom: 14,\n> 162 |     letter-spacing\n      |           ^\n  163 |   },\n  164 |\n  165 |   card: { borderRadius: 20, marginBottom: 12, overflow: \"hidden\" },]"]}
+{"_e":"metro:bundling:failed","_t":1793680760336,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\status.tsx: Unexpected token, expected \",\" (162:10)\n\n  160 |     marginTop: 24,\n  161 |     marginBottom: 14,\n> 162 |     letter-spacing:1,\n      |           ^\n  163 |   },\n  164 |\n  165 |   card: { borderRadius: 20, marginBottom: 12, overflow: \"hidden\" },","importStack":null,"filename":"src\\app\\(tabs)\\status.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793680760355,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\status.tsx: Unexpected token, expected \",\" (162:10)\n\n  160 |     marginTop: 24,\n  161 |     marginBottom: 14,\n> 162 |     letter-spacing:1,\n      |           ^\n  163 |   },\n  164 |\n  165 |   card: { borderRadius: 20, marginBottom: 12, overflow: \"hidden\" },]"]}
+{"_e":"metro:client_log","_t":1793680760362,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\status.tsx: Unexpected token, expected \",\" (162:10)\n\n  160 |     marginTop: 24,\n  161 |     marginBottom: 14,\n> 162 |     letter-spacing:1,\n      |           ^\n  163 |   },\n  164 |\n  165 |   card: { borderRadius: 20, marginBottom: 12, overflow: \"hidden\" },]"]}
+{"_e":"root:init","_t":1793680818745,"format":"v0-jsonl","version":"57.0.32"}
+{"_e":"env:mode","_t":1793680818754,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793680818763,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"metro:bundling:started","_t":1793680901066,"id":"3p","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680901067,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793680901067,"id":"3q","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793680901067,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680901067,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680901074,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680901074,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680901173,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680901173,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680901275,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680901276,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680901806,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680901806,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902265,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902265,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902365,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902365,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902465,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902465,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902565,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902565,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902665,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902665,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902765,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902765,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902865,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902865,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902967,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680902967,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903067,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903067,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903167,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903167,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903267,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903267,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903367,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903367,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903471,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903471,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903571,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903571,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903671,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903671,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903771,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903771,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903871,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903871,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903971,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680903971,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904071,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904071,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904172,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904172,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904272,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904272,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904395,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904395,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904731,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904731,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904786,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904786,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904950,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680904951,"id":"3q","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680905026,"id":"3q","total":1,"ms":3958.8238}
+{"_e":"metro:bundling:progress","_t":1793680905026,"id":"3p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680906949,"id":"3p","total":1,"ms":5882.0563}
+{"_e":"metro:bundling:started","_t":1793680907072,"id":"3u","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680907072,"id":"3u","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680907185,"id":"3u","total":1,"ms":113.5864}
+{"_e":"metro:client_log","_t":1793680907738,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793680907738,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793680907906,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793680907906,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680907913,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680907952,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680907997,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680907997,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680908018,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793680908019,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793680908057,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:started","_t":1793680916568,"id":"3y","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680916568,"id":"3y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793680916568,"id":"3z","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793680916568,"id":"3y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793680916568,"id":"3z","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680916709,"id":"3z","total":1,"ms":140.9283}
+{"_e":"metro:bundling:progress","_t":1793680916709,"id":"3y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680917703,"id":"3y","total":1,"ms":1135.4165}
+{"_e":"metro:bundling:started","_t":1793680918063,"id":"42","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793680918063,"id":"42","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793680918227,"id":"42","total":1,"ms":164.0184}
+{"_e":"metro:client_log","_t":1793680919044,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793680919044,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793680919316,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793680919316,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680919320,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680919352,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793680919416,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680919417,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793680919427,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793680919448,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793680978544,"level":"log","data":["Login successful:","bhuvana67@gmail.com"]}
+{"_e":"metro:client_log","_t":1793680978552,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"root:init","_t":1793769220843,"format":"v0-jsonl","version":"57.0.32"}
+{"_e":"env:mode","_t":1793769220846,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793769220857,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793769222534,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793769225441,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793769228131,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793769278567,"atlas":false,"workers":6,"host":"::","port":8081}
+{"_e":"root:init","_t":1793823827769,"format":"v0-jsonl","version":"57.0.32"}
+{"_e":"env:mode","_t":1793823827773,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793823827780,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793823829400,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793823831078,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793823832546,"plugins":[]}
