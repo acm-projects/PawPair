@@ -14,6 +14,8 @@ import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
+import PawNavBar from "@/components/PawNavBar";
+
 
 
 
@@ -216,19 +218,10 @@ export default function Scrollview() {
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
       />
-      <LinearGradient colors={["#F5C0B3", "#F5C0B3"]} style={styles.navBarBackground}>
-        <SafeAreaView style={styles.navBar} edges={["bottom"]}>
-          {NAV_ITEMS.map(({ href, label, Icon }) => {
-            const isActive = href === "/scrollview";
-            return (
-              <TouchableOpacity key={href} style={styles.navItem} onPress={() => router.navigate(href)}>
-                <Icon size={40} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
-                <Text style={[styles.navLabel, isActive && styles.navLabelActive]}>{label}</Text>
-              </TouchableOpacity>
-            );
-          })}
-        </SafeAreaView>
-      </LinearGradient>
+        
+          <View style={styles.navWrapper}>
+              <PawNavBar active="/homepage" />
+          </View>
     </LinearGradient>
   );
 }
@@ -240,16 +233,6 @@ const NAV_RADIUS = 20;
 const styles = StyleSheet.create({
   container: { flex: 1, paddingTop: 56 },
 
-    navBarBackground: {
-    borderTopLeftRadius: NAV_RADIUS,
-    borderTopRightRadius: NAV_RADIUS,
-    overflow: "hidden",
-    marginTop: -NAV_RADIUS,
-  },
-  navBar: { flexDirection: "row", paddingTop: 8 },
-  navItem: { flex: 1, alignItems: "center", gap: 2, paddingBottom: 4 },
-  navLabel: { color: "transparent", fontSize: 4 },
-  navLabelActive: { fontWeight: "bold" },
 
   searchRow: {
     flexDirection: "row", // put children side by side
@@ -336,4 +319,5 @@ const styles = StyleSheet.create({
   matchRow: { flexDirection: "row", justifyContent: "space-between" },
   matchText: { fontSize: 14 },
   matchValue: { color: "#4f9a5e", fontWeight: "500" },
+  navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });

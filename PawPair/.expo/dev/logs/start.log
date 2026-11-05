@@ -19293,3 +19293,852 @@
 {"_e":"devserver:start","_t":1793823829400,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
 {"_e":"metro:config","_t":1793823831078,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
 {"_e":"expo:dev-tools-plugin:load","_t":1793823832546,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793823858002,"atlas":false,"workers":6,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1793823888907,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793823888908,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793823888909,"id":"3","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793823888909,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823888909,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823888928,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823888928,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823889036,"id":"2","progress":0.1423994304022784,"total":53,"current":20}
+{"_e":"metro:bundling:progress","_t":1793823889036,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823889141,"id":"2","progress":0.1423994304022784,"total":114,"current":20}
+{"_e":"metro:bundling:progress","_t":1793823889141,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823889251,"id":"2","progress":0.1423994304022784,"total":114,"current":20}
+{"_e":"metro:bundling:progress","_t":1793823889251,"id":"3","progress":0.04000000000000001,"total":15,"current":3}
+{"_e":"metro:bundling:progress","_t":1793823889351,"id":"2","progress":0.1423994304022784,"total":180,"current":40}
+{"_e":"metro:bundling:progress","_t":1793823889351,"id":"3","progress":0.04000000000000001,"total":15,"current":3}
+{"_e":"metro:bundling:progress","_t":1793823889452,"id":"2","progress":0.1423994304022784,"total":260,"current":90}
+{"_e":"metro:bundling:progress","_t":1793823889452,"id":"3","progress":0.04000000000000001,"total":15,"current":3}
+{"_e":"metro:bundling:progress","_t":1793823889552,"id":"2","progress":0.17713611989706268,"total":297,"current":125}
+{"_e":"metro:bundling:progress","_t":1793823889552,"id":"3","progress":0.04000000000000001,"total":15,"current":3}
+{"_e":"metro:bundling:progress","_t":1793823889653,"id":"2","progress":0.3030853893164327,"total":376,"current":207}
+{"_e":"metro:bundling:progress","_t":1793823889653,"id":"3","progress":0.04000000000000001,"total":15,"current":3}
+{"_e":"metro:bundling:progress","_t":1793823889752,"id":"2","progress":0.3030853893164327,"total":435,"current":237}
+{"_e":"metro:bundling:progress","_t":1793823889752,"id":"3","progress":0.04000000000000001,"total":15,"current":3}
+{"_e":"metro:bundling:progress","_t":1793823889852,"id":"2","progress":0.3030853893164327,"total":435,"current":237}
+{"_e":"metro:bundling:progress","_t":1793823889852,"id":"3","progress":0.08506944444444446,"total":168,"current":49}
+{"_e":"metro:bundling:progress","_t":1793823889960,"id":"2","progress":0.3030853893164327,"total":435,"current":237}
+{"_e":"metro:bundling:progress","_t":1793823889960,"id":"3","progress":0.09712188027772567,"total":292,"current":91}
+{"_e":"metro:bundling:progress","_t":1793823890060,"id":"2","progress":0.390625,"total":528,"current":330}
+{"_e":"metro:bundling:progress","_t":1793823890060,"id":"3","progress":0.09712188027772567,"total":292,"current":91}
+{"_e":"metro:bundling:progress","_t":1793823890160,"id":"2","progress":0.4644813177005152,"total":628,"current":428}
+{"_e":"metro:bundling:progress","_t":1793823890160,"id":"3","progress":0.09712188027772567,"total":292,"current":91}
+{"_e":"metro:bundling:progress","_t":1793823890260,"id":"2","progress":0.4644813177005152,"total":628,"current":428}
+{"_e":"metro:bundling:progress","_t":1793823890260,"id":"3","progress":0.19052317735973845,"total":433,"current":189}
+{"_e":"metro:bundling:progress","_t":1793823890360,"id":"2","progress":0.4644813177005152,"total":628,"current":428}
+{"_e":"metro:bundling:progress","_t":1793823890360,"id":"3","progress":0.27700831024930744,"total":494,"current":260}
+{"_e":"metro:bundling:progress","_t":1793823890460,"id":"2","progress":0.4910077118161586,"total":695,"current":487}
+{"_e":"metro:bundling:progress","_t":1793823890460,"id":"3","progress":0.27700831024930744,"total":494,"current":260}
+{"_e":"metro:bundling:progress","_t":1793823890591,"id":"2","progress":0.6474731770340852,"total":773,"current":622}
+{"_e":"metro:bundling:progress","_t":1793823890591,"id":"3","progress":0.27700831024930744,"total":494,"current":260}
+{"_e":"metro:bundling:progress","_t":1793823890742,"id":"2","progress":0.6474731770340852,"total":774,"current":622}
+{"_e":"metro:bundling:progress","_t":1793823890742,"id":"3","progress":0.27700831024930744,"total":494,"current":260}
+{"_e":"metro:bundling:progress","_t":1793823891038,"id":"2","progress":0.6474731770340852,"total":2679,"current":623}
+{"_e":"metro:bundling:progress","_t":1793823891038,"id":"3","progress":0.27700831024930744,"total":494,"current":260}
+{"_e":"metro:bundling:progress","_t":1793823891139,"id":"2","progress":0.6474731770340852,"total":2692,"current":643}
+{"_e":"metro:bundling:progress","_t":1793823891139,"id":"3","progress":0.27700831024930744,"total":494,"current":260}
+{"_e":"metro:bundling:progress","_t":1793823891399,"id":"2","progress":0.6474731770340852,"total":2692,"current":643}
+{"_e":"metro:bundling:progress","_t":1793823891399,"id":"3","progress":0.35750865800215653,"total":577,"current":345}
+{"_e":"metro:bundling:progress","_t":1793823891500,"id":"2","progress":0.6474731770340852,"total":2692,"current":643}
+{"_e":"metro:bundling:progress","_t":1793823891501,"id":"3","progress":0.4045861306240779,"total":621,"current":395}
+{"_e":"metro:bundling:progress","_t":1793823891601,"id":"2","progress":0.6474731770340852,"total":2692,"current":643}
+{"_e":"metro:bundling:progress","_t":1793823891601,"id":"3","progress":0.4115343538625845,"total":689,"current":442}
+{"_e":"metro:bundling:progress","_t":1793823891700,"id":"2","progress":0.6474731770340852,"total":2692,"current":643}
+{"_e":"metro:bundling:progress","_t":1793823891700,"id":"3","progress":0.4522972015359234,"total":739,"current":497}
+{"_e":"metro:bundling:progress","_t":1793823891829,"id":"2","progress":0.6474731770340852,"total":2731,"current":692}
+{"_e":"metro:bundling:progress","_t":1793823891829,"id":"3","progress":0.4522972015359234,"total":739,"current":497}
+{"_e":"metro:bundling:progress","_t":1793823892136,"id":"2","progress":0.6474731770340852,"total":2731,"current":692}
+{"_e":"metro:bundling:progress","_t":1793823892136,"id":"3","progress":0.50767832273063,"total":807,"current":575}
+{"_e":"metro:bundling:progress","_t":1793823892240,"id":"2","progress":0.6474731770340852,"total":2755,"current":771}
+{"_e":"metro:bundling:progress","_t":1793823892240,"id":"3","progress":0.50767832273063,"total":807,"current":575}
+{"_e":"metro:bundling:progress","_t":1793823892340,"id":"2","progress":0.6474731770340852,"total":2755,"current":1292}
+{"_e":"metro:bundling:progress","_t":1793823892340,"id":"3","progress":0.50767832273063,"total":807,"current":575}
+{"_e":"metro:bundling:progress","_t":1793823892440,"id":"2","progress":0.6587193059311399,"total":2755,"current":2236}
+{"_e":"metro:bundling:progress","_t":1793823892440,"id":"3","progress":0.50767832273063,"total":807,"current":575}
+{"_e":"metro:bundling:progress","_t":1793823892542,"id":"2","progress":0.9429099064001413,"total":2762,"current":2682}
+{"_e":"metro:bundling:progress","_t":1793823892542,"id":"3","progress":0.50767832273063,"total":807,"current":575}
+{"_e":"metro:bundling:progress","_t":1793823892674,"id":"2","progress":0.9508535568303339,"total":2773,"current":2704}
+{"_e":"metro:bundling:progress","_t":1793823892674,"id":"3","progress":0.50767832273063,"total":807,"current":575}
+{"_e":"metro:bundling:progress","_t":1793823892773,"id":"2","progress":0.9508535568303339,"total":2773,"current":2704}
+{"_e":"metro:bundling:progress","_t":1793823892773,"id":"3","progress":0.50767832273063,"total":2755,"current":619}
+{"_e":"metro:bundling:progress","_t":1793823892873,"id":"2","progress":0.9508535568303339,"total":2773,"current":2704}
+{"_e":"metro:bundling:progress","_t":1793823892873,"id":"3","progress":0.50767832273063,"total":2789,"current":721}
+{"_e":"metro:bundling:progress","_t":1793823892973,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823892973,"id":"3","progress":0.50767832273063,"total":2789,"current":721}
+{"_e":"metro:bundling:progress","_t":1793823893073,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823893073,"id":"3","progress":0.50767832273063,"total":2849,"current":1558}
+{"_e":"metro:bundling:progress","_t":1793823893174,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823893174,"id":"3","progress":0.9001340552762105,"total":2849,"current":2703}
+{"_e":"metro:bundling:started","_t":1793823893239,"id":"5","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793823893239,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823893239,"id":"3","progress":0.9001340552762105,"total":2849,"current":2703}
+{"_e":"metro:bundling:progress","_t":1793823893239,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793823893240,"id":"6","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793823893240,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823893240,"id":"3","progress":0.9001340552762105,"total":2849,"current":2703}
+{"_e":"metro:bundling:progress","_t":1793823893240,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893240,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893274,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823893274,"id":"3","progress":0.9079794961760916,"total":2865,"current":2730}
+{"_e":"metro:bundling:progress","_t":1793823893274,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893274,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893374,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823893374,"id":"3","progress":0.9083350262969775,"total":2919,"current":2782}
+{"_e":"metro:bundling:progress","_t":1793823893374,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893375,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893474,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823893474,"id":"3","progress":0.9455840166977258,"total":2936,"current":2855}
+{"_e":"metro:bundling:progress","_t":1793823893474,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893474,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893574,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823893574,"id":"3","progress":0.9537209166027717,"total":2947,"current":2878}
+{"_e":"metro:bundling:progress","_t":1793823893574,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893574,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893702,"id":"2","progress":0.9508535568303339,"total":2814,"current":2733}
+{"_e":"metro:bundling:progress","_t":1793823893702,"id":"3","progress":0.9635611392295687,"total":2991,"current":2936}
+{"_e":"metro:bundling:progress","_t":1793823893702,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893702,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893802,"id":"2","progress":0.9918809537489226,"total":2950,"current":2938}
+{"_e":"metro:bundling:progress","_t":1793823893802,"id":"3","progress":0.9635611392295687,"total":2991,"current":2936}
+{"_e":"metro:bundling:progress","_t":1793823893802,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893802,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893902,"id":"2","progress":0.9918809537489226,"total":2950,"current":2938}
+{"_e":"metro:bundling:progress","_t":1793823893902,"id":"3","progress":0.9825950141486185,"total":3089,"current":3062}
+{"_e":"metro:bundling:progress","_t":1793823893903,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823893903,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894027,"id":"2","progress":0.9918809537489226,"total":2950,"current":2938}
+{"_e":"metro:bundling:progress","_t":1793823894027,"id":"3","progress":0.9980809216000001,"total":3125,"current":3122}
+{"_e":"metro:bundling:progress","_t":1793823894027,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894027,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894127,"id":"2","progress":0.9918809537489226,"total":2680,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894127,"id":"3","progress":0.9980809216000001,"total":3125,"current":3122}
+{"_e":"metro:bundling:progress","_t":1793823894127,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894127,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894440,"id":"2","progress":0.9918809537489226,"total":2970,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894440,"id":"3","progress":0.9980809216000001,"total":3125,"current":3122}
+{"_e":"metro:bundling:progress","_t":1793823894440,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894441,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894451,"id":"2","progress":0.9918809537489226,"total":2970,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894451,"id":"3","progress":0.9980809216000001,"total":3130,"current":3126}
+{"_e":"metro:bundling:progress","_t":1793823894451,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894451,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894576,"id":"2","progress":0.9918809537489226,"total":2970,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894576,"id":"3","progress":0.9987224530208534,"total":3130,"current":3128}
+{"_e":"metro:bundling:progress","_t":1793823894576,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894576,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894583,"id":"2","progress":0.9918809537489226,"total":2970,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894584,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823894584,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894584,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894683,"id":"2","progress":0.9918809537489226,"total":2970,"current":84}
+{"_e":"metro:bundling:progress","_t":1793823894683,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823894683,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894683,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894783,"id":"2","progress":0.9918809537489226,"total":2970,"current":211}
+{"_e":"metro:bundling:progress","_t":1793823894783,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823894784,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894784,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894885,"id":"2","progress":0.9918809537489226,"total":2970,"current":312}
+{"_e":"metro:bundling:progress","_t":1793823894885,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823894885,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894885,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894987,"id":"2","progress":0.9918809537489226,"total":2970,"current":525}
+{"_e":"metro:bundling:progress","_t":1793823894987,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823894987,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823894987,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895087,"id":"2","progress":0.9918809537489226,"total":2970,"current":679}
+{"_e":"metro:bundling:progress","_t":1793823895087,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823895087,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895087,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895190,"id":"2","progress":0.9918809537489226,"total":2970,"current":849}
+{"_e":"metro:bundling:progress","_t":1793823895190,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823895190,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895190,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895290,"id":"2","progress":0.9918809537489226,"total":2970,"current":1460}
+{"_e":"metro:bundling:progress","_t":1793823895290,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823895290,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895290,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895390,"id":"2","progress":0.9918809537489226,"total":2970,"current":2574}
+{"_e":"metro:bundling:progress","_t":1793823895390,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823895390,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895390,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895490,"id":"2","progress":0.9918809537489226,"total":2970,"current":2904}
+{"_e":"metro:bundling:progress","_t":1793823895490,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823895490,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895490,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895598,"id":"2","progress":0.9979808182838485,"total":2970,"current":2967}
+{"_e":"metro:bundling:progress","_t":1793823895598,"id":"3","progress":0.999,"total":3130,"current":3129}
+{"_e":"metro:bundling:progress","_t":1793823895598,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895598,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895674,"id":"2","progress":0.9979808182838485,"total":2970,"current":2967}
+{"_e":"metro:bundling:progress","_t":1793823895674,"id":"3","progress":0.999,"total":3131,"current":3131}
+{"_e":"metro:bundling:progress","_t":1793823895674,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895674,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895830,"id":"2","progress":0.999,"total":2970,"current":2969}
+{"_e":"metro:bundling:progress","_t":1793823895830,"id":"3","progress":0.999,"total":3131,"current":3131}
+{"_e":"metro:bundling:progress","_t":1793823895830,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823895830,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823896072,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823896072,"id":"3","progress":0.999,"total":3131,"current":3131}
+{"_e":"metro:bundling:progress","_t":1793823896072,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823896072,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823896231,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823896231,"id":"3","progress":0.999,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823896231,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823896231,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793823896488,"id":"3","total":1,"ms":7579.2936}
+{"_e":"metro:bundling:progress","_t":1793823896488,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823896488,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823896489,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823896607,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823896607,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823896607,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898377,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823898377,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898377,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898480,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823898480,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898480,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898581,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823898581,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898581,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898681,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823898681,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898681,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898784,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823898784,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898784,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898884,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823898884,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898884,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898984,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823898984,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823898984,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899087,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823899087,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899087,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899187,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823899187,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899187,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899287,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823899287,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899287,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899387,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823899387,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899387,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899487,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823899487,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899487,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899587,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823899587,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899587,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899688,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823899688,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899688,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899795,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823899795,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823899795,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823900111,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823900111,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823900111,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823900113,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823900114,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823900114,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793823900312,"id":"6","total":1,"ms":7072.5698}
+{"_e":"metro:bundling:progress","_t":1793823900313,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823900313,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823900421,"id":"2","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793823900421,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793823901121,"id":"2","total":2970,"ms":12213.7988}
+{"_e":"metro:bundling:progress","_t":1793823901122,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793823901197,"id":"5","total":1,"ms":7957.5667}
+{"_e":"metro:bundling:started","_t":1793823901254,"id":"9","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793823901255,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823901276,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823901383,"id":"9","progress":0.03132586733495184,"total":113,"current":20}
+{"_e":"metro:bundling:progress","_t":1793823901483,"id":"9","progress":0.10490255536068449,"total":247,"current":80}
+{"_e":"metro:bundling:started","_t":1793823901577,"id":"c","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793823901578,"id":"9","progress":0.10490255536068449,"total":247,"current":80}
+{"_e":"metro:bundling:progress","_t":1793823901578,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823901583,"id":"9","progress":0.1704132419802181,"total":281,"current":116}
+{"_e":"metro:bundling:progress","_t":1793823901583,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823901688,"id":"9","progress":0.21556122448979592,"total":392,"current":182}
+{"_e":"metro:bundling:progress","_t":1793823901688,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823901788,"id":"9","progress":0.35491172476233585,"total":470,"current":280}
+{"_e":"metro:bundling:progress","_t":1793823901789,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823901889,"id":"9","progress":0.42715561224489795,"total":560,"current":366}
+{"_e":"metro:bundling:progress","_t":1793823901889,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823901989,"id":"9","progress":0.4912697036354178,"total":662,"current":464}
+{"_e":"metro:bundling:progress","_t":1793823901989,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823902089,"id":"9","progress":0.6745758207442965,"total":694,"current":570}
+{"_e":"metro:bundling:progress","_t":1793823902090,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823902198,"id":"9","progress":0.6745758207442965,"total":784,"current":629}
+{"_e":"metro:bundling:progress","_t":1793823902198,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823902520,"id":"9","progress":0.6813452652657632,"total":802,"current":662}
+{"_e":"metro:bundling:progress","_t":1793823902520,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823902673,"id":"9","progress":0.6813452652657632,"total":2707,"current":663}
+{"_e":"metro:bundling:progress","_t":1793823902673,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823902836,"id":"9","progress":0.6813452652657632,"total":2707,"current":664}
+{"_e":"metro:bundling:progress","_t":1793823902837,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823902936,"id":"9","progress":0.6813452652657632,"total":2730,"current":709}
+{"_e":"metro:bundling:progress","_t":1793823902936,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823903036,"id":"9","progress":0.6813452652657632,"total":2763,"current":790}
+{"_e":"metro:bundling:progress","_t":1793823903036,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823903136,"id":"9","progress":0.6813452652657632,"total":2767,"current":1277}
+{"_e":"metro:bundling:progress","_t":1793823903136,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823903236,"id":"9","progress":0.6813452652657632,"total":2767,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793823903236,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823903341,"id":"9","progress":0.9522776643141666,"total":2774,"current":2707}
+{"_e":"metro:bundling:progress","_t":1793823903341,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823903441,"id":"9","progress":0.9522776643141666,"total":2858,"current":2785}
+{"_e":"metro:bundling:progress","_t":1793823903441,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823903541,"id":"9","progress":0.9759003518873768,"total":2887,"current":2852}
+{"_e":"metro:bundling:progress","_t":1793823903541,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793823903641,"id":"9","progress":0.992578875361037,"total":2959,"current":2948}
+{"_e":"metro:bundling:progress","_t":1793823903641,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793823903873,"id":"9","total":2959,"ms":2618.116}
+{"_e":"metro:bundling:progress","_t":1793823903873,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793823903968,"id":"c","total":1,"ms":2390.7171}
+{"_e":"metro:client_log","_t":1793823904725,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793823904727,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793823904849,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793823904849,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793823904964,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793823904965,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793823904969,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793823905010,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793823905068,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793823905069,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793823905082,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793823905106,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793823905232,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793823905233,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793823905239,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793823905272,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793823905319,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793823905320,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793823905346,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793823905383,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793823920253,"level":"error","data":["Login error:","auth/invalid-credential","Firebase: Error (auth/invalid-credential).","\n\n\u001b[1mCode: login.tsx\u001b[22m\n\u001b[0m \u001b[90m 121 |\u001b[39m\n \u001b[90m 122 |\u001b[39m   } \u001b[36mcatch\u001b[39m (error\u001b[33m:\u001b[39m any) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 123 |\u001b[39m     console\u001b[33m.\u001b[39merror(\u001b[32m\"Login error:\"\u001b[39m\u001b[33m,\u001b[39m error\u001b[33m.\u001b[39mcode\u001b[33m,\u001b[39m error\u001b[33m.\u001b[39mmessage)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 124 |\u001b[39m\n \u001b[90m 125 |\u001b[39m     \u001b[33mAlert\u001b[39m\u001b[33m.\u001b[39malert(\n \u001b[90m 126 |\u001b[39m       \u001b[32m\"Login Failed\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  handleLogin (src\\app\\(auth)\\login.tsx:123:13)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1793823927337,"level":"error","data":["Login error:","auth/invalid-credential","Firebase: Error (auth/invalid-credential).","\n\n\u001b[1mCode: login.tsx\u001b[22m\n\u001b[0m \u001b[90m 121 |\u001b[39m\n \u001b[90m 122 |\u001b[39m   } \u001b[36mcatch\u001b[39m (error\u001b[33m:\u001b[39m any) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 123 |\u001b[39m     console\u001b[33m.\u001b[39merror(\u001b[32m\"Login error:\"\u001b[39m\u001b[33m,\u001b[39m error\u001b[33m.\u001b[39mcode\u001b[33m,\u001b[39m error\u001b[33m.\u001b[39mmessage)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 124 |\u001b[39m\n \u001b[90m 125 |\u001b[39m     \u001b[33mAlert\u001b[39m\u001b[33m.\u001b[39malert(\n \u001b[90m 126 |\u001b[39m       \u001b[32m\"Login Failed\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  handleLogin (src\\app\\(auth)\\login.tsx:123:13)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1793823943135,"level":"log","data":["Account created:","bhuvana67@gmail.com"]}
+{"_e":"metro:client_log","_t":1793823943681,"level":"log","data":["Profile saved successfully!"]}
+{"_e":"metro:client_log","_t":1793824123460,"level":"error","data":["[ReferenceError: borderB is not defined]","\n\n\u001b[1mCode: swiping.tsx\u001b[22m\n\u001b[0m \u001b[90m 216 |\u001b[39m   iconBox\u001b[33m:\u001b[39m { width\u001b[33m:\u001b[39m \u001b[35m24\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m24\u001b[39m\u001b[33m,\u001b[39m marginRight\u001b[33m:\u001b[39m \u001b[35m6\u001b[39m\u001b[33m,\u001b[39m alignItems\u001b[33m:\u001b[39m \u001b[32m\"center\"\u001b[39m\u001b[33m,\u001b[39m justifyContent\u001b[33m:\u001b[39m \u001b[32m\"center\"\u001b[39m }\u001b[33m,\u001b[39m\n \u001b[90m 217 |\u001b[39m   small\u001b[33m:\u001b[39m { fontSize\u001b[33m:\u001b[39m \u001b[35m11\u001b[39m\u001b[33m,\u001b[39m color\u001b[33m:\u001b[39m \u001b[32m\"#222\"\u001b[39m }\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 218 |\u001b[39m   contact\u001b[33m:\u001b[39m { flexDirection\u001b[33m:\u001b[39m \u001b[32m\"row\"\u001b[39m\u001b[33m,\u001b[39m alignItems\u001b[33m:\u001b[39m \u001b[32m\"center\"\u001b[39m\u001b[33m,\u001b[39m alignSelf\u001b[33m:\u001b[39m \u001b[32m\"flex-start\"\u001b[39m\u001b[33m,\u001b[39m marginTop\u001b[33m:\u001b[39m \u001b[35m14\u001b[39m\u001b[33m,\u001b[39m padding\u001b[33m:\u001b[39m \u001b[35m10\u001b[39m\u001b[33m,\u001b[39m width\u001b[33m:\u001b[39m \u001b[35m210\u001b[39m\u001b[33m,\u001b[39m borderBottomWidth\u001b[33m:\u001b[39m \u001b[35m2\u001b[39m\u001b[33m,\u001b[39m borderB }\u001b[33m,\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 219 |\u001b[39m   contactIcon\u001b[33m:\u001b[39m { width\u001b[33m:\u001b[39m \u001b[35m18\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m18\u001b[39m\u001b[33m,\u001b[39m marginRight\u001b[33m:\u001b[39m \u001b[35m8\u001b[39m\u001b[33m,\u001b[39m resizeMode\u001b[33m:\u001b[39m \u001b[32m\"contain\"\u001b[39m }\u001b[33m,\u001b[39m\n \u001b[90m 220 |\u001b[39m   section\u001b[33m:\u001b[39m { padding\u001b[33m:\u001b[39m \u001b[35m16\u001b[39m\u001b[33m,\u001b[39m borderTopWidth\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m\u001b[33m,\u001b[39m borderTopColor\u001b[33m:\u001b[39m \u001b[32m\"#BDB8B2\"\u001b[39m }\u001b[33m,\u001b[39m\n \u001b[90m 221 |\u001b[39m   title\u001b[33m:\u001b[39m { fontSize\u001b[33m:\u001b[39m \u001b[35m13\u001b[39m\u001b[33m,\u001b[39m fontWeight\u001b[33m:\u001b[39m \u001b[32m\"bold\"\u001b[39m\u001b[33m,\u001b[39m marginBottom\u001b[33m:\u001b[39m \u001b[35m8\u001b[39m }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  <global> (src\\app\\(tabs)\\swiping.tsx:218:145)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1793824123463,"level":"error","data":["[ReferenceError: borderB is not defined]","\n\n\u001b[1mCode: swiping.tsx\u001b[22m\n\u001b[0m \u001b[90m 216 |\u001b[39m   iconBox\u001b[33m:\u001b[39m { width\u001b[33m:\u001b[39m \u001b[35m24\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m24\u001b[39m\u001b[33m,\u001b[39m marginRight\u001b[33m:\u001b[39m \u001b[35m6\u001b[39m\u001b[33m,\u001b[39m alignItems\u001b[33m:\u001b[39m \u001b[32m\"center\"\u001b[39m\u001b[33m,\u001b[39m justifyContent\u001b[33m:\u001b[39m \u001b[32m\"center\"\u001b[39m }\u001b[33m,\u001b[39m\n \u001b[90m 217 |\u001b[39m   small\u001b[33m:\u001b[39m { fontSize\u001b[33m:\u001b[39m \u001b[35m11\u001b[39m\u001b[33m,\u001b[39m color\u001b[33m:\u001b[39m \u001b[32m\"#222\"\u001b[39m }\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 218 |\u001b[39m   contact\u001b[33m:\u001b[39m { flexDirection\u001b[33m:\u001b[39m \u001b[32m\"row\"\u001b[39m\u001b[33m,\u001b[39m alignItems\u001b[33m:\u001b[39m \u001b[32m\"center\"\u001b[39m\u001b[33m,\u001b[39m alignSelf\u001b[33m:\u001b[39m \u001b[32m\"flex-start\"\u001b[39m\u001b[33m,\u001b[39m marginTop\u001b[33m:\u001b[39m \u001b[35m14\u001b[39m\u001b[33m,\u001b[39m padding\u001b[33m:\u001b[39m \u001b[35m10\u001b[39m\u001b[33m,\u001b[39m width\u001b[33m:\u001b[39m \u001b[35m210\u001b[39m\u001b[33m,\u001b[39m borderBottomWidth\u001b[33m:\u001b[39m \u001b[35m2\u001b[39m\u001b[33m,\u001b[39m borderB }\u001b[33m,\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 219 |\u001b[39m   contactIcon\u001b[33m:\u001b[39m { width\u001b[33m:\u001b[39m \u001b[35m18\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m18\u001b[39m\u001b[33m,\u001b[39m marginRight\u001b[33m:\u001b[39m \u001b[35m8\u001b[39m\u001b[33m,\u001b[39m resizeMode\u001b[33m:\u001b[39m \u001b[32m\"contain\"\u001b[39m }\u001b[33m,\u001b[39m\n \u001b[90m 220 |\u001b[39m   section\u001b[33m:\u001b[39m { padding\u001b[33m:\u001b[39m \u001b[35m16\u001b[39m\u001b[33m,\u001b[39m borderTopWidth\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m\u001b[33m,\u001b[39m borderTopColor\u001b[33m:\u001b[39m \u001b[32m\"#BDB8B2\"\u001b[39m }\u001b[33m,\u001b[39m\n \u001b[90m 221 |\u001b[39m   title\u001b[33m:\u001b[39m { fontSize\u001b[33m:\u001b[39m \u001b[35m13\u001b[39m\u001b[33m,\u001b[39m fontWeight\u001b[33m:\u001b[39m \u001b[32m\"bold\"\u001b[39m\u001b[33m,\u001b[39m marginBottom\u001b[33m:\u001b[39m \u001b[35m8\u001b[39m }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  <global> (src\\app\\(tabs)\\swiping.tsx:218:145)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1793824125853,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793824125854,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793824125854,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793824125857,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793824125857,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793824126390,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793824126405,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793824126410,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793824126456,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793824126457,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793824260701,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"root:init","_t":1793848822714,"format":"v0-jsonl","version":"57.0.32"}
+{"_e":"env:mode","_t":1793848822716,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793848822723,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793848823970,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793848825090,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793848826268,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793848844797,"atlas":false,"workers":6,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1793848888668,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793848888669,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793848888673,"id":"3","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793848888673,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848888673,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848888706,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848888707,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848888812,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848888812,"id":"3","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1793848888912,"id":"2","progress":0.03799195633438667,"total":118,"current":23}
+{"_e":"metro:bundling:progress","_t":1793848888912,"id":"3","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1793848889014,"id":"2","progress":0.20988133660122787,"total":203,"current":93}
+{"_e":"metro:bundling:progress","_t":1793848889014,"id":"3","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1793848889114,"id":"2","progress":0.20988133660122787,"total":203,"current":93}
+{"_e":"metro:bundling:progress","_t":1793848889114,"id":"3","progress":0.08163265306122448,"total":119,"current":34}
+{"_e":"metro:bundling:progress","_t":1793848889222,"id":"2","progress":0.3478880562228836,"total":334,"current":197}
+{"_e":"metro:bundling:progress","_t":1793848889222,"id":"3","progress":0.08163265306122448,"total":119,"current":34}
+{"_e":"metro:bundling:progress","_t":1793848889323,"id":"2","progress":0.37869822485207105,"total":390,"current":240}
+{"_e":"metro:bundling:progress","_t":1793848889323,"id":"3","progress":0.08163265306122448,"total":119,"current":34}
+{"_e":"metro:bundling:progress","_t":1793848889422,"id":"2","progress":0.37869822485207105,"total":390,"current":240}
+{"_e":"metro:bundling:progress","_t":1793848889422,"id":"3","progress":0.13342177919609882,"total":167,"current":61}
+{"_e":"metro:bundling:progress","_t":1793848889524,"id":"2","progress":0.37869822485207105,"total":390,"current":240}
+{"_e":"metro:bundling:progress","_t":1793848889524,"id":"3","progress":0.14033490208858515,"total":323,"current":121}
+{"_e":"metro:bundling:progress","_t":1793848889627,"id":"2","progress":0.4261188271604938,"total":504,"current":329}
+{"_e":"metro:bundling:progress","_t":1793848889627,"id":"3","progress":0.14033490208858515,"total":323,"current":121}
+{"_e":"metro:bundling:progress","_t":1793848889728,"id":"2","progress":0.4543588160607579,"total":586,"current":395}
+{"_e":"metro:bundling:progress","_t":1793848889728,"id":"3","progress":0.14033490208858515,"total":323,"current":121}
+{"_e":"metro:bundling:progress","_t":1793848889841,"id":"2","progress":0.48936287795229355,"total":659,"current":461}
+{"_e":"metro:bundling:progress","_t":1793848889841,"id":"3","progress":0.14033490208858515,"total":323,"current":121}
+{"_e":"metro:bundling:progress","_t":1793848889942,"id":"2","progress":0.48936287795229355,"total":659,"current":461}
+{"_e":"metro:bundling:progress","_t":1793848889942,"id":"3","progress":0.2780165289256198,"total":440,"current":232}
+{"_e":"metro:bundling:progress","_t":1793848890044,"id":"2","progress":0.48936287795229355,"total":659,"current":461}
+{"_e":"metro:bundling:progress","_t":1793848890044,"id":"3","progress":0.31983896533827105,"total":534,"current":302}
+{"_e":"metro:bundling:progress","_t":1793848890144,"id":"2","progress":0.5294884563150748,"total":705,"current":513}
+{"_e":"metro:bundling:progress","_t":1793848890144,"id":"3","progress":0.31983896533827105,"total":534,"current":302}
+{"_e":"metro:bundling:progress","_t":1793848890244,"id":"2","progress":0.5340967699932867,"total":769,"current":562}
+{"_e":"metro:bundling:progress","_t":1793848890244,"id":"3","progress":0.31983896533827105,"total":534,"current":302}
+{"_e":"metro:bundling:progress","_t":1793848890464,"id":"2","progress":0.6737159314325915,"total":798,"current":655}
+{"_e":"metro:bundling:progress","_t":1793848890464,"id":"3","progress":0.31983896533827105,"total":534,"current":302}
+{"_e":"metro:bundling:progress","_t":1793848890708,"id":"2","progress":0.6737159314325915,"total":2703,"current":655}
+{"_e":"metro:bundling:progress","_t":1793848890708,"id":"3","progress":0.31983896533827105,"total":534,"current":302}
+{"_e":"metro:bundling:progress","_t":1793848890834,"id":"2","progress":0.6737159314325915,"total":2703,"current":655}
+{"_e":"metro:bundling:progress","_t":1793848890834,"id":"3","progress":0.3517005671077505,"total":575,"current":341}
+{"_e":"metro:bundling:progress","_t":1793848890934,"id":"2","progress":0.6737159314325915,"total":2703,"current":655}
+{"_e":"metro:bundling:progress","_t":1793848890934,"id":"3","progress":0.43606192997815535,"total":686,"current":453}
+{"_e":"metro:bundling:progress","_t":1793848891034,"id":"2","progress":0.6737159314325915,"total":2703,"current":655}
+{"_e":"metro:bundling:progress","_t":1793848891034,"id":"3","progress":0.5146502835538752,"total":736,"current":528}
+{"_e":"metro:bundling:progress","_t":1793848891177,"id":"2","progress":0.6737159314325915,"total":2703,"current":655}
+{"_e":"metro:bundling:progress","_t":1793848891177,"id":"3","progress":0.5146502835538752,"total":802,"current":562}
+{"_e":"metro:bundling:progress","_t":1793848891370,"id":"2","progress":0.6737159314325915,"total":2703,"current":655}
+{"_e":"metro:bundling:progress","_t":1793848891371,"id":"3","progress":0.5146502835538752,"total":805,"current":570}
+{"_e":"metro:bundling:progress","_t":1793848891484,"id":"2","progress":0.6737159314325915,"total":2748,"current":715}
+{"_e":"metro:bundling:progress","_t":1793848891484,"id":"3","progress":0.5146502835538752,"total":805,"current":570}
+{"_e":"metro:bundling:progress","_t":1793848891779,"id":"2","progress":0.6737159314325915,"total":2766,"current":795}
+{"_e":"metro:bundling:progress","_t":1793848891779,"id":"3","progress":0.5146502835538752,"total":805,"current":570}
+{"_e":"metro:bundling:progress","_t":1793848891893,"id":"2","progress":0.6737159314325915,"total":2766,"current":1134}
+{"_e":"metro:bundling:progress","_t":1793848891893,"id":"3","progress":0.5146502835538752,"total":805,"current":570}
+{"_e":"metro:bundling:progress","_t":1793848891993,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848891993,"id":"3","progress":0.5146502835538752,"total":805,"current":570}
+{"_e":"metro:bundling:progress","_t":1793848892093,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848892093,"id":"3","progress":0.5146502835538752,"total":2723,"current":591}
+{"_e":"metro:bundling:progress","_t":1793848892201,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848892201,"id":"3","progress":0.5146502835538752,"total":2755,"current":644}
+{"_e":"metro:bundling:progress","_t":1793848892302,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848892302,"id":"3","progress":0.5146502835538752,"total":2799,"current":700}
+{"_e":"metro:bundling:progress","_t":1793848892401,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848892401,"id":"3","progress":0.5146502835538752,"total":2839,"current":753}
+{"_e":"metro:bundling:progress","_t":1793848892504,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848892505,"id":"3","progress":0.5146502835538752,"total":2849,"current":881}
+{"_e":"metro:bundling:progress","_t":1793848892601,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848892601,"id":"3","progress":0.5146502835538752,"total":2849,"current":1716}
+{"_e":"metro:bundling:progress","_t":1793848892701,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848892701,"id":"3","progress":0.8981370862732744,"total":2849,"current":2700}
+{"_e":"metro:bundling:progress","_t":1793848892802,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848892802,"id":"3","progress":0.9098224852071007,"total":2860,"current":2728}
+{"_e":"metro:bundling:progress","_t":1793848892902,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848892902,"id":"3","progress":0.9420805477933946,"total":2926,"current":2840}
+{"_e":"metro:bundling:progress","_t":1793848893002,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848893002,"id":"3","progress":0.9509566615761951,"total":2940,"current":2867}
+{"_e":"metro:bundling:progress","_t":1793848893138,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848893138,"id":"3","progress":0.9635611392295687,"total":2991,"current":2936}
+{"_e":"metro:bundling:progress","_t":1793848893238,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848893238,"id":"3","progress":0.9755400312760073,"total":3088,"current":3050}
+{"_e":"metro:bundling:progress","_t":1793848893415,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848893415,"id":"3","progress":0.999,"total":3130,"current":3130}
+{"_e":"metro:bundling:progress","_t":1793848893529,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:progress","_t":1793848893529,"id":"3","progress":0.999,"total":3131,"current":3131}
+{"_e":"metro:bundling:done","_t":1793848893582,"id":"3","total":3131,"ms":4908.9876}
+{"_e":"metro:bundling:progress","_t":1793848893582,"id":"2","progress":0.6737159314325915,"total":2766,"current":2046}
+{"_e":"metro:bundling:done","_t":1793848894584,"id":"2","total":2766,"ms":5915.8705}
+{"_e":"metro:bundling:started","_t":1793848894645,"id":"6","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793848894645,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848894648,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848894748,"id":"6","progress":0.03799195633438667,"total":118,"current":23}
+{"_e":"metro:bundling:progress","_t":1793848894849,"id":"6","progress":0.09025769492899115,"total":233,"current":70}
+{"_e":"metro:bundling:progress","_t":1793848894955,"id":"6","progress":0.1998974944379084,"total":293,"current":131}
+{"_e":"metro:bundling:progress","_t":1793848895058,"id":"6","progress":0.20102912904719908,"total":397,"current":178}
+{"_e":"metro:bundling:progress","_t":1793848895158,"id":"6","progress":0.33901632278255656,"total":462,"current":269}
+{"_e":"metro:bundling:progress","_t":1793848895259,"id":"6","progress":0.4415816857440167,"total":620,"current":412}
+{"_e":"metro:bundling:progress","_t":1793848895359,"id":"6","progress":0.6491102057240582,"total":705,"current":568}
+{"_e":"metro:bundling:progress","_t":1793848895513,"id":"6","progress":0.6491102057240582,"total":767,"current":607}
+{"_e":"metro:bundling:progress","_t":1793848895620,"id":"6","progress":0.6491102057240582,"total":2672,"current":607}
+{"_e":"metro:bundling:progress","_t":1793848895705,"id":"6","progress":0.6491102057240582,"total":2672,"current":608}
+{"_e":"metro:bundling:started","_t":1793848895790,"id":"8","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793848895790,"id":"6","progress":0.6491102057240582,"total":2672,"current":608}
+{"_e":"metro:bundling:progress","_t":1793848895790,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793848895791,"id":"9","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793848895791,"id":"6","progress":0.6491102057240582,"total":2672,"current":608}
+{"_e":"metro:bundling:progress","_t":1793848895791,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848895791,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848895805,"id":"6","progress":0.6491102057240582,"total":2672,"current":608}
+{"_e":"metro:bundling:progress","_t":1793848895805,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848895805,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896062,"id":"6","progress":0.6491102057240582,"total":2672,"current":608}
+{"_e":"metro:bundling:progress","_t":1793848896062,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896062,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896063,"id":"6","progress":0.6491102057240582,"total":2701,"current":651}
+{"_e":"metro:bundling:progress","_t":1793848896063,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896063,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896162,"id":"6","progress":0.6491102057240582,"total":2741,"current":714}
+{"_e":"metro:bundling:progress","_t":1793848896162,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896162,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896291,"id":"6","progress":0.6491102057240582,"total":2746,"current":746}
+{"_e":"metro:bundling:progress","_t":1793848896291,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896291,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896320,"id":"6","progress":0.6491102057240582,"total":2746,"current":747}
+{"_e":"metro:bundling:progress","_t":1793848896321,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896321,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896420,"id":"6","progress":0.6491102057240582,"total":2746,"current":1281}
+{"_e":"metro:bundling:progress","_t":1793848896420,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896420,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896520,"id":"6","progress":0.6491102057240582,"total":2746,"current":1875}
+{"_e":"metro:bundling:progress","_t":1793848896520,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896520,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896631,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848896631,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896631,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896731,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848896731,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896731,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896831,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848896831,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896831,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896931,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848896931,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848896931,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897031,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848897031,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897031,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897131,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848897131,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897131,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897231,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848897231,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897231,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897331,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848897331,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897331,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897431,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848897431,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897431,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897531,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848897531,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897531,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897633,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848897633,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897633,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897745,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848897745,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897745,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897850,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848897850,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848897850,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898019,"id":"6","progress":0.9286714133734371,"total":2753,"current":2653}
+{"_e":"metro:bundling:progress","_t":1793848898019,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898019,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898058,"id":"6","progress":0.9539343969754254,"total":2875,"current":2808}
+{"_e":"metro:bundling:progress","_t":1793848898058,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898058,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898166,"id":"6","progress":0.9539343969754254,"total":2875,"current":2808}
+{"_e":"metro:bundling:progress","_t":1793848898166,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898166,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793848898232,"id":"9","total":1,"ms":2441.8709}
+{"_e":"metro:bundling:progress","_t":1793848898232,"id":"6","progress":0.9539343969754254,"total":2875,"current":2808}
+{"_e":"metro:bundling:progress","_t":1793848898232,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898287,"id":"6","progress":0.9546139584120983,"total":2875,"current":2809}
+{"_e":"metro:bundling:progress","_t":1793848898287,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898646,"id":"6","progress":0.9601961979881597,"total":2885,"current":2827}
+{"_e":"metro:bundling:progress","_t":1793848898646,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898647,"id":"6","progress":0.9608756221296432,"total":2885,"current":2828}
+{"_e":"metro:bundling:progress","_t":1793848898647,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793848898747,"id":"6","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:progress","_t":1793848898747,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793848898749,"id":"8","total":1,"ms":2958.3966}
+{"_e":"metro:bundling:progress","_t":1793848898749,"id":"6","progress":0.999,"total":2970,"current":2970}
+{"_e":"metro:bundling:done","_t":1793848898886,"id":"6","total":2970,"ms":4240.5776}
+{"_e":"metro:bundling:started","_t":1793848898977,"id":"c","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793848898977,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793848899046,"id":"c","total":1,"ms":69.3733}
+{"_e":"metro:client_log","_t":1793848899532,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793848899533,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793848899588,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793848899588,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793848899720,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793848899721,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793848899722,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793848899742,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793848899756,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793848899757,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793848899764,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793848899780,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793848899781,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793848899790,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793848899790,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793848899799,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793848899827,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793848899828,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793848899846,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793848899864,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793848927516,"level":"log","data":["Login successful:","bhuvana67@gmail.com"]}
+{"_e":"metro:client_log","_t":1793848927533,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:started","_t":1793849284027,"id":"12","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793849284027,"id":"12","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793849284027,"id":"13","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793849284027,"id":"12","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793849284027,"id":"13","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793849284175,"id":"13","total":1,"ms":147.8684}
+{"_e":"metro:bundling:progress","_t":1793849284175,"id":"12","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793849284868,"id":"12","total":1,"ms":840.7871}
+{"_e":"metro:bundling:started","_t":1793849284956,"id":"16","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793849284957,"id":"16","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793849285047,"id":"16","total":1,"ms":90.812}
+{"_e":"metro:client_log","_t":1793849285461,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793849285462,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793849285615,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793849285615,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793849285618,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793849285632,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793849285645,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793849285645,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793849285666,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793849285667,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793849285681,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:started","_t":1793849673233,"id":"20","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793849673233,"id":"20","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793849673234,"id":"21","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793849673234,"id":"20","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793849673234,"id":"21","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793849673236,"id":"20","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793849673236,"id":"21","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793849673368,"id":"21","total":1,"ms":133.7568}
+{"_e":"metro:bundling:progress","_t":1793849673368,"id":"20","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793849673479,"id":"20","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793849673880,"id":"20","total":1,"ms":646.8799}
+{"_e":"metro:bundling:started","_t":1793849674097,"id":"24","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793849674098,"id":"24","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793849674195,"id":"24","total":1,"ms":97.9513}
+{"_e":"metro:client_log","_t":1793849674705,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793849674708,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793849674844,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793849674845,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793849674848,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793849674869,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793849674898,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793849674898,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793849674913,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793849674913,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793849674930,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793850154083,"level":"warn","data":["[2026-11-05T03:42:34.082Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x1ff23836 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793850154084,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793850158194,"level":"warn","data":["[2026-11-05T03:42:38.194Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x1ff23838 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793850158195,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793850165724,"level":"warn","data":["[2026-11-05T03:42:45.724Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x1ff2383a failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793850165725,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793850324779,"level":"warn","data":["An error occurred in the <Scrollview> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.\n"]}
+{"_e":"metro:client_log","_t":1793850324840,"level":"error","data":["[ReferenceError: s is not defined]","\n\n\u001b[1mCode: scrollview.tsx\u001b[22m\n\u001b[0m \u001b[90m 230 |\u001b[39m             )\u001b[33m;\u001b[39m\n \u001b[90m 231 |\u001b[39m           })}\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 232 |\u001b[39m           \u001b[33m<\u001b[39m\u001b[33mView\u001b[39m style\u001b[33m=\u001b[39m{s\u001b[33m.\u001b[39mnavWrapper}\u001b[33m>\u001b[39m\n \u001b[90m     |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 233 |\u001b[39m                     \u001b[33m<\u001b[39m\u001b[33mPawNavBar\u001b[39m active\u001b[33m=\u001b[39m\u001b[32m\"/homepage\"\u001b[39m \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 234 |\u001b[39m                   \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mView\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 235 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mSafeAreaView\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Scrollview (src\\app\\(tabs)\\scrollview.tsx:232:24)\u001b[39m","\n\n\u001b[1mCode: _layout.tsx\u001b[22m\n\u001b[0m \u001b[90m 4 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[36mfunction\u001b[39m \u001b[33mTabLayout\u001b[39m() {\n \u001b[90m 5 |\u001b[39m   \u001b[36mreturn\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 6 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mTabs\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m   |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 7 |\u001b[39m       \u001b[33m<\u001b[39m\u001b[33mTabs\u001b[39m\u001b[33m.\u001b[39m\u001b[33mScreen\u001b[39m\n \u001b[90m 8 |\u001b[39m         name\u001b[33m=\u001b[39m\u001b[32m\"profile\"\u001b[39m\n \u001b[90m 9 |\u001b[39m         options\u001b[33m=\u001b[39m{{\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  TabLayout (src\\app\\(tabs)\\_layout.tsx:6:5)\u001b[39m\n\u001b[90m  RootLayout (src\\app\\_layout.tsx:8:72)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1793850327664,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793850327667,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793850327670,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793850327687,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793850327688,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:bundling:failed","_t":1793850439456,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (224:8)\n\n  222 |               <PawNavBar active=\"/homepage\" />\n  223 |           </View>\n> 224 |         </SafeAreaView>\n      |         ^\n  225 |       </LinearGradient>\n  226 |     </LinearGradient>\n  227 |   );","importStack":null,"filename":"src\\app\\(tabs)\\scrollview.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793850439461,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (224:8)\n\n  222 |               <PawNavBar active=\"/homepage\" />\n  223 |           </View>\n> 224 |         </SafeAreaView>\n      |         ^\n  225 |       </LinearGradient>\n  226 |     </LinearGradient>\n  227 |   );]"]}
+{"_e":"metro:client_log","_t":1793850439463,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (224:8)\n\n  222 |               <PawNavBar active=\"/homepage\" />\n  223 |           </View>\n> 224 |         </SafeAreaView>\n      |         ^\n  225 |       </LinearGradient>\n  226 |     </LinearGradient>\n  227 |   );]"]}
+{"_e":"metro:bundling:failed","_t":1793850439665,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (224:8)\n\n  222 |               <PawNavBar active=\"/homepage\" />\n  223 |           </View>\n> 224 |         </SafeAreaView>\n      |         ^\n  225 |       </LinearGradient>\n  226 |     </LinearGradient>\n  227 |   );","importStack":null,"filename":"src\\app\\(tabs)\\scrollview.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793850439671,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (224:8)\n\n  222 |               <PawNavBar active=\"/homepage\" />\n  223 |           </View>\n> 224 |         </SafeAreaView>\n      |         ^\n  225 |       </LinearGradient>\n  226 |     </LinearGradient>\n  227 |   );]"]}
+{"_e":"metro:client_log","_t":1793850439672,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (224:8)\n\n  222 |               <PawNavBar active=\"/homepage\" />\n  223 |           </View>\n> 224 |         </SafeAreaView>\n      |         ^\n  225 |       </LinearGradient>\n  226 |     </LinearGradient>\n  227 |   );]"]}
+{"_e":"metro:bundling:failed","_t":1793850457291,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (225:8)\n\n  223 |               <PawNavBar active=\"/homepage\" />\n  224 |           </View>\n> 225 |         </SafeAreaView>\n      |         ^\n  226 |       </LinearGradient>\n  227 |     </LinearGradient>\n  228 |   );","importStack":null,"filename":"src\\app\\(tabs)\\scrollview.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793850457293,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (225:8)\n\n  223 |               <PawNavBar active=\"/homepage\" />\n  224 |           </View>\n> 225 |         </SafeAreaView>\n      |         ^\n  226 |       </LinearGradient>\n  227 |     </LinearGradient>\n  228 |   );]"]}
+{"_e":"metro:client_log","_t":1793850457295,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (225:8)\n\n  223 |               <PawNavBar active=\"/homepage\" />\n  224 |           </View>\n> 225 |         </SafeAreaView>\n      |         ^\n  226 |       </LinearGradient>\n  227 |     </LinearGradient>\n  228 |   );]"]}
+{"_e":"metro:bundling:failed","_t":1793850482312,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (226:8)\n\n  224 |               <PawNavBar active=\"/homepage\" />\n  225 |           </View>\n> 226 |         </SafeAreaView>\n      |         ^\n  227 |       </LinearGradient>\n  228 |     </LinearGradient>\n  229 |   );","importStack":null,"filename":"src\\app\\(tabs)\\scrollview.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793850482314,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (226:8)\n\n  224 |               <PawNavBar active=\"/homepage\" />\n  225 |           </View>\n> 226 |         </SafeAreaView>\n      |         ^\n  227 |       </LinearGradient>\n  228 |     </LinearGradient>\n  229 |   );]"]}
+{"_e":"metro:client_log","_t":1793850482318,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Expected corresponding JSX closing tag for <LinearGradient>. (226:8)\n\n  224 |               <PawNavBar active=\"/homepage\" />\n  225 |           </View>\n> 226 |         </SafeAreaView>\n      |         ^\n  227 |       </LinearGradient>\n  228 |     </LinearGradient>\n  229 |   );]"]}
+{"_e":"metro:bundling:failed","_t":1793850491775,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (226:4)\n\n  224 |           </View>\n  225 |       </LinearGradient>\n> 226 |     </LinearGradient>\n      |     ^\n  227 |   );\n  228 | }\n  229 |","importStack":null,"filename":"src\\app\\(tabs)\\scrollview.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793850491777,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (226:4)\n\n  224 |           </View>\n  225 |       </LinearGradient>\n> 226 |     </LinearGradient>\n      |     ^\n  227 |   );\n  228 | }\n  229 |]"]}
+{"_e":"metro:client_log","_t":1793850491777,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\scrollview.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (226:4)\n\n  224 |           </View>\n  225 |       </LinearGradient>\n> 226 |     </LinearGradient>\n      |     ^\n  227 |   );\n  228 | }\n  229 |]"]}
+{"_e":"metro:client_log","_t":1793850515059,"level":"warn","data":["[2026-11-05T03:48:35.058Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x1ff2383c failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793850515059,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793850532411,"level":"warn","data":["[2026-11-05T03:48:52.411Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x1ff2383e failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793850532411,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793850557822,"level":"warn","data":["[2026-11-05T03:49:17.819Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x1ff23840 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793850557822,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793850631635,"level":"error","data":["[Error: Couldn't save the scan to Firestore (permission-denied)]","\n\n\u001b[1mCode: scanApi.ts\u001b[22m\n\u001b[0m \u001b[90m 55 |\u001b[39m     \u001b[36mawait\u001b[39m batch\u001b[33m.\u001b[39mcommit()\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m   } \u001b[36mcatch\u001b[39m (e\u001b[33m:\u001b[39m any) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 57 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Couldn't save the scan to Firestore (${e?.code ?? e?.message})`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 58 |\u001b[39m   }\n \u001b[90m 59 |\u001b[39m   \u001b[36mreturn\u001b[39m scanRef\u001b[33m.\u001b[39mid\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m }\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  uploadScan (src\\services\\scanApi.ts:57:11)\u001b[39m\n\u001b[90m  finishScan (src\\app\\(tabs)\\camera.tsx:132:22)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1793850631776,"level":"warn","data":["[2026-11-05T03:50:31.776Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x1ff23843 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793850631777,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:bundling:failed","_t":1793851096684,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (279:16)\n\n  277 |                 </TouchableOpacity>\n  278 |\n> 279 |                 <View style={s.navWrapper}>\n      |                 ^\n  280 |                           <PawNavBar active=\"/homepage\" />\n  281 |                         </View>\n  282 |               );","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851096685,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (279:16)\n\n  277 |                 </TouchableOpacity>\n  278 |\n> 279 |                 <View style={s.navWrapper}>\n      |                 ^\n  280 |                           <PawNavBar active=\"/homepage\" />\n  281 |                         </View>\n  282 |               );]"]}
+{"_e":"metro:client_log","_t":1793851096687,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (279:16)\n\n  277 |                 </TouchableOpacity>\n  278 |\n> 279 |                 <View style={s.navWrapper}>\n      |                 ^\n  280 |                           <PawNavBar active=\"/homepage\" />\n  281 |                         </View>\n  282 |               );]"]}
+{"_e":"metro:bundling:failed","_t":1793851100044,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (279:16)\n\n  277 |                 </TouchableOpacity>\n  278 |\n> 279 |                 <View style={s.navWrapper}>\n      |                 ^\n  280 |                           <PawNavBar active=\"/homepage\" />\n  281 |                 </View>\n  282 |               );","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851100046,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (279:16)\n\n  277 |                 </TouchableOpacity>\n  278 |\n> 279 |                 <View style={s.navWrapper}>\n      |                 ^\n  280 |                           <PawNavBar active=\"/homepage\" />\n  281 |                 </View>\n  282 |               );]"]}
+{"_e":"metro:client_log","_t":1793851100047,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (279:16)\n\n  277 |                 </TouchableOpacity>\n  278 |\n> 279 |                 <View style={s.navWrapper}>\n      |                 ^\n  280 |                           <PawNavBar active=\"/homepage\" />\n  281 |                 </View>\n  282 |               );]"]}
+{"_e":"metro:bundling:failed","_t":1793851102148,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (279:16)\n\n  277 |                 </TouchableOpacity>\n  278 |\n> 279 |                 <View style={styles.navWrapper}>\n      |                 ^\n  280 |                           <PawNavBar active=\"/homepage\" />\n  281 |                 </View>\n  282 |               );","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851102150,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (279:16)\n\n  277 |                 </TouchableOpacity>\n  278 |\n> 279 |                 <View style={styles.navWrapper}>\n      |                 ^\n  280 |                           <PawNavBar active=\"/homepage\" />\n  281 |                 </View>\n  282 |               );]"]}
+{"_e":"metro:client_log","_t":1793851102150,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (279:16)\n\n  277 |                 </TouchableOpacity>\n  278 |\n> 279 |                 <View style={styles.navWrapper}>\n      |                 ^\n  280 |                           <PawNavBar active=\"/homepage\" />\n  281 |                 </View>\n  282 |               );]"]}
+{"_e":"metro:bundling:failed","_t":1793851219034,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (280:8)\n\n  278 |               );\n  279 |             })}\n> 280 |         </LinearGradient>\n      |         ^\n  281 |         <View style={styles.navWrapper}>\n  282 |           <PawNavBar active=\"/homepage\" />\n  283 |         </View>","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851219046,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (280:8)\n\n  278 |               );\n  279 |             })}\n> 280 |         </LinearGradient>\n      |         ^\n  281 |         <View style={styles.navWrapper}>\n  282 |           <PawNavBar active=\"/homepage\" />\n  283 |         </View>]"]}
+{"_e":"metro:client_log","_t":1793851219054,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (280:8)\n\n  278 |               );\n  279 |             })}\n> 280 |         </LinearGradient>\n      |         ^\n  281 |         <View style={styles.navWrapper}>\n  282 |           <PawNavBar active=\"/homepage\" />\n  283 |         </View>]"]}
+{"_e":"metro:client_log","_t":1793851224754,"level":"error","data":["Unexpected text node: })}. A text node cannot be a child of a <View>.","\n\n\u001b[1mCode: setupHMR.ts\u001b[22m\n\u001b[0m \u001b[90m 79 |\u001b[39m \u001b[36mfunction\u001b[39m captureCurrentStack() {\n \u001b[90m 80 |\u001b[39m   \u001b[90m// If you're reading this, look deeper into the call stack to find the actual error source.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 81 |\u001b[39m   \u001b[36mreturn\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mNamelessError\u001b[39m()\u001b[33m.\u001b[39mstack\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 82 |\u001b[39m }\n \u001b[90m 83 |\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[2m\u001b[90m  captureCurrentStack (node_modules\\expo\\src\\async-require\\setupHMR.ts:81:10)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  addErrorStacks (node_modules\\expo\\src\\async-require\\setupHMR.ts:59:19)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  console.level (node_modules\\expo\\src\\async-require\\setupHMR.ts:22:48)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  consoleErrorMiddleware (node_modules\\@expo\\log-box\\src\\LogBox.ts:101:23)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  console.error (node_modules\\@expo\\log-box\\src\\LogBox.ts:33:25)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  React.Children.toArray.forEach$argument_0 (node_modules\\react-native-web\\dist\\exports\\View\\index.js:57:17)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  Array.forEach (<anonymous>)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  React.forwardRef$argument_0 (node_modules\\react-native-web\\dist\\exports\\View\\index.js:55:44)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  callComponent.react_stack_bottom_frame (node_modules\\react-dom\\cjs\\react-dom-client.development.js:25904:20)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  renderWithHooks (node_modules\\react-dom\\cjs\\react-dom-client.development.js:7662:22)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  updateForwardRef (node_modules\\react-dom\\cjs\\react-dom-client.development.js:9724:19)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  beginWork (node_modules\\react-dom\\cjs\\react-dom-client.development.js:12117:18)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  runWithFiberInDEV (node_modules\\react-dom\\cjs\\react-dom-client.development.js:871:30)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performUnitOfWork (node_modules\\react-dom\\cjs\\react-dom-client.development.js:17641:22)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  workLoopSync (node_modules\\react-dom\\cjs\\react-dom-client.development.js:17469:41)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  renderRootSync (node_modules\\react-dom\\cjs\\react-dom-client.development.js:17450:11)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performWorkOnRoot (node_modules\\react-dom\\cjs\\react-dom-client.development.js:16504:11)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performSyncWorkOnRoot (node_modules\\react-dom\\cjs\\react-dom-client.development.js:18972:7)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  flushSyncWorkAcrossRoots_impl (node_modules\\react-dom\\cjs\\react-dom-client.development.js:18814:21)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  flushSyncWork$1 (node_modules\\react-dom\\cjs\\react-dom-client.development.js:16898:12)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  scheduleRefresh (node_modules\\react-dom\\cjs\\react-dom-client.development.js:113:9)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  mountedRootsSnapshot.forEach$argument_0 (node_modules\\react-refresh\\cjs\\react-refresh-runtime.development.js:265:17)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  Set.forEach (<anonymous>)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performReactRefresh (node_modules\\react-refresh\\cjs\\react-refresh-runtime.development.js:254:26)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  Refresh.performReactRefresh (node_modules\\expo\\src\\async-require\\setupFastRefresh.ts:24:25)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  setTimeout$argument_0 (node_modules\\metro\\node_modules\\metro-runtime\\src\\polyfills\\require.js:524:19)\u001b[39m\u001b[22m","\n\n\u001b[1mCode: camera.tsx\u001b[22m\n\u001b[0m \u001b[90m 257 |\u001b[39m           {status \u001b[33m===\u001b[39m \u001b[32m\"uploading\"\u001b[39m \u001b[33m&&\u001b[39m (\n \u001b[90m 258 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33mView\u001b[39m style\u001b[33m=\u001b[39m{[styles\u001b[33m.\u001b[39mbutton\u001b[33m,\u001b[39m styles\u001b[33m.\u001b[39mscanButton]}\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 259 |\u001b[39m               \u001b[33m<\u001b[39m\u001b[33mText\u001b[39m style\u001b[33m=\u001b[39m{styles\u001b[33m.\u001b[39msmallButtonText}\u001b[33m>\u001b[39m\u001b[33mPROCESSING…\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mText\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m     |\u001b[39m                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 260 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mView\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 261 |\u001b[39m           )}\n \u001b[90m 262 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mView\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Camera (src\\app\\(tabs)\\camera.tsx:259:69)\u001b[39m\n\u001b[90m  TabLayout (src\\app\\(tabs)\\_layout.tsx:6:5)\u001b[39m\n\u001b[90m  <global> (src\\app\\cameraResults.tsx:49:24)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1793851224797,"level":"error","data":["Unexpected text node: })}. A text node cannot be a child of a <View>.","\n\n\u001b[1mCode: setupHMR.ts\u001b[22m\n\u001b[0m \u001b[90m 79 |\u001b[39m \u001b[36mfunction\u001b[39m captureCurrentStack() {\n \u001b[90m 80 |\u001b[39m   \u001b[90m// If you're reading this, look deeper into the call stack to find the actual error source.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 81 |\u001b[39m   \u001b[36mreturn\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mNamelessError\u001b[39m()\u001b[33m.\u001b[39mstack\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 82 |\u001b[39m }\n \u001b[90m 83 |\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[2m\u001b[90m  captureCurrentStack (node_modules\\expo\\src\\async-require\\setupHMR.ts:81:10)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  addErrorStacks (node_modules\\expo\\src\\async-require\\setupHMR.ts:59:19)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  console.level (node_modules\\expo\\src\\async-require\\setupHMR.ts:22:48)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  consoleErrorMiddleware (node_modules\\@expo\\log-box\\src\\LogBox.ts:101:23)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  console.error (node_modules\\@expo\\log-box\\src\\LogBox.ts:33:25)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  React.Children.toArray.forEach$argument_0 (node_modules\\react-native-web\\dist\\exports\\View\\index.js:57:17)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  Array.forEach (<anonymous>)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  React.forwardRef$argument_0 (node_modules\\react-native-web\\dist\\exports\\View\\index.js:55:44)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  callComponent.react_stack_bottom_frame (node_modules\\react-dom\\cjs\\react-dom-client.development.js:25904:20)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  renderWithHooks (node_modules\\react-dom\\cjs\\react-dom-client.development.js:7662:22)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  updateForwardRef (node_modules\\react-dom\\cjs\\react-dom-client.development.js:9724:19)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  beginWork (node_modules\\react-dom\\cjs\\react-dom-client.development.js:12117:18)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  runWithFiberInDEV (node_modules\\react-dom\\cjs\\react-dom-client.development.js:871:30)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performUnitOfWork (node_modules\\react-dom\\cjs\\react-dom-client.development.js:17641:22)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  workLoopSync (node_modules\\react-dom\\cjs\\react-dom-client.development.js:17469:41)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  renderRootSync (node_modules\\react-dom\\cjs\\react-dom-client.development.js:17450:11)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performWorkOnRoot (node_modules\\react-dom\\cjs\\react-dom-client.development.js:16504:11)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performWorkOnRootViaSchedulerTask (node_modules\\react-dom\\cjs\\react-dom-client.development.js:18957:7)\u001b[39m\u001b[22m\n\u001b[2m\u001b[90m  performWorkUntilDeadline (node_modules\\scheduler\\cjs\\scheduler.development.js:45:48)\u001b[39m\u001b[22m","\n\n\u001b[1mCode: camera.tsx\u001b[22m\n\u001b[0m \u001b[90m 257 |\u001b[39m           {status \u001b[33m===\u001b[39m \u001b[32m\"uploading\"\u001b[39m \u001b[33m&&\u001b[39m (\n \u001b[90m 258 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33mView\u001b[39m style\u001b[33m=\u001b[39m{[styles\u001b[33m.\u001b[39mbutton\u001b[33m,\u001b[39m styles\u001b[33m.\u001b[39mscanButton]}\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 259 |\u001b[39m               \u001b[33m<\u001b[39m\u001b[33mText\u001b[39m style\u001b[33m=\u001b[39m{styles\u001b[33m.\u001b[39msmallButtonText}\u001b[33m>\u001b[39m\u001b[33mPROCESSING…\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mText\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m     |\u001b[39m                                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 260 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mView\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 261 |\u001b[39m           )}\n \u001b[90m 262 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mView\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Camera (src\\app\\(tabs)\\camera.tsx:259:69)\u001b[39m\n\u001b[90m  TabLayout (src\\app\\(tabs)\\_layout.tsx:6:5)\u001b[39m\n\u001b[90m  <global> (src\\app\\cameraResults.tsx:49:24)\u001b[39m"]}
+{"_e":"metro:bundling:failed","_t":1793851233142,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (264:8)\n\n  262 |         </View>\n  263 |\n> 264 |         </LinearGradient>\n      |         ^\n  265 |         <View style={styles.navWrapper}>\n  266 |           <PawNavBar active=\"/homepage\" />\n  267 |         </View>","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851233157,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (264:8)\n\n  262 |         </View>\n  263 |\n> 264 |         </LinearGradient>\n      |         ^\n  265 |         <View style={styles.navWrapper}>\n  266 |           <PawNavBar active=\"/homepage\" />\n  267 |         </View>]"]}
+{"_e":"metro:client_log","_t":1793851233180,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (264:8)\n\n  262 |         </View>\n  263 |\n> 264 |         </LinearGradient>\n      |         ^\n  265 |         <View style={styles.navWrapper}>\n  266 |           <PawNavBar active=\"/homepage\" />\n  267 |         </View>]"]}
+{"_e":"metro:bundling:failed","_t":1793851237008,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (264:8)\n\n  262 |         </View>\n  263 |\n> 264 |         </LinearGradient>\n      |         ^\n  265 |         <View style={styles.navWrapper}>\n  266 |           <PawNavBar active=\"/homepage\" />\n  267 |         </View>","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851237009,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (264:8)\n\n  262 |         </View>\n  263 |\n> 264 |         </LinearGradient>\n      |         ^\n  265 |         <View style={styles.navWrapper}>\n  266 |           <PawNavBar active=\"/homepage\" />\n  267 |         </View>]"]}
+{"_e":"metro:client_log","_t":1793851237009,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (264:8)\n\n  262 |         </View>\n  263 |\n> 264 |         </LinearGradient>\n      |         ^\n  265 |         <View style={styles.navWrapper}>\n  266 |           <PawNavBar active=\"/homepage\" />\n  267 |         </View>]"]}
+{"_e":"metro:bundling:failed","_t":1793851242098,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (280:8)\n\n  278 |               );\n  279 |             })}\n> 280 |         </LinearGradient>\n      |         ^\n  281 |         <View style={styles.navWrapper}>\n  282 |           <PawNavBar active=\"/homepage\" />\n  283 |         </View>","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851242100,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (280:8)\n\n  278 |               );\n  279 |             })}\n> 280 |         </LinearGradient>\n      |         ^\n  281 |         <View style={styles.navWrapper}>\n  282 |           <PawNavBar active=\"/homepage\" />\n  283 |         </View>]"]}
+{"_e":"metro:client_log","_t":1793851242103,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (280:8)\n\n  278 |               );\n  279 |             })}\n> 280 |         </LinearGradient>\n      |         ^\n  281 |         <View style={styles.navWrapper}>\n  282 |           <PawNavBar active=\"/homepage\" />\n  283 |         </View>]"]}
+{"_e":"metro:bundling:failed","_t":1793851266363,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (270:4)\n\n  268 |           <PawNavBar active=\"/homepage\" />\n  269 |         </View>\n> 270 |     </LinearGradient>\n      |     ^\n  271 |   );\n  272 | }\n  273 |","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851266365,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (270:4)\n\n  268 |           <PawNavBar active=\"/homepage\" />\n  269 |         </View>\n> 270 |     </LinearGradient>\n      |     ^\n  271 |   );\n  272 | }\n  273 |]"]}
+{"_e":"metro:client_log","_t":1793851266365,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (270:4)\n\n  268 |           <PawNavBar active=\"/homepage\" />\n  269 |         </View>\n> 270 |     </LinearGradient>\n      |     ^\n  271 |   );\n  272 | }\n  273 |]"]}
+{"_e":"metro:bundling:failed","_t":1793851273654,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (265:8)\n\n  263 |\n  264 |           \n> 265 |         </LinearGradient>\n      |         ^\n  266 |         <View style={styles.navWrapper}>\n  267 |           <PawNavBar active=\"/homepage\" />\n  268 |         </View>","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851273663,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (265:8)\n\n  263 |\n  264 |           \n> 265 |         </LinearGradient>\n      |         ^\n  266 |         <View style={styles.navWrapper}>\n  267 |           <PawNavBar active=\"/homepage\" />\n  268 |         </View>]"]}
+{"_e":"metro:client_log","_t":1793851273663,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (265:8)\n\n  263 |\n  264 |           \n> 265 |         </LinearGradient>\n      |         ^\n  266 |         <View style={styles.navWrapper}>\n  267 |           <PawNavBar active=\"/homepage\" />\n  268 |         </View>]"]}
+{"_e":"metro:bundling:failed","_t":1793851277096,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (269:4)\n\n  267 |           <PawNavBar active=\"/homepage\" />\n  268 |         </View>\n> 269 |     </LinearGradient>\n      |     ^\n  270 |   );\n  271 | }\n  272 |","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851277103,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (269:4)\n\n  267 |           <PawNavBar active=\"/homepage\" />\n  268 |         </View>\n> 269 |     </LinearGradient>\n      |     ^\n  270 |   );\n  271 | }\n  272 |]"]}
+{"_e":"metro:client_log","_t":1793851277106,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (269:4)\n\n  267 |           <PawNavBar active=\"/homepage\" />\n  268 |         </View>\n> 269 |     </LinearGradient>\n      |     ^\n  270 |   );\n  271 | }\n  272 |]"]}
+{"_e":"metro:bundling:failed","_t":1793851278994,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (268:4)\n\n  266 |           <PawNavBar active=\"/homepage\" />\n  267 |         </View>\n> 268 |     </LinearGradient>\n      |     ^\n  269 |   );\n  270 | }\n  271 |","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851278998,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (268:4)\n\n  266 |           <PawNavBar active=\"/homepage\" />\n  267 |         </View>\n> 268 |     </LinearGradient>\n      |     ^\n  269 |   );\n  270 | }\n  271 |]"]}
+{"_e":"metro:client_log","_t":1793851278998,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (268:4)\n\n  266 |           <PawNavBar active=\"/homepage\" />\n  267 |         </View>\n> 268 |     </LinearGradient>\n      |     ^\n  269 |   );\n  270 | }\n  271 |]"]}
+{"_e":"metro:bundling:failed","_t":1793851288764,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (266:4)\n\n  264 |           <PawNavBar active=\"/homepage\" />\n  265 |         </View>\n> 266 |     </LinearGradient>\n      |     ^\n  267 |   );\n  268 | }\n  269 |","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851288770,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (266:4)\n\n  264 |           <PawNavBar active=\"/homepage\" />\n  265 |         </View>\n> 266 |     </LinearGradient>\n      |     ^\n  267 |   );\n  268 | }\n  269 |]"]}
+{"_e":"metro:client_log","_t":1793851288775,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (266:4)\n\n  264 |           <PawNavBar active=\"/homepage\" />\n  265 |         </View>\n> 266 |     </LinearGradient>\n      |     ^\n  267 |   );\n  268 | }\n  269 |]"]}
+{"_e":"metro:bundling:failed","_t":1793851317677,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (266:4)\n\n  264 |           <PawNavBar active=\"/homepage\" />\n  265 |         </View>\n> 266 |     </LinearGradient>\n      |     ^\n  267 |   );\n  268 |\n  269 |","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851317686,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (266:4)\n\n  264 |           <PawNavBar active=\"/homepage\" />\n  265 |         </View>\n> 266 |     </LinearGradient>\n      |     ^\n  267 |   );\n  268 |\n  269 |]"]}
+{"_e":"metro:client_log","_t":1793851317687,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (266:4)\n\n  264 |           <PawNavBar active=\"/homepage\" />\n  265 |         </View>\n> 266 |     </LinearGradient>\n      |     ^\n  267 |   );\n  268 |\n  269 |]"]}
+{"_e":"metro:bundling:failed","_t":1793851327464,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (280:8)\n\n  278 |               );\n  279 |             })}\n> 280 |         </LinearGradient>\n      |         ^\n  281 |         <View style={styles.navWrapper}>\n  282 |           <PawNavBar active=\"/homepage\" />\n  283 |         </View>","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851327731,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (280:8)\n\n  278 |               );\n  279 |             })}\n> 280 |         </LinearGradient>\n      |         ^\n  281 |         <View style={styles.navWrapper}>\n  282 |           <PawNavBar active=\"/homepage\" />\n  283 |         </View>]"]}
+{"_e":"metro:client_log","_t":1793851327733,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (280:8)\n\n  278 |               );\n  279 |             })}\n> 280 |         </LinearGradient>\n      |         ^\n  281 |         <View style={styles.navWrapper}>\n  282 |           <PawNavBar active=\"/homepage\" />\n  283 |         </View>]"]}
+{"_e":"metro:bundling:failed","_t":1793851336695,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (281:8)\n\n  279 |             })}\n  280 |\n> 281 |         </LinearGradient>\n      |         ^\n  282 |         <View style={styles.navWrapper}>\n  283 |           <PawNavBar active=\"/homepage\" />\n  284 |         </View>","importStack":null,"filename":"src\\app\\(tabs)\\camera.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1793851337168,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (281:8)\n\n  279 |             })}\n  280 |\n> 281 |         </LinearGradient>\n      |         ^\n  282 |         <View style={styles.navWrapper}>\n  283 |           <PawNavBar active=\"/homepage\" />\n  284 |         </View>]"]}
+{"_e":"metro:client_log","_t":1793851337182,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\camera.tsx: Expected corresponding JSX closing tag for <SafeAreaView>. (281:8)\n\n  279 |             })}\n  280 |\n> 281 |         </LinearGradient>\n      |         ^\n  282 |         <View style={styles.navWrapper}>\n  283 |           <PawNavBar active=\"/homepage\" />\n  284 |         </View>]"]}
+{"_e":"metro:client_log","_t":1793851381103,"level":"warn","data":["[2026-11-05T04:03:01.104Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x1ff23845 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793851381105,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"root:init","_t":1793851437536,"format":"v0-jsonl","version":"57.0.32"}
+{"_e":"env:mode","_t":1793851437537,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793851437547,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793851438468,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793851439317,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793851440200,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793851457713,"atlas":false,"workers":6,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1793851622062,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793851622063,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793851622065,"id":"3","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793851622065,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851622065,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851622078,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851622078,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851622200,"id":"2","progress":0.1335059171597633,"total":52,"current":19}
+{"_e":"metro:bundling:progress","_t":1793851622200,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851622299,"id":"2","progress":0.1335059171597633,"total":244,"current":77}
+{"_e":"metro:bundling:progress","_t":1793851622299,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851622399,"id":"2","progress":0.17336406580463773,"total":281,"current":117}
+{"_e":"metro:bundling:progress","_t":1793851622399,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851622500,"id":"2","progress":0.23137317737542062,"total":395,"current":190}
+{"_e":"metro:bundling:progress","_t":1793851622500,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851622600,"id":"2","progress":0.23137317737542062,"total":395,"current":190}
+{"_e":"metro:bundling:progress","_t":1793851622600,"id":"3","progress":0.1111111111111111,"total":45,"current":15}
+{"_e":"metro:bundling:progress","_t":1793851622700,"id":"2","progress":0.41968924780377426,"total":531,"current":344}
+{"_e":"metro:bundling:progress","_t":1793851622700,"id":"3","progress":0.1111111111111111,"total":45,"current":15}
+{"_e":"metro:bundling:progress","_t":1793851622800,"id":"2","progress":0.4835314240603482,"total":604,"current":420}
+{"_e":"metro:bundling:progress","_t":1793851622800,"id":"3","progress":0.1111111111111111,"total":45,"current":15}
+{"_e":"metro:bundling:progress","_t":1793851622946,"id":"2","progress":0.4835314240603482,"total":604,"current":420}
+{"_e":"metro:bundling:progress","_t":1793851622946,"id":"3","progress":0.1111111111111111,"total":146,"current":44}
+{"_e":"metro:bundling:progress","_t":1793851623045,"id":"2","progress":0.6657021826692203,"total":679,"current":554}
+{"_e":"metro:bundling:progress","_t":1793851623045,"id":"3","progress":0.1111111111111111,"total":146,"current":44}
+{"_e":"metro:bundling:progress","_t":1793851623145,"id":"2","progress":0.6657021826692203,"total":679,"current":554}
+{"_e":"metro:bundling:progress","_t":1793851623145,"id":"3","progress":0.17031997984378935,"total":189,"current":78}
+{"_e":"metro:bundling:progress","_t":1793851623250,"id":"2","progress":0.6657021826692203,"total":679,"current":554}
+{"_e":"metro:bundling:progress","_t":1793851623250,"id":"3","progress":0.17031997984378935,"total":349,"current":144}
+{"_e":"metro:bundling:progress","_t":1793851623472,"id":"2","progress":0.7525325480008361,"total":732,"current":635}
+{"_e":"metro:bundling:progress","_t":1793851623472,"id":"3","progress":0.17031997984378935,"total":349,"current":144}
+{"_e":"metro:bundling:progress","_t":1793851623597,"id":"2","progress":0.7525325480008361,"total":732,"current":635}
+{"_e":"metro:bundling:progress","_t":1793851623597,"id":"3","progress":0.170656082336994,"total":351,"current":145}
+{"_e":"metro:bundling:progress","_t":1793851623724,"id":"2","progress":0.7525325480008361,"total":2637,"current":636}
+{"_e":"metro:bundling:progress","_t":1793851623724,"id":"3","progress":0.170656082336994,"total":351,"current":145}
+{"_e":"metro:bundling:progress","_t":1793851623824,"id":"2","progress":0.7525325480008361,"total":2637,"current":636}
+{"_e":"metro:bundling:progress","_t":1793851623824,"id":"3","progress":0.18159220041322316,"total":352,"current":150}
+{"_e":"metro:bundling:progress","_t":1793851623924,"id":"2","progress":0.7525325480008361,"total":2637,"current":636}
+{"_e":"metro:bundling:progress","_t":1793851623924,"id":"3","progress":0.2724011837465841,"total":479,"current":250}
+{"_e":"metro:bundling:progress","_t":1793851624024,"id":"2","progress":0.7525325480008361,"total":2689,"current":757}
+{"_e":"metro:bundling:progress","_t":1793851624024,"id":"3","progress":0.2724011837465841,"total":479,"current":250}
+{"_e":"metro:bundling:progress","_t":1793851624124,"id":"2","progress":0.7525325480008361,"total":2689,"current":1621}
+{"_e":"metro:bundling:progress","_t":1793851624124,"id":"3","progress":0.2724011837465841,"total":479,"current":250}
+{"_e":"metro:bundling:progress","_t":1793851624224,"id":"2","progress":0.8915460850999505,"total":2689,"current":2539}
+{"_e":"metro:bundling:progress","_t":1793851624224,"id":"3","progress":0.2724011837465841,"total":479,"current":250}
+{"_e":"metro:bundling:progress","_t":1793851624324,"id":"2","progress":0.9509808727156482,"total":2740,"current":2672}
+{"_e":"metro:bundling:progress","_t":1793851624324,"id":"3","progress":0.2724011837465841,"total":479,"current":250}
+{"_e":"metro:bundling:progress","_t":1793851624424,"id":"2","progress":0.9509808727156482,"total":2740,"current":2672}
+{"_e":"metro:bundling:progress","_t":1793851624424,"id":"3","progress":0.5576820350347216,"total":699,"current":522}
+{"_e":"metro:bundling:progress","_t":1793851624642,"id":"2","progress":0.9509808727156482,"total":2740,"current":2672}
+{"_e":"metro:bundling:progress","_t":1793851624642,"id":"3","progress":0.5640233574610755,"total":739,"current":555}
+{"_e":"metro:bundling:progress","_t":1793851624743,"id":"2","progress":0.9509808727156482,"total":2765,"current":2696}
+{"_e":"metro:bundling:progress","_t":1793851624743,"id":"3","progress":0.5640233574610755,"total":739,"current":555}
+{"_e":"metro:bundling:progress","_t":1793851624843,"id":"2","progress":0.9509808727156482,"total":2765,"current":2696}
+{"_e":"metro:bundling:progress","_t":1793851624843,"id":"3","progress":0.5640233574610755,"total":2712,"current":647}
+{"_e":"metro:bundling:progress","_t":1793851624952,"id":"2","progress":0.9552348375467299,"total":2827,"current":2763}
+{"_e":"metro:bundling:progress","_t":1793851624953,"id":"3","progress":0.5640233574610755,"total":2712,"current":647}
+{"_e":"metro:bundling:progress","_t":1793851625052,"id":"2","progress":0.9552348375467299,"total":2827,"current":2763}
+{"_e":"metro:bundling:progress","_t":1793851625052,"id":"3","progress":0.5640233574610755,"total":2791,"current":1760}
+{"_e":"metro:bundling:progress","_t":1793851625152,"id":"2","progress":0.9552348375467299,"total":2827,"current":2763}
+{"_e":"metro:bundling:progress","_t":1793851625152,"id":"3","progress":0.9027369232778403,"total":2807,"current":2667}
+{"_e":"metro:bundling:progress","_t":1793851625259,"id":"2","progress":0.9552348375467299,"total":2921,"current":2822}
+{"_e":"metro:bundling:progress","_t":1793851625259,"id":"3","progress":0.9027369232778403,"total":2807,"current":2667}
+{"_e":"metro:bundling:progress","_t":1793851625358,"id":"2","progress":0.9871122255511608,"total":2939,"current":2920}
+{"_e":"metro:bundling:progress","_t":1793851625358,"id":"3","progress":0.9027369232778403,"total":2807,"current":2667}
+{"_e":"metro:bundling:progress","_t":1793851625477,"id":"2","progress":0.9871122255511608,"total":2939,"current":2920}
+{"_e":"metro:bundling:progress","_t":1793851625477,"id":"3","progress":0.9581650601324264,"total":2980,"current":2917}
+{"_e":"metro:bundling:progress","_t":1793851625577,"id":"2","progress":0.9871122255511608,"total":2939,"current":2920}
+{"_e":"metro:bundling:progress","_t":1793851625577,"id":"3","progress":0.9734854168362088,"total":3072,"current":3031}
+{"_e":"metro:bundling:progress","_t":1793851625747,"id":"2","progress":0.9871122255511608,"total":2939,"current":2920}
+{"_e":"metro:bundling:progress","_t":1793851625748,"id":"3","progress":0.9974416384000001,"total":3125,"current":3121}
+{"_e":"metro:bundling:done","_t":1793851625863,"id":"3","total":3125,"ms":3797.9922}
+{"_e":"metro:bundling:progress","_t":1793851625863,"id":"2","progress":0.9871122255511608,"total":2939,"current":2920}
+{"_e":"metro:bundling:progress","_t":1793851625978,"id":"2","progress":0.9871122255511608,"total":2939,"current":2920}
+{"_e":"metro:bundling:done","_t":1793851627009,"id":"2","total":2939,"ms":4946.97}
+{"_e":"metro:bundling:started","_t":1793851627085,"id":"6","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793851627085,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851627094,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851627195,"id":"6","progress":0.11911661054115434,"total":226,"current":78}
+{"_e":"metro:bundling:progress","_t":1793851627295,"id":"6","progress":0.29752066115702475,"total":418,"current":228}
+{"_e":"metro:bundling:progress","_t":1793851627395,"id":"6","progress":0.47507410695990704,"total":605,"current":417}
+{"_e":"metro:bundling:progress","_t":1793851627509,"id":"6","progress":0.6940516035842824,"total":707,"current":589}
+{"_e":"metro:bundling:progress","_t":1793851627661,"id":"6","progress":0.6940516035842824,"total":801,"current":663}
+{"_e":"metro:bundling:progress","_t":1793851627910,"id":"6","progress":0.6940516035842824,"total":2707,"current":663}
+{"_e":"metro:bundling:progress","_t":1793851627994,"id":"6","progress":0.6940516035842824,"total":2707,"current":664}
+{"_e":"metro:bundling:progress","_t":1793851628094,"id":"6","progress":0.6940516035842824,"total":2757,"current":750}
+{"_e":"metro:bundling:progress","_t":1793851628194,"id":"6","progress":0.6940516035842824,"total":2767,"current":808}
+{"_e":"metro:bundling:progress","_t":1793851628294,"id":"6","progress":0.6940516035842824,"total":2767,"current":1352}
+{"_e":"metro:bundling:progress","_t":1793851628394,"id":"6","progress":0.6940516035842824,"total":2767,"current":2130}
+{"_e":"metro:bundling:progress","_t":1793851628494,"id":"6","progress":0.951625893492886,"total":2777,"current":2709}
+{"_e":"metro:bundling:progress","_t":1793851628646,"id":"6","progress":0.9703618103780864,"total":2880,"current":2837}
+{"_e":"metro:bundling:progress","_t":1793851628847,"id":"6","progress":0.9703618103780864,"total":2931,"current":2870}
+{"_e":"metro:bundling:done","_t":1793851629016,"id":"6","total":2931,"ms":1931.2685}
+{"_e":"metro:client_log","_t":1793851630921,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793851630923,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793851630923,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793851630924,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793851630924,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793851630924,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793851630924,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793851630924,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793851630924,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793851630925,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:started","_t":1793851643010,"id":"c","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793851643011,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793851643011,"id":"d","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1793851643011,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851643015,"id":"d","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793851643377,"id":"d","total":1,"ms":365.5455}
+{"_e":"metro:bundling:progress","_t":1793851643377,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793851646450,"id":"c","total":1,"ms":3439.4117}
+{"_e":"metro:bundling:started","_t":1793851646884,"id":"g","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1793851646884,"id":"g","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1793851647168,"id":"g","total":1,"ms":283.5102}
+{"_e":"metro:client_log","_t":1793851648018,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793851648019,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793851648196,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793851648197,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793851648200,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793851648226,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793851648256,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793851648257,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1793851648273,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793851648291,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793851672613,"level":"log","data":["Login successful:","bhuvana67@gmail.com"]}
+{"_e":"metro:client_log","_t":1793851672636,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793851675661,"level":"warn","data":["[2026-11-05T04:07:55.662Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x2b020a62 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793851675662,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793851696452,"level":"warn","data":["[2026-11-05T04:08:16.452Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x2b020a64 failed with error: ","{\"code\":\"unavailable\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"8MRtes0cshTunxzix8ulFN7Q02m1\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793851696452,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Connection failed.]"]}
+{"_e":"root:init","_t":1793852025229,"format":"v0-jsonl","version":"57.0.32"}
+{"_e":"env:mode","_t":1793852025231,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793852025240,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793852026484,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793852027423,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793852028261,"plugins":[]}

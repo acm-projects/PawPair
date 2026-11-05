@@ -108,7 +108,7 @@ function TopRow() {
         Icon={Check}
         color={GREEN}
         count={matches.length}
-        onPress={() => router.navigate("/matches" as any)}
+        onPress={() => router.navigate("/(tabs)/matches" as any)}
       />
       <IconCircle
         Icon={ClipboardList}
@@ -193,7 +193,7 @@ function MatchesHero() {
               return (
                 <Pressable
                   style={[s.heroCard, { width: cardW, height: cardH }]}
-                  onPress={() => router.navigate("/matches" as any)}
+                  onPress={() => router.navigate("/(tabs)/matches" as any)}
                 >
                   <Image source={{ uri: item.image }} style={s.heroImg} />
                   <LinearGradient
