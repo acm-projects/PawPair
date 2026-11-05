@@ -108,7 +108,7 @@ function TopRow() {
         Icon={Check}
         color={GREEN}
         count={matches.length}
-        onPress={() => router.navigate("/matches" as any)}
+        onPress={() => router.navigate("/(tabs)/matches" as any)}
       />
       <IconCircle
         Icon={ClipboardList}
