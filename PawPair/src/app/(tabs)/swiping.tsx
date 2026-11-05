@@ -1,8 +1,9 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import { Text, View, StyleSheet, Image, ScrollView, Pressable, Animated, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { PETS_DATA } from "../../data/pets";
-import { matchPet, starPet } from "../../store/petLists";
+import { matchPet } from "../../store/petLists";
+import { markSwiped, useSwiped } from "../../store/swiped";
 import { useRouter } from "expo-router";
 import { ChevronLeft } from "lucide-react-native";
 
@@ -12,21 +13,23 @@ const pawIcon = require("../../../assets/images/paw-icon.png");
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export default function Scrollview() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const busy = useRef(false); 
+  const busy = useRef(false);
   const router = useRouter();
+  const swiped = useSwiped();
 
   const position = useMemo(() => new Animated.ValueXY({ x: 0, y: 0 }), []);
 
-  const handleAction = (actionType: "reject" | "star" | "match") => {
-    if (busy.current) return;
+  // only pets that haven't been swiped yet; the first one is always on top
+  const deck = PETS_DATA.filter((p) => !swiped.has(p.id));
+  const currentPet = deck[0];
+
+  const handleAction = (actionType: "reject" | "match") => {
+    if (busy.current || !currentPet) return;
     busy.current = true;
 
-    const pet = PETS_DATA[currentIndex];
+    const pet = currentPet;
 
     if (actionType === "match") matchPet(pet.id);
-    if (actionType === "star") starPet(pet.id);
-
     const xTarget = actionType === "reject" ? -SCREEN_WIDTH * 1.2 : SCREEN_WIDTH * 1.2;
 
     Animated.timing(position, {
@@ -34,7 +37,7 @@ export default function Scrollview() {
       duration: 250,
       useNativeDriver: false,
     }).start(() => {
-      setCurrentIndex((prev) => prev + 1);
+      markSwiped(pet.id); // remember it so it never shows again
       position.setValue({ x: 0, y: 0 });
       busy.current = false;
     });
@@ -49,29 +52,31 @@ export default function Scrollview() {
     transform: [{ translateX: position.x }, { translateY: position.y }, { rotate }],
   };
 
-  if (currentIndex >= PETS_DATA.length) {
-    router.replace("/homepage");
+  if (!currentPet) {
+    return (
+      <View style={[s.outer, s.emptyWrap]}>
+        <Text style={s.emptyText}>That's all the pets!</Text>
+        <Pressable style={s.emptyBtn} onPress={() => router.replace("/homepage" as any)}>
+          <Text style={s.emptyBtnText}>Home</Text>
+        </Pressable>
+      </View>
+    );
   }
-
-  const currentPet = PETS_DATA[currentIndex];
 
   return (
     <View style={s.mainWrapper}>
-      <ScrollView 
-        style={s.outer} 
+      <ScrollView
+        style={s.outer}
         contentContainerStyle={{ padding: 16, paddingTop: 12, alignItems: "center" }}
         showsVerticalScrollIndicator={false}
       >
         <Animated.View style={[s.card, animatedCardStyle]}>
-          
-          {/* 👑 Wrapped the image and button inside a relative image block container */}
           <View style={s.imageContainer}>
             <Image source={{ uri: currentPet.image }} style={s.petImage} />
-            
-            {/* 👑 Placed back button inside this box so it sticks over the top-left photo corner */}
-            <Pressable 
-              style={s.backButton} 
-              onPress={() => router.navigate("/homepages/PreHomepage")}
+
+            <Pressable
+              style={s.backButton}
+              onPress={() => router.navigate("homepages/PreHomepage" as any)}
             >
               <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
             </Pressable>
@@ -134,13 +139,6 @@ export default function Scrollview() {
               </Pressable>
 
               <Pressable
-                onPress={() => handleAction("star")}
-                style={[s.btn, { borderColor: "#6366F1", backgroundColor: "#ECEBFA" }]}
-              >
-                <Text style={[s.actionSymbol, { color: "#6366F1" }]}>★</Text>
-              </Pressable>
-
-              <Pressable
                 onPress={() => handleAction("match")}
                 style={[s.btn, { borderColor: "#2E7D32", backgroundColor: "#EAF7EE" }]}
               >
@@ -155,23 +153,38 @@ export default function Scrollview() {
 }
 
 const s = StyleSheet.create({
-  mainWrapper: { 
-    flex: 1, 
+  mainWrapper: {
+    flex: 1,
     backgroundColor: "#6b6b6b",
   },
-  outer: { 
-    flex: 1, 
-    backgroundColor: "#6b6b6b" 
+  outer: {
+    flex: 1,
+    backgroundColor: "#6b6b6b",
   },
-  card: { 
-    width: "100%", 
-    maxWidth: 340, 
-    backgroundColor: "#F6F3EF", 
+  emptyWrap: {
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 16,
+  },
+  emptyText: { color: "#fff", fontSize: 16 },
+  emptyBtn: {
+    paddingHorizontal: 22,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: "#F4BFB2",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  emptyBtnText: { fontSize: 14, fontWeight: "600", color: "#000" },
+  card: {
+    width: "100%",
+    maxWidth: 340,
+    backgroundColor: "#F6F3EF",
     overflow: "hidden",
-    marginTop: 12, 
+    marginTop: 12,
   },
   imageContainer: {
-    position: "relative", // 👑 Allows absolute elements inside to align exactly to this image area box
+    position: "relative",
     width: "100%",
     height: 285,
   },
@@ -181,13 +194,13 @@ const s = StyleSheet.create({
   },
   backButton: {
     position: "absolute",
-    top: 14, // 👑 Securely pins the button precisely inside the image's top-left margins
+    top: 14,
     left: 14,
-    zIndex: 99, 
+    zIndex: 99,
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: "rgba(246, 243, 239, 0.95)", 
+    backgroundColor: "rgba(246, 243, 239, 0.95)",
     alignItems: "center",
     justifyContent: "center",
     shadowColor: "#000",

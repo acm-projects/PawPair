@@ -1,20 +1,31 @@
+import { Link, useRouter } from "expo-router";
 import { useEffect, useRef } from "react";
 import {
+  Animated,
+  Image,
+  Pressable,
+  StyleSheet,
   Text,
   View,
-  StyleSheet,
-  Pressable,
-  Image,
-  Animated,
   Easing,
+  useWindowDimensions,
 } from "react-native";
-import { useRouter } from "expo-router";
 import { useFonts } from "expo-font";
 
-const pepoGoat = require("../../assets/images/pepo-goat.png");
+const petDuo = require("../../assets/images/pet-duo.png");
 const paw = require("../../assets/images/paw-watermark.png");
+const pepoGoat = require("../../assets/images/pepo-goat.png");
 
 const FONT = "'Open Sans', system-ui, sans-serif";
+
+// ---------- DOG + CAT TUNING (only change these) ----------
+const IMG_W = 515; // pet-duo.png real width in pixels
+const IMG_H = 485; // pet-duo.png real height in pixels
+const PETS_WIDTH = 0.8; // fraction of the screen width
+const PETS_SINK = 0.08; // how much of the image's HEIGHT to push below the bottom edge.
+                        // Still floating? raise it (0.12, 0.16, 0.2...). Cut off? lower it.
+const PETS_SHIFT_X = 0.04; // nudges left to cancel uneven side padding. 0 = no nudge
+// ----------------------------------------------------------
 
 function loadFont() {
   if (typeof document === "undefined") return;
@@ -23,23 +34,27 @@ function loadFont() {
   link.id = "open-sans-font";
   link.rel = "stylesheet";
   link.href =
-    "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap";
+    "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap";
   document.head.appendChild(link);
 }
 
 const paws = [
-  { top: "10%", left: "12%" },
-  { top: "6%", left: "78%" },
-  { top: "35%", left: "82%" },
-  { top: "62%", left: "8%" },
-  { top: "78%", left: "80%" },
-  { top: "86%", left: "20%" },
+  { top: "4%", left: "8%", size: 54, rotate: "-12deg" },
+  { top: "35%", left: "84%", size: 54, rotate: "10deg" },
+  { top: "52%", left: "4%", size: 54, rotate: "-10deg" },
+  { top: "54%", left: "86%", size: 54, rotate: "12deg" },
+  { top: "90%", left: "2%", size: 54, rotate: "-15deg" },
+  { top: "88%", left: "88%", size: 54, rotate: "12deg" },
 ] as const;
 
 export default function Index() {
   const router = useRouter();
-
   const sway = useRef(new Animated.Value(0)).current;
+  const { width: screenW } = useWindowDimensions();
+
+  const colW = Math.min(screenW, 380);
+  const petW = colW * PETS_WIDTH;
+  const petH = petW * (IMG_H / IMG_W);
 
   useEffect(() => {
     const loop = Animated.loop(
@@ -66,7 +81,12 @@ export default function Index() {
     );
     loop.start();
     return () => loop.stop();
-  }, [sway]);
+  }, []);
+
+  const [fontsLoaded] = useFonts({
+    HeadingFont: require("../../assets/Fonts/Matcha Style.ttf"),
+    NameFont: require("../../assets/Fonts/NameFont.otf"),
+  });
 
   const translateX = sway.interpolate({
     inputRange: [-1, 1],
@@ -78,11 +98,6 @@ export default function Index() {
     outputRange: ["-4deg", "4deg"],
   });
 
-  const [fontsLoaded] = useFonts({
-    HeadingFont: require("../../assets/Fonts/Matcha Style.ttf"),
-    NameFont: require("../../assets/Fonts/NameFont.otf"),
-  });
-
   useEffect(() => {
     loadFont();
   }, []);
@@ -92,152 +107,167 @@ export default function Index() {
   return (
     <View style={styles.outer}>
       <View style={styles.container}>
-        {paws.map((position, index) => (
-          <Image key={index} source={paw} style={[styles.paw, position]} />
+        {/* paw watermarks */}
+        {paws.map((p, i) => (
+          <Image
+            key={i}
+            source={paw}
+            style={[
+              styles.paw,
+              {
+                top: p.top,
+                left: p.left,
+                width: p.size,
+                height: p.size,
+                transform: [{ rotate: p.rotate }],
+              },
+            ]}
+          />
         ))}
 
-        <View style={styles.heroSection}>
-          <Text style={styles.title}>PawPair</Text>
-          <Text style={styles.subtitle}>Find your perfect companion</Text>
-        </View>
-
-        <View style={styles.mascotContainer}>
+        {/* goat circle (circle stays still, goat sways) */}
+        <View style={styles.goatCircle}>
           <Animated.Image
             source={pepoGoat}
-            style={[
-              styles.mascot,
-              { transform: [{ translateX }, { rotate }] },
-            ]}
+            style={{
+              width: "100%",
+              height: "100%",
+              resizeMode: "contain",
+              transform: [{ translateX }, { rotate }],
+            }}
           />
         </View>
 
-        <View style={styles.actionSection}>
+        {/* logo + tagline */}
+        <View style={styles.header}>
+          <Text style={styles.title}>PAWPAIR</Text>
+          <Text style={styles.tagline}>Find your paw-tner</Text>
+        </View>
+
+        {/* login button + signup link */}
+        <View style={styles.actions}>
           <Pressable
             style={({ pressed }) => [
-              styles.primaryButton,
+              styles.button,
               pressed && styles.buttonPressed,
             ]}
             onPress={() => router.push("/login")}
           >
-            <Text style={styles.primaryButtonText}>Log In</Text>
+            <Text style={styles.buttonText}>Login</Text>
           </Pressable>
 
-          <Pressable
-            style={({ pressed }) => [
-              styles.secondaryButton,
-              pressed && styles.secondaryButtonPressed,
-            ]}
-            onPress={() => router.push("/signup")}
-          >
-            <Text style={styles.secondaryButtonText}>Create Account</Text>
-          </Pressable>
+          <Text style={styles.signupText}>
+            Don't have an account?{" "}
+            <Link href="/signup" style={styles.link}>
+              Sign up.
+            </Link>
+          </Text>
         </View>
+
+        {/* dog + cat: original uncropped image, sunk to the bottom edge */}
+        <Image
+          source={petDuo}
+          style={{
+            position: "absolute",
+            bottom: -petH * PETS_SINK,
+            alignSelf: "center",
+            width: petW,
+            height: petH,
+            resizeMode: "contain",
+            transform: [{ translateX: -petW * PETS_SHIFT_X }],
+          }}
+        />
       </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   outer: {
     flex: 1,
-    backgroundColor: "#F3EDE8",
+    backgroundColor: "#F5EFEB",
     alignItems: "center",
   },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between",
     width: "100%",
-    maxWidth: 420,
-    backgroundColor: "#F3EDE8",
-    paddingTop: 80,
-    paddingBottom: 50,
-    paddingHorizontal: 24,
+    maxWidth: 380,
+    backgroundColor: "#F5EFEB",
     overflow: "hidden",
+    alignItems: "center",
   },
   paw: {
     position: "absolute",
-    width: 52,
-    height: 52,
     resizeMode: "contain",
-    opacity: 0.18,
+    opacity: 1,
   },
-  heroSection: {
-    alignItems: "center",
-    marginTop: 20,
-    gap: 8,
-  },
-  title: {
-    fontSize: 54,
-    fontWeight: "bold",
-    fontFamily: "HeadingFont",
-    color: "#1A1A1A",
-    textAlign: "center",
-  },
-  subtitle: {
-    fontFamily: FONT,
-    fontSize: 16,
-    color: "#786862",
-    textAlign: "center",
-    letterSpacing: 0.3,
-  },
-  mascotContainer: {
-    alignItems: "center",
+  goatCircle: {
+    position: "absolute",
+    top: "4%",
+    left: "32%",
+    width: "36%",
+    aspectRatio: 1,
+    borderRadius: 999,
+    backgroundColor: "#BFCBEC",
     justifyContent: "center",
-    marginVertical: 20,
+    alignItems: "center",
   },
-  mascot: {
-    width: 140,
-    height: 140,
-    resizeMode: "contain",
-  },
-  actionSection: {
+  header: {
+    position: "absolute",
+    top: "23%",
     width: "100%",
     alignItems: "center",
-    gap: 14,
-    marginBottom: 20,
   },
-  primaryButton: {
-    width: "90%",
-    height: 50,
-    backgroundColor: "#F4BFB2",
-    borderRadius: 25,
+  title: {
+    fontFamily: "HeadingFont",
+    fontSize: 72,
+    color: "#1c1c1c",
+    letterSpacing: 2,
+  },
+  tagline: {
+    fontFamily: "NameFont",
+    fontSize: 26,
+    color: "#1c1c1c",
+    marginTop: 4,
+  },
+  actions: {
+    position: "absolute",
+    top: "42%",
+    width: "100%",
+    alignItems: "center",
+    gap: 16,
+  },
+  button: {
+    width: "78%",
+    height: 60,
+    borderRadius: 20,
+    backgroundColor: "#F7BEB0",
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "#E98F78",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
     elevation: 3,
   },
   buttonPressed: {
-    backgroundColor: "#f4af9d",
-    transform: [{ scale: 0.98 }],
-  },
-  primaryButtonText: {
-    fontFamily: FONT,
-    fontSize: 17,
-    fontWeight: "600",
-    color: "white",
-  },
-  secondaryButton: {
-    width: "90%",
-    height: 50,
-    backgroundColor: "#EEF0FB",
-    borderWidth: 1.5,
-    borderColor: "#C5CDF0",
-    borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  secondaryButtonPressed: {
     backgroundColor: "#BFCBEC",
-    transform: [{ scale: 0.98 }],
+    opacity: 0.8,
   },
-  secondaryButtonText: {
+  buttonText: {
     fontFamily: FONT,
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#1A1A1A",
+    fontSize: 20,
+    color: "#1c1c1c",
+  },
+  signupText: {
+    fontFamily: FONT,
+    fontSize: 13,
+    color: "#1c1c1c",
+  },
+  link: {
+    fontFamily: FONT,
+    fontSize: 13,
+    color: "#1c1c1c",
+    textDecorationLine: "underline",
   },
 });
