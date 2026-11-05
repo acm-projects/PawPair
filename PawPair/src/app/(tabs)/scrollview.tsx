@@ -15,6 +15,8 @@ import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
+import SettingsButton from "@/components/SettingsButtons";
+
 
 
 
@@ -193,6 +195,7 @@ export default function Scrollview() {
 
   return (
     <LinearGradient colors={[ "#F5C0B3","#E98F78"]} style={styles.container}>
+    
       {/* Search bar + filter button */}
       <View style={styles.searchRow}>
         <View style={styles.searchBar}>
@@ -205,9 +208,13 @@ export default function Scrollview() {
             placeholderTextColor="#786862"
           />
         </View>
-        <TouchableOpacity style={styles.filterButton}>
-          <Ionicons name="options-outline" size={22} color="#1a1a1a" />
-        </TouchableOpacity>
+           <TouchableOpacity
+            style={styles.filterButton}
+            onPress={() => router.navigate("/settings")}
+            accessibilityLabel="Open settings"
+          >
+            <Ionicons name="ellipsis-horizontal" size={22} color="#1a1a1a" />
+          </TouchableOpacity>
       </View>
 
       {/* FlatList = the scrolling list. It draws one DogCard per dog. */}
