@@ -1,31 +1,29 @@
-import {
-  View,
-  Text,
-  Image,
-  TextInput,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-  
-} from "react-native";
-import { useState } from "react";
-import { Ionicons } from "@expo/vector-icons"; 
+// UI imports
+import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator } from "react-native";
+import { useEffect, useState } from "react";
+import { Image } from "expo-image";
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
 
-
-
-
-
+// backend imports
+import { getAuth } from "firebase/auth";
+import { app } from "../../firebase.js";
+import { getAnimals } from "../../services/animalServices";
+import { addFavorite, getFavorites } from "../../services/favoriteServices";
+import { getQuizAnswers } from "../../services/quizService";
+import { matchPets } from "../../services/matchingService";
 
 // 1) THE DATA ---------------------------------------------------------------
-// Each dog is one object.  can replace this array with data from
+type PhotoSource = number | { uri: string };
 
-type Dog = {
+type Card = {
   id: string;
   name: string;
+  species: string;
+  speciesKey: string;
   age: string;
   size: string;
   energy: string;
@@ -33,70 +31,80 @@ type Dog = {
   note: string;
   tags: string[];
   matchLabel: string;
-  matchPercent: number; // 0 to 1
-  photoUrl: string;
+  matchPercent: number;
+  photo: PhotoSource;
 };
 
-const DOGS: Dog[] = [
-  {
-    id: "1",
-    name: "Buddy",
-    age: "3 years old",
-    size: "Medium",
-    energy: "High-energy",
-    temperament: "Friendly",
-    note: "Buddy is a social butterfly! We'd recommend a home with lots of play.",
-    tags: ["Verified Health Records", "Previous Owner Check", "Fully Vaccinated"],
-    matchLabel: "Very High",
-    matchPercent: 0.78,
-    
-    // Placeholder photo. Swap for your own image later.
-    photoUrl: "https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg",
-  },
-  {
-    id: "2",
-    name: "Luna",
-    age: "2 years old",
-    size: "Small",
-    energy: "Calm",
-    temperament: "Shy",
-    note: "Luna warms up slowly but is very loyal once she trusts you.",
-    tags: ["Verified Health Records", "Fully Vaccinated"],
-    matchLabel: "High",
-    matchPercent: 0.6,
-    photoUrl: "https://brownvethospital.com/wp-content/uploads/2024/02/when-do-dogs-stop-growing.jpg",
-  },
-  {
-    id: "3",
-    name: "Max",
-    age: "4 years old",
-    size: "Small",
-    energy: "High-energy",
-    temperament: "Playful",
-    note: "Max is a friendly and energetic cat who loves to play!",
-    tags: ["Verified Health Records", "Fully Vaccinated", "Neutered/Spayed"],
-    matchLabel: "Medium",
-    matchPercent: 0.5,
-    photoUrl: "https://hips.hearstapps.com/hmg-prod/images/cat-is-playing-with-a-toy-at-the-lucky-cat-house-pet-hotel-news-photo-1760987522.pjpeg?crop=0.668xw:1.00xh;0.243xw,0&resize=640:*",
-  },
-];
+const PLACEHOLDERS: Record<string, PhotoSource> = {
+  dog: require("../../../assets/images/dog.jpg"),
+  cat: require("../../../assets/images/cat.jpg"),
+  bird: require("../../../assets/images/bird.jpg"),
+  small_animal: require("../../../assets/images/small_animal.jpg"),
+};
+const DEFAULT_PHOTO: PhotoSource = require("../../../assets/images/pet-duo.png");
 
-// 2) ONE DOG CARD -----------------------------------------------------------
-// A "component" is a function that returns what to draw. We write the card
-// once, then reuse it for every dog.
-function getMatchColor(percent: number) {
-  if (percent < 0.25) return "#D9534F"; // red
-  if (percent < 0.5) return "#F0C040"; // yellow
-  if (percent < 0.75) return "#9BD16B"; // light green
-  return "#2E8B57"; // dark green
+const SPECIES_FILTERS = ["all", "dog", "cat", "bird", "small_animal"];
+
+const cap = (s?: string) => (s ? s[0].toUpperCase() + s.slice(1) : "—");
+const speciesKey = (s?: string) => (s ?? "").toLowerCase().trim().replace(/\s+/g, "_");
+const speciesLabel = (key: string) => (key === "all" ? "All" : cap(key.replace("_", " ")));
+
+function labelFor(score: number) {
+  if (score >= 85) return "Very High";
+  if (score >= 70) return "High";
+  if (score >= 50) return "Medium";
+  return "Low";
 }
 
-function DogCard({ dog }: { dog: Dog }) {
+// 2) ANIMAL CARDS -----------------------------------------------------------
+function toCard(pet: any, score?: number, hasQuiz = false): Card {
+  const tags: string[] = [];
+  if (pet.houseTrained) tags.push("House Trained");
+  if (pet.goodWithKids) tags.push("Good with Kids");
+  if (pet.goodWithDogs) tags.push("Good with Dogs");
+  if (pet.goodWithCats) tags.push("Good with Cats");
+
+  const key = speciesKey(pet.species);
+
+  return {
+    id: pet.id,
+    name: pet.name,
+    species: speciesLabel(key),
+    speciesKey: key,
+    age: pet.age != null ? `${pet.age} ${pet.age === 1 ? "year" : "years"} old` : "",
+    size: cap(pet.size),
+    energy: cap(pet.energy),
+    temperament: cap(Array.isArray(pet.temperament) ? pet.temperament[0] : pet.temperament),
+    note: pet.previousOwnerNote || pet.description || "",
+    tags,
+    matchLabel: score != null ? labelFor(score) : hasQuiz ? "Not a match" : "Take the quiz",
+    matchPercent: score == null ? 0 : score / 100,
+    photo: pet.photoUrl ? { uri: pet.photoUrl } : PLACEHOLDERS[key] ?? DEFAULT_PHOTO,
+  };
+}
+
+function getMatchColor(percent: number) {
+  if (percent < 0.25) return "#D9534F";
+  if (percent < 0.5) return "#F0C040";
+  if (percent < 0.75) return "#9BD16B";
+  return "#2E8B57";
+}
+
+function DogCard({
+  dog,
+  isFavorite,
+  isSaving,
+  onFavorite,
+}: {
+  dog: Card;
+  isFavorite: boolean;
+  isSaving: boolean;
+  onFavorite: () => void;
+}) {
   return (
     <View style={styles.card}>
-      {/* Photo with the tags sitting on top of it */}
       <View>
-        <Image source={{ uri: dog.photoUrl }} style={styles.photo} />
+        <Image source={dog.photo} style={styles.photo} contentFit="cover" contentPosition="center" />
         <View style={styles.tagsOverlay}>
           {dog.tags.map((tag) => (
             <View key={tag} style={styles.tag}>
@@ -108,34 +116,43 @@ function DogCard({ dog }: { dog: Dog }) {
       </View>
 
       <View style={styles.details}>
-        {/* Name on the left, age on the right */}
         <View style={styles.nameRow}>
-          <Text style={styles.name}>{dog.name}</Text>
-          <Text style={styles.age}>{dog.age}</Text>
+          <View>
+            <Text style={styles.name}>{dog.name}</Text>
+            <Text style={styles.age}>
+              {dog.species}
+              {dog.age ? ` · ${dog.age}` : ""}
+            </Text>
+          </View>
+          <TouchableOpacity onPress={onFavorite} disabled={isFavorite || isSaving} hitSlop={10}>
+            {isSaving ? (
+              <ActivityIndicator color="#E98F78" />
+            ) : (
+              <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={28} color="#E98F78" />
+            )}
+          </TouchableOpacity>
         </View>
 
-        {/* Three columns: Size, Energy, Temperament */}
         <View style={styles.attrRow}>
           <Attribute icon="resize-outline" label="Size" value={dog.size} />
           <Attribute icon="flash-outline" label="Energy" value={dog.energy} />
-          <Attribute
-            icon="heart-outline"
-            label="Temperament"
-            value={dog.temperament}
-          />
+          <Attribute icon="heart-outline" label="Temperament" value={dog.temperament} />
         </View>
 
-        {/* Beige note box */}
-        <View style={styles.note}>
-          <Text style={styles.noteText}>
-            <Text style={styles.bold}>Previous Owner Note: </Text>"{dog.note}"
-          </Text>
-        </View>
+        {!!dog.note && (
+          <View style={styles.note}>
+            <Text style={styles.noteText}>
+              <Text style={styles.bold}>Previous Owner Note: </Text>"{dog.note}"
+            </Text>
+          </View>
+        )}
 
-        {/* Match bar: a grey track with a coloured bar on top of it */}
         <View style={styles.track}>
           <View
-            style={[styles.fill, { width: `${dog.matchPercent * 100}%` }]}
+            style={[
+              styles.fill,
+              { width: `${dog.matchPercent * 100}%`, backgroundColor: getMatchColor(dog.matchPercent) },
+            ]}
           />
         </View>
         <View style={styles.matchRow}>
@@ -181,16 +198,95 @@ const NAV_ITEMS = [
 // 3) THE SCREEN -------------------------------------------------------------
 export default function Scrollview() {
   const router = useRouter();
-  // "State" = a value React remembers. When it changes, the screen redraws.
   const [search, setSearch] = useState("");
+  const [speciesFilter, setSpeciesFilter] = useState("all");
 
-  // Only keep dogs whose name contains what the user typed.
-  const visibleDogs = DOGS.filter((dog) =>
-    dog.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const [animals, setAnimals] = useState<any[]>([]);
+  const [scores, setScores] = useState<Record<string, number>>({});
+  const [hasQuiz, setHasQuiz] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
+  const [savingPetId, setSavingPetId] = useState<string | null>(null);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    async function loadAnimals() {
+      try {
+        const data = await getAnimals();
+        setAnimals(data);
+
+        const auth = getAuth(app);
+        await auth.authStateReady();
+        const uid = auth.currentUser?.uid;
+
+        if (uid) {
+          try {
+            setFavoriteIds(await getFavorites(uid));
+          } catch (e) {
+            console.error("Error retrieving favorites:", e);
+          }
+
+          try {
+            const answers = await getQuizAnswers(uid);
+            if (answers) {
+              setHasQuiz(true);
+              const res = matchPets(data, answers, data.length);
+              const map: Record<string, number> = {};
+              res.matches.forEach((m: any) => {
+                if (m.score != null) map[m.pet.id] = m.score;
+              });
+              setScores(map);
+            }
+          } catch (e) {
+            console.error("Error calculating match scores:", e);
+          }
+        }
+      } catch (e) {
+        console.error("Error retrieving animals:", e);
+        setError("Could not load animals.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadAnimals();
+  }, []);
+
+  async function handleFavorite(petId: string) {
+    const uid = getAuth(app).currentUser?.uid;
+    if (!uid) {
+      setMessage("Please log in to save pets.");
+      return;
+    }
+    if (favoriteIds.includes(petId)) return;
+
+    setSavingPetId(petId);
+    setMessage("");
+    try {
+      await addFavorite(uid, petId);
+      setFavoriteIds((prev) => [...prev, petId]);
+      const pet = animals.find((a) => a.id === petId);
+      setMessage(`${pet?.name || "Pet"} added to favorites!`);
+    } catch (e) {
+      console.error("Error saving favorite:", e);
+      setMessage("Could not save favorite. Please try again.");
+    } finally {
+      setSavingPetId(null);
+    }
+  }
+
+  const visibleDogs = animals
+    .map((pet) => toCard(pet, scores[pet.id], hasQuiz))
+    .filter(
+      (dog) =>
+        dog.name.toLowerCase().includes(search.toLowerCase()) &&
+        (speciesFilter === "all" || dog.speciesKey === speciesFilter)
+    )
+    .sort((a, b) => b.matchPercent - a.matchPercent);
 
   return (
-    <LinearGradient colors={[ "#F5C0B3","#E98F78"]} style={styles.container}>
+    <LinearGradient colors={["#F5C0B3", "#E98F78"]} style={styles.container}>
       {/* Search bar + filter button */}
       <View style={styles.searchRow}>
         <View style={styles.searchBar}>
@@ -208,14 +304,51 @@ export default function Scrollview() {
         </TouchableOpacity>
       </View>
 
-      {/* FlatList = the scrolling list. It draws one DogCard per dog. */}
-      <FlatList
-        data={visibleDogs}
-        keyExtractor={(dog) => dog.id}
-        renderItem={({ item }) => <DogCard dog={item} />}
-        contentContainerStyle={styles.list}
-        showsVerticalScrollIndicator={false}
-      />
+      {/* Species filter chips */}
+      <View style={styles.chipRow}>
+        {SPECIES_FILTERS.map((sp) => (
+          <TouchableOpacity
+            key={sp}
+            style={[styles.chip, speciesFilter === sp && styles.chipActive]}
+            onPress={() => setSpeciesFilter(sp)}
+          >
+            <Text style={styles.chipText}>{speciesLabel(sp)}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {message !== "" && <Text style={styles.message}>{message}</Text>}
+
+      {loading ? (
+        <View style={styles.center}>
+          <ActivityIndicator size="large" color="#fff" />
+          <Text style={styles.statusText}>Loading available pets...</Text>
+        </View>
+      ) : error ? (
+        <View style={styles.center}>
+          <Text style={styles.statusText}>{error}</Text>
+        </View>
+      ) : visibleDogs.length === 0 ? (
+        <View style={styles.center}>
+          <Text style={styles.statusText}>No available pets found.</Text>
+        </View>
+      ) : (
+        <FlatList
+          data={visibleDogs}
+          keyExtractor={(dog) => dog.id}
+          renderItem={({ item }) => (
+            <DogCard
+              dog={item}
+              isFavorite={favoriteIds.includes(item.id)}
+              isSaving={savingPetId === item.id}
+              onFavorite={() => handleFavorite(item.id)}
+            />
+          )}
+          contentContainerStyle={styles.list}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
+
       <LinearGradient colors={["#F5C0B3", "#F5C0B3"]} style={styles.navBarBackground}>
         <SafeAreaView style={styles.navBar} edges={["bottom"]}>
           {NAV_ITEMS.map(({ href, label, Icon }) => {
@@ -240,7 +373,7 @@ const NAV_RADIUS = 20;
 const styles = StyleSheet.create({
   container: { flex: 1, paddingTop: 56 },
 
-    navBarBackground: {
+  navBarBackground: {
     borderTopLeftRadius: NAV_RADIUS,
     borderTopRightRadius: NAV_RADIUS,
     overflow: "hidden",
@@ -264,7 +397,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 60,
     borderRadius: 25,
-    backgroundColor: "#dbe5ed",
+    backgroundColor: "#fff",
     paddingHorizontal: 16,
     gap: 8,
   },
@@ -277,6 +410,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  chipRow: { flexDirection: "row", flexWrap: "wrap", gap: 8, paddingHorizontal: 24, marginBottom: 12 },
+  chip: { paddingVertical: 6, paddingHorizontal: 14, borderRadius: 16, backgroundColor: "#fff" },
+  chipActive: { backgroundColor: "#dbe5ed" },
+  chipText: { fontSize: 13, fontWeight: "600", color: "#1a1a1a" },
+
+  center: { flex: 1, alignItems: "center", justifyContent: "center", gap: 10 },
+  statusText: { textAlign: "center", color: "#fff", fontSize: 15, marginTop: 20 },
+  message: { textAlign: "center", color: "#fff", fontWeight: "600", marginBottom: 8 },
 
   list: { paddingHorizontal: 24, paddingBottom: 40, gap: 16 },
 
@@ -285,7 +426,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     overflow: "hidden", // clips the photo to the rounded corners
   },
-  photo: { width: "100%", height: 200 },
+  photo: { width: "100%", aspectRatio: 4 / 3 },
   tagsOverlay: {
     position: "absolute", // float on top of the photo
     top: 10,
@@ -314,7 +455,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   name: { fontSize: 26, fontWeight: "700", color: "#1a1a1a" },
-  age: { fontSize: 17, fontWeight: "500", color: "#1a1a1a" },
+  age: { fontSize: 15, fontWeight: "500", color: "#1a1a1a" },
 
   attrRow: { flexDirection: "row", justifyContent: "space-between" },
   attr: { gap: 8 },

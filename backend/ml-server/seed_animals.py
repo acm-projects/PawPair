@@ -27,7 +27,7 @@ ANIMALS = [
         "medicalHistory": ["Neutered", "Up to date on vaccines"],
         "previousOwnerNote": "Buddy is gentle with kids and sleeps through the night.",
         "contactEmail": "adopt@example.org",
-        "photoUrl": "",
+        "photoUrl": "https://images.unsplash.com/photo-1601543574606-1d8a714787f9?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": "barley-maine-coon",
@@ -53,7 +53,7 @@ ANIMALS = [
         "medicalHistory": ["Neutered", "Dental cleaning (2025)"],
         "previousOwnerNote": "Barley is shy at first but very affectionate once he trusts you.",
         "contactEmail": "adopt@example.org",
-        "photoUrl": "",
+        "photoUrl": "https://images.unsplash.com/photo-1641824973674-09836b5d08cd?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": "luna-corgi",
@@ -79,7 +79,7 @@ ANIMALS = [
         "medicalHistory": ["Spayed", "Microchipped"],
         "previousOwnerNote": "Luna is still learning house rules but picks things up quickly.",
         "contactEmail": "adopt@example.org",
-        "photoUrl": "",
+        "photoUrl": "https://images.unsplash.com/photo-1560743173-567a3b5658b1?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": "pepper-domestic-shorthair",
@@ -105,7 +105,7 @@ ANIMALS = [
         "medicalHistory": ["First vaccines", "Spay scheduled"],
         "previousOwnerNote": "Pepper was found with her siblings and is very social.",
         "contactEmail": "adopt@example.org",
-        "photoUrl": "",
+        "photoUrl": "https://images.unsplash.com/photo-1555036803-4b8b34490116?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": "max-senior-lab",
@@ -131,7 +131,7 @@ ANIMALS = [
         "medicalHistory": ["Neutered", "Mild arthritis (on joint supplements)"],
         "previousOwnerNote": "Max's owner moved into assisted living. He's the calmest dog you'll meet.",
         "contactEmail": "adopt@example.org",
-        "photoUrl": "",
+        "photoUrl": "https://images.unsplash.com/photo-1558373355-fd545fa670f2?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": "clover-holland-lop",
@@ -157,7 +157,7 @@ ANIMALS = [
         "medicalHistory": ["Spayed"],
         "previousOwnerNote": "Clover is litter-trained and prefers being petted on the floor rather than held.",
         "contactEmail": "adopt@example.org",
-        "photoUrl": "",
+        "photoUrl": "https://images.unsplash.com/photo-1753175415876-adc41c613869?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'daisy-beagle',
@@ -183,7 +183,7 @@ ANIMALS = [
         "medicalHistory": ['Spayed', 'Up to date on vaccines', 'Microchipped'],
         "previousOwnerNote": 'Daisy can be vocal when bored, so puzzle toys keep her busy.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1715033801926-929a6c5e457c?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'rocky-german-shepherd',
@@ -209,7 +209,7 @@ ANIMALS = [
         "medicalHistory": ['Neutered', 'Hip screening normal'],
         "previousOwnerNote": 'Rocky knows sit, stay, down, and heel. He does best as the only pet or with calm dogs.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1598584062755-56912717e23f?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'milo-french-bulldog',
@@ -235,7 +235,7 @@ ANIMALS = [
         "medicalHistory": ['Neutered', 'Up to date on vaccines'],
         "previousOwnerNote": 'Milo snores loudly and can overheat easily, so summer walks should be short.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'rosie-pit-bull-mix',
@@ -261,7 +261,7 @@ ANIMALS = [
         "medicalHistory": ['Spayed', 'Up to date on vaccines', 'Heartworm negative'],
         "previousOwnerNote": 'Rosie has lived in a shelter for over a year. She is gentle with people of all ages.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1600872492238-55c96e4fd134?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'koda-husky',
@@ -287,7 +287,7 @@ ANIMALS = [
         "medicalHistory": ['Neutered', 'Microchipped'],
         "previousOwnerNote": 'Koda is an escape artist, so a secure yard is a must.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1622948025519-8ee91615845c?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'biscuit-poodle-mix',
@@ -313,7 +313,7 @@ ANIMALS = [
         "medicalHistory": ['Neutered', 'First vaccines'],
         "previousOwnerNote": 'Biscuit is great for allergy-sensitive homes, but needs regular grooming.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1705587936579-3ac083d5435f?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'penny-chihuahua',
@@ -339,7 +339,7 @@ ANIMALS = [
         "medicalHistory": ['Spayed', 'Dental cleaning (2025)'],
         "previousOwnerNote": 'Penny gets nervous around loud noises and young kids.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1585083971508-40b686389bc1?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'duke-great-dane',
@@ -365,7 +365,7 @@ ANIMALS = [
         "medicalHistory": ['Neutered', 'Arthritis (on joint supplements)'],
         "previousOwnerNote": "Duke's family moved overseas. He is calm, quiet, and great with everyone.",
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1676290482129-be83455acd72?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'ziggy-border-collie',
@@ -391,7 +391,7 @@ ANIMALS = [
         "medicalHistory": ['First vaccines', 'Spay scheduled'],
         "previousOwnerNote": 'Ziggy may try to herd small kids, which training can redirect.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1710239695432-0224e9c9f2ea?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'mochi-siamese',
@@ -417,7 +417,7 @@ ANIMALS = [
         "medicalHistory": ['Spayed', 'Up to date on vaccines'],
         "previousOwnerNote": "Mochi meows to get attention and doesn't like being left alone for long.",
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1759455349676-b6011b8f6a7b?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'oliver-orange-tabby',
@@ -443,7 +443,7 @@ ANIMALS = [
         "medicalHistory": ['Neutered', 'Microchipped'],
         "previousOwnerNote": 'Oliver will try to steal food off the counter, so keep snacks put away.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1583120513418-c078286682f4?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'shadow-black-cat',
@@ -469,7 +469,7 @@ ANIMALS = [
         "medicalHistory": ['Neutered', 'Up to date on vaccines'],
         "previousOwnerNote": 'Shadow has been overlooked at the shelter for months. He is one of the sweetest cats here.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1546618389-edc7251944b1?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'cleo-ragdoll',
@@ -495,7 +495,7 @@ ANIMALS = [
         "medicalHistory": ['Spayed', 'Up to date on vaccines'],
         "previousOwnerNote": 'Cleo is very trusting and should be an indoor-only cat.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1589863849013-1fc234b5ecf8?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'pickles-tuxedo-kitten',
@@ -521,7 +521,7 @@ ANIMALS = [
         "medicalHistory": ['First vaccines', 'Neuter scheduled'],
         "previousOwnerNote": 'Pickles was bottle-fed and is very used to being handled.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1732200312053-747a499489b5?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'whiskers-senior-cat',
@@ -547,7 +547,7 @@ ANIMALS = [
         "medicalHistory": ['Spayed', 'Kidney diet (managed)'],
         "previousOwnerNote": 'Whiskers needs a special kidney diet but is otherwise healthy and loving.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1585842065583-bda908b14554?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'nala-bengal',
@@ -573,7 +573,7 @@ ANIMALS = [
         "medicalHistory": ['Spayed', 'Microchipped'],
         "previousOwnerNote": 'Nala gets bored easily and needs daily play to stay out of trouble.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1751001732076-3935f74bcacf?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'smokey-russian-blue',
@@ -599,7 +599,7 @@ ANIMALS = [
         "medicalHistory": ['Neutered', 'Up to date on vaccines'],
         "previousOwnerNote": 'Smokey hides for the first few days in a new home, then becomes very attached.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1487300001871-12053913095d?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'peanut-guinea-pig',
@@ -625,7 +625,7 @@ ANIMALS = [
         "medicalHistory": ['Healthy at intake exam'],
         "previousOwnerNote": 'Peanut needs vitamin C every day from fresh vegetables or supplements.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'hazel-hamster',
@@ -651,7 +651,7 @@ ANIMALS = [
         "medicalHistory": ['Healthy at intake exam'],
         "previousOwnerNote": "Hazel is most active at night and needs to live alone, as Syrian hamsters don't share.",
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1676918555382-fcd06a483e25?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'thumper-lionhead-rabbit',
@@ -677,7 +677,7 @@ ANIMALS = [
         "medicalHistory": ['Neutered'],
         "previousOwnerNote": 'Thumper is litter-trained and has lived calmly with a cat before.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1742177026965-8486196132bf?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'nibbles-rat-pair',
@@ -703,7 +703,7 @@ ANIMALS = [
         "medicalHistory": ['Healthy at intake exam'],
         "previousOwnerNote": 'Nibbles is part of a bonded pair and must be adopted with her sister.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1577099608295-f11bbd6fed32?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'kiwi-budgie',
@@ -729,7 +729,7 @@ ANIMALS = [
         "medicalHistory": ['Healthy at intake exam'],
         "previousOwnerNote": "Kiwi is learning to step up onto a finger. He'd love a budgie friend.",
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1570521193785-e24f3a24fef5?w=800&q=70&auto=format&fit=crop",
     },
     {
         "id": 'sunny-cockatiel',
@@ -755,7 +755,7 @@ ANIMALS = [
         "medicalHistory": ['Healthy at intake exam'],
         "previousOwnerNote": 'Sunny was surrendered when her owner developed allergies to bird dust.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": 'https://images.unsplash.com/photo-1759384278309-cef132b5db63?w=800&q=70&auto=format&fit=crop',
     },
     {
         "id": 'mango-conure',
@@ -781,7 +781,7 @@ ANIMALS = [
         "medicalHistory": ['Healthy at intake exam'],
         "previousOwnerNote": 'Mango can be nippy with strangers and does best in an adults-only home.',
         "contactEmail": 'adopt@example.org',
-        "photoUrl": '',
+        "photoUrl": "https://images.unsplash.com/photo-1718123135237-9384bba5dc5f?w=800&q=70&auto=format&fit=crop",
     },
 ]
 
@@ -799,5 +799,28 @@ def main():
         print(f"  - {a['name']} ({a['breed']})  id: {a['id']}")
 
 
+def check_photos():
+    """Run `python seed_animals.py --check` to test every photo link before seeding."""
+    import urllib.request
+
+    for a in ANIMALS:
+        url = a.get("photoUrl")
+        if not url:
+            print(f"  -  {a['name']}: no photo (app shows the species placeholder)")
+            continue
+        try:
+            req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "PawPairSeed/1.0"})
+            with urllib.request.urlopen(req, timeout=10) as res:
+                ok = res.status == 200 and res.headers.get("Content-Type", "").startswith("image/")
+            print(f"  {'OK' if ok else '??'} {a['name']}")
+        except Exception as e:
+            print(f"  XX {a['name']}: {e}")
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+
+    if "--check" in sys.argv:
+        check_photos()
+    else:
+        main()
