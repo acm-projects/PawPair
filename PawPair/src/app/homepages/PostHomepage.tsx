@@ -11,6 +11,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import TrackerModal, { type TrackerKind } from "src/components/TrackerModal";
 import {
   User,
   House,
@@ -62,10 +63,10 @@ const TASKS: Task[] = [
   { id: "health", title: "Health", detail: "Medication", points: 10 },
 ];
 
-const TRACKERS = [
-  { label: "Activity", Icon: TreePine },
-  { label: "Mood", Icon: Smile },
-  { label: "Appetite", Icon: Utensils },
+const TRACKERS: { label: string; Icon: typeof TreePine; kind: TrackerKind }[] = [
+  { label: "Activity", Icon: TreePine, kind: "activity" },
+  { label: "Mood", Icon: Smile, kind: "mood" },
+  { label: "Appetite", Icon: Utensils, kind: "meal" }, // opens the Meal Tracker
 ];
 
 const TIPS = [
@@ -107,6 +108,14 @@ export default function Homepage() {
     health: true,
   });
   const [question, setQuestion] = useState("");
+
+  // Which tracker popup to show, and whether it is open right now.
+  const [tracker, setTracker] = useState<TrackerKind>("activity");
+  const [trackerOpen, setTrackerOpen] = useState(false);
+  const openTracker = (kind: TrackerKind) => {
+    setTracker(kind);
+    setTrackerOpen(true);
+  };
 
   // Tap a task -> flip its value between true and false.
   const toggle = (id: string) => setDone((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -181,8 +190,12 @@ export default function Homepage() {
 
           {/* Activity / Mood / Appetite trackers */}
           <View style={styles.trackerRow}>
-            {TRACKERS.map(({ label, Icon }) => (
-              <TouchableOpacity key={label} style={styles.trackerTile}>
+            {TRACKERS.map(({ label, Icon, kind }) => (
+              <TouchableOpacity
+                key={label}
+                style={styles.trackerTile}
+                onPress={() => openTracker(kind)}
+              >
                 <Icon size={44} color={COLORS.cream} strokeWidth={1.75} />
                 <Text style={styles.trackerLabel}>{label}</Text>
               </TouchableOpacity>
@@ -269,6 +282,12 @@ export default function Homepage() {
           })}
         </SafeAreaView>
       </View>
+
+      <TrackerModal
+        visible={trackerOpen}
+        kind={tracker}
+        onClose={() => setTrackerOpen(false)}
+      />
     </View>
   );
 }
