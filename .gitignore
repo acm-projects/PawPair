@@ -1,60 +1,58 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-# dependencies
-node_modules/
+# Learn more:
+# https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-# Expo
-.expo/
-dist/
-web-build/
-expo-env.d.ts
+# Inner Expo project: dependencies and generated files
+/PawPair/node_modules/
+/PawPair/.expo/
+/PawPair/dist/
+/PawPair/web-build/
+/PawPair/expo-env.d.ts
 
-# Native
-.kotlin/
+# Native build folders (inner project)
+/PawPair/ios/
+/PawPair/android/
+
+# Native credentials and keys
 *.orig.*
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
+*.pem
 
 # Metro
-.metro-health-check*
+/PawPair/.metro-health-check*
 
-# debug
+# Debug logs
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+*.log
 
 # macOS
 .DS_Store
-*.pem
 
-# local env files
-.env*.local
+# Local environment files
+/PawPair/.env*
+!/PawPair/.env.example
 
-# typescript
+# TypeScript
 *.tsbuildinfo
 
-example
-
-# generated native folders
-/ios
-/android
-
 # Python
-.venv/
-__pycache__/
+/PawPair/.venv/
+/PawPair/**/__pycache__/
 *.pyc
 
 # Secrets
 serviceAccountKey.json
 
 # ML data
-runs/
-backend/ml-server/test_images/*
-training/datasets/*
+/PawPair/runs/
+/PawPair/backend/ml-server/test_images/*
+/PawPair/training/datasets/*
 
-
-# Editor / Mac
+# Editor
 .vscode/
