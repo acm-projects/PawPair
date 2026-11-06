@@ -115,7 +115,7 @@ export default function Settings() {
 
         {/* Avatar + title */}
         <View style={styles.avatar}>
-          <User size={92} color={COLORS.text} strokeWidth={1.25} />
+          <User size={140} color={COLORS.text} strokeWidth={1.25} />
         </View>
         <View style={styles.titleRow}>
           <Text style={styles.title}>Settings & Privacy</Text>
@@ -127,7 +127,7 @@ export default function Settings() {
           <Search size={22} color={COLORS.text} strokeWidth={1.75} />
           <TextInput
             style={styles.searchInput}
-            placeholder="search"
+            placeholder="Search"
             placeholderTextColor={COLORS.muted}
             value={search}
             onChangeText={setSearch}

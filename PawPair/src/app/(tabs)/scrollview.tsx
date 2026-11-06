@@ -7,7 +7,6 @@ import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
-import SettingsButton from "@/components/SettingsButtons";
 
 
 // backend imports
@@ -288,7 +287,7 @@ export default function Scrollview() {
     .sort((a, b) => b.matchPercent - a.matchPercent);
 
   return (
-    <LinearGradient colors={["#F5C0B3", "#E98F78"]} style={styles.container}>
+    
     <LinearGradient colors={[ "#F5C0B3","#E98F78"]} style={styles.container}>
     
       {/* Search bar + filter button */}
@@ -373,6 +372,7 @@ export default function Scrollview() {
     </LinearGradient>
   );
 }
+
 
 // 4) THE STYLES -------------------------------------------------------------
 // Like CSS, but: camelCase names, numbers instead of "16px", and every View

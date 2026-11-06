@@ -29685,3 +29685,179 @@
 {"_e":"metro:client_log","_t":1793849684097,"level":"log","data":["Top-five PawPair matches:","[]"]}
 {"_e":"metro:client_log","_t":1793849705942,"level":"log","data":["Top-five PawPair matches:","[]"]}
 >>>>>>> origin/main
+{"_e":"root:init","_t":1793850868593,"format":"v0-jsonl","version":"57.0.28"}
+{"_e":"env:mode","_t":1793850868594,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793850868595,"mode":"development","files":["../../../.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793850872044,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../src/app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793850872219,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793850872314,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793850872795,"atlas":false,"workers":7,"host":"::","port":8083}
+{"_e":"metro:bundling:started","_t":1793850898095,"id":"2","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1793850898095,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793850898095,"id":"3","platform":"web","environment":"node","entry":"node_modules/expo/node_modules/@expo/cli/node_modules/@expo/router-server/node/render.js"}
+{"_e":"metro:bundling:progress","_t":1793850898095,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793850898095,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793850898097,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793850898097,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793850898196,"id":"2","progress":0.1268949510950653,"total":233,"current":83}
+{"_e":"metro:bundling:progress","_t":1793850898196,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793850898296,"id":"2","progress":0.1268949510950653,"total":233,"current":83}
+{"_e":"metro:bundling:progress","_t":1793850898296,"id":"3","progress":0.3738734782808703,"total":489,"current":299}
+{"_e":"metro:bundling:progress","_t":1793850898396,"id":"2","progress":0.1268949510950653,"total":233,"current":83}
+{"_e":"metro:bundling:progress","_t":1793850898396,"id":"3","progress":0.6204259711015201,"total":730,"current":575}
+{"_e":"metro:bundling:progress","_t":1793850898497,"id":"2","progress":0.8615260610600686,"total":738,"current":685}
+{"_e":"metro:bundling:progress","_t":1793850898497,"id":"3","progress":0.6204259711015201,"total":730,"current":575}
+{"_e":"metro:bundling:progress","_t":1793850898597,"id":"2","progress":0.8615260610600686,"total":738,"current":685}
+{"_e":"metro:bundling:progress","_t":1793850898597,"id":"3","progress":0.6204259711015201,"total":1395,"current":842}
+{"_e":"metro:bundling:progress","_t":1793850898697,"id":"2","progress":0.8891844612470904,"total":789,"current":744}
+{"_e":"metro:bundling:progress","_t":1793850898697,"id":"3","progress":0.6204259711015201,"total":1395,"current":842}
+{"_e":"metro:bundling:progress","_t":1793850898800,"id":"2","progress":0.8891844612470904,"total":847,"current":770}
+{"_e":"metro:bundling:progress","_t":1793850898800,"id":"3","progress":0.6204259711015201,"total":1395,"current":842}
+{"_e":"metro:bundling:progress","_t":1793850898899,"id":"2","progress":0.8891844612470904,"total":847,"current":770}
+{"_e":"metro:bundling:progress","_t":1793850898899,"id":"3","progress":0.9219277674020504,"total":2812,"current":2700}
+{"_e":"metro:bundling:progress","_t":1793850898999,"id":"2","progress":0.907132202711594,"total":883,"current":841}
+{"_e":"metro:bundling:progress","_t":1793850898999,"id":"3","progress":0.9219277674020504,"total":2812,"current":2700}
+{"_e":"metro:bundling:progress","_t":1793850899117,"id":"2","progress":0.907132202711594,"total":883,"current":841}
+{"_e":"metro:bundling:progress","_t":1793850899117,"id":"3","progress":0.9594637095365118,"total":2930,"current":2870}
+{"_e":"metro:bundling:progress","_t":1793850899217,"id":"2","progress":0.907132202711594,"total":2843,"current":892}
+{"_e":"metro:bundling:progress","_t":1793850899217,"id":"3","progress":0.9594637095365118,"total":2930,"current":2870}
+{"_e":"metro:bundling:progress","_t":1793850899317,"id":"2","progress":0.907132202711594,"total":2860,"current":2112}
+{"_e":"metro:bundling:progress","_t":1793850899317,"id":"3","progress":0.9594637095365118,"total":2930,"current":2870}
+{"_e":"metro:bundling:progress","_t":1793850899417,"id":"2","progress":0.9979370815188277,"total":2907,"current":2904}
+{"_e":"metro:bundling:progress","_t":1793850899417,"id":"3","progress":0.9594637095365118,"total":2930,"current":2870}
+{"_e":"metro:bundling:progress","_t":1793850899419,"id":"2","progress":0.9979370815188277,"total":2907,"current":2904}
+{"_e":"metro:bundling:started","_t":1793850899519,"id":"5","platform":"web","environment":null,"entry":".expo/static-tmp/_error.js"}
+{"_e":"metro:bundling:progress","_t":1793850899519,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793850899519,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793850899622,"id":"5","progress":0.5102040816326531,"total":42,"current":30}
+{"_e":"metro:bundling:progress","_t":1793850899722,"id":"5","progress":0.7375778546712802,"total":85,"current":73}
+{"_e":"metro:bundling:progress","_t":1793850899822,"id":"5","progress":0.9672153541424767,"total":121,"current":119}
+{"_e":"metro:bundling:progress","_t":1793850899923,"id":"5","progress":0.9845562165735232,"total":129,"current":128}
+{"_e":"metro:bundling:progress","_t":1793850900352,"id":"5","progress":0.999,"total":129,"current":129}
+{"_e":"metro:bundling:done","_t":1793850900414,"id":"5","total":129,"ms":895.732875}
+{"_e":"root:init","_t":1793851240651,"format":"v0-jsonl","version":"57.0.28"}
+{"_e":"env:mode","_t":1793851240651,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793851240652,"mode":"development","files":["../../../.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793851241138,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../src/app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793851241318,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793851241415,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793851241905,"atlas":false,"workers":7,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1793851255733,"id":"2","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1793851255733,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793851255734,"id":"3","platform":"web","environment":"node","entry":"node_modules/expo/node_modules/@expo/cli/node_modules/@expo/router-server/node/render.js"}
+{"_e":"metro:bundling:progress","_t":1793851255734,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851255734,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851255736,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851255736,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851255836,"id":"2","progress":0.13054771165219245,"total":274,"current":99}
+{"_e":"metro:bundling:progress","_t":1793851255836,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851255935,"id":"2","progress":0.13054771165219245,"total":274,"current":99}
+{"_e":"metro:bundling:progress","_t":1793851255935,"id":"3","progress":0.3582661072761103,"total":553,"current":331}
+{"_e":"metro:bundling:progress","_t":1793851256044,"id":"2","progress":0.13054771165219245,"total":274,"current":99}
+{"_e":"metro:bundling:progress","_t":1793851256044,"id":"3","progress":0.544736631496271,"total":733,"current":541}
+{"_e":"metro:bundling:progress","_t":1793851256144,"id":"2","progress":0.5093054396553397,"total":681,"current":486}
+{"_e":"metro:bundling:progress","_t":1793851256144,"id":"3","progress":0.544736631496271,"total":733,"current":541}
+{"_e":"metro:bundling:progress","_t":1793851256244,"id":"2","progress":0.5093054396553397,"total":681,"current":486}
+{"_e":"metro:bundling:progress","_t":1793851256244,"id":"3","progress":0.544736631496271,"total":2774,"current":2023}
+{"_e":"metro:bundling:progress","_t":1793851256348,"id":"2","progress":0.5093054396553397,"total":2659,"current":640}
+{"_e":"metro:bundling:progress","_t":1793851256348,"id":"3","progress":0.544736631496271,"total":2774,"current":2023}
+{"_e":"metro:bundling:progress","_t":1793851256447,"id":"2","progress":0.5093054396553397,"total":2659,"current":640}
+{"_e":"metro:bundling:progress","_t":1793851256447,"id":"3","progress":0.9294627243531761,"total":2868,"current":2765}
+{"_e":"metro:bundling:progress","_t":1793851256548,"id":"2","progress":0.5093054396553397,"total":2659,"current":640}
+{"_e":"metro:bundling:progress","_t":1793851256548,"id":"3","progress":0.9294627243531761,"total":2914,"current":2798}
+{"_e":"metro:bundling:progress","_t":1793851256652,"id":"2","progress":0.9299661491572154,"total":2889,"current":2786}
+{"_e":"metro:bundling:progress","_t":1793851256652,"id":"3","progress":0.9294627243531761,"total":2914,"current":2798}
+{"_e":"metro:bundling:progress","_t":1793851256751,"id":"2","progress":0.9299661491572154,"total":2889,"current":2786}
+{"_e":"metro:bundling:progress","_t":1793851256751,"id":"3","progress":0.9967809452718143,"total":3104,"current":3099}
+{"_e":"metro:bundling:progress","_t":1793851256852,"id":"2","progress":0.99866622222242,"total":2998,"current":2996}
+{"_e":"metro:bundling:progress","_t":1793851256852,"id":"3","progress":0.9967809452718143,"total":3104,"current":3099}
+{"_e":"metro:bundling:progress","_t":1793851256954,"id":"2","progress":0.9986728601329188,"total":3013,"current":3011}
+{"_e":"metro:bundling:progress","_t":1793851256954,"id":"3","progress":0.9967809452718143,"total":3104,"current":3099}
+{"_e":"metro:bundling:done","_t":1793851257036,"id":"3","total":3104,"ms":1301.422}
+{"_e":"metro:bundling:progress","_t":1793851257036,"id":"2","progress":0.9986728601329188,"total":3013,"current":3011}
+{"_e":"metro:bundling:progress","_t":1793851257421,"id":"2","progress":0.9986728601329188,"total":3013,"current":3011}
+{"_e":"metro:bundling:done","_t":1793851257437,"id":"2","total":3013,"ms":1703.929125}
+{"_e":"metro:bundling:started","_t":1793851257561,"id":"6","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1793851257561,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851257562,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793851257662,"id":"6","progress":0.48290721057167485,"total":531,"current":369}
+{"_e":"metro:bundling:progress","_t":1793851257762,"id":"6","progress":0.709141274238227,"total":741,"current":624}
+{"_e":"metro:bundling:progress","_t":1793851257889,"id":"6","progress":0.709141274238227,"total":2648,"current":628}
+{"_e":"metro:bundling:progress","_t":1793851257989,"id":"6","progress":0.709141274238227,"total":2714,"current":722}
+{"_e":"metro:bundling:progress","_t":1793851258093,"id":"6","progress":0.9268928560957099,"total":2819,"current":2714}
+{"_e":"metro:bundling:done","_t":1793851258210,"id":"6","total":2819,"ms":648.434209}
+{"_e":"metro:client_log","_t":1793851258377,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793851258378,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793851258449,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793851258450,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793851258470,"level":"warn","data":["[Layout children]: No route named \"quiz\" exists in nested children:","[\"cameraResults\", \"index\", \"matches\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\", \"pets/[id]\"]"]}
+{"_e":"metro:client_log","_t":1793851258476,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793851258602,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793851270807,"level":"log","data":["Login successful:","sanskritiut@gmail.com"]}
+{"_e":"metro:client_log","_t":1793851270824,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"root:init","_t":1793987687209,"format":"v0-jsonl","version":"57.0.28"}
+{"_e":"env:mode","_t":1793987687209,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793987687210,"mode":"development","files":["../../../.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1793987689435,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../../../src/app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793987689652,"serverRoot":"../../..","projectRoot":"../../..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793987689753,"plugins":[]}
+{"_e":"metro:instantiate","_t":1793987690227,"atlas":false,"workers":7,"host":"::","port":8082}
+{"_e":"metro:bundling:started","_t":1793987699606,"id":"2","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1793987699607,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1793987699607,"id":"3","platform":"web","environment":"node","entry":"node_modules/expo/node_modules/@expo/cli/node_modules/@expo/router-server/node/render.js"}
+{"_e":"metro:bundling:progress","_t":1793987699607,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793987699607,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793987699609,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793987699609,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793987699709,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793987699709,"id":"3","progress":0.16045486828512398,"total":352,"current":141}
+{"_e":"metro:bundling:progress","_t":1793987699809,"id":"2","progress":0.2849251278305332,"total":444,"current":237}
+{"_e":"metro:bundling:progress","_t":1793987699809,"id":"3","progress":0.16045486828512398,"total":352,"current":141}
+{"_e":"metro:bundling:progress","_t":1793987699909,"id":"2","progress":0.44708994124906987,"total":673,"current":450}
+{"_e":"metro:bundling:progress","_t":1793987699909,"id":"3","progress":0.16045486828512398,"total":352,"current":141}
+{"_e":"metro:bundling:progress","_t":1793987700010,"id":"2","progress":0.44708994124906987,"total":673,"current":450}
+{"_e":"metro:bundling:progress","_t":1793987700010,"id":"3","progress":0.16045486828512398,"total":2736,"current":590}
+{"_e":"metro:bundling:progress","_t":1793987700109,"id":"2","progress":0.5942240260294133,"total":803,"current":619}
+{"_e":"metro:bundling:progress","_t":1793987700109,"id":"3","progress":0.16045486828512398,"total":2736,"current":590}
+{"_e":"metro:bundling:progress","_t":1793987700209,"id":"2","progress":0.5942240260294133,"total":803,"current":619}
+{"_e":"metro:bundling:progress","_t":1793987700209,"id":"3","progress":0.16045486828512398,"total":2891,"current":844}
+{"_e":"metro:bundling:progress","_t":1793987700310,"id":"2","progress":0.5942240260294133,"total":2774,"current":729}
+{"_e":"metro:bundling:progress","_t":1793987700310,"id":"3","progress":0.16045486828512398,"total":2891,"current":844}
+{"_e":"metro:bundling:progress","_t":1793987700419,"id":"2","progress":0.5942240260294133,"total":2774,"current":729}
+{"_e":"metro:bundling:progress","_t":1793987700419,"id":"3","progress":0.9476306368080714,"total":2977,"current":2898}
+{"_e":"metro:bundling:progress","_t":1793987700519,"id":"2","progress":0.5942240260294133,"total":2774,"current":729}
+{"_e":"metro:bundling:progress","_t":1793987700519,"id":"3","progress":0.999,"total":3126,"current":3126}
+{"_e":"metro:bundling:done","_t":1793987700543,"id":"3","total":3126,"ms":935.525791}
+{"_e":"metro:bundling:progress","_t":1793987700543,"id":"2","progress":0.5942240260294133,"total":2774,"current":729}
+{"_e":"metro:bundling:progress","_t":1793987700926,"id":"2","progress":0.999,"total":3013,"current":3013}
+{"_e":"metro:bundling:done","_t":1793987700974,"id":"2","total":3013,"ms":1367.295875}
+{"_e":"metro:bundling:started","_t":1793987701102,"id":"6","platform":"web","environment":null,"entry":"node_modules/expo-router/entry.js"}
+{"_e":"metro:bundling:progress","_t":1793987701102,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793987701103,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1793987701203,"id":"6","progress":0.5308672234144942,"total":818,"current":596}
+{"_e":"metro:bundling:progress","_t":1793987701303,"id":"6","progress":0.5308672234144942,"total":2797,"current":798}
+{"_e":"metro:bundling:progress","_t":1793987701403,"id":"6","progress":0.9183458569839907,"total":2806,"current":2689}
+{"_e":"metro:bundling:done","_t":1793987701476,"id":"6","total":2806,"ms":373.252667}
+{"_e":"metro:client_log","_t":1793987701636,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1793987701636,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1793987701703,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1793987701704,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1793987701724,"level":"warn","data":["[Layout children]: No route named \"quiz\" exists in nested children:","[\"cameraResults\", \"index\", \"matches\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\", \"pets/[id]\"]"]}
+{"_e":"metro:client_log","_t":1793987701728,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1793987701733,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1793987716626,"level":"log","data":["Login successful:","sanskritiut@gmail.com"]}
+{"_e":"metro:client_log","_t":1793987716642,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1793987755621,"level":"warn","data":["[2026-11-06T17:55:55.620Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x2e6749c2 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"BoiJModjFtNXJgsgsnLKJFpv27G2\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793987755622,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793987933496,"level":"warn","data":["[2026-11-06T17:58:53.495Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x2e6749c5 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"BoiJModjFtNXJgsgsnLKJFpv27G2\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793987933497,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793988354417,"level":"warn","data":["[2026-11-06T18:05:54.417Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x2e6749c8 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"BoiJModjFtNXJgsgsnLKJFpv27G2\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793988354417,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793989050290,"level":"warn","data":["[2026-11-06T18:17:30.289Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x2e6749cc failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"BoiJModjFtNXJgsgsnLKJFpv27G2\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793989050291,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793989054999,"level":"warn","data":["[2026-11-06T18:17:34.998Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x2e6749ce failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"BoiJModjFtNXJgsgsnLKJFpv27G2\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793989054999,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793989090171,"level":"warn","data":["[2026-11-06T18:18:10.170Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x2e6749d0 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"BoiJModjFtNXJgsgsnLKJFpv27G2\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793989090171,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1793989106256,"level":"warn","data":["[2026-11-06T18:18:26.256Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x2e6749d2 failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"BoiJModjFtNXJgsgsnLKJFpv27G2\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1793989106256,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
