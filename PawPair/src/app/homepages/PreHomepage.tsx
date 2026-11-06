@@ -307,7 +307,6 @@ export default function Homepage() {
             <Image key={i} source={paw} style={[s.paw, p]} />
           ))}
         </View>
-
         <View style={s.header}>
           <View style={s.greeting}>
             <Image source={paw} style={s.headerPaw} />
@@ -501,7 +500,7 @@ const s = StyleSheet.create({
     justifyContent: "center",
     gap: 10,
   },
-  swipeText: { fontFamily: "NameFont", fontSize: 32, lineHeight: 38, color: "#000" },
+  swipeText: { fontFamily: "HeadingFont", fontSize: 25, lineHeight: 38, color: "#000" },
 
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });

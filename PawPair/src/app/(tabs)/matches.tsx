@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Image, ScrollView, Pressable, TouchableOpacity } from "react-native";
-import { User, House, Dog, Camera as CameraIcon, Check, X } from "lucide-react-native";
+import { User, House, Dog, Camera as CameraIcon, Check, X, ChevronLeft } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Tabs, router } from "expo-router";
@@ -70,6 +70,12 @@ export default function Matches() {
             <Image key={i} source={paw} style={[s.paw, p]} />
           ))}
         </View>
+        <Pressable
+              style={s.backButton}
+              onPress={() => router.navigate("homepages/PreHomepage" as any)}
+            >
+              <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
+            </Pressable>
 
         <Text style={s.heading}>MATCHES</Text>
 
@@ -199,5 +205,22 @@ const s = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+  },
+  backButton: {
+    position: "absolute",
+    top: 25,
+    left: 14,
+    zIndex: 99,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: "rgba(246, 243, 239, 0.95)",
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 4,
   },
 });

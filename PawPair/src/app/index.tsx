@@ -203,7 +203,7 @@ export const styles = StyleSheet.create({
   },
   goatCircle: {
     position: "absolute",
-    top: "4%",
+    top: "2%",
     left: "32%",
     width: "36%",
     aspectRatio: 1,
