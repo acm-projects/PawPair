@@ -28,7 +28,7 @@ export default function PawNavBar({ active, disabled = false }: { active: NavHre
               onPress={() => router.navigate(href)}
               disabled={disabled}
             >
-              <Icon size={40} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
+              <Icon size={35} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
               <Text style={[styles.label, isActive && styles.labelActive]}>{label}</Text>
             </TouchableOpacity>
           );
