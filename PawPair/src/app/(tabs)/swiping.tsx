@@ -100,9 +100,9 @@ export default function Scrollview() {
             ))}
 
             <LinearGradient
-              colors={["#F5C0B8", "#F6C69F"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
+              colors={["#F4BFB2", "#F3E6DF"]}
+              start={{ x: 0.5, y: 0 }}
+              end={{ x: 0.5, y: 1 }}
               style={s.contact}
             >
               <Image source={pawIcon} style={s.contactIcon} />
@@ -215,12 +215,12 @@ const s = StyleSheet.create({
   trait: { flexDirection: "row", alignItems: "center", marginTop: 4 },
   iconBox: { width: 24, height: 24, marginRight: 6, alignItems: "center", justifyContent: "center" },
   small: { fontSize: 11, color: "#222" },
-  contact: { flexDirection: "row", alignItems: "center", alignSelf: "flex-start", marginTop: 14, padding: 10, width: 210, borderBottomWidth: 2, borderBottomColor: "#E0B4A8" },
+  contact: { flexDirection: "row", alignItems: "center", alignSelf: "flex-start", marginTop: 14, padding: 10, width: 210, borderBottomWidth: 2, borderBottomColor: "#F3E6DF" },
   contactIcon: { width: 18, height: 18, marginRight: 8, resizeMode: "contain" },
   section: { padding: 16, borderTopWidth: 1, borderTopColor: "#BDB8B2" },
   title: { fontSize: 13, fontWeight: "bold", marginBottom: 8 },
   body: { fontSize: 12, lineHeight: 18, color: "#222" },
-  pill: { backgroundColor: "#F5B8C4", paddingHorizontal: 12, paddingVertical: 8, borderRadius: 20 },
+  pill: { backgroundColor: "#F4BFB2", paddingHorizontal: 12, paddingVertical: 8, borderRadius: 20 },
   pillText: { fontSize: 11, fontWeight: "600" },
   actions: { flexDirection: "row", justifyContent: "center", gap: 12, marginTop: 24 },
   btn: { width: 54, height: 54, borderRadius: 27, borderWidth: 1, alignItems: "center", justifyContent: "center" },

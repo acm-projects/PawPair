@@ -9,6 +9,7 @@ import { useIsFocused, Tabs, router } from "expo-router";
 import { getNextScanName, uploadScan } from "@/services/scanApi";
 import ScanNameEditor from "@/components/ScanNameEditor";
 import type { PetType } from "@/types/scan";
+import PawNavBar from "@/components/PawNavBar";
 
 
 type ScanStatus = "idle" | "starting" | "recording" | "uploading";
@@ -259,25 +260,9 @@ export default function Camera() {
             </View>
           )}
         </View>
-
-        <LinearGradient colors={["#F5C0B3", "#E98F78"]} style={styles.navBarBackground}>
-          <SafeAreaView style={styles.navBar} edges={["bottom"]}>
-            {NAV_ITEMS.map(({ href, label, Icon }) => {
-              const isActive = href === "/camera";
-              return (
-                <TouchableOpacity
-                  key={href}
-                  style={styles.navItem}
-                  onPress={() => router.navigate(href)}
-                  disabled={status === "uploading"}
-                >
-                  <Icon size={40} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
-                  <Text style={[styles.navLabel, isActive && styles.navLabelActive]}>{label}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </SafeAreaView>
-        </LinearGradient>
+        <View style={styles.navWrapper}>
+          <PawNavBar active="/homepage" />
+        </View>
       </SafeAreaView>
     </LinearGradient>
   );
@@ -455,27 +440,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-  navBarBackground: {
-    borderTopLeftRadius: NAV_RADIUS,
-    borderTopRightRadius: NAV_RADIUS,
-    overflow: "hidden",
-    marginTop: -NAV_RADIUS,
-  },
-  navBar: {
-    flexDirection: "row",
-    paddingTop: 8,
-  },
-  navItem: {
-    flex: 1,
-    alignItems: "center",
-    gap: 2,
-    paddingBottom: 4,
-  },
-  navLabel: {
-    color: "transparent",
-    fontSize: 4,
-  },
-  navLabelActive: {
-    fontWeight: "bold",
-  },
+  navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });

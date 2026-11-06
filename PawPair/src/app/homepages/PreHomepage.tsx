@@ -193,7 +193,7 @@ function MatchesHero() {
               return (
                 <Pressable
                   style={[s.heroCard, { width: cardW, height: cardH }]}
-                  onPress={() => router.navigate("/matches" as any)}
+                  onPress={() => router.navigate("/(tabs)/matches" as any)}
                 >
                   <Image source={{ uri: item.image }} style={s.heroImg} />
                   <LinearGradient
