@@ -1,17 +1,43 @@
-# Python
-.venv/
-__pycache__/
-*.pyc
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-# Secrets
-serviceAccountKey.json
+# dependencies
+node_modules/
 
-# ML data
-runs/
-backend/ml-server/test_images/*
-training/datasets/*
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
 
-# Editor / Mac
-.vscode/
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
 .DS_Store
-node_modules
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+example
+
+# generated native folders
+/ios
+/android
