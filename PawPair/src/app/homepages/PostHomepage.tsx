@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import {
   View,
   Text,
@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import TrackerModal, { type TrackerKind } from "src/components/TrackerModal";
 import {
   User,
@@ -127,6 +127,12 @@ export default function Homepage() {
 
   const today = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" });
 
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
+  
   return (
     <View style={styles.screen}>
       {/* Peach gradient behind everything */}
