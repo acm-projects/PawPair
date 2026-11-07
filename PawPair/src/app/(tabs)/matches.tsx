@@ -1,18 +1,32 @@
-import { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image, ScrollView, Pressable, TouchableOpacity } from "react-native";
-import { User, House, Dog, Camera as CameraIcon, Check, X } from "lucide-react-native";
+import { useState, useEffect, useCallback } from "react";
+import { Text, View, StyleSheet, Image, ScrollView, Pressable, TouchableOpacity, ActivityIndicator } from "react-native";
+import { User, House, Dog, Camera as CameraIcon, Check, X, PawPrint, Cake, Ruler } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Tabs, router } from "expo-router";
-import { useFonts } from "expo-font";
-import { getPet } from "../../data/pets";
-import { usePetLists, removePet, clearList } from "../../store/petLists";
+import { Tabs, router, useFocusEffect, type Href } from "expo-router";
+import { getAuth } from "firebase/auth";
+
+// backend imports
+import { app } from "../../firebase.js";
+import { getQuizAnswers } from "../../services/quizService";
+import { getAnimals } from "../../services/animalServices";
+import { matchPets } from "../../services/matchingService";
 
 const paw = require("../../../assets/images/paw-watermark.png");
 import PawNavBar from "@/components/PawNavBar";
 
 const CURRENT_HREF: string = "/homepage";
 const FONT = "'Open Sans', system-ui, sans-serif";
+const TOP_MATCHES = 5;
+const MIN_MATCH = 85;
+
+const PLACEHOLDERS: Record<string, number> = {
+  dog: require("../../../assets/images/dog.jpg"),
+  cat: require("../../../assets/images/cat.jpg"),
+  bird: require("../../../assets/images/bird.jpg"),
+  small_animal: require("../../../assets/images/small_animal.jpg"),
+};
+const DEFAULT_PHOTO = require("../../../assets/images/pet-duo.png");
 
 // Loads Open Sans once on web (does nothing on iOS/Android).
 function loadFont() {
@@ -45,20 +59,73 @@ const NAV_ITEMS = [
   { href: "/camera", label: "Camera", Icon: CameraIcon },
 ] as const;
 
+const cap = (s?: string) => (s ? s[0].toUpperCase() + s.slice(1) : "");
+const speciesKey = (s?: string) => (s ?? "").toLowerCase().trim().replace(/\s+/g, "_");
+
+function photoFor(pet: any) {
+  if (pet.photoUrl) return { uri: pet.photoUrl };
+  return PLACEHOLDERS[speciesKey(pet.species)] ?? DEFAULT_PHOTO;
+}
+
+// Builds the small icon rows on each card from the pet's Firestore fields
+function traitsFor(pet: any) {
+  const traits: { Icon: typeof PawPrint; text: string }[] = [];
+  if (pet.breed) traits.push({ Icon: PawPrint, text: pet.breed });
+  if (pet.age != null) traits.push({ Icon: Cake, text: `${pet.age} ${pet.age === 1 ? "year" : "years"}` });
+  if (pet.size) traits.push({ Icon: Ruler, text: cap(pet.size) });
+  return traits;
+}
+
 export default function Matches() {
-  const [fontsLoaded] = useFonts({
-    HeadingFont: require("../../../assets/Fonts/Matcha Style.ttf"),
-    NameFont: require("../../../assets/Fonts/NameFont.otf"),
-  });
+  const [result, setResult] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [hidden, setHidden] = useState<string[]>([]);
 
   useEffect(() => {
     loadFont();
   }, []);
 
-  const { matches: matchIds } = usePetLists();
-  const matches = matchIds.map(getPet).filter((p) => !!p);
+  // Recalculates matches every time this screen opens
+  useFocusEffect(
+    useCallback(() => {
+      let active = true;
 
-  if (!fontsLoaded) return null;
+      async function loadMatches() {
+        setLoading(true);
+        setError("");
+        try {
+          const auth = getAuth(app);
+          await auth.authStateReady();
+          const uid = auth.currentUser?.uid;
+          if (!uid) throw new Error("Please log in to see your matches.");
+
+          const [answers, pets] = await Promise.all([getQuizAnswers(uid), getAnimals()]);
+          if (!answers) throw new Error("Finish the quiz to see your matches.");
+
+          const res = matchPets(pets, answers, pets.length);
+          const strong = res.matches
+            .filter((m: any) => m.score != null && m.score >= MIN_MATCH)
+            .slice(0, TOP_MATCHES);
+          if (active) setResult({ ...res, matches: strong });
+        } catch (e: any) {
+          if (active) setError(e.message ?? "Unable to calculate matches.");
+        } finally {
+          if (active) setLoading(false);
+        }
+      }
+
+      loadMatches();
+      return () => {
+        active = false;
+      };
+    }, [])
+  );
+
+  const openPet = (id: string) =>
+    router.push({ pathname: "/pets/[id]", params: { id } } as Href);
+
+  const visible = (result?.matches ?? []).filter((m: any) => !hidden.includes(m.pet.id));
 
   return (
     <View style={s.outer}>
@@ -73,51 +140,78 @@ export default function Matches() {
 
         <Text style={s.heading}>MATCHES</Text>
 
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 16 }}>
-          {matches.length === 0 && <Text style={s.empty}>No matches. Keep on swiping!</Text>}
-
-          {matches.map((m) => (
-            <LinearGradient
-              key={m!.id}
-              colors={["#F4BFB2", "#F8DBD4"]}
-              start={{ x: 0.5, y: 0 }}
-              end={{ x: 0.5, y: 1 }}
-              style={s.match}
-            >
-              <Image source={{ uri: m!.image }} style={s.photo} />
-
-              <View style={s.info}>
-                <View style={s.infoInner}>
-                  <Text style={s.name}>{m!.name}</Text>
-                  {m!.traits.map((t, j) => (
-                    <View key={j} style={s.trait}>
-                      <View style={s.iconBox}>
-                        <Image source={t.listIcon} style={{ width: 16, height: 16 }} />
-                      </View>
-                      <Text style={s.small}>{t.text}</Text>
-                    </View>
-                  ))}
-                </View>
-              </View>
-
-              <View style={s.actionCol}>
-                <Pressable style={[s.btn, { borderColor: "#86EFAC" }]}>
-                  <Check size={32} color="#6EE08F" strokeWidth={1.75} />
-                </Pressable>
-                <Pressable style={[s.btn, { borderColor: "#D32F2F" }]} onPress={() => removePet("matches", m!.id)}>
-                  <X size={30} color="#D32F2F" strokeWidth={1.75} />
-                </Pressable>
-              </View>
-            </LinearGradient>
-          ))}
-        </ScrollView>
-
-        <Pressable style={s.clear} onPress={() => clearList("matches")}>
-          <Text style={s.clearText}>Clear All Matches</Text>
-        </Pressable>
-          <View style={s.navWrapper}>
-              <PawNavBar active="/homepage" />
+        {loading ? (
+          <View style={s.center}>
+            <ActivityIndicator size="large" color="#D66E5A" />
+            <Text style={s.empty}>Finding your matches...</Text>
           </View>
+        ) : (
+          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 110 }}>
+            {!!error && <Text style={s.warning}>{error}</Text>}
+
+            {!error && visible.length === 0 && (
+              <Text style={s.empty}>No pets are an {MIN_MATCH}%+ match yet. Try updating your quiz answers!</Text>
+            )}
+
+            {visible.map((item: any) => {
+              const pet = item.pet;
+              return (
+                <Pressable key={pet.id} onPress={() => openPet(pet.id)}>
+                  <LinearGradient
+                    colors={["#F4BFB2", "#F8DBD4"]}
+                    start={{ x: 0.5, y: 0 }}
+                    end={{ x: 0.5, y: 1 }}
+                    style={s.match}
+                  >
+                    <Image source={photoFor(pet)} style={s.photo} />
+
+                    <View style={s.info}>
+                      <View style={s.infoInner}>
+                        <Text style={s.name}>{pet.name}</Text>
+                        {traitsFor(pet).map(({ Icon, text }, j) => (
+                          <View key={j} style={s.trait}>
+                            <View style={s.iconBox}>
+                              <Icon size={16} color="#241e1e" strokeWidth={1.75} />
+                            </View>
+                            <Text style={s.small}>{text}</Text>
+                          </View>
+                        ))}
+                        <Text style={s.score}>
+                          {item.score == null ? "Not enough info yet" : `${item.score}% match`}
+                        </Text>
+                        {item.reasons?.length > 0 && (
+                          <Text style={s.reasons} numberOfLines={2}>
+                            {item.reasons.join(" · ")}
+                          </Text>
+                        )}
+                      </View>
+                    </View>
+
+                    <View style={s.actionCol}>
+                      <Pressable style={[s.btn, { borderColor: "#86EFAC" }]} onPress={() => openPet(pet.id)}>
+                        <Check size={32} color="#6EE08F" strokeWidth={1.75} />
+                      </Pressable>
+                      <Pressable
+                        style={[s.btn, { borderColor: "#D32F2F" }]}
+                        onPress={() => setHidden((h) => [...h, pet.id])}
+                      >
+                        <X size={30} color="#D32F2F" strokeWidth={1.75} />
+                      </Pressable>
+                    </View>
+                  </LinearGradient>
+                </Pressable>
+              );
+            })}
+
+            <Pressable style={s.clear} onPress={() => router.push("/quiz" as Href)}>
+              <Text style={s.clearText}>Edit my quiz answers</Text>
+            </Pressable>
+          </ScrollView>
+        )}
+
+        <View style={s.navWrapper}>
+          <PawNavBar active="/homepage" />
+        </View>
       </SafeAreaView>
     </View>
   );
@@ -130,13 +224,16 @@ const s = StyleSheet.create({
   container: { flex: 1, width: "100%", maxWidth: 380, backgroundColor: "#F3EDE8", overflow: "hidden" },
   paw: { position: "absolute", width: 52, height: 52, resizeMode: "contain", opacity: 0.8 },
   heading: {
-    fontFamily: "HeadingFont",
-    fontSize: 40,
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#1a1a1a",
     textAlign: "center",
     marginTop: 24,
     marginBottom: 14,
   },
+  center: { flex: 1, alignItems: "center", justifyContent: "center", gap: 10 },
   empty: { fontFamily: FONT, textAlign: "center", fontSize: 14, color: "#555", marginTop: 24 },
+  warning: { fontFamily: FONT, fontSize: 13, color: "#8B1A1A", textAlign: "center", marginVertical: 10 },
 
   match: {
     flexDirection: "row",
@@ -155,17 +252,18 @@ const s = StyleSheet.create({
   info: { flex: 1, marginLeft: 10, alignItems: "center" },
   infoInner: { alignItems: "flex-start", marginTop: -14 },
   name: {
-    fontFamily: "NameFont",
-    fontSize: 36,
-    lineHeight: 40,
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#1a1a1a",
     alignSelf: "center",
     textAlign: "center",
-    marginBottom: -7,
-    transform: [{ translateY: -2 }],
+    marginBottom: 2,
   },
   trait: { flexDirection: "row", alignItems: "center", marginTop: 6 },
   iconBox: { width: 22, height: 22, marginRight: 6, alignItems: "center", justifyContent: "center" },
   small: { fontFamily: FONT, fontSize: 13, fontWeight: "400", color: "#241e1e" },
+  score: { fontFamily: FONT, fontSize: 13, fontWeight: "600", color: "#B23A48", marginTop: 8 },
+  reasons: { fontFamily: FONT, fontSize: 10, color: "#6b4b45", marginTop: 2, maxWidth: 150 },
 
   actionCol: { gap: 8, marginRight: 2, marginLeft: 6 },
   btn: {

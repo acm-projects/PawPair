@@ -23,23 +23,23 @@ export const WEIGHTS = {
 
   q4: {
     "No restrictions": 0.0,
-    "Size or weight limits": 1.0,
-    "Certain breeds or species": 1.0,
-    "Not sure": 0.5
+    "Size or weight limits": 0.6,
+    "Certain breeds or species": 0.0,
+    "Not sure": 0.0
   },
 
   q5: {
-    "Just me": 0.3,
-    "Partner or roommates": 0.6,
+    "Just me": 0.0,
+    "Partner or roommates": 0.4,
     "Kids under 5": 1.0,
-    "Kids 5 and older": 0.9
+    "Kids 5 and older": 0.6
   },
 
   q6: {
-    "None": 0.2,
-    "Dog": 1.0,
-    "Cat": 1.0,
-    "Small animals or birds": 0.9
+    "None": 0.0,
+    "Dog": 0.0,
+    "Cat": 0.0,
+    "Small animals or birds": 0.0
   },
 
   q7: {

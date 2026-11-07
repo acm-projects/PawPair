@@ -1,4 +1,3 @@
-
 import { weightFor } from "./quizWeights.js";
 
 // Helper functions
@@ -167,45 +166,81 @@ function compatibilityFor(q, answers, pet) {
         "Home environment"
       );
 
-    case "q4":
-      return (
-        answers.q4?.choice === "Size or weight limits" ||
-        answers.q4?.choice === "Certain breeds or species"
-      )
-        ? yes(1, "Housing restrictions")
-        : null;
+    // Breed bans are handled in exclusionReason. Weight limits are scored by
+    // how much room the pet leaves under the limit.
+    case "q4": {
+      if (answers.q4?.choice !== "Size or weight limits") return null;
 
+      const max = Number(answers.q4.maxWeightLbs);
+      const weight = Number(m.weightLbs);
+      if (!(max > 0) || !(weight > 0)) return null;
+
+      const ratio = weight / max;
+
+      return yes(
+        ratio <= 0.75 ? 1 : ratio <= 0.9 ? 0.7 : 0.4,
+        "Fits housing limits"
+      );
+    }
+
+    // Kid and roommate compatibility is already required by exclusionReason.
+    // Score how easy the pet would be in that household instead.
     case "q5": {
       const choices = answers.q5 ?? [];
+      const energy = {
+        Low: 0,
+        Moderate: 1,
+        High: 2,
+        "Very high": 3
+      }[m.energyLevel];
+      const parts = [];
 
-      if (
-        choices.includes("Kids under 5") ||
-        choices.includes("Kids 5 and older")
-      ) {
-        return yes(1, "Children compatibility");
+      if (choices.includes("Kids under 5") && isPresent(energy)) {
+        const big = Number(m.weightLbs) >= 50;
+        parts.push(
+          energy <= 1 ? 1 : big ? 0.6 : 0.75
+        );
+      }
+
+      if (choices.includes("Kids 5 and older") && isPresent(energy)) {
+        parts.push(energy >= 1 ? 1 : 0.8);
       }
 
       if (
         choices.includes("Partner or roommates") &&
         isPresent(m.comfortableWithRoommates)
       ) {
-        return yes(
-          m.comfortableWithRoommates ? 1 : 0.3,
-          "Shared household"
-        );
+        parts.push(m.comfortableWithRoommates ? 1 : 0.3);
       }
 
-      return null;
+      if (!parts.length) return null;
+
+      return yes(Math.min(...parts), "Household fit");
     }
 
+    // Other-pet compatibility is a hard requirement in exclusionReason,
+    // so it is not scored again here.
     case "q6":
-      return (answers.q6 ?? []).some(x => x !== "None")
-        ? yes(1, "Other-pet compatibility")
-        : null;
-
-    // Allergies require individual verification
-    case "q7":
       return null;
+
+    // Lower-shedding pets score higher for allergy households.
+    // This is a preference only; no pet is guaranteed hypoallergenic.
+    case "q7": {
+      if (answers.q7 !== "Yes" && answers.q7 !== "Not sure") return null;
+
+      const level = {
+        low: 0,
+        medium: 1,
+        high: 2
+      }[normalize(m.sheddingLevel ?? pet.shedding)];
+      if (!isPresent(level)) return null;
+
+      const scale = answers.q7 === "Yes"
+        ? [1, 0.5, 0.1]
+        : [1, 0.7, 0.4];
+
+      return yes(scale[level], "Lower shedding");
+    }
 
     case "q8": {
       if (!isPresent(m.maxAloneHours)) return null;
@@ -403,7 +438,7 @@ function compatibilityFor(q, answers, pet) {
 const scoreableQuestions = Array.from(
   { length: 18 },
   (_, i) => `q${i + 1}`
-).filter(q => q !== "q7");
+);
 
 // STEP 4: Match and rank pets
 export function matchPets(pets, answers, maxResults = 5) {

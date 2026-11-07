@@ -1,26 +1,99 @@
-import React, { useMemo, useRef } from "react";
-import { Text, View, StyleSheet, Image, ScrollView, Pressable, Animated, Dimensions } from "react-native";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Text, View, StyleSheet, Image, ScrollView, Pressable, Animated, Dimensions, ActivityIndicator } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { PETS_DATA } from "../../data/pets";
 import { matchPet } from "../../store/petLists";
 import { markSwiped, useSwiped } from "../../store/swiped";
 import { useRouter } from "expo-router";
-import { ChevronLeft } from "lucide-react-native";
+import { ChevronLeft, PawPrint, Ruler, Zap } from "lucide-react-native";
+import { getAuth } from "firebase/auth";
+
+import { app } from "../../firebase.js";
+import { getAnimals } from "../../services/animalServices";
+import { addFavorite } from "../../services/favoriteServices";
+import { getQuizAnswers } from "../../services/quizService";
+import { matchPets } from "../../services/matchingService";
 
 const paw = require("../../../assets/images/paw-watermark.png");
 const pawIcon = require("../../../assets/images/paw-icon.png");
 
+const PLACEHOLDERS: Record<string, number> = {
+  dog: require("../../../assets/images/dog.jpg"),
+  cat: require("../../../assets/images/cat.jpg"),
+  bird: require("../../../assets/images/bird.jpg"),
+  small_animal: require("../../../assets/images/small_animal.jpg"),
+};
+const DEFAULT_PHOTO = require("../../../assets/images/pet-duo.png");
+
 const SCREEN_WIDTH = Dimensions.get("window").width;
+const MIN_MATCH = 85; // only show pets scoring at least this %
+
+const cap = (s?: string) => (s ? s[0].toUpperCase() + s.slice(1) : "");
+const speciesKey = (s?: string) => (s ?? "").toLowerCase().trim().replace(/\s+/g, "_");
+
+// Turns a Firestore pet (plus its match result) into what the card displays
+function toCard(pet: any, score: number | null) {
+  const traits: { Icon: typeof PawPrint; text: string }[] = [];
+  if (pet.breed) traits.push({ Icon: PawPrint, text: pet.breed });
+  if (pet.size) traits.push({ Icon: Ruler, text: `${cap(pet.size)} size` });
+  if (pet.energy) traits.push({ Icon: Zap, text: `${cap(pet.energy)} energy` });
+
+  return {
+    id: pet.id,
+    name: pet.name,
+    age: pet.age != null ? `${pet.age} ${pet.age === 1 ? "year" : "years"}` : "",
+    photo: pet.photoUrl ? { uri: pet.photoUrl } : PLACEHOLDERS[speciesKey(pet.species)] ?? DEFAULT_PHOTO,
+    traits,
+    email: pet.contactEmail ?? "",
+    about: pet.description ?? "",
+    loves: Array.isArray(pet.loves) ? pet.loves : [],
+    score,
+  };
+}
 
 export default function Scrollview() {
   const busy = useRef(false);
   const router = useRouter();
   const swiped = useSwiped();
 
+  const [cards, setCards] = useState<ReturnType<typeof toCard>[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
   const position = useMemo(() => new Animated.ValueXY({ x: 0, y: 0 }), []);
 
-  // only pets that haven't been swiped yet; the first one is always on top
-  const deck = PETS_DATA.filter((p) => !swiped.has(p.id));
+  useEffect(() => {
+    async function loadDeck() {
+      try {
+        const pets = await getAnimals();
+
+        const auth = getAuth(app);
+        await auth.authStateReady();
+        const uid = auth.currentUser?.uid;
+        const answers = uid ? await getQuizAnswers(uid) : null;
+
+        if (!answers) {
+          setError("Finish the quiz to see pets matched to you.");
+          return;
+        }
+
+        const res = matchPets(pets, answers, pets.length);
+        const strong = res.matches.filter((m: any) => m.score != null && m.score >= MIN_MATCH);
+        setCards(strong.map((m: any) => toCard(m.pet, m.score)));
+        if (strong.length === 0) {
+          setError(`No pets are an ${MIN_MATCH}%+ match yet. Try updating your quiz answers!`);
+        }
+      } catch (e) {
+        console.error("Error loading pets:", e);
+        setError("Could not load pets.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadDeck();
+  }, []);
+
+  const deck = cards.filter((p) => !swiped.has(p.id));
   const currentPet = deck[0];
 
   const handleAction = (actionType: "reject" | "match") => {
@@ -29,7 +102,11 @@ export default function Scrollview() {
 
     const pet = currentPet;
 
-    if (actionType === "match") matchPet(pet.id);
+    if (actionType === "match") {
+      matchPet(pet.id);
+      const uid = getAuth(app).currentUser?.uid;
+      if (uid) addFavorite(uid, pet.id).catch((e) => console.error("Error saving match:", e));
+    }
     const xTarget = actionType === "reject" ? -SCREEN_WIDTH * 1.2 : SCREEN_WIDTH * 1.2;
 
     Animated.timing(position, {
@@ -37,7 +114,7 @@ export default function Scrollview() {
       duration: 250,
       useNativeDriver: false,
     }).start(() => {
-      markSwiped(pet.id); // remember it so it never shows again
+      markSwiped(pet.id);
       position.setValue({ x: 0, y: 0 });
       busy.current = false;
     });
@@ -52,10 +129,19 @@ export default function Scrollview() {
     transform: [{ translateX: position.x }, { translateY: position.y }, { rotate }],
   };
 
+  if (loading) {
+    return (
+      <View style={[s.outer, s.emptyWrap]}>
+        <ActivityIndicator size="large" color="#F4BFB2" />
+        <Text style={s.emptyText}>Finding pets for you...</Text>
+      </View>
+    );
+  }
+
   if (!currentPet) {
     return (
       <View style={[s.outer, s.emptyWrap]}>
-        <Text style={s.emptyText}>That's all the pets!</Text>
+        <Text style={s.emptyText}>{error || "That's all the pets!"}</Text>
         <Pressable style={s.emptyBtn} onPress={() => router.replace("/homepage" as any)}>
           <Text style={s.emptyBtnText}>Home</Text>
         </Pressable>
@@ -72,7 +158,7 @@ export default function Scrollview() {
       >
         <Animated.View style={[s.card, animatedCardStyle]}>
           <View style={s.imageContainer}>
-            <Image source={{ uri: currentPet.image }} style={s.petImage} />
+            <Image source={currentPet.photo} style={s.petImage} />
 
             <Pressable
               style={s.backButton}
@@ -80,6 +166,12 @@ export default function Scrollview() {
             >
               <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
             </Pressable>
+
+            {currentPet.score != null && (
+              <View style={s.scoreBadge}>
+                <Text style={s.scoreText}>{currentPet.score}% match</Text>
+              </View>
+            )}
           </View>
 
           <View style={{ padding: 16 }}>
@@ -90,27 +182,29 @@ export default function Scrollview() {
               <Text style={s.age}>{currentPet.age}</Text>
             </View>
 
-            {currentPet.traits.map((t, i) => (
+            {currentPet.traits.map(({ Icon, text }, i) => (
               <View key={i} style={s.trait}>
                 <View style={s.iconBox}>
-                  <Image source={t.icon} style={{ width: t.size, height: t.size }} />
+                  <Icon size={16} color="#222" strokeWidth={1.75} />
                 </View>
-                <Text style={s.small}>{t.text}</Text>
+                <Text style={s.small}>{text}</Text>
               </View>
             ))}
 
-            <LinearGradient
-              colors={["#F5C0B8", "#F6C69F"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={s.contact}
-            >
-              <Image source={pawIcon} style={s.contactIcon} />
-              <View>
-                <Text style={s.small}>You can contact me at:</Text>
-                <Text style={[s.small, { fontWeight: "bold" }]}>{currentPet.email}</Text>
-              </View>
-            </LinearGradient>
+            {!!currentPet.email && (
+              <LinearGradient
+                colors={["#F5C0B8", "#F6C69F"]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={s.contact}
+              >
+                <Image source={pawIcon} style={s.contactIcon} />
+                <View>
+                  <Text style={s.small}>You can contact me at:</Text>
+                  <Text style={[s.small, { fontWeight: "bold" }]}>{currentPet.email}</Text>
+                </View>
+              </LinearGradient>
+            )}
           </View>
 
           <View style={s.section}>
@@ -123,7 +217,7 @@ export default function Scrollview() {
 
             <Text style={s.title}>Loves:</Text>
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 10 }}>
-              {currentPet.loves.map((l, i) => (
+              {currentPet.loves.map((l: string, i: number) => (
                 <View key={i} style={s.pill}>
                   <Text style={s.pillText}>{l}</Text>
                 </View>
@@ -209,6 +303,16 @@ const s = StyleSheet.create({
     shadowRadius: 3,
     elevation: 4,
   },
+  scoreBadge: {
+    position: "absolute",
+    top: 14,
+    right: 14,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    backgroundColor: "rgba(246, 243, 239, 0.95)",
+  },
+  scoreText: { fontSize: 12, fontWeight: "700", color: "#2E7D32" },
   paw: { position: "absolute", width: 60, height: 60, resizeMode: "contain" },
   name: { fontSize: 22, fontWeight: "bold" },
   age: { fontSize: 17, marginLeft: 22 },
