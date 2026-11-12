@@ -32534,3 +32534,197 @@
 {"_e":"metro:client_log","_t":1794449612471,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
 {"_e":"metro:client_log","_t":1794449612473,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
 {"_e":"metro:client_log","_t":1794449612491,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:bundling:failed","_t":1794449797289,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\matches.tsx: Identifier 'lingering' has already been declared. (296:9)\n\n  294 |\n  295 |   // pets that just got applied to stay on screen until their animation finishes\n> 296 |   const [lingering, setLingering] = useState<Set<string | number>>(new Set());\n      |          ^\n  297 |\n  298 |   // only show pets that haven't been applied to (plus any still celebrating)\n  299 |   const matches = allMatches.filter(","importStack":null,"filename":"src\\app\\(tabs)\\matches.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1794449797293,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\matches.tsx: Identifier 'lingering' has already been declared. (296:9)\n\n  294 |\n  295 |   // pets that just got applied to stay on screen until their animation finishes\n> 296 |   const [lingering, setLingering] = useState<Set<string | number>>(new Set());\n      |          ^\n  297 |\n  298 |   // only show pets that haven't been applied to (plus any still celebrating)\n  299 |   const matches = allMatches.filter(]"]}
+{"_e":"metro:client_log","_t":1794449797294,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\matches.tsx: Identifier 'lingering' has already been declared. (296:9)\n\n  294 |\n  295 |   // pets that just got applied to stay on screen until their animation finishes\n> 296 |   const [lingering, setLingering] = useState<Set<string | number>>(new Set());\n      |          ^\n  297 |\n  298 |   // only show pets that haven't been applied to (plus any still celebrating)\n  299 |   const matches = allMatches.filter(]"]}
+{"_e":"metro:bundling:failed","_t":1794449797474,"id":null,"message":"SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\matches.tsx: Identifier 'lingering' has already been declared. (296:9)\n\n  294 |\n  295 |   // pets that just got applied to stay on screen until their animation finishes\n> 296 |   const [lingering, setLingering] = useState<Set<string | number>>(new Set());\n      |          ^\n  297 |\n  298 |   // only show pets that haven't been applied to (plus any still celebrating)\n  299 |   const matches = allMatches.filter(","importStack":null,"filename":"src\\app\\(tabs)\\matches.tsx","targetModuleName":null,"originModulePath":null}
+{"_e":"metro:client_log","_t":1794449797476,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\matches.tsx: Identifier 'lingering' has already been declared. (296:9)\n\n  294 |\n  295 |   // pets that just got applied to stay on screen until their animation finishes\n> 296 |   const [lingering, setLingering] = useState<Set<string | number>>(new Set());\n      |          ^\n  297 |\n  298 |   // only show pets that haven't been applied to (plus any still celebrating)\n  299 |   const matches = allMatches.filter(]"]}
+{"_e":"metro:client_log","_t":1794449797480,"level":"error","data":["[TransformError: SyntaxError: C:\\Users\\bachu\\OneDrive\\Documents\\PawPair\\PawPair\\src\\app\\(tabs)\\matches.tsx: Identifier 'lingering' has already been declared. (296:9)\n\n  294 |\n  295 |   // pets that just got applied to stay on screen until their animation finishes\n> 296 |   const [lingering, setLingering] = useState<Set<string | number>>(new Set());\n      |          ^\n  297 |\n  298 |   // only show pets that haven't been applied to (plus any still celebrating)\n  299 |   const matches = allMatches.filter(]"]}
+{"_e":"metro:client_log","_t":1794449824870,"level":"warn","data":["An error occurred in the <Matches> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.\n"]}
+{"_e":"metro:client_log","_t":1794449824940,"level":"error","data":["[ReferenceError: matches is not defined]","\n\n\u001b[1mCode: matches.tsx\u001b[22m\n\u001b[0m \u001b[90m 318 |\u001b[39m\n \u001b[90m 319 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33mScrollView\u001b[39m style\u001b[33m=\u001b[39m{{ flex\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m }} contentContainerStyle\u001b[33m=\u001b[39m{{ paddingHorizontal\u001b[33m:\u001b[39m \u001b[35m10\u001b[39m\u001b[33m,\u001b[39m paddingBottom\u001b[33m:\u001b[39m \u001b[35m16\u001b[39m }}\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 320 |\u001b[39m           {matches\u001b[33m.\u001b[39mlength \u001b[33m===\u001b[39m \u001b[35m0\u001b[39m \u001b[33m&&\u001b[39m \u001b[33m<\u001b[39m\u001b[33mText\u001b[39m style\u001b[33m=\u001b[39m{s\u001b[33m.\u001b[39mempty}\u001b[33m>\u001b[39m\u001b[33mNo\u001b[39m matches\u001b[33m.\u001b[39m \u001b[33mKeep\u001b[39m on swiping\u001b[33m!\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mText\u001b[39m\u001b[33m>\u001b[39m}\n \u001b[90m     |\u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 321 |\u001b[39m\n \u001b[90m 322 |\u001b[39m           {matches\u001b[33m.\u001b[39mmap((m) \u001b[33m=>\u001b[39m (\n \u001b[90m 323 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33mMatchCard\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Matches (src\\app\\(tabs)\\matches.tsx:320:12)\u001b[39m","\n\n\u001b[1mCode: _layout.tsx\u001b[22m\n\u001b[0m \u001b[90m 4 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[36mfunction\u001b[39m \u001b[33mTabLayout\u001b[39m() {\n \u001b[90m 5 |\u001b[39m   \u001b[36mreturn\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 6 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mTabs\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m   |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 7 |\u001b[39m       \u001b[33m<\u001b[39m\u001b[33mTabs\u001b[39m\u001b[33m.\u001b[39m\u001b[33mScreen\u001b[39m\n \u001b[90m 8 |\u001b[39m         name\u001b[33m=\u001b[39m\u001b[32m\"profile\"\u001b[39m\n \u001b[90m 9 |\u001b[39m         options\u001b[33m=\u001b[39m{{\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  TabLayout (src\\app\\(tabs)\\_layout.tsx:6:5)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1794449829804,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794449829804,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794449829804,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794449829820,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1794449829821,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"root:init","_t":1794450770978,"format":"v0-jsonl","version":"57.0.32"}
+{"_e":"env:mode","_t":1794450770980,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1794450770985,"mode":"development","files":["../..\\..\\.env"],"env":{"EXPO_PUBLIC_API_URL":""}}
+{"_e":"devserver:start","_t":1794450771989,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1794450772842,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1794450773870,"plugins":[]}
+{"_e":"metro:instantiate","_t":1794450791835,"atlas":false,"workers":6,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1794450795809,"id":"2","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1794450795809,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1794450795810,"id":"3","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1794450795810,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450795810,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450795815,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450795815,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450795914,"id":"2","progress":0.05049867440979674,"total":178,"current":40}
+{"_e":"metro:bundling:progress","_t":1794450795914,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450796014,"id":"2","progress":0.17241172878677216,"total":289,"current":120}
+{"_e":"metro:bundling:progress","_t":1794450796014,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450796114,"id":"2","progress":0.308641975308642,"total":441,"current":245}
+{"_e":"metro:bundling:progress","_t":1794450796114,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450796220,"id":"2","progress":0.308641975308642,"total":441,"current":245}
+{"_e":"metro:bundling:progress","_t":1794450796220,"id":"3","progress":0.0937109537692628,"total":147,"current":45}
+{"_e":"metro:bundling:progress","_t":1794450796319,"id":"2","progress":0.49063560689461017,"total":661,"current":463}
+{"_e":"metro:bundling:progress","_t":1794450796319,"id":"3","progress":0.0937109537692628,"total":147,"current":45}
+{"_e":"metro:bundling:progress","_t":1794450796419,"id":"2","progress":0.49063560689461017,"total":700,"current":485}
+{"_e":"metro:bundling:progress","_t":1794450796419,"id":"3","progress":0.0937109537692628,"total":147,"current":45}
+{"_e":"metro:bundling:progress","_t":1794450796632,"id":"2","progress":0.6408292840076243,"total":772,"current":618}
+{"_e":"metro:bundling:progress","_t":1794450796632,"id":"3","progress":0.0937109537692628,"total":147,"current":45}
+{"_e":"metro:bundling:progress","_t":1794450796754,"id":"2","progress":0.6408292840076243,"total":2677,"current":619}
+{"_e":"metro:bundling:progress","_t":1794450796754,"id":"3","progress":0.0937109537692628,"total":147,"current":45}
+{"_e":"metro:bundling:progress","_t":1794450796854,"id":"2","progress":0.6408292840076243,"total":2677,"current":619}
+{"_e":"metro:bundling:progress","_t":1794450796854,"id":"3","progress":0.18989397813576636,"total":397,"current":173}
+{"_e":"metro:bundling:progress","_t":1794450796954,"id":"2","progress":0.6408292840076243,"total":2677,"current":619}
+{"_e":"metro:bundling:progress","_t":1794450796955,"id":"3","progress":0.2510857750528183,"total":461,"current":231}
+{"_e":"metro:bundling:progress","_t":1794450797054,"id":"2","progress":0.6408292840076243,"total":2736,"current":734}
+{"_e":"metro:bundling:progress","_t":1794450797054,"id":"3","progress":0.2510857750528183,"total":461,"current":231}
+{"_e":"metro:bundling:progress","_t":1794450797154,"id":"2","progress":0.6408292840076243,"total":2749,"current":1483}
+{"_e":"metro:bundling:progress","_t":1794450797154,"id":"3","progress":0.2510857750528183,"total":461,"current":231}
+{"_e":"metro:bundling:progress","_t":1794450797254,"id":"2","progress":0.6408292840076243,"total":2749,"current":1483}
+{"_e":"metro:bundling:progress","_t":1794450797254,"id":"3","progress":0.36579634156422336,"total":582,"current":352}
+{"_e":"metro:bundling:progress","_t":1794450797354,"id":"2","progress":0.6408292840076243,"total":2749,"current":1483}
+{"_e":"metro:bundling:progress","_t":1794450797354,"id":"3","progress":0.47786135759650467,"total":745,"current":515}
+{"_e":"metro:bundling:progress","_t":1794450797523,"id":"2","progress":0.6408292840076243,"total":2749,"current":1483}
+{"_e":"metro:bundling:progress","_t":1794450797523,"id":"3","progress":0.5147662414836721,"total":807,"current":579}
+{"_e":"metro:bundling:progress","_t":1794450797624,"id":"2","progress":0.9549354307189066,"total":2808,"current":2744}
+{"_e":"metro:bundling:progress","_t":1794450797624,"id":"3","progress":0.5147662414836721,"total":807,"current":579}
+{"_e":"metro:bundling:progress","_t":1794450797724,"id":"2","progress":0.9549354307189066,"total":2808,"current":2744}
+{"_e":"metro:bundling:progress","_t":1794450797724,"id":"3","progress":0.5147662414836721,"total":2741,"current":610}
+{"_e":"metro:bundling:progress","_t":1794450797824,"id":"2","progress":0.9569046618424646,"total":2846,"current":2784}
+{"_e":"metro:bundling:progress","_t":1794450797824,"id":"3","progress":0.5147662414836721,"total":2741,"current":610}
+{"_e":"metro:bundling:progress","_t":1794450797924,"id":"2","progress":0.9569046618424646,"total":2846,"current":2784}
+{"_e":"metro:bundling:progress","_t":1794450797924,"id":"3","progress":0.7699323051461305,"total":2848,"current":2499}
+{"_e":"metro:bundling:progress","_t":1794450798030,"id":"2","progress":0.9569046618424646,"total":2846,"current":2784}
+{"_e":"metro:bundling:progress","_t":1794450798030,"id":"3","progress":0.8996595106270361,"total":2874,"current":2726}
+{"_e":"metro:bundling:progress","_t":1794450798129,"id":"2","progress":0.964186062894123,"total":2933,"current":2880}
+{"_e":"metro:bundling:progress","_t":1794450798130,"id":"3","progress":0.8996595106270361,"total":2874,"current":2726}
+{"_e":"metro:bundling:progress","_t":1794450798236,"id":"2","progress":0.964186062894123,"total":2933,"current":2880}
+{"_e":"metro:bundling:progress","_t":1794450798236,"id":"3","progress":0.9635490654466953,"total":2990,"current":2935}
+{"_e":"metro:bundling:progress","_t":1794450798343,"id":"2","progress":0.999,"total":2969,"current":2969}
+{"_e":"metro:bundling:progress","_t":1794450798343,"id":"3","progress":0.9635490654466953,"total":2990,"current":2935}
+{"_e":"metro:bundling:progress","_t":1794450798462,"id":"2","progress":0.999,"total":2969,"current":2969}
+{"_e":"metro:bundling:progress","_t":1794450798462,"id":"3","progress":0.999,"total":3130,"current":3130}
+{"_e":"metro:bundling:done","_t":1794450798512,"id":"3","total":3130,"ms":2702.0023}
+{"_e":"metro:bundling:progress","_t":1794450798513,"id":"2","progress":0.999,"total":2969,"current":2969}
+{"_e":"metro:bundling:started","_t":1794450800592,"id":"5","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1794450800592,"id":"2","progress":0.999,"total":2969,"current":2969}
+{"_e":"metro:bundling:progress","_t":1794450800592,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1794450800593,"id":"6","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1794450800594,"id":"2","progress":0.999,"total":2969,"current":2969}
+{"_e":"metro:bundling:progress","_t":1794450800595,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450800595,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1794450800872,"id":"6","total":1,"ms":278.0834}
+{"_e":"metro:bundling:progress","_t":1794450800872,"id":"2","progress":0.999,"total":2969,"current":2969}
+{"_e":"metro:bundling:progress","_t":1794450800872,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1794450801735,"id":"2","total":2969,"ms":5925.8278}
+{"_e":"metro:bundling:progress","_t":1794450801736,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1794450801975,"id":"9","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1794450801979,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450801979,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450802016,"id":"5","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450802016,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1794450802019,"id":"5","total":1,"ms":1426.4137}
+{"_e":"metro:bundling:progress","_t":1794450802019,"id":"9","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450802123,"id":"9","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1794450802229,"id":"9","progress":0.03077870113881194,"total":114,"current":20}
+{"_e":"metro:bundling:progress","_t":1794450802304,"id":"9","progress":0.03393351800554016,"total":114,"current":21}
+{"_e":"metro:bundling:progress","_t":1794450802425,"id":"9","progress":0.16000000000000003,"total":280,"current":112}
+{"_e":"metro:bundling:started","_t":1794450802439,"id":"c","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1794450802439,"id":"9","progress":0.16000000000000003,"total":280,"current":112}
+{"_e":"metro:bundling:progress","_t":1794450802439,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450802524,"id":"9","progress":0.28969723183391,"total":340,"current":183}
+{"_e":"metro:bundling:progress","_t":1794450802524,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450802636,"id":"9","progress":0.3564268211182891,"total":469,"current":280}
+{"_e":"metro:bundling:progress","_t":1794450802636,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450802733,"id":"9","progress":0.44746786732426114,"total":589,"current":394}
+{"_e":"metro:bundling:progress","_t":1794450802733,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450802833,"id":"9","progress":0.5025377130780379,"total":663,"current":470}
+{"_e":"metro:bundling:progress","_t":1794450802833,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450802933,"id":"9","progress":0.6033598292987205,"total":766,"current":595}
+{"_e":"metro:bundling:progress","_t":1794450802933,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450803080,"id":"9","progress":0.6712892921857215,"total":797,"current":653}
+{"_e":"metro:bundling:progress","_t":1794450803080,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450803271,"id":"9","progress":0.6823297582553911,"total":799,"current":660}
+{"_e":"metro:bundling:progress","_t":1794450803272,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450803552,"id":"9","progress":0.6823297582553911,"total":2705,"current":661}
+{"_e":"metro:bundling:progress","_t":1794450803552,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450803671,"id":"9","progress":0.6823297582553911,"total":2706,"current":662}
+{"_e":"metro:bundling:progress","_t":1794450803671,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450803731,"id":"9","progress":0.6823297582553911,"total":2706,"current":663}
+{"_e":"metro:bundling:progress","_t":1794450803731,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450803884,"id":"9","progress":0.6823297582553911,"total":2737,"current":732}
+{"_e":"metro:bundling:progress","_t":1794450803884,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450803985,"id":"9","progress":0.6823297582553911,"total":2766,"current":855}
+{"_e":"metro:bundling:progress","_t":1794450803986,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450804087,"id":"9","progress":0.6823297582553911,"total":2766,"current":1265}
+{"_e":"metro:bundling:progress","_t":1794450804087,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450804187,"id":"9","progress":0.6823297582553911,"total":2766,"current":1847}
+{"_e":"metro:bundling:progress","_t":1794450804187,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450804287,"id":"9","progress":0.714471092791353,"total":2766,"current":2338}
+{"_e":"metro:bundling:progress","_t":1794450804287,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450804387,"id":"9","progress":0.9512871953366056,"total":2798,"current":2729}
+{"_e":"metro:bundling:progress","_t":1794450804388,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450804531,"id":"9","progress":0.9682997490179631,"total":2879,"current":2833}
+{"_e":"metro:bundling:progress","_t":1794450804531,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450804630,"id":"9","progress":0.9986518370255113,"total":2966,"current":2964}
+{"_e":"metro:bundling:progress","_t":1794450804630,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1794450804861,"id":"9","total":2966,"ms":2882.9222}
+{"_e":"metro:bundling:progress","_t":1794450804862,"id":"c","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1794450804975,"id":"c","total":1,"ms":2535.5781}
+{"_e":"metro:client_log","_t":1794450806010,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1794450806012,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1794450806136,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1794450806137,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1794450806215,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1794450806216,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794450806216,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794450806241,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794450806339,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1794450806340,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1794450806340,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1794450806340,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1794450806524,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1794450806532,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794450806538,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794450806575,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794450806632,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1794450806634,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1794450806662,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1794450806700,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1794450819943,"level":"error","data":["Login error:","auth/invalid-credential","Firebase: Error (auth/invalid-credential).","\n\n\u001b[1mCode: login.tsx\u001b[22m\n\u001b[0m \u001b[90m 121 |\u001b[39m\n \u001b[90m 122 |\u001b[39m   } \u001b[36mcatch\u001b[39m (error\u001b[33m:\u001b[39m any) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 123 |\u001b[39m     console\u001b[33m.\u001b[39merror(\u001b[32m\"Login error:\"\u001b[39m\u001b[33m,\u001b[39m error\u001b[33m.\u001b[39mcode\u001b[33m,\u001b[39m error\u001b[33m.\u001b[39mmessage)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 124 |\u001b[39m\n \u001b[90m 125 |\u001b[39m     \u001b[33mAlert\u001b[39m\u001b[33m.\u001b[39malert(\n \u001b[90m 126 |\u001b[39m       \u001b[32m\"Login Failed\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  handleLogin (src\\app\\(auth)\\login.tsx:123:13)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1794450836377,"level":"log","data":["Login successful:","bhuvana67@gmail.com"]}
+{"_e":"metro:client_log","_t":1794450836387,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:started","_t":1794450974172,"id":"y","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1794450974172,"id":"y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:started","_t":1794450974173,"id":"z","platform":"web","environment":"node","entry":"node_modules\\expo\\node_modules\\@expo\\cli\\node_modules\\@expo\\router-server\\node\\render.js"}
+{"_e":"metro:bundling:progress","_t":1794450974173,"id":"y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1794450974173,"id":"z","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1794450974383,"id":"z","total":1,"ms":209.9182}
+{"_e":"metro:bundling:progress","_t":1794450974383,"id":"y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1794450976539,"id":"y","total":1,"ms":2367.1567}
+{"_e":"metro:bundling:started","_t":1794450976689,"id":"12","platform":"web","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1794450976689,"id":"12","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1794450976894,"id":"12","total":1,"ms":204.993}
+{"_e":"metro:client_log","_t":1794450977454,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1794450977454,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1794450977504,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1794450977504,"level":"warn","data":["Route \"./saved-info.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794450977505,"level":"warn","data":["Route \"./(tabs)/discover.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794450977521,"level":"warn","data":["Route \"./(tabs)/starred.tsx\" is missing the required default export. Ensure a React component is exported as default."]}
+{"_e":"metro:client_log","_t":1794450977533,"level":"warn","data":["[Layout children]: No route named \"(tabs)/swiping\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1794450977533,"level":"warn","data":["[Layout children]: No route named \"(tabs)/matches\" exists in nested children:","[\"cameraResults\", \"index\", \"saved-info\", \"(auth)/login\", \"(auth)/signup\", \"(tabs)\", \"homepages/PostHomepage\", \"homepages/PreHomepage\"]"]}
+{"_e":"metro:client_log","_t":1794450977540,"level":"warn","data":["Image: style.resizeMode is deprecated. Please use props.resizeMode."]}
+{"_e":"metro:client_log","_t":1794450977550,"level":"warn","data":["Animated: `useNativeDriver` is not supported because the native animated module is missing. Falling back to JS-based animation. To resolve this, add `RCTAnimation` module to this app, or remove `useNativeDriver`. Make sure to run `bundle exec pod install` first. Read more about autolinking: https://github.com/react-native-community/cli/blob/master/docs/autolinking.md"]}
+{"_e":"metro:client_log","_t":1794451013870,"level":"log","data":["Account created:","bhuv@gmail.com"]}
+{"_e":"metro:client_log","_t":1794451014380,"level":"log","data":["Profile saved successfully!"]}
+{"_e":"metro:client_log","_t":1794451026008,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1794451070121,"level":"warn","data":["[2026-11-12T02:37:50.120Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x55b16e9a failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"X1uvaseyh3gdcKdrb8CbnVS8jEI2\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1794451070122,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
+{"_e":"metro:client_log","_t":1794451095356,"level":"error","data":["[Error: Couldn't save the scan to Firestore (permission-denied)]","\n\n\u001b[1mCode: scanApi.ts\u001b[22m\n\u001b[0m \u001b[90m 55 |\u001b[39m     \u001b[36mawait\u001b[39m batch\u001b[33m.\u001b[39mcommit()\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m   } \u001b[36mcatch\u001b[39m (e\u001b[33m:\u001b[39m any) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 57 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Couldn't save the scan to Firestore (${e?.code ?? e?.message})`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 58 |\u001b[39m   }\n \u001b[90m 59 |\u001b[39m   \u001b[36mreturn\u001b[39m scanRef\u001b[33m.\u001b[39mid\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m }\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  uploadScan (src\\services\\scanApi.ts:57:11)\u001b[39m\n\u001b[90m  finishScan (src\\app\\(tabs)\\camera.tsx:133:22)\u001b[39m"]}
+{"_e":"metro:client_log","_t":1794451095461,"level":"warn","data":["[2026-11-12T02:38:15.460Z]  @firebase/firestore:","Firestore (12.19.0): RestConnection","RPC 'RunAggregationQuery' 0x55b16e9d failed with error: ","{\"code\":\"permission-denied\",\"name\":\"FirebaseError\"}","url: ","https://firestore.googleapis.com/v1/projects/first-project-72603/databases/(default)/documents:runAggregationQuery?key=AIzaSyBqbxMPmJQy_hrPxTIfOff9JjJdImbUr4g","request:","{\"structuredAggregationQuery\":{\"aggregations\":[{\"alias\":\"aggregate_0\",\"count\":{}}],\"structuredQuery\":{\"from\":[{\"collectionId\":\"scans\"}],\"where\":{\"fieldFilter\":{\"field\":{\"fieldPath\":\"uid\"},\"op\":\"EQUAL\",\"value\":{\"stringValue\":\"X1uvaseyh3gdcKdrb8CbnVS8jEI2\"}}}}}}"]}
+{"_e":"metro:client_log","_t":1794451095462,"level":"warn","data":["Couldn't count previous scans","[FirebaseError: Missing or insufficient permissions.]"]}
