@@ -2,11 +2,7 @@ import { Text, View, StyleSheet, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useNavigation } from "expo-router";
 import { useLayoutEffect } from "react";
-import { useFonts } from "expo-font";
 import PawNavBar from "@/components/PawNavBar";
-
-const CORAL = "#E98F78";
-const BG = "#F3EDE8";
 
 export default function PostHomepage() {
   const navigation = useNavigation();
@@ -14,12 +10,6 @@ export default function PostHomepage() {
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
-
-  const [fontsLoaded] = useFonts({
-    NameFont: require("../../../assets/Fonts/NameFont.otf"),
-  });
-
-  if (!fontsLoaded) return null;
 
   return (
     <View style={s.outer}>
@@ -29,7 +19,7 @@ export default function PostHomepage() {
             style={({ pressed }) => [s.btn, pressed && s.btnPressed]}
             onPress={() => router.replace("/homepages/PreHomepage" as any)}
           >
-            <Text style={s.btnText}>Switch to Pre-Adoption</Text>
+            <Text style={s.btnText}>Switch to PreHomepage</Text>
           </Pressable>
         </View>
 
@@ -47,7 +37,7 @@ const s = StyleSheet.create({
     flex: 1,
     width: "100%",
     maxWidth: 380,
-    backgroundColor: BG,
+    backgroundColor: "#F3EDE8",
     overflow: "hidden",
     paddingBottom: 80,
   },
@@ -66,6 +56,6 @@ const s = StyleSheet.create({
     elevation: 3,
   },
   btnPressed: { backgroundColor: "#BFCBEC", opacity: 0.8 },
-  btnText: { fontFamily: "NameFont", fontSize: 26, lineHeight: 32, color: "#000" },
+  btnText: { fontSize: 18, fontWeight: "600", color: "#000" },
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });
