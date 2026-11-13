@@ -3,5 +3,9 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
-  }
+  },
+  "python.defaultInterpreterPath": "${workspaceFolder}/backend/ml-server/.venv/bin/python",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/backend/ml-server/.venv/lib/python3.13/site-packages"
+  ]
 }

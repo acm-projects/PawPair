@@ -44,3 +44,7 @@ export function useMatches() {
   if (!context) throw new Error("useMatches must be used within a MatchesProvider");
   return context;
 }
+
+export default function SavedInfo() {
+  return null;
+}

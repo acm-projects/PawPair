@@ -1,17 +1,61 @@
+
+# Learn more:
+# https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# Inner Expo project: dependencies and generated files
+/PawPair/node_modules/
+/PawPair/.expo/
+/PawPair/dist/
+/PawPair/web-build/
+/PawPair/expo-env.d.ts
+
+# Native build folders (inner project)
+/PawPair/ios/
+/PawPair/android/
+
+# Native credentials and keys
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+
+# Metro
+/PawPair/.metro-health-check*
+
+# Debug logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.log
+
+# macOS
+.DS_Store
+
+# Local environment files
+/PawPair/.env*
+!/PawPair/.env.example
+
+# TypeScript
+*.tsbuildinfo
+
 # Python
-.venv/
-__pycache__/
+/PawPair/.venv/
+/PawPair/**/__pycache__/
 *.pyc
 
 # Secrets
 serviceAccountKey.json
 
 # ML data
-runs/
-backend/ml-server/test_images/*
-training/datasets/*
+/PawPair/runs/
+/PawPair/backend/ml-server/test_images/*
+/PawPair/training/datasets/*
 
-# Editor / Mac
+# Editor
 .vscode/
 .DS_Store
 node_modules
+node_modules/
