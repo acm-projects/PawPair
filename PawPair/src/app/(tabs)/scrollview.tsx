@@ -7,6 +7,8 @@ import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
+import PawNavBar from "@/components/PawNavBar";
+
 
 // backend imports
 import { getAuth } from "firebase/auth";
@@ -286,7 +288,9 @@ export default function Scrollview() {
     .sort((a, b) => b.matchPercent - a.matchPercent);
 
   return (
-    <LinearGradient colors={["#F5C0B3", "#E98F78"]} style={styles.container}>
+    
+    <LinearGradient colors={[ "#F5C0B3","#E98F78"]} style={styles.container}>
+    
       {/* Search bar + filter button */}
       <View style={styles.searchRow}>
         <View style={styles.searchBar}>
@@ -299,9 +303,13 @@ export default function Scrollview() {
             placeholderTextColor="#786862"
           />
         </View>
-        <TouchableOpacity style={styles.filterButton}>
-          <Ionicons name="options-outline" size={22} color="#1a1a1a" />
-        </TouchableOpacity>
+           <TouchableOpacity
+            style={styles.filterButton}
+            onPress={() => router.navigate("/settings")}
+            accessibilityLabel="Open settings"
+          >
+            <Ionicons name="ellipsis-horizontal" size={22} color="#1a1a1a" />
+          </TouchableOpacity>
       </View>
 
       {/* Species filter chips */}
@@ -365,6 +373,7 @@ export default function Scrollview() {
     </LinearGradient>
   );
 }
+
 
 // 4) THE STYLES -------------------------------------------------------------
 // Like CSS, but: camelCase names, numbers instead of "16px", and every View
@@ -477,4 +486,5 @@ const styles = StyleSheet.create({
   matchRow: { flexDirection: "row", justifyContent: "space-between" },
   matchText: { fontSize: 14 },
   matchValue: { color: "#4f9a5e", fontWeight: "500" },
+  navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });

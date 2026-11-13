@@ -17,7 +17,7 @@ const NAV_RADIUS = 20;
 
 export default function PawNavBar({ active, disabled = false }: { active: NavHref; disabled?: boolean }) {
   return (
-    <LinearGradient colors={["#F5C0B3", "#E98F78"]} style={styles.background}>
+    <LinearGradient colors={["#F5C0B3", "#F5C0B3"]} style={styles.background}>
       <SafeAreaView style={styles.bar} edges={["bottom"]}>
         {NAV_ITEMS.map(({ href, label, Icon }) => {
           const isActive = href === active;
@@ -28,7 +28,7 @@ export default function PawNavBar({ active, disabled = false }: { active: NavHre
               onPress={() => router.navigate(href)}
               disabled={disabled}
             >
-              <Icon size={40} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
+              <Icon size={35} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
               <Text style={[styles.label, isActive && styles.labelActive]}>{label}</Text>
             </TouchableOpacity>
           );

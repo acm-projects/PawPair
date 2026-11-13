@@ -12,15 +12,12 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 
-const petDuo = require("../../assets/images/pet-duo.png");
 const paw = require("../../assets/images/paw-watermark.png");
 const pepoGoat = require("../../assets/images/pepo-goat.png");
 
 const FONT = "'Open Sans', system-ui, sans-serif";
 
 // ---------- DOG + CAT TUNING (only change these) ----------
-const IMG_W = 515; // pet-duo.png real width in pixels
-const IMG_H = 485; // pet-duo.png real height in pixels
 const PETS_WIDTH = 0.8; // fraction of the screen width
 const PETS_SINK = 0.08; // how much of the image's HEIGHT to push below the bottom edge.
                         // Still floating? raise it (0.12, 0.16, 0.2...). Cut off? lower it.
@@ -54,7 +51,7 @@ export default function Index() {
 
   const colW = Math.min(screenW, 380);
   const petW = colW * PETS_WIDTH;
-  const petH = petW * (IMG_H / IMG_W);
+  const goatSize = colW * 0.36; // same size as your original circle
 
   useEffect(() => {
     const loop = Animated.loop(
@@ -125,58 +122,49 @@ export default function Index() {
           />
         ))}
 
-        {/* goat circle (circle stays still, goat sways) */}
-        <View style={styles.goatCircle}>
-          <Animated.Image
-            source={pepoGoat}
-            style={{
-              width: "100%",
-              height: "100%",
-              resizeMode: "contain",
-              transform: [{ translateX }, { rotate }],
-            }}
-          />
-        </View>
-
-        {/* logo + tagline */}
-        <View style={styles.header}>
-          <Text style={styles.title}>PAWPAIR</Text>
-          <Text style={styles.tagline}>Find your paw-tner</Text>
-        </View>
-
-        {/* login button + signup link */}
-        <View style={styles.actions}>
-          <Pressable
-            style={({ pressed }) => [
-              styles.button,
-              pressed && styles.buttonPressed,
-            ]}
-            onPress={() => router.push("/login")}
+        {/* goat + title + buttons, centered as one group */}
+        <View style={styles.centerGroup}>
+          {/* goat circle (circle stays still, goat sways) */}
+          <View
+            style={[styles.goatCircle, { width: goatSize, height: goatSize }]}
           >
-            <Text style={styles.buttonText}>Login</Text>
-          </Pressable>
+            <Animated.Image
+              source={pepoGoat}
+              style={{
+                width: "100%",
+                height: "100%",
+                resizeMode: "contain",
+                transform: [{ translateX }, { rotate }],
+              }}
+            />
+          </View>
 
-          <Text style={styles.signupText}>
-            Don't have an account?{" "}
-            <Link href="/signup" style={styles.link}>
-              Sign up.
-            </Link>
-          </Text>
+          {/* logo + tagline */}
+          <View style={styles.header}>
+            <Text style={styles.title}>PAWPAIR</Text>
+            <Text style={styles.tagline}>Find your paw-tner</Text>
+          </View>
+
+          {/* login button + signup link */}
+          <View style={styles.actions}>
+            <Pressable
+              style={({ pressed }) => [
+                styles.button,
+                pressed && styles.buttonPressed,
+              ]}
+              onPress={() => router.push("/login")}
+            >
+              <Text style={styles.buttonText}>Login</Text>
+            </Pressable>
+
+            <Text style={styles.signupText}>
+              Don't have an account?{" "}
+              <Link href="/signup" style={styles.link}>
+                Sign up.
+              </Link>
+            </Text>
+          </View>
         </View>
-
-        {/* dog + cat: original uncropped image, sunk to the bottom edge */}
-        <Image
-          source={petDuo}
-          style={{
-            position: "absolute",
-            bottom: -petH * PETS_SINK,
-            alignSelf: "center",
-            width: petW,
-            height: petH,
-            resizeMode: "contain",
-            transform: [{ translateX: -petW * PETS_SHIFT_X }],
-          }}
-        />
       </View>
     </View>
   );
@@ -195,26 +183,25 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F5EFEB",
     overflow: "hidden",
     alignItems: "center",
+    justifyContent: "center", // puts the group in the middle of the screen
   },
   paw: {
     position: "absolute",
     resizeMode: "contain",
     opacity: 1,
   },
+  centerGroup: {
+    width: "100%",
+    alignItems: "center",
+    gap: 28, // space between goat, title and button. Raise/lower to taste
+  },
   goatCircle: {
-    position: "absolute",
-    top: "4%",
-    left: "32%",
-    width: "36%",
-    aspectRatio: 1,
     borderRadius: 999,
     backgroundColor: "#BFCBEC",
     justifyContent: "center",
     alignItems: "center",
   },
   header: {
-    position: "absolute",
-    top: "23%",
     width: "100%",
     alignItems: "center",
   },
@@ -231,8 +218,6 @@ export const styles = StyleSheet.create({
     marginTop: 4,
   },
   actions: {
-    position: "absolute",
-    top: "42%",
     width: "100%",
     alignItems: "center",
     gap: 16,

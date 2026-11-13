@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from "react";
 import { Text, View, StyleSheet, Image, Pressable, ScrollView } from "react-native";
-import { Check, ChevronDown, ChevronUp } from "lucide-react-native";
+import { Check, ChevronDown, ChevronLeft, ChevronUp } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useNavigation } from "expo-router";
@@ -49,6 +49,12 @@ const [openId, setOpenId] = useState<string | number | null>(null);
             <Image key={i} source={paw} style={[s.paw, p]} />
           ))}
         </View>
+        <Pressable
+              style={s.backButton}
+              onPress={() => router.navigate("homepages/PreHomepage" as any)}
+            >
+              <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
+            </Pressable>
 
         <Text style={s.heading}>applications</Text>
 
@@ -217,4 +223,21 @@ const s = StyleSheet.create({
   emptyBtnText: { color: "#fff", fontWeight: "500" },
 
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
+  backButton: {
+    position: "absolute",
+    top: 23,
+    left: 14,
+    zIndex: 99,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: "rgba(246, 243, 239, 0.95)",
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 4,
+  },
 });
