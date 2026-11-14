@@ -1,18 +1,31 @@
 import { useLayoutEffect, useState } from "react";
 import { Text, View, StyleSheet, Image, Pressable, ScrollView } from "react-native";
-import { Check, ChevronDown, ChevronUp } from "lucide-react-native";
+import { Check, ChevronDown, ChevronLeft, ChevronUp } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useNavigation } from "expo-router";
 import { useFonts } from "expo-font";
-import { getPet } from "../../data/pets";
-import { usePetLists } from "../../store/petLists";
 import { STAGES, setStage, statusFor, useStatuses } from "../../data/petStatus";
+import { useMatchedPets } from "@/data/livePets";
 import PawNavBar from "@/components/PawNavBar";
 
 const paw = require("../../../assets/images/paw-watermark.png");
 
-type Pet = NonNullable<ReturnType<typeof getPet>>;
+const PLACEHOLDERS: Record<string, number> = {
+  dog: require("../../../assets/images/dog.jpg"),
+  cat: require("../../../assets/images/cat.jpg"),
+  bird: require("../../../assets/images/bird.jpg"),
+  small_animal: require("../../../assets/images/small_animal.jpg"),
+};
+const DEFAULT_PHOTO = require("../../../assets/images/pet-duo.png");
+
+const speciesKey = (s?: string) => (s ?? "").toLowerCase().trim().replace(/\s+/g, "_");
+
+function photoFor(pet: any) {
+  const url = pet.photoUrl ?? pet.image;
+  if (url) return { uri: url };
+  return PLACEHOLDERS[speciesKey(pet.species)] ?? DEFAULT_PHOTO;
+}
 
 const paws = [
   { top: 0, left: "75%" },
@@ -34,11 +47,12 @@ export default function Status() {
     NameFont: require("../../../assets/Fonts/NameFont.otf"),
   });
 
-  const { matches: matchIds } = usePetLists();
-  const pets = matchIds.map(getPet).filter((p): p is Pet => !!p);
   const statuses = useStatuses();
+  const allMatches = useMatchedPets();
+  // only pets that have been applied to (stage 1+); the rest live on Matches
+  const pets = allMatches.filter((p) => statusFor(statuses, p.id).stage >= 1);
 
-const [openId, setOpenId] = useState<string | number | null>(null);
+  const [openId, setOpenId] = useState<string | number | null>(null);
   if (!fontsLoaded) return null;
 
   return (
@@ -49,6 +63,12 @@ const [openId, setOpenId] = useState<string | number | null>(null);
             <Image key={i} source={paw} style={[s.paw, p]} />
           ))}
         </View>
+        <Pressable
+          style={s.backButton}
+          onPress={() => router.navigate("homepages/PreHomepage" as any)}
+        >
+          <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
+        </Pressable>
 
         <Text style={s.heading}>applications</Text>
 
@@ -59,9 +79,9 @@ const [openId, setOpenId] = useState<string | number | null>(null);
         >
           {pets.length === 0 && (
             <View style={s.emptyBox}>
-              <Text style={s.empty}>No matches yet</Text>
-              <Pressable style={s.emptyBtn} onPress={() => router.navigate("/swiping" as any)}>
-                <Text style={s.emptyBtnText}>Swipe Now</Text>
+              <Text style={s.empty}>No applications yet</Text>
+              <Pressable style={s.emptyBtn} onPress={() => router.navigate("/(tabs)/matches" as any)}>
+                <Text style={s.emptyBtnText}>Go to Matches</Text>
               </Pressable>
             </View>
           )}
@@ -71,7 +91,7 @@ const [openId, setOpenId] = useState<string | number | null>(null);
             const open = openId === pet.id;
             return (
               <LinearGradient
-                key={pet.id}
+                key={String(pet.id)}
                 colors={["#F4BFB2", "#F3E6DF"]}
                 start={{ x: 0.5, y: 0 }}
                 end={{ x: 0.5, y: 1 }}
@@ -81,7 +101,7 @@ const [openId, setOpenId] = useState<string | number | null>(null);
                   style={s.cardHeader}
                   onPress={() => setOpenId(open ? null : pet.id)}
                 >
-                  <Image source={{ uri: pet.image }} style={s.photo} />
+                  <Image source={photoFor(pet)} style={s.photo} />
                   <View style={s.headerText}>
                     <Text style={s.name}>{pet.name}</Text>
                     <View style={s.pill}>
@@ -159,7 +179,7 @@ const s = StyleSheet.create({
     textAlign: "center",
     marginTop: 24,
     marginBottom: 14,
-    letterSpacing:1,
+    letterSpacing: 1,
   },
 
   card: { borderRadius: 20, marginBottom: 12, overflow: "hidden" },
@@ -217,4 +237,21 @@ const s = StyleSheet.create({
   emptyBtnText: { color: "#fff", fontWeight: "500" },
 
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
+  backButton: {
+    position: "absolute",
+    top: 23,
+    left: 14,
+    zIndex: 99,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: "rgba(246, 243, 239, 0.95)",
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 4,
+  },
 });
