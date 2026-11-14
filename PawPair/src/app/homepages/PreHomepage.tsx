@@ -27,14 +27,14 @@ import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router, useNavigation } from "expo-router";
 import { useFonts } from "expo-font";
-import { getPet } from "../../data/pets";
 import { statusFor, useStatuses } from "../../data/petStatus";
-import { usePetLists } from "../../store/petLists";
 import PawNavBar from "@/components/PawNavBar";
 import useHadAdopted from "@/data/hadAdopted";
+import { useMatchedPets } from "@/data/livePets";
 
 const pepoGoat = require("../../../assets/images/pepo-goat.png");
 const paw = require("../../../assets/images/paw-watermark.png");
+const DEFAULT_PHOTO = require("../../../assets/images/pet-duo.png");
 
 const CORAL = "#E98F78";
 const GREEN = "#6EE08F";
@@ -66,13 +66,6 @@ const paws = [
 ] as const;
 
 const STAGE_ICONS = [Check, Send, Handshake, House, ThumbsUp, PartyPopper] as const;
-
-type Pet = NonNullable<ReturnType<typeof getPet>>;
-
-function useMatchedPets() {
-  const { matches: matchIds } = usePetLists();
-  return matchIds.map(getPet).filter((p): p is Pet => !!p);
-}
 
 const CIRCLE = 64;
 
@@ -228,13 +221,16 @@ function MatchesHero() {
             style={{ height: cardH, flexGrow: 0 }}
             renderItem={({ item }) => {
               const Icon = Check;
-              const trait = item.traits?.[0]?.text;
+              const trait = item.traits?.[0]?.text ?? item.breed;
               return (
                 <Pressable
                   style={[s.heroCard, { width: cardW, height: cardH }]}
                   onPress={() => router.navigate("/(tabs)/matches" as any)}
                 >
-                  <Image source={{ uri: item.image }} style={s.heroImg} />
+                  <Image
+                    source={item.image ? { uri: item.image } : DEFAULT_PHOTO}
+                    style={s.heroImg}
+                  />
                   <LinearGradient
                     colors={["transparent", "rgba(0,0,0,0.6)"]}
                     style={s.heroShade}

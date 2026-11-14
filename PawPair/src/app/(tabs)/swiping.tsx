@@ -1,15 +1,15 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Text, View, StyleSheet, Image, ScrollView, Pressable, Animated, Dimensions, ActivityIndicator, Easing } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { matchPet } from "../../store/petLists";
 import { markSwiped, useSwiped } from "../../store/swiped";
+import { matchPet, removePet } from "../../store/petLists";
 import { useRouter } from "expo-router";
 import { ChevronLeft, PawPrint, Ruler, Zap } from "lucide-react-native";
 import { getAuth } from "firebase/auth";
 
 import { app } from "../../firebase.js";
 import { getAnimals } from "../../services/animalServices";
-import { addFavorite } from "../../services/favoriteServices";
+import { addFavorite, removeFavorite } from "../../services/favoriteServices";
 import { getQuizAnswers } from "../../services/quizService";
 import { matchPets } from "../../services/matchingService";
 
@@ -98,67 +98,74 @@ export default function Scrollview() {
 
   const deck = cards.filter((p) => !swiped.has(p.id));
   const currentPet = deck[0];
+
+  // goat sway (used on the empty screen)
   useEffect(() => {
-      const loop = Animated.loop(
-        Animated.sequence([
-          Animated.timing(sway, {
-            toValue: 1,
-            duration: 1200,
-            easing: Easing.inOut(Easing.sin),
-            useNativeDriver: true,
-          }),
-          Animated.timing(sway, {
-            toValue: -1,
-            duration: 2400,
-            easing: Easing.inOut(Easing.sin),
-            useNativeDriver: true,
-          }),
-          Animated.timing(sway, {
-            toValue: 0,
-            duration: 1200,
-            easing: Easing.inOut(Easing.sin),
-            useNativeDriver: true,
-          }),
-        ])
-      );
-      loop.start();
-      return () => loop.stop();
-    }, [sway]);
-  
-    useEffect(() => {
-      const jump = () =>
-        Animated.sequence([
-          Animated.timing(hop, {
-            toValue: -16,
-            duration: 180,
-            easing: Easing.out(Easing.quad),
-            useNativeDriver: true,
-          }),
-          Animated.timing(hop, {
-            toValue: 0,
-            duration: 220,
-            easing: Easing.bounce,
-            useNativeDriver: true,
-          }),
-        ]);
-      Animated.sequence([jump(), Animated.delay(80), jump()]).start();
-    }, [hop]);
-  
-    const translateX = sway.interpolate({ inputRange: [-1, 1], outputRange: [-6, 6] });
-    const rot = sway.interpolate({ inputRange: [-1, 1], outputRange: ["-5deg", "5deg"] });
-  
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(sway, {
+          toValue: 1,
+          duration: 1200,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+        Animated.timing(sway, {
+          toValue: -1,
+          duration: 2400,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+        Animated.timing(sway, {
+          toValue: 0,
+          duration: 1200,
+          easing: Easing.inOut(Easing.sin),
+          useNativeDriver: true,
+        }),
+      ])
+    );
+    loop.start();
+    return () => loop.stop();
+  }, [sway]);
+
+  // goat double-hop
+  useEffect(() => {
+    const jump = () =>
+      Animated.sequence([
+        Animated.timing(hop, {
+          toValue: -16,
+          duration: 180,
+          easing: Easing.out(Easing.quad),
+          useNativeDriver: true,
+        }),
+        Animated.timing(hop, {
+          toValue: 0,
+          duration: 220,
+          easing: Easing.bounce,
+          useNativeDriver: true,
+        }),
+      ]);
+    Animated.sequence([jump(), Animated.delay(80), jump()]).start();
+  }, [hop]);
+
+  const translateX = sway.interpolate({ inputRange: [-1, 1], outputRange: [-6, 6] });
+  const rot = sway.interpolate({ inputRange: [-1, 1], outputRange: ["-5deg", "5deg"] });
 
   const handleAction = (actionType: "reject" | "match") => {
     if (busy.current || !currentPet) return;
     busy.current = true;
 
     const pet = currentPet;
+    const uid = getAuth(app).currentUser?.uid;
 
     if (actionType === "match") {
-      matchPet(pet.id);
-      const uid = getAuth(app).currentUser?.uid;
-      if (uid) addFavorite(uid, pet.id).catch((e) => console.error("Error saving match:", e));
+      matchPet(pet.id as any); // shows up in Matches
+      if (uid) addFavorite(uid, pet.id).catch((e: any) => console.error("Error saving match:", e));
+    } else {
+      // rejected: make sure it is NOT in Matches or saved favorites
+      removePet("matches", pet.id as any);
+      if (uid) removeFavorite(uid, String(pet.id)).catch((e: any) => console.warn(e));
     }
+
     const xTarget = actionType === "reject" ? -SCREEN_WIDTH * 1.2 : SCREEN_WIDTH * 1.2;
 
     Animated.timing(position, {
@@ -184,8 +191,10 @@ export default function Scrollview() {
   if (loading) {
     return (
       <View style={[s.outer, s.emptyWrap]}>
-        <ActivityIndicator size="large" color="#F4BFB2" />
-        <Text style={s.emptyText}>Finding pets for you...</Text>
+        <View style={s.emptyGroup}>
+          <ActivityIndicator size="large" color="#F4BFB2" />
+          <Text style={s.emptyText}>Finding pets for you...</Text>
+        </View>
       </View>
     );
   }
@@ -193,10 +202,21 @@ export default function Scrollview() {
   if (!currentPet) {
     return (
       <View style={[s.outer, s.emptyWrap]}>
-        <Text style={s.emptyText}>{error || "That's all the pets!"}</Text>
-        <Pressable style={s.emptyBtn} onPress={() => router.replace("/homepage" as any)}>
-          <Text style={s.emptyBtnText}>Home</Text>
-        </Pressable>
+        <View style={s.emptyGroup}>
+          <Animated.Image
+            source={pepoGoat}
+            style={[
+              s.pepo,
+              { transform: [{ translateY: hop }, { translateX }, { rotate: rot }] },
+            ]}
+          />
+          <Text style={[s.emptyText, { textAlign: "center" }]}>
+            {error || "That's all the pets!"}
+          </Text>
+          <Pressable style={s.emptyBtn} onPress={() => router.replace("/homepage" as any)}>
+            <Text style={s.emptyBtnText}>Home</Text>
+          </Pressable>
+        </View>
       </View>
     );
   }
@@ -374,17 +394,17 @@ const s = StyleSheet.create({
   paw: { position: "absolute", width: 60, height: 60, resizeMode: "contain" },
   name: { fontSize: 22, fontWeight: "bold" },
   age: { fontSize: 17, marginLeft: 22 },
-  trait: { flexDirection: "row", alignItems: "center", marginTop: 0},
+  trait: { flexDirection: "row", alignItems: "center", marginTop: 0 },
   iconBox: { width: 24, height: 24, marginRight: 6, alignItems: "center", justifyContent: "center" },
   small: { fontSize: 11, color: "#222" },
-  contact: { flexDirection: "row", alignItems: "center", alignSelf: "flex-start", marginTop: 9, padding: 10, width: 210, borderBottomWidth: 2, borderBottomColor: "#F3E6DF",  borderRadius: 5,},
-  contactIcon: { width: 18, height: 18, marginRight: 8, resizeMode: "contain",},
+  contact: { flexDirection: "row", alignItems: "center", alignSelf: "flex-start", marginTop: 9, padding: 10, width: 210, borderBottomWidth: 2, borderBottomColor: "#F3E6DF", borderRadius: 5 },
+  contactIcon: { width: 18, height: 18, marginRight: 8, resizeMode: "contain" },
   section: { padding: 16, borderTopWidth: 1, borderTopColor: "#BDB8B2" },
   title: { fontSize: 13, fontWeight: "bold", marginBottom: 8 },
   body: { fontSize: 12, lineHeight: 18, color: "#222" },
   pill: { backgroundColor: "#F4BFB2", paddingHorizontal: 12, paddingVertical: 8, borderRadius: 20 },
   pillText: { fontSize: 11, fontWeight: "600" },
   actions: { flexDirection: "row", justifyContent: "center", gap: 12, marginTop: 24 },
-  btn: { width: 54, height: 54, borderRadius: 27, borderWidth: 1, alignItems: "center", justifyContent: "center"},
+  btn: { width: 54, height: 54, borderRadius: 27, borderWidth: 1, alignItems: "center", justifyContent: "center" },
   actionSymbol: { fontSize: 24, fontWeight: "700" },
 });

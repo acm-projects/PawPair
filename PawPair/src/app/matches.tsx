@@ -1,334 +1,249 @@
-
-import { useCallback, useState } from "react";
-
-import {
-  View,
-  ScrollView,
-  Text,
-  ActivityIndicator,
-  TouchableOpacity,
-  StyleSheet
-} from "react-native";
-
-import {
-  useFocusEffect,
-  useRouter,
-  type Href
-} from "expo-router";
-
+import { Text, View, StyleSheet, Image, ScrollView, Pressable } from "react-native";
+import { Check, X, PawPrint, Cake, Ruler, ChevronLeft } from "lucide-react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Tabs, router, type Href } from "expo-router";
+import { useEffect } from "react";
 import { getAuth } from "firebase/auth";
 
 import { app } from "../firebase.js";
+import { removeFavorite } from "../services/favoriteServices";
+import { statusFor, useStatuses, setStage } from "../data/petStatus";
+import { removePet } from "../store/petLists";
+import { useMatchedPets } from "@/data/livePets";
+import PawNavBar from "@/components/PawNavBar";
 
-import {
-  getQuizAnswers
-} from "../services/quizService";
+const paw = require("../../assets/images/paw-watermark.png");
 
-import {
-  getAnimals
-} from "../services/animalServices";
+const FONT = "'Open Sans', system-ui, sans-serif";
 
-import {
-  matchPets
-} from "../services/matchingService";
+const PLACEHOLDERS: Record<string, number> = {
+  dog: require("../../assets/images/dog.jpg"),
+  cat: require("../../assets/images/cat.jpg"),
+  bird: require("../../assets/images/bird.jpg"),
+  small_animal: require("../../assets/images/small_animal.jpg"),
+};
+const DEFAULT_PHOTO = require("../../assets/images/pet-duo.png");
 
-export default function MatchesScreen() {
-  const router = useRouter();
+// Loads Open Sans once on web (does nothing on iOS/Android).
+function loadFont() {
+  if (typeof document === "undefined") return;
+  if (document.getElementById("open-sans-font")) return;
+  const link = document.createElement("link");
+  link.id = "open-sans-font";
+  link.rel = "stylesheet";
+  link.href = "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap";
+  document.head.appendChild(link);
+}
 
-  const [result, setResult] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+const paws = [
+  { top: 70, left: 16 },
+  { top: 70, right: 16 },
+  { top: 0, left: "40%" },
+  { top: 52, left: "26%" },
+  { top: 52, right: "26%" },
+  { top: "38%", left: "55%" },
+  { top: "51%", left: "17%" },
+  { top: "53%", left: "68%" },
+  { top: "70%", left: "27%" },
+  { top: "78%", left: "73%" },
+] as const;
 
-  // Retrieve and calculate matches when screen opens
-  useFocusEffect(
-    useCallback(() => {
-      let active = true;
+const cap = (s?: string) => (s ? s[0].toUpperCase() + s.slice(1) : "");
+const speciesKey = (s?: string) => (s ?? "").toLowerCase().trim().replace(/\s+/g, "_");
 
-      async function loadMatches() {
-        setLoading(true);
-        setError("");
+function photoFor(pet: any) {
+  const url = pet.photoUrl ?? pet.image;
+  if (url) return { uri: url };
+  return PLACEHOLDERS[speciesKey(pet.species)] ?? DEFAULT_PHOTO;
+}
 
-        try {
-          const auth = getAuth(app);
-
-          await auth.authStateReady();
-
-          const uid = auth.currentUser?.uid;
-
-          if (!uid) {
-            throw new Error(
-              "Please log in to see your matches."
-            );
-          }
-
-          // Retrieve quiz answers and animal data
-          const [answers, pets] = await Promise.all([
-            getQuizAnswers(uid),
-            getAnimals()
-          ]);
-
-          if (!answers) {
-            throw new Error(
-              "Finish the quiz before viewing matches."
-            );
-          }
-
-          // Calculate the five best matches
-          const matches = matchPets(
-            pets,
-            answers,
-            5
-          );
-
-          if (active) {
-            setResult(matches);
-          }
-
-        } catch (e: any) {
-          if (active) {
-            setError(
-              e.message ?? "Unable to calculate matches."
-            );
-          }
-
-        } finally {
-          if (active) {
-            setLoading(false);
-          }
-        }
-      }
-
-      loadMatches();
-
-      return () => {
-        active = false;
-      };
-    }, [])
-  );
-
-  // Loading screen
-  if (loading) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator
-          size="large"
-          color="teal"
-        />
-        <Text>Calculating matches...</Text>
-      </View>
-    );
+// Builds the small icon rows on each card from the pet's fields
+function traitsFor(pet: any) {
+  const traits: { Icon: typeof PawPrint; text: string }[] = [];
+  if (pet.breed) traits.push({ Icon: PawPrint, text: pet.breed });
+  if (pet.age != null && pet.age !== "") {
+    const text = typeof pet.age === "number" ? `${pet.age} ${pet.age === 1 ? "year" : "years"}` : String(pet.age);
+    traits.push({ Icon: Cake, text });
   }
+  if (pet.size) traits.push({ Icon: Ruler, text: cap(pet.size) });
+  return traits;
+}
 
-  // Display matching results
+export default function Matches() {
+  const allMatches = useMatchedPets();
+  const statuses = useStatuses();
+
+  useEffect(() => {
+    loadFont();
+  }, []);
+
+  // applied pets move to Applications, so they leave this list
+  const matches = allMatches.filter((p) => statusFor(statuses, p.id).stage < 1);
+
+  const removeMatch = (id: string | number) => {
+    removePet("matches", id as any);
+    const uid = getAuth(app).currentUser?.uid;
+    if (uid) removeFavorite(uid, String(id)).catch((e: any) => console.warn(e));
+  };
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={s.outer}>
+      <Tabs.Screen options={{ headerShown: false, tabBarStyle: { display: "none" } }} />
 
-      <Text style={styles.title}>
-        Your top PawPair matches
-      </Text>
+      <SafeAreaView style={s.container} edges={["top"]}>
+        <View style={StyleSheet.absoluteFill} pointerEvents="none">
+          {paws.map((p, i) => (
+            <Image key={i} source={paw} style={[s.paw, p]} />
+          ))}
+        </View>
+        <Pressable
+          style={s.backButton}
+          onPress={() => router.navigate("homepages/PreHomepage" as any)}
+        >
+          <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
+        </Pressable>
 
-      {!!error && (
-        <Text style={styles.warning}>
-          {error}
-        </Text>
-      )}
+        <Text style={s.heading}>MATCHES</Text>
 
-      {result && (
-        <>
-          {/* Important matching notices */}
-          {result.notices.map(
-            (note: string, i: number) => (
-              <Text key={i} style={styles.warning}>
-                • {note}
-              </Text>
-            )
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 110 }}>
+          {matches.length === 0 && (
+            <Text style={s.empty}>No matches yet. Keep on swiping!</Text>
           )}
 
-          {/* No eligible pets */}
-          {result.matches.length === 0 && (
-            <Text style={styles.warning}>
-              No pets currently pass the verified hard
-              restrictions. Check the matching fields in
-              Firestore or expand the available listings.
-            </Text>
-          )}
+          {matches.map((pet) => (
+            <LinearGradient
+              key={String(pet.id)}
+              colors={["#F4BFB2", "#F8DBD4"]}
+              start={{ x: 0.5, y: 0 }}
+              end={{ x: 0.5, y: 1 }}
+              style={s.match}
+            >
+              <Image source={photoFor(pet)} style={s.photo} />
 
-          {/* Display recommended pets */}
-          {result.matches.map(
-            (item: any, i: number) => (
-              <View
-                key={item.pet.id}
-                style={styles.card}
-              >
-
-                <Text style={styles.petName}>
-                  {i + 1}. {item.pet.name}
-                </Text>
-
-                <Text>
-                  {item.pet.breed} · {item.pet.species}
-                </Text>
-
-                <Text style={styles.score}>
-                  {item.score == null
-                    ? "Not enough matching data"
-                    : `${item.score}% provisional match`}
-                </Text>
-
-                <Text style={styles.coverage}>
-                  Available score evidence: {item.coverage}%
-                </Text>
-
-                {item.coverage < 60 && (
-                  <Text style={styles.warning}>
-                    Low data coverage — this score
-                    should not be treated as a reliable
-                    recommendation yet.
-                  </Text>
-                )}
-
-                {item.reasons.length ? (
-                  <Text>
-                    Matches your: {item.reasons.join(", ")}
-                  </Text>
-                ) : (
-                  <Text>
-                    Not enough verified traits to
-                    explain this match yet.
-                  </Text>
-                )}
-
-                {/* Open the selected pet's profile */}
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() =>
-                    router.push(
-                      {
-                        pathname: "/pets/[id]",
-                        params: { id: item.pet.id }
-                      } as Href
-                    )
-                  }
-                >
-                  <Text style={styles.buttonText}>
-                    View pet details
-                  </Text>
-                </TouchableOpacity>
-
+              <View style={s.info}>
+                <View style={s.infoInner}>
+                  <Text style={s.name}>{pet.name}</Text>
+                  {traitsFor(pet).map(({ Icon, text }, j) => (
+                    <View key={j} style={s.trait}>
+                      <View style={s.iconBox}>
+                        <Icon size={16} color="#241e1e" strokeWidth={1.75} />
+                      </View>
+                      <Text style={s.small}>{text}</Text>
+                    </View>
+                  ))}
+                </View>
               </View>
-            )
-          )}
 
-          {/* Pets excluded by restrictions */}
-          {!!result.excluded.length && (
-            <View style={styles.card}>
+              <View style={s.actionCol}>
+                {/* ✓ = apply: moves the pet to Applications */}
+                <Pressable
+                  style={[s.btn, { borderColor: "#86EFAC" }]}
+                  onPress={() => setStage(pet.id, 1)}
+                >
+                  <Check size={32} color="#6EE08F" strokeWidth={1.75} />
+                </Pressable>
+                {/* ✕ = remove from matches (and from saved favorites) */}
+                <Pressable
+                  style={[s.btn, { borderColor: "#D32F2F" }]}
+                  onPress={() => removeMatch(pet.id)}
+                >
+                  <X size={30} color="#D32F2F" strokeWidth={1.75} />
+                </Pressable>
+              </View>
+            </LinearGradient>
+          ))}
 
-              <Text style={styles.subheading}>
-                Excluded or awaiting verification
-              </Text>
+          <Pressable style={s.clear} onPress={() => router.push("/quiz" as Href)}>
+            <Text style={s.clearText}>Edit my quiz answers</Text>
+          </Pressable>
+        </ScrollView>
 
-              {result.excluded.map((x: any) => (
-                <Text key={x.id}>
-                  • {x.name}: {x.reason}
-                </Text>
-              ))}
-
-            </View>
-          )}
-        </>
-      )}
-
-      {/* Return to questionnaire */}
-      <TouchableOpacity
-        style={styles.outline}
-        onPress={() =>
-          router.push("/quiz" as Href)
-        }
-      >
-        <Text style={{ color: "#008080" }}>
-          Edit my quiz answers
-        </Text>
-      </TouchableOpacity>
-
-    </ScrollView>
+        <View style={s.navWrapper}>
+          <PawNavBar active="/homepage" />
+        </View>
+      </SafeAreaView>
+    </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    paddingBottom: 80,
-    backgroundColor: "#fff",
-    flexGrow: 1
+const s = StyleSheet.create({
+  outer: { flex: 1, backgroundColor: "#6b6b6b", alignItems: "center" },
+  container: { flex: 1, width: "100%", maxWidth: 380, backgroundColor: "#F3EDE8", overflow: "hidden" },
+  paw: { position: "absolute", width: 52, height: 52, resizeMode: "contain", opacity: 0.8 },
+  heading: {
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#1a1a1a",
+    textAlign: "center",
+    marginTop: 24,
+    marginBottom: 14,
   },
+  empty: { fontFamily: FONT, textAlign: "center", fontSize: 14, color: "#555", marginTop: 24 },
 
-  center: {
-    flex: 1,
+  match: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 20,
+    marginBottom: 12,
+    minHeight: 130,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  photo: { width: 110, height: 110, borderRadius: 22 },
+  info: { flex: 1, marginLeft: 10, alignItems: "center" },
+  infoInner: { alignItems: "flex-start", marginTop: -14 },
+  name: {
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#1a1a1a",
+    alignSelf: "center",
+    textAlign: "center",
+    marginBottom: 2,
+  },
+  trait: { flexDirection: "row", alignItems: "center", marginTop: 6 },
+  iconBox: { width: 22, height: 22, marginRight: 6, alignItems: "center", justifyContent: "center" },
+  small: { fontFamily: FONT, fontSize: 13, fontWeight: "400", color: "#241e1e" },
+
+  actionCol: { gap: 8, marginRight: 2, marginLeft: 6 },
+  btn: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    borderWidth: 1,
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
-    gap: 10
   },
 
-  title: {
-    fontSize: 25,
-    fontWeight: "bold",
-    marginBottom: 18
-  },
+  clear: { alignSelf: "center", paddingTop: 6, paddingBottom: 14 },
+  clearText: { fontFamily: FONT, fontSize: 11, color: "#8B1A1A", textDecorationLine: "underline" },
 
-  subheading: {
-    fontSize: 17,
-    fontWeight: "600",
-    marginBottom: 10
+  navWrapper: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
-
-  card: {
-    borderRadius: 12,
-    backgroundColor: "#f6f6f6",
-    padding: 18,
-    marginBottom: 15,
-    gap: 7
-  },
-
-  petName: {
-    fontSize: 20,
-    fontWeight: "bold"
-  },
-
-  score: {
-    fontSize: 18,
-    color: "#008080",
-    fontWeight: "600"
-  },
-
-  coverage: {
-    color: "#555"
-  },
-
-  warning: {
-    color: "#9a5305",
-    marginBottom: 10,
-    lineHeight: 20
-  },
-
-  button: {
-    padding: 12,
-    backgroundColor: "#008080",
-    borderRadius: 8,
-    marginTop: 10,
-    alignItems: "center"
-  },
-
-  buttonText: {
-    color: "#fff",
-    fontWeight: "600"
-  },
-
-  outline: {
-    borderColor: "#008080",
-    borderWidth: 1,
-    padding: 12,
-    borderRadius: 8,
+  backButton: {
+    position: "absolute",
+    top: 25,
+    left: 14,
+    zIndex: 99,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: "rgba(246, 243, 239, 0.95)",
     alignItems: "center",
-    marginTop: 10
-  }
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 4,
+  },
 });

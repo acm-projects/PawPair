@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from "react";
 
-let swiped = new Set<number>();
+let swiped = new Set<string | number>();
 const listeners = new Set<() => void>();
 
 function subscribe(cb: () => void) {
@@ -10,7 +10,7 @@ function subscribe(cb: () => void) {
   };
 }
 
-export function markSwiped(id: number) {
+export function markSwiped(id: string | number) {
   if (swiped.has(id)) return;
   swiped = new Set(swiped).add(id);
   listeners.forEach((l) => l());
