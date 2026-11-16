@@ -138,9 +138,8 @@ Backend: Firebase
 | git pull origin "branch" | Pull updates from a specific branch |
 git add
 ## Developers ⭐
-<<<<<<< HEAD
+
 - Ariyan Biswas
-=======
 - Navyashree Balasubramaniyan Nagarajan
 - Ariyan Biswasgi
 - Bhuvana Bachu
