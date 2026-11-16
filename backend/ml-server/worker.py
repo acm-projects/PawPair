@@ -20,11 +20,12 @@ Run from backend/ml-server with the .venv active:
 
 import base64
 import io
+import os
 import statistics
 import time
 
 from google.cloud.firestore_v1.base_query import FieldFilter
-from PIL import Image, ImageFilter, ImageStat
+from PIL import Image, ImageDraw, ImageFilter, ImageOps, ImageStat
 
 from detector import PET_SPECIES, clear_cache, detect, detect_pets
 from firebase_client import db, firestore
@@ -75,6 +76,25 @@ def frame_to_base64(frame: Image.Image) -> str:
     buf = io.BytesIO()
     frame.save(buf, format="JPEG", quality=60)
     return base64.b64encode(buf.getvalue()).decode()
+
+
+def save_debug_images(scan_id: str, snapshots: dict, hazards: list[dict]) -> None:
+    """If PAWPAIR_DEBUG_IMAGES=1, save each result photo with its hazard boxes drawn,
+    to debug_scans/, so you can see exactly where each box landed."""
+    if os.getenv("PAWPAIR_DEBUG_IMAGES") != "1":
+        return
+    os.makedirs("debug_scans", exist_ok=True)
+    for index, img in snapshots.items():
+        canvas = img.copy()
+        draw = ImageDraw.Draw(canvas)
+        for h in hazards:
+            if h["frame_index"] != index:
+                continue
+            draw.rectangle(h["box"], outline="red", width=3)
+            draw.text((h["box"][0] + 4, h["box"][1] + 4), f'#{h["id"]} {h["label"]} {h["confidence"]:.2f}', fill="red")
+        path = f"debug_scans/{scan_id}_{index}.jpg"
+        canvas.save(path, quality=85)
+        print(f"  (debug image saved: {path})", flush=True)
 
 
 def print_everything_seen(images: list[Image.Image]) -> None:
@@ -160,7 +180,12 @@ def decode_frames(frame_docs) -> list[Image.Image]:
             data = d.get("jpeg") or ""
             if "," in data[:100]:  # strip a "data:image/jpeg;base64," prefix if present
                 data = data.split(",", 1)[1]
-            images.append(Image.open(io.BytesIO(base64.b64decode(data))).convert("RGB"))
+            img = Image.open(io.BytesIO(base64.b64decode(data)))
+            # Phone photos are often stored sideways with a "rotate me" tag (EXIF).
+            # Turn them upright so YOLO sees the room the right way up, and the
+            # boxes line up with the photo shown in the app.
+            img = ImageOps.exif_transpose(img)
+            images.append(img.convert("RGB"))
         except Exception as e:
             print(f"  (skipped damaged snapshot {d.id}: {e})", flush=True)
     return images
@@ -258,6 +283,8 @@ def process_scan(scan_id: str) -> None:
             for index, img in sorted(result["snapshots"].items())
             if index in used
         ]
+
+        save_debug_images(scan_ref.id, result["snapshots"], hazards)
 
         scan_ref.update(
             {

@@ -30,7 +30,7 @@ SMALL_HAZARD_ONE_SIGHTING = 0.5
 # Thin, straight hazards that look a lot like everyday things (cabinet handles,
 # drawer pulls, pens, cables). These need stronger proof before we flag them:
 # seen in 2+ snapshots, OR seen once with high confidence.
-LOOKALIKE_HAZARDS = {"nail", "screwdriver", "syringe"}
+LOOKALIKE_HAZARDS = {"nail", "screwdriver", "syringe", "knife"}
 LOOKALIKE_ONE_SIGHTING = 0.75
 
 

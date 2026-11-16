@@ -175,7 +175,7 @@
       "default": "Sharp objects can cause serious cuts."
     },
     "suggestion": "Store knives in a drawer or knife block, not on open counters.",
-    "min_confidence": 0.35
+    "min_confidence": 0.45
   },
   "scissors": {
     "title": "Scissors",

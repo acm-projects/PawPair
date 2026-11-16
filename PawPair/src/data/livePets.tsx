@@ -98,10 +98,30 @@ function startAnswers() {
   });
 }
 
+/** Re-reads the signed-in user's quiz answers. Call this right after the quiz is
+ *  saved, so a brand-new account's matches show up without restarting the app. */
+let lastRefresh = 0;
+export async function refreshQuizAnswers() {
+  const user = getAuth(app).currentUser;
+  if (!user) return;
+  lastRefresh = Date.now();
+  try {
+    answers = (await getQuizAnswers(user.uid)) ?? null;
+  } catch (e) {
+    console.warn("Couldn't refresh quiz answers:", e);
+  }
+  emit();
+}
+
 function subscribe(cb: () => void) {
   listeners.add(cb);
   startPets();
   startAnswers();
+  // Safety net: if we still have no answers (e.g. the quiz was finished after
+  // sign-up), check again when a screen opens, at most every 10 seconds.
+  if (answers === null && getAuth(app).currentUser && Date.now() - lastRefresh > 10_000) {
+    void refreshQuizAnswers();
+  }
   return () => {
     listeners.delete(cb);
   };

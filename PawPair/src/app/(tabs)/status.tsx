@@ -80,7 +80,7 @@ export default function Status() {
           {pets.length === 0 && (
             <View style={s.emptyBox}>
               <Text style={s.empty}>No applications yet</Text>
-              <Pressable style={s.emptyBtn} onPress={() => router.navigate("/(tabs)/matches" as any)}>
+              <Pressable style={s.emptyBtn} onPress={() => router.navigate("/matches" as any)}>
                 <Text style={s.emptyBtnText}>Go to Matches</Text>
               </Pressable>
             </View>

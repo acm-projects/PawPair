@@ -27,6 +27,7 @@ import { getQuizAnswers, saveQuizAnswers } from "../../services/quizService.js";
 import { deriveZipFromDevice } from "../../services/locationService.js";
 import { weightFor } from "../../services/quizWeights.js";
 import { matchPets } from "../../services/matchingService.js";
+import { refreshQuizAnswers } from "../../data/livePets";
 
 const pawWatermark = require("../../../assets/images/paw-watermark.png");
 
@@ -35,6 +36,7 @@ const ROUTES = {
 } as const;
 
 const LEAVE_MS = 350;
+const SKIP_H = 44; // height of the Skip Quiz bar
 let enterPlayed = false;
 
 // Loads Open Sans once on web (does nothing on iOS/Android).
@@ -345,6 +347,8 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
 
         // Save answers to Firestore
         await saveQuizAnswers(uid, quizAnswers);
+        // Let Matches, Applications and the homepage see the new answers right away
+        void refreshQuizAnswers();
 
         // Apply weights and calculate matches
         if (petsLoaded) {
@@ -617,6 +621,9 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
                 <Text style={s.btnText}>{busy ? "Loading..." : isLast ? "Finish" : "Next"}</Text>
               </Pressable>
             </View>
+
+            {/* Empty space so the Skip Quiz bar never covers Back/Next */}
+            <View style={{ height: SKIP_H }} />
           </KeyboardAvoidingView>
         </SafeAreaView>
 
@@ -682,7 +689,6 @@ const s = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     overflow: "hidden",
-    paddingBottom: 44,
   },
   paw: { position: "absolute", width: 64, height: 64 },
   content: { flex: 1, zIndex: 1 },
@@ -751,7 +757,7 @@ const s = StyleSheet.create({
     zIndex: 2,
   },
   skip: {
-    height: 44,
+    height: SKIP_H,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     justifyContent: "center",
