@@ -174,7 +174,8 @@
       "cat": "Cats jump on counters and can knock knives off or cut their paws.",
       "default": "Sharp objects can cause serious cuts."
     },
-    "suggestion": "Store knives in a drawer or knife block, not on open counters."
+    "suggestion": "Store knives in a drawer or knife block, not on open counters.",
+    "min_confidence": 0.35
   },
   "scissors": {
     "title": "Scissors",
@@ -189,7 +190,8 @@
     "reasons": {
       "default": "Pets can injure themselves on sharp edges if scissors are left out."
     },
-    "suggestion": "Keep scissors in a closed drawer when not in use."
+    "suggestion": "Keep scissors in a closed drawer when not in use.",
+    "min_confidence": 0.3
   },
   "fork": {
     "title": "Fork and Utensils",
@@ -205,7 +207,8 @@
       "dog": "Dogs licking food off utensils, especially in an open dishwasher, can be cut by sharp points.",
       "default": "Pets licking food off utensils can be injured by sharp points."
     },
-    "suggestion": "Clear utensils after meals, load sharp ones point-down, and keep the dishwasher closed."
+    "suggestion": "Clear utensils after meals, load sharp ones point-down, and keep the dishwasher closed.",
+    "min_confidence": 0.4
   },
   "oven": {
     "title": "Oven and Stove",
@@ -593,5 +596,413 @@
     },
     "suggestion": "Introduce pets slowly and supervise them until you know they get along.",
     "min_confidence": 0.6
+  },
+  "bird": {
+    "title": "Bird (Other Pet)",
+    "pets": [
+      "cat",
+      "dog"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Cats are natural bird hunters. Even play can seriously injure a bird, and cat saliva carries bacteria that are dangerous to birds.",
+      "dog": "Many dogs instinctively chase birds, and the stress alone can harm a bird.",
+      "default": "Larger pets may see a pet bird as prey."
+    },
+    "suggestion": "Keep the bird's cage secure and out of reach, and never leave the pets alone together.",
+    "min_confidence": 0.6
+  },
+  "hamster": {
+    "title": "Hamster (Other Pet)",
+    "pets": [
+      "cat",
+      "dog"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Cats may stalk or pounce on a hamster, and even a small scratch or bite can be serious for it.",
+      "dog": "Dogs may chase a hamster, and the stress or a single bite can badly hurt it.",
+      "default": "Larger pets may see a hamster as prey."
+    },
+    "suggestion": "Keep the hamster's enclosure secure and in a room the other pet can't get into, and supervise any time out.",
+    "min_confidence": 0.6
+  },
+  "rabbit": {
+    "title": "Rabbit (Other Pet)",
+    "pets": [
+      "cat",
+      "dog"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Cats may stalk or pounce on a rabbit, and even a small scratch or bite can be serious for it.",
+      "dog": "Dogs may chase a rabbit, and the stress or a single bite can badly hurt it.",
+      "default": "Larger pets may see a rabbit as prey."
+    },
+    "suggestion": "Keep the rabbit's enclosure secure and in a room the other pet can't get into, and supervise any time out.",
+    "min_confidence": 0.6
+  },
+  "screwdriver": {
+    "title": "Screwdriver",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "dog": "Dogs may chew tools left on the floor, and the sharp tip can cut the mouth or paws.",
+      "default": "Sharp tool tips can cut or puncture curious pets."
+    },
+    "suggestion": "Put tools back in a closed toolbox or drawer after use.",
+    "min_confidence": 0.35
+  },
+  "nail": {
+    "title": "Nails or Screws",
+    "pets": [
+      "all"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "dog": "Dogs may swallow loose nails or screws, which can pierce the stomach or intestines.",
+      "bird": "Birds pick up small shiny objects and can swallow them.",
+      "default": "Small sharp metal pieces can be stepped on or swallowed."
+    },
+    "suggestion": "Sweep up loose nails and screws and store them in a closed container.",
+    "min_confidence": 0.35
+  },
+  "syringe": {
+    "title": "Needle or Syringe",
+    "pets": [
+      "all"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "default": "Needles can puncture paws or mouths, and leftover medication can poison pets."
+    },
+    "suggestion": "Use a sharps container and keep medical supplies in a closed cabinet.",
+    "min_confidence": 0.35
+  },
+  "drill": {
+    "title": "Power Tool",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "small_animal": "Small pets love to chew power cords, which can cause electric shocks.",
+      "default": "Power tools have sharp bits and cords that pets can chew or pull down."
+    },
+    "suggestion": "Unplug power tools and store them out of reach."
+  },
+  "outlet": {
+    "title": "Outlet and Plugs",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "small_animal": "Rabbits and other small pets chew cords near outlets and can be badly shocked.",
+      "dog": "Puppies chew plugged-in cords, which can cause mouth burns or shocks.",
+      "default": "Plugged-in cords near outlets are easy for pets to chew."
+    },
+    "suggestion": "Use outlet covers and cord protectors, and unplug chargers you're not using."
+  },
+  "space_heater": {
+    "title": "Space Heater",
+    "pets": [
+      "all"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Cats like to sleep near heaters and can burn their fur or knock the heater over.",
+      "bird": "Some heaters with nonstick coatings release fumes that are dangerous to birds.",
+      "default": "Space heaters can burn pets or start a fire if knocked over."
+    },
+    "suggestion": "Choose a heater with tip-over shutoff, keep it away from pet beds, and never leave it on unattended."
+  },
+  "spray_can": {
+    "title": "Aerosol Spray",
+    "pets": [
+      "all"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "bird": "Birds have very sensitive lungs, and aerosol sprays can make them seriously ill.",
+      "default": "Sprays like hairspray and cooking spray can irritate pets' lungs and eyes, and the cans can be punctured by chewing."
+    },
+    "suggestion": "Use sprays away from pets in a ventilated room, and store cans in a closed cabinet."
+  },
+  "perfume": {
+    "title": "Perfume or Essential Oils",
+    "pets": [
+      "cat",
+      "dog",
+      "bird"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Many essential oils and fragrances are toxic to cats, even in small amounts.",
+      "bird": "Strong fragrances can irritate birds' sensitive lungs.",
+      "default": "Perfumes contain alcohol and oils that are harmful if licked or swallowed."
+    },
+    "suggestion": "Keep perfumes and oils in a closed drawer, and avoid using diffusers around pets."
+  },
+  "lily": {
+    "title": "Lily",
+    "pets": [
+      "cat",
+      "dog"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Lilies are extremely toxic to cats. Even a little pollen or vase water can cause kidney failure.",
+      "default": "Some lilies can upset pets' stomachs if chewed."
+    },
+    "suggestion": "Keep lilies out of any home with cats, and pick pet-safe flowers instead."
+  },
+  "grapes": {
+    "title": "Grapes or Raisins",
+    "pets": [
+      "dog",
+      "cat"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "dog": "Grapes and raisins can cause sudden kidney failure in dogs, even in small amounts.",
+      "default": "Grapes and raisins are not safe for pets to eat."
+    },
+    "suggestion": "Keep grapes and raisins in closed containers and off low tables.",
+    "min_confidence": 0.4
+  },
+  "candy": {
+    "title": "Candy or Sweets",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal",
+      "bird"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "dog": "Candy and gum can contain xylitol or chocolate, both very toxic to dogs, and wrappers can cause choking.",
+      "default": "Sweets can contain ingredients that are toxic to pets, and wrappers are a choking hazard."
+    },
+    "suggestion": "Store candy and gum in closed cabinets, including in bags and purses."
+  },
+  "alcohol": {
+    "title": "Alcohol",
+    "pets": [
+      "all"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "bird": "Even a tiny amount of alcohol can be deadly for a bird.",
+      "default": "Alcohol is toxic to pets, even in small amounts."
+    },
+    "suggestion": "Don't leave drinks where pets can reach them, and clean up spills right away."
+  },
+  "coffee": {
+    "title": "Coffee",
+    "pets": [
+      "all"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "default": "Coffee contains caffeine, which is toxic to pets, and hot drinks can scald."
+    },
+    "suggestion": "Keep coffee, grounds, and pods out of reach."
+  },
+  "candle": {
+    "title": "Candle",
+    "pets": [
+      "all"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Cats can brush their tails or whiskers through a flame, or knock a candle over.",
+      "bird": "Candle smoke and some scented candles can irritate birds' sensitive lungs.",
+      "default": "Lit candles can burn pets or start a fire if knocked over."
+    },
+    "suggestion": "Never leave candles burning unattended, and keep them high and away from pets."
+  },
+  "fireplace": {
+    "title": "Fireplace",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "default": "Pets can be burned by flames, hot glass, or embers, and ash can be swallowed."
+    },
+    "suggestion": "Use a fireplace screen and keep pets supervised when it's lit."
+  },
+  "balloon": {
+    "title": "Balloon",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal",
+      "bird"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "default": "Popped balloon pieces and ribbons can be swallowed, causing choking or blockages."
+    },
+    "suggestion": "Pick up popped balloons and ribbons right away, and keep balloons out of reach."
+  },
+  "plastic_bag": {
+    "title": "Plastic Bag",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Cats like to crawl into bags and can get the handles stuck around their necks.",
+      "default": "Pets can suffocate in plastic bags or swallow pieces of them."
+    },
+    "suggestion": "Store plastic bags in a closed drawer, and tie them in a knot before throwing them away."
+  },
+  "stairs": {
+    "title": "Stairs",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "dog": "Puppies and small or senior dogs can fall down stairs and get hurt.",
+      "small_animal": "Small pets can be badly injured falling down even a few steps.",
+      "default": "Pets can slip or fall on stairs, especially young, old, or small ones."
+    },
+    "suggestion": "Use a pet gate at the top and bottom of the stairs until your pet is steady on them."
+  },
+  "washing_machine": {
+    "title": "Washer or Dryer",
+    "pets": [
+      "cat",
+      "small_animal",
+      "dog"
+    ],
+    "severity": "high",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Cats like to nap in warm washers and dryers and can be trapped inside when they're started.",
+      "default": "Small pets can climb into washers and dryers and get trapped."
+    },
+    "suggestion": "Keep washer and dryer doors closed, and check inside before every load."
+  },
+  "window_blind": {
+    "title": "Blind Cords",
+    "pets": [
+      "cat",
+      "dog",
+      "small_animal",
+      "bird"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "cat": "Cats play with dangling blind cords and can get tangled around the neck.",
+      "bird": "Birds can get their feet or necks caught in blind cords.",
+      "default": "Dangling cords can tangle or strangle pets."
+    },
+    "suggestion": "Tie up blind cords out of reach or use cordless blinds."
+  },
+  "dice": {
+    "title": "Small Swallowable Items",
+    "pets": [
+      "dog",
+      "cat",
+      "small_animal",
+      "bird"
+    ],
+    "severity": "medium",
+    "rooms": [
+      "general"
+    ],
+    "reasons": {
+      "dog": "Dogs often swallow small objects like dice, game pieces, and toys, which can cause choking or blockages.",
+      "bird": "Birds pick up and swallow small objects.",
+      "default": "Small objects can be swallowed and cause choking or blockages."
+    },
+    "suggestion": "Put away game pieces, small toys, and other small items after use.",
+    "min_confidence": 0.4
   }
 }
