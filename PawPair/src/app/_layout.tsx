@@ -28,11 +28,6 @@ export default function RootLayout() {
         name="pets/[id]"
         options={{ title: "Pet Details" }}
       />
-
-      <Stack.Screen
-        name="quiz"
-        options={{ headerShown: false }}
-      />
     </Stack>
   );
 }

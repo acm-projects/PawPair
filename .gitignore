@@ -15,7 +15,11 @@ training/datasets/*
 .vscode/
 .DS_Store
 node_modules
+<<<<<<< HEAD
 backend/ml-server/.env
 backend/ml-server/.env
 backend/ml-server/.env
 PawPair/.expo/
+=======
+.expo/
+>>>>>>> origin/camera-demo
