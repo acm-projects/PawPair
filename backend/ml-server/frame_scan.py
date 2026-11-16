@@ -27,6 +27,12 @@ SMALL_HAZARDS = {
 }
 SMALL_HAZARD_ONE_SIGHTING = 0.5
 
+# Thin, straight hazards that look a lot like everyday things (cabinet handles,
+# drawer pulls, pens, cables). These need stronger proof before we flag them:
+# seen in 2+ snapshots, OR seen once with high confidence.
+LOOKALIKE_HAZARDS = {"nail", "screwdriver", "syringe"}
+LOOKALIKE_ONE_SIGHTING = 0.75
+
 
 def scan_images(images: list[Image.Image], pet_type: str) -> dict:
     """Returns hazards (each with a frame_index) and the shrunk snapshots they appear in."""
@@ -48,7 +54,10 @@ def scan_images(images: list[Image.Image], pet_type: str) -> dict:
         for label in list(best):
             seen = sightings.get(label, 0)
             conf = best[label]["hazard"]["confidence"]
-            very_sure = conf >= VERY_SURE or (label in SMALL_HAZARDS and conf >= SMALL_HAZARD_ONE_SIGHTING)
+            if label in LOOKALIKE_HAZARDS:
+                very_sure = conf >= LOOKALIKE_ONE_SIGHTING
+            else:
+                very_sure = conf >= VERY_SURE or (label in SMALL_HAZARDS and conf >= SMALL_HAZARD_ONE_SIGHTING)
             if seen < MIN_SIGHTINGS and not very_sure:
                 print(f"  (ignored {label}: seen in only {seen} snapshot)", flush=True)
                 del best[label]

@@ -1,11 +1,14 @@
-import { Text, View, StyleSheet, Image, ScrollView, Pressable } from "react-native";
+import { Text, View, StyleSheet, Image, ScrollView, Pressable, Platform } from "react-native";
 import { Check, X, PawPrint, Cake, Ruler, ChevronLeft } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Tabs, router, type Href } from "expo-router";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
+import { getAuth } from "firebase/auth";
 
+import { app } from "../../firebase.js";
+import { removeFavorite } from "../../services/favoriteServices";
 import { statusFor, useStatuses, setStage } from "../../data/petStatus";
 import { removePet } from "../../store/petLists";
 import { useMatchedPets } from "@/data/livePets";
@@ -13,7 +16,7 @@ import PawNavBar from "@/components/PawNavBar";
 
 const paw = require("../../../assets/images/paw-watermark.png");
 
-const FONT = "'Open Sans', system-ui, sans-serif";
+const FONT = Platform.OS === "web" ? "'Open Sans', system-ui, sans-serif" : undefined;
 
 const PLACEHOLDERS: Record<string, number> = {
   dog: require("../../../assets/images/dog.jpg"),
@@ -85,6 +88,13 @@ export default function Matches() {
   // applied pets move to Applications, so they leave this list
   const matches = allMatches.filter((p) => statusFor(statuses, p.id).stage < 1);
 
+  // ✕ removes the pet from matches and from the user's saved favorites
+  const removeMatch = (id: string | number) => {
+    removePet("matches", id as any);
+    const uid = getAuth(app).currentUser?.uid;
+    if (uid) removeFavorite(uid, String(id)).catch((e: any) => console.warn(e));
+  };
+
   if (!fontsLoaded) return null;
 
   return (
@@ -99,7 +109,7 @@ export default function Matches() {
         </View>
         <Pressable
           style={s.backButton}
-          onPress={() => router.navigate("homepages/PreHomepage" as any)}
+          onPress={() => router.navigate("/homepages/PreHomepage" as any)}
         >
           <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
         </Pressable>
@@ -143,10 +153,10 @@ export default function Matches() {
                 >
                   <Check size={32} color="#6EE08F" strokeWidth={1.75} />
                 </Pressable>
-                {/* ✕ = remove from matches */}
+                {/* ✕ = remove from matches (and from saved favorites) */}
                 <Pressable
                   style={[s.btn, { borderColor: "#D32F2F" }]}
-                  onPress={() => removePet("matches", pet.id as any)}
+                  onPress={() => removeMatch(pet.id)}
                 >
                   <X size={30} color="#D32F2F" strokeWidth={1.75} />
                 </Pressable>

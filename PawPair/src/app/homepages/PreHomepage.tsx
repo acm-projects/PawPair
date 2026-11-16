@@ -9,6 +9,7 @@ import {
   Animated,
   Easing,
   useWindowDimensions,
+  Platform,
 } from "react-native";
 import {
   Check,
@@ -38,7 +39,7 @@ const DEFAULT_PHOTO = require("../../../assets/images/pet-duo.png");
 const CORAL = "#E98F78";
 const GREEN = "#6EE08F";
 const BG = "#F3EDE8";
-const FONT = "'Open Sans', system-ui, sans-serif";
+const FONT = Platform.OS === "web" ? "'Open Sans', system-ui, sans-serif" : undefined;
 const OUTER = 64 * 2 + 6;
 
 function loadFont() {
@@ -101,7 +102,7 @@ function TopRow() {
         Icon={Check}
         color={GREEN}
         count={matches.length}
-        onPress={() => router.navigate("/(tabs)/matches" as any)}
+        onPress={() => router.navigate("/matches" as any)}
       />
       <IconCircle
         Icon={ClipboardList}

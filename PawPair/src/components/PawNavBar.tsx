@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 
 const NAV_ITEMS = [
-  { href: "/profile", label: "Profile", Icon: User },
+  { href: "/settings", label: "Profile", Icon: User },
   { href: "/homepage", label: "Homepage", Icon: House },
   { href: "/scrollview", label: "Scrollview", Icon: Dog },
   { href: "/camera", label: "Camera", Icon: CameraIcon },

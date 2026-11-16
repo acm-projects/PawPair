@@ -667,7 +667,7 @@
       "default": "Sharp tool tips can cut or puncture curious pets."
     },
     "suggestion": "Put tools back in a closed toolbox or drawer after use.",
-    "min_confidence": 0.35
+    "min_confidence": 0.5
   },
   "nail": {
     "title": "Nails or Screws",
@@ -684,7 +684,7 @@
       "default": "Small sharp metal pieces can be stepped on or swallowed."
     },
     "suggestion": "Sweep up loose nails and screws and store them in a closed container.",
-    "min_confidence": 0.35
+    "min_confidence": 0.55
   },
   "syringe": {
     "title": "Needle or Syringe",
@@ -699,7 +699,7 @@
       "default": "Needles can puncture paws or mouths, and leftover medication can poison pets."
     },
     "suggestion": "Use a sharps container and keep medical supplies in a closed cabinet.",
-    "min_confidence": 0.35
+    "min_confidence": 0.5
   },
   "drill": {
     "title": "Power Tool",

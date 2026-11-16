@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
-import { PawPrint, Plus, User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
+import { PawPrint, Plus } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect, useRef, useState } from "react";
@@ -12,6 +12,7 @@ import { app } from "../../firebase.js";
 import { getQuizAnswers } from "../../services/quizService";
 import { getNextScanName, uploadScan } from "@/services/scanApi";
 import ScanNameEditor from "@/components/ScanNameEditor";
+import PawNavBar from "@/components/PawNavBar";
 import type { PetType } from "@/types/scan";
 
 
@@ -311,35 +312,13 @@ export default function Camera() {
           )}
         </View>
 
-        <LinearGradient colors={["#F5C0B3", "#E98F78"]} style={styles.navBarBackground}>
-          <SafeAreaView style={styles.navBar} edges={["bottom"]}>
-            {NAV_ITEMS.map(({ href, label, Icon }) => {
-              const isActive = href === "/camera";
-              return (
-                <TouchableOpacity
-                  key={href}
-                  style={styles.navItem}
-                  onPress={() => router.navigate(href)}
-                  disabled={status === "uploading"}
-                >
-                  <Icon size={40} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
-                  <Text style={[styles.navLabel, isActive && styles.navLabelActive]}>{label}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </SafeAreaView>
-        </LinearGradient>
+        <View style={styles.navOverlap}>
+          <PawNavBar active="/camera" disabled={status === "uploading"} />
+        </View>
       </SafeAreaView>
     </LinearGradient>
   );
 }
-
-const NAV_ITEMS = [
-  { href: "/profile", label: "Profile", Icon: User },
-  { href: "/homepage", label: "Homepage", Icon: House },
-  { href: "/scrollview", label: "Scrollview", Icon: Dog },
-  { href: "/camera", label: "Camera", Icon: CameraIcon },
-] as const;
 
 const PAWS = [
   { top: 6, left: 8, rotate: "-20deg", size: 45 },
@@ -512,27 +491,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-  navBarBackground: {
-    borderTopLeftRadius: NAV_RADIUS,
-    borderTopRightRadius: NAV_RADIUS,
-    overflow: "hidden",
+  navOverlap: {
     marginTop: -NAV_RADIUS,
-  },
-  navBar: {
-    flexDirection: "row",
-    paddingTop: 8,
-  },
-  navItem: {
-    flex: 1,
-    alignItems: "center",
-    gap: 2,
-    paddingBottom: 4,
-  },
-  navLabel: {
-    color: "transparent",
-    fontSize: 4,
-  },
-  navLabelActive: {
-    fontWeight: "bold",
   },
 });

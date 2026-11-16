@@ -3,10 +3,8 @@ import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet, Activity
 import { useEffect, useState } from "react";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
+import PawNavBar from "@/components/PawNavBar";
 
 // backend imports
 import { getAuth } from "firebase/auth";
@@ -188,16 +186,8 @@ function Attribute({
   );
 }
 
-const NAV_ITEMS = [
-  { href: "/profile", label: "Profile", Icon: User },
-  { href: "/homepage", label: "Homepage", Icon: House },
-  { href: "/scrollview", label: "Scrollview", Icon: Dog },
-  { href: "/camera", label: "Camera", Icon: CameraIcon },
-] as const;
-
 // 3) THE SCREEN -------------------------------------------------------------
 export default function Scrollview() {
-  const router = useRouter();
   const [search, setSearch] = useState("");
   const [speciesFilter, setSpeciesFilter] = useState("all");
 
@@ -349,19 +339,9 @@ export default function Scrollview() {
         />
       )}
 
-      <LinearGradient colors={["#F5C0B3", "#F5C0B3"]} style={styles.navBarBackground}>
-        <SafeAreaView style={styles.navBar} edges={["bottom"]}>
-          {NAV_ITEMS.map(({ href, label, Icon }) => {
-            const isActive = href === "/scrollview";
-            return (
-              <TouchableOpacity key={href} style={styles.navItem} onPress={() => router.navigate(href)}>
-                <Icon size={40} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
-                <Text style={[styles.navLabel, isActive && styles.navLabelActive]}>{label}</Text>
-              </TouchableOpacity>
-            );
-          })}
-        </SafeAreaView>
-      </LinearGradient>
+      <View style={styles.navOverlap}>
+        <PawNavBar active="/scrollview" />
+      </View>
     </LinearGradient>
   );
 }
@@ -373,16 +353,7 @@ const NAV_RADIUS = 20;
 const styles = StyleSheet.create({
   container: { flex: 1, paddingTop: 56 },
 
-  navBarBackground: {
-    borderTopLeftRadius: NAV_RADIUS,
-    borderTopRightRadius: NAV_RADIUS,
-    overflow: "hidden",
-    marginTop: -NAV_RADIUS,
-  },
-  navBar: { flexDirection: "row", paddingTop: 8 },
-  navItem: { flex: 1, alignItems: "center", gap: 2, paddingBottom: 4 },
-  navLabel: { color: "transparent", fontSize: 4 },
-  navLabelActive: { fontWeight: "bold" },
+  navOverlap: { marginTop: -NAV_RADIUS },
 
   searchRow: {
     flexDirection: "row", // put children side by side

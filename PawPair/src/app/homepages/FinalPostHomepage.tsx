@@ -16,7 +16,6 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as WebBrowser from "expo-web-browser";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useRouter, type Href } from "expo-router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
@@ -36,11 +35,8 @@ import { app, db } from "../../firebase.js";
 import { STAGES, statusFor, useStatuses } from "../../data/petStatus";
 import { useMatchedPets } from "../../data/livePets";
 import TrackerModal, { type TrackerKind } from "src/components/TrackerModal";
+import PawNavBar from "@/components/PawNavBar";
 import {
-  User,
-  House,
-  Dog,
-  Camera as CameraIcon,
   ChevronDown,
   Check,
   TreePine,
@@ -109,13 +105,6 @@ const TRACKERS: { label: string; Icon: typeof TreePine; kind: TrackerKind }[] = 
   { label: "Mood", Icon: Smile, kind: "mood" },
   { label: "Appetite", Icon: Utensils, kind: "meal" },
 ];
-
-const NAV_ITEMS = [
-  { href: "/profile", label: "Profile", Icon: User },
-  { href: "/homepage", label: "Homepage", Icon: House },
-  { href: "/scrollview", label: "Scrollview", Icon: Dog },
-  { href: "/camera", label: "Camera", Icon: CameraIcon },
-] as const;
 
 const speciesKey = (species?: string) =>
   (species ?? "").trim().toLowerCase().replace(/\s+/g, "_");
@@ -653,7 +642,8 @@ export default function PostHomepage() {
 
   // "Ask Pepo" in the tracker pop-up jumps down to the Ask Pepo chat box here.
   const scrollRef = useRef<ScrollView>(null);
-  const pepoInputRef = useRef<TextInput>(null);
+  // react-native's TextInput ref typing is stricter than the emitted component instance here.
+  const pepoInputRef = useRef<any>(null);
   const sheetY = useRef(0);
   const pepoCardY = useRef(0);
   const goToPepo = () => {
@@ -689,24 +679,10 @@ export default function PostHomepage() {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
 
-  // Keep the original bottom navigation visible in all states.
+  // Shared bottom navigation, visible in all states.
   const bottomNav = (
-    <View style={styles.navBarBackground}>
-      <SafeAreaView style={styles.navBar} edges={["bottom"]}>
-        {NAV_ITEMS.map(({ href, label, Icon }) => {
-          const isActive = href === "/homepage";
-          return (
-            <TouchableOpacity
-              key={href}
-              accessibilityLabel={label}
-              style={[styles.navItem, isActive && styles.navItemActive]}
-              onPress={() => router.navigate(href as Href)}
-            >
-              <Icon size={32} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
-            </TouchableOpacity>
-          );
-        })}
-      </SafeAreaView>
+    <View style={styles.navOverlap}>
+      <PawNavBar active="/homepage" />
     </View>
   );
 
@@ -1373,20 +1349,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  navBarBackground: {
-    backgroundColor: COLORS.peachLight,
-    borderTopLeftRadius: NAV_RADIUS,
-    borderTopRightRadius: NAV_RADIUS,
-    overflow: "hidden",
-    marginTop: -NAV_RADIUS,
-  },
-  navBar: { flexDirection: "row", justifyContent: "space-around", paddingTop: 8 },
-  navItem: {
-    width: 64,
-    height: 56,
-    borderRadius: 16,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  navItemActive: { backgroundColor: "rgba(255,255,255,0.28)" },
+  navOverlap: { marginTop: -NAV_RADIUS },
 });
