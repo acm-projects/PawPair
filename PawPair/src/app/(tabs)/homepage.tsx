@@ -20,7 +20,7 @@ export default function Homepage() {
   // go to the matching page
   useEffect(() => {
     if (homepageVersion === "post") {
-      router.replace("/homepages/PostHomepage" as any);
+      router.replace("/homepages/FinalPostHomepage" as any);
     } else {
       router.replace("/homepages/PreHomepage" as any);
     }

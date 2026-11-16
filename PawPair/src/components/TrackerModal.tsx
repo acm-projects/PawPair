@@ -10,6 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
+  Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { X, Check, PawPrint } from "lucide-react-native";
@@ -17,6 +18,8 @@ import { X, Check, PawPrint } from "lucide-react-native";
 // One popup component that shows the Activity, Mood or Meal tracker,
 // depending on the `kind` it is given.
 export type TrackerKind = "activity" | "mood" | "meal";
+
+const pepoGoat = require("../../assets/images/pepo-goat.png");
 
 const COLORS = {
   peach: "#E98F78",
@@ -130,10 +133,12 @@ export default function TrackerModal({
   visible,
   kind,
   onClose,
+  onAskPepo,
 }: {
   visible: boolean;
   kind: TrackerKind;
   onClose: () => void;
+  onAskPepo?: () => void; // opens the Ask Pepo chat on the homepage
 }) {
   const [selected, setSelected] = useState(new Date());
   // All saved days, keyed by date, e.g. { "2026-10-9": { activities: [...], ... } }
@@ -259,12 +264,19 @@ export default function TrackerModal({
 
           <View style={styles.footer}>
             <Text style={[styles.saved, !hasEntry && styles.savedHidden]}>Log saved.</Text>
-            <View style={styles.askPepo}>
+            <TouchableOpacity
+              style={styles.askPepo}
+              onPress={() => {
+                onClose();
+                onAskPepo?.();
+              }}
+              accessibilityLabel="Ask Pepo"
+            >
               <Text style={styles.askPepoText}>Ask Pepo</Text>
               <View style={styles.askPepoAvatar}>
-                <PawPrint size={20} color={COLORS.peach} />
+                <Image source={pepoGoat} style={styles.pepoImage} />
               </View>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
       </KeyboardAvoidingView>
@@ -388,5 +400,10 @@ const styles = StyleSheet.create({
     borderColor: "#E5E8F7",
     alignItems: "center",
     justifyContent: "center",
+  },
+  pepoImage: {
+  width: 45,
+  height: 45,
+  resizeMode: "contain",
   },
 });

@@ -65,7 +65,7 @@ export default function Status() {
         </View>
         <Pressable
           style={s.backButton}
-          onPress={() => router.navigate("homepages/PreHomepage" as any)}
+          onPress={() => router.navigate("/homepages/PreHomepage" as any)}
         >
           <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
         </Pressable>

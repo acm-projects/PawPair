@@ -8,12 +8,30 @@ import {
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
+  Linking,
+  Modal,
+  Platform,
+  Pressable,
+  KeyboardAvoidingView,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import * as WebBrowser from "expo-web-browser";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useRouter, type Href } from "expo-router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, onSnapshot, serverTimestamp, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  increment,
+  onSnapshot,
+  orderBy,
+  query,
+  runTransaction,
+  serverTimestamp,
+  setDoc,
+  writeBatch,
+  limitToLast,
+} from "firebase/firestore";
 import { app, db } from "../../firebase.js";
 import { STAGES, statusFor, useStatuses } from "../../data/petStatus";
 import { useMatchedPets } from "../../data/livePets";
@@ -30,8 +48,12 @@ import {
   Utensils,
   Newspaper,
   Bookmark,
-  Mic,
   PawPrint,
+  X,
+  ExternalLink,
+  Gift,
+  Ticket,
+  Send,
 } from "lucide-react-native";
 
 const COLORS = {
@@ -44,6 +66,8 @@ const COLORS = {
   text: "#1A1A1A",
   muted: "#786862",
 };
+
+const pepoGoat = require("../../../assets/images/pepo-goat.png");
 
 // The last application stage is the completed-adoption stage in this app.
 // If your STAGES array changes, adjust this threshold.
@@ -122,20 +146,220 @@ function tasksFor(species?: string): Task[] {
   ];
 }
 
-function tipsFor(species?: string) {
+// Pawtnership rewards: points from daily care tasks unlock coupons.
+// These are SAMPLE rewards for the demo. Swap in real partner offers later.
+type Reward = { id: string; title: string; detail: string; cost: number };
+const REWARDS: Reward[] = [
+  { id: "groom10", title: "10% off grooming", detail: "At a partner groomer", cost: 100 },
+  { id: "bakery", title: "Free pet bakery treat", detail: "One snack from a partner pet bakery", cost: 150 },
+  { id: "supplies15", title: "15% off pet supplies", detail: "Toys, beds, bowls and more", cost: 200 },
+  { id: "nailtrim", title: "Free nail trim", detail: "At a partner groomer", cost: 250 },
+];
+
+type Coupon = { id: string; rewardId: string; title: string; code: string; used?: boolean };
+
+function makeCouponCode() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // no 0/O or 1/I mix-ups
+  let code = "PAW-";
+  for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return code;
+}
+
+function todayKey() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function RewardsPopup({
+  points,
+  coupons,
+  redeeming,
+  message,
+  onRedeem,
+  onClose,
+}: {
+  points: number;
+  coupons: Coupon[];
+  redeeming: string | null;
+  message: string;
+  onRedeem: (r: Reward) => void;
+  onClose: () => void;
+}) {
+  return (
+    <Pressable style={styles.overlay} onPress={onClose}>
+      <Pressable style={[styles.popup, { maxHeight: "88%" }]} onPress={() => {}}>
+        <TouchableOpacity style={styles.closeButton} onPress={onClose} hitSlop={12}>
+          <X size={20} color={COLORS.peach} />
+        </TouchableOpacity>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 10 }}>
+          <Text style={styles.popupTitle}>PAWTNERSHIP REWARDS</Text>
+          <Text style={styles.rewardsBalance}>{points} pts</Text>
+          <Text style={styles.popupSource}>Earn points by finishing daily care tasks.</Text>
+
+          {REWARDS.map((r) => {
+            const canAfford = points >= r.cost;
+            return (
+              <View key={r.id} style={styles.rewardRow}>
+                <Gift size={26} color={COLORS.peach} />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.rewardTitle}>{r.title}</Text>
+                  <Text style={styles.rewardDetail}>{r.detail}</Text>
+                </View>
+                <TouchableOpacity
+                  style={[styles.redeemButton, !canAfford && styles.redeemButtonOff]}
+                  disabled={!canAfford || !!redeeming}
+                  onPress={() => onRedeem(r)}
+                >
+                  {redeeming === r.id ? (
+                    <ActivityIndicator color="white" size="small" />
+                  ) : (
+                    <Text style={styles.redeemText}>{r.cost} pts</Text>
+                  )}
+                </TouchableOpacity>
+              </View>
+            );
+          })}
+
+          {!!message && <Text style={styles.rewardMessage}>{message}</Text>}
+
+          <Text style={[styles.popupSection, { marginTop: 6 }]}>My coupons</Text>
+          {coupons.length === 0 ? (
+            <Text style={styles.popupSource}>No coupons yet. Keep earning points!</Text>
+          ) : (
+            coupons.map((c) => (
+              <View key={c.id} style={styles.couponRow}>
+                <Ticket size={22} color={COLORS.peach} />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.rewardTitle}>{c.title}</Text>
+                  <Text style={styles.couponCode}>{c.code}</Text>
+                </View>
+              </View>
+            ))
+          )}
+          <Text style={styles.popupNote}>Sample rewards for demo purposes. Show your code at checkout.</Text>
+        </ScrollView>
+      </Pressable>
+    </Pressable>
+  );
+}
+
+type Article = { id: string; label: string; title: string; source: string; url: string; tips: string[] };
+
+// Real articles from trusted animal-welfare groups to help each pet settle in.
+// The first two show on the homepage; "See More" shows the rest.
+const ADOPTION_BASICS: Article = {
+  id: "333",
+  label: "THE 3-3-3 RULE",
+  title: "What to expect in the first 3 days, 3 weeks & 3 months",
+  source: "ASPCA",
+  url: "https://www.aspca.org/adopt-pet/adoption-tips",
+  tips: ["First 3 days: your pet may feel nervous and overwhelmed. Keep things quiet and give them space.", "First 3 weeks: they start learning your routine and feeling more settled.", "First 3 months: trust builds and their true personality starts to show."],
+};
+
+const ARTICLES: Record<string, Article[]> = {
+  dog: [
+    { id: "dog-new", label: "FIRST DAYS", title: "Tips for a new dog", source: "ASPCA",
+      url: "https://www.aspca.org/pet-care/general-pet-care/tips-new-dog",
+      tips: ["Try not to leave your new dog home alone for the first couple of days.", "Keep treats handy to reward good behavior as it happens.", "A predictable routine helps your dog feel safe and build trust."] },
+    ADOPTION_BASICS,
+    { id: "dog-intro", label: "MEETING OTHER PETS", title: "Introducing dogs to each other", source: "ASPCA",
+      url: "https://www.aspca.org/pet-care/general-pet-care/introducing-dogs-each-other",
+      tips: ["Put away food bowls, chews, toys and beds the dogs might not want to share.", "Let them meet on neutral ground, like a park, rather than at home.", "Introduce one dog at a time, and keep rewarding calm behavior."] },
+    { id: "dog-home", label: "SETTLING IN", title: "Helpful hints for bringing your new dog home", source: "Ontario SPCA",
+      url: "https://ontariospca.ca/blog/helpful-hints-for-bringing-your-new-dog-home/",
+      tips: ["Have all the supplies ready before your dog comes home.", "Bring them home on a day you can spend with them.", "Wait to introduce lots of new people until your dog seems settled."] },
+  ],
+  cat: [
+    { id: "cat-new", label: "FIRST DAYS", title: "Tips for a new cat", source: "ASPCA",
+      url: "https://www.aspca.org/pet-care/general-pet-care/tips-new-cat",
+      tips: ["Start your cat in one small, quiet room with the door closed.", "Let them explore the rest of the home slowly, once they seem confident.", "Most cats need a few days or more to settle, so be patient."] },
+    ADOPTION_BASICS,
+    { id: "cat-intro", label: "MEETING OTHER PETS", title: "Introducing your cat to a new cat", source: "ASPCA",
+      url: "https://www.aspca.org/pet-care/general-pet-care/introducing-your-cat-new-cat",
+      tips: ["Go slowly. Cat friendships can take a long time to form.", "If you have several cats, introduce each one to the newcomer separately.", "Patience matters more than speed."] },
+  ],
+  bird: [
+    { id: "bird-new", label: "FIRST DAYS", title: "Congratulations! You've adopted a bird", source: "Ontario SPCA",
+      url: "https://ontariospca.ca/blog/congratulations-youve-adopted-a-bird/",
+      tips: ["Set up the cage before your bird comes home.", "Give them quiet time to adjust before lots of handling.", "Book a check-up with a bird-savvy (avian) vet."] },
+    { id: "bird-expect", label: "SETTLING IN", title: "What to expect when adopting a bird", source: "Ontario SPCA",
+      url: "https://ontariospca.ca/blog/what-to-expect-when-adopting-a-bird/",
+      tips: ["Many birds are happiest with a compatible bird companion.", "Plan for a proper cage setup, a good diet and daily social time.", "Expect a settling-in period while your bird gets used to you."] },
+    ADOPTION_BASICS,
+    { id: "bird-vet", label: "CARE BASICS", title: "What to expect when adopting a new bird", source: "ZuPreem (Dr. Laurie Hess)",
+      url: "https://zupreem.com/what-should-i-expect-when-adopting-a-new-bird/",
+      tips: ["Research your bird's species and needs before bringing them home.", "Birds are long-term companions, so think about the commitment.", "Ask your vet about diet and care for your specific bird."] },
+  ],
+  small_animal: [
+    { id: "rabbit-new", label: "FIRST DAYS", title: "Congratulations! You've adopted a rabbit", source: "Ontario SPCA",
+      url: "https://ontariospca.ca/blog/congratulations-youve-adopted-a-rabbit/",
+      tips: ["See a rabbit-savvy vet within the first week.", "Set up safe housing with room to move, plus hay and fresh water.", "Give them toys and chew items to keep them busy."] },
+    { id: "rabbit-home", label: "SETTLING IN", title: "Bringing bunny home", source: "Humane Society of Sonoma County",
+      url: "https://humanesocietysoco.org/adopt/welcoming-your-new-rabbit",
+      tips: ["Start your bunny in a small space for the first few days.", "Imagine your home from a small rabbit's eye level and remove hazards.", "Don't force handling. Let them come to you."] },
+    ADOPTION_BASICS,
+    { id: "rabbit-expect", label: "CARE BASICS", title: "What to expect when adopting a rabbit", source: "Ontario SPCA",
+      url: "https://ontariospca.ca/blog/what-to-expect-when-adopting-a-rabbit/",
+      tips: ["Rabbits are social and often do best with a rabbit friend.", "Their diet, housing and care are more involved than many people expect.", "Regular vet check-ups help catch problems early."] },
+  ],
+};
+
+const ARTICLE_KEYS: Record<string, string> = {
+  rabbit: "small_animal",
+  hamster: "small_animal",
+  guinea_pig: "small_animal",
+  small_animal: "small_animal",
+};
+
+function articlesFor(species?: string): Article[] {
   const key = speciesKey(species);
-  if (key === "dog") return [
-    { id: "1", label: "CALM & COMFORT", title: "How to help a nervous dog" },
-    { id: "2", label: "TIPS OF THE DAY", title: "Crate Training & Anxiety" },
-  ];
-  if (key === "cat") return [
-    { id: "1", label: "CALM & COMFORT", title: "Helping your new cat settle in" },
-    { id: "2", label: "TIPS OF THE DAY", title: "Litter boxes & enrichment" },
-  ];
-  return [
-    { id: "1", label: "CALM & COMFORT", title: "Helping a new pet feel safe" },
-    { id: "2", label: "TIPS OF THE DAY", title: "Building a consistent care routine" },
-  ];
+  return ARTICLES[ARTICLE_KEYS[key] ?? key] ?? [ADOPTION_BASICS];
+}
+
+function ArticlePopup({ article, onClose }: { article: Article; onClose: () => void }) {
+  return (
+    <Pressable style={styles.overlay} onPress={onClose}>
+      <Pressable style={styles.popup} onPress={() => {}}>
+        <TouchableOpacity style={styles.closeButton} onPress={onClose} hitSlop={12}>
+          <X size={20} color={COLORS.peach} />
+        </TouchableOpacity>
+
+        <Text style={styles.popupLabel}>{article.label}</Text>
+        <Text style={styles.popupTitle}>{article.title.toUpperCase()}</Text>
+        <Text style={styles.popupSource}>From {article.source}</Text>
+
+        <View style={styles.popupTips}>
+          <Text style={styles.popupSection}>Key tips</Text>
+          {article.tips.map((tip) => (
+            <View key={tip} style={styles.popupTipRow}>
+              <PawPrint size={14} color={COLORS.peach} style={{ marginTop: 3 }} />
+              <Text style={styles.popupBody}>{tip}</Text>
+            </View>
+          ))}
+        </View>
+
+        <TouchableOpacity style={styles.readButton} onPress={() => openArticle(article.url)}>
+          <ExternalLink size={18} color="white" />
+          <Text style={styles.readButtonText}>Read the full article</Text>
+        </TouchableOpacity>
+        <Text style={styles.popupNote}>General guidance, not veterinary advice.</Text>
+      </Pressable>
+    </Pressable>
+  );
+}
+
+async function openArticle(url: string) {
+  // On web, open a normal new browser tab (not a pop-up window).
+  if (Platform.OS === "web") {
+    window.open(url, "_blank", "noopener,noreferrer");
+    return;
+  }
+  // On a phone, open it inside the app.
+  try {
+    await WebBrowser.openBrowserAsync(url);
+  } catch {
+    Linking.openURL(url).catch(() => {});
+  }
 }
 
 function CheckBox({ checked, size = 22 }: { checked: boolean; size?: number }) {
@@ -165,6 +389,7 @@ export default function PostHomepage() {
   );
 
   const [uid, setUid] = useState<string | null>(null);
+  const [pawPoints, setPawPoints] = useState(0);
   const [authReady, setAuthReady] = useState(false);
   const [profileReady, setProfileReady] = useState(false);
   const [savedPetId, setSavedPetId] = useState<string | null>(null);
@@ -204,6 +429,8 @@ export default function PostHomepage() {
         (snapshot) => {
           const stored = snapshot.data()?.adoptedPetId;
           setSavedPetId(typeof stored === "string" && stored.trim() ? stored : null);
+          const pts = snapshot.data()?.pawPoints;
+          setPawPoints(typeof pts === "number" ? pts : 0);
           setProfileReady(true);
           setProfileError("");
         },
@@ -291,13 +518,148 @@ export default function PostHomepage() {
     }
   }
 
-  // Daily tasks are local UI state; clear them when switching pets so no pet
-  // inherits another pet's checked tasks.
+  const tasks = useMemo(() => tasksFor(pet?.species), [pet?.species]);
+
+  // Daily tasks are saved per pet, per day, in Firestore:
+  //   users/{uid}/dailyTasks/{YYYY-MM-DD}_{petId} -> { done: { taskId: true } }
+  // Checking a task adds its points to users/{uid}.pawPoints; unchecking removes them.
   const [done, setDone] = useState<Record<string, boolean>>({});
-  useEffect(() => setDone({}), [activePetId]);
-  const toggle = (id: string) => setDone((prev) => ({ ...prev, [id]: !prev[id] }));
+  const dayKey = todayKey();
+  useEffect(() => {
+    setDone({});
+    if (!uid || !activePetId) return;
+    return onSnapshot(
+      doc(db, "users", uid, "dailyTasks", `${dayKey}_${activePetId}`),
+      (snap) => setDone((snap.data()?.done as Record<string, boolean>) ?? {}),
+      (error) => console.error("Could not load today's tasks:", error)
+    );
+  }, [uid, activePetId, dayKey]);
+
+  const toggle = async (id: string) => {
+    if (!uid || !activePetId) return;
+    const task = tasks.find((t) => t.id === id);
+    if (!task) return;
+    const nowDone = !done[id];
+    const next = { ...done, [id]: nowDone };
+    setDone(next); // feels instant; Firestore confirms a moment later
+    try {
+      const batch = writeBatch(db);
+      batch.set(doc(db, "users", uid, "dailyTasks", `${dayKey}_${activePetId}`), { done: next, petId: activePetId, date: dayKey }, { merge: true });
+      batch.set(doc(db, "users", uid), { pawPoints: increment(nowDone ? task.points : -task.points) }, { merge: true });
+      await batch.commit();
+    } catch (error) {
+      console.error("Could not save task:", error);
+      setDone(done); // undo on failure
+    }
+  };
+
+  // Coupons the user has redeemed: users/{uid}/coupons
+  const [coupons, setCoupons] = useState<Coupon[]>([]);
+  useEffect(() => {
+    setCoupons([]);
+    if (!uid) return;
+    return onSnapshot(
+      query(collection(db, "users", uid, "coupons"), orderBy("createdAt", "desc")),
+      (snap) => setCoupons(snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Coupon, "id">) }))),
+      (error) => console.error("Could not load coupons:", error)
+    );
+  }, [uid]);
+
+  const [rewardsOpen, setRewardsOpen] = useState(false);
+  const [redeeming, setRedeeming] = useState<string | null>(null);
+  const [rewardMessage, setRewardMessage] = useState("");
+
+  async function redeem(reward: Reward) {
+    if (!uid || redeeming) return;
+    setRedeeming(reward.id);
+    setRewardMessage("");
+    try {
+      const code = makeCouponCode();
+      await runTransaction(db, async (tx) => {
+        const userRef = doc(db, "users", uid);
+        const current = (await tx.get(userRef)).data()?.pawPoints ?? 0;
+        if (current < reward.cost) throw new Error("Not enough points yet.");
+        tx.set(userRef, { pawPoints: current - reward.cost }, { merge: true });
+        tx.set(doc(collection(db, "users", uid, "coupons")), {
+          rewardId: reward.id,
+          title: reward.title,
+          code,
+          used: false,
+          createdAt: serverTimestamp(),
+        });
+      });
+      setRewardMessage(`🎉 Redeemed! Your code: ${code}`);
+    } catch (error: any) {
+      console.error("Could not redeem reward:", error);
+      setRewardMessage(error?.message === "Not enough points yet." ? error.message : "Could not redeem. Please try again.");
+    } finally {
+      setRedeeming(null);
+    }
+  }
 
   const [question, setQuestion] = useState("");
+
+  // ---- Ask Pepo chat ----
+  // Messages live in users/{uid}/pepoMessages. The worker answers anything with
+  // status "pending" (see backend/ml-server/pepo.py) and adds Pepo's reply.
+  type ChatMessage = { id: string; role: "user" | "pepo"; text: string; status?: string };
+  const [chat, setChat] = useState<ChatMessage[]>([]);
+  const [sending, setSending] = useState(false);
+  const [chatError, setChatError] = useState("");
+  const chatScrollRef = useRef<ScrollView>(null);
+  useEffect(() => {
+    setChat([]);
+    if (!uid) return;
+    return onSnapshot(
+      query(collection(db, "users", uid, "pepoMessages"), orderBy("createdAt"), limitToLast(30)),
+      (snap) => setChat(snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<ChatMessage, "id">) }))),
+      (error) => console.error("Could not load Pepo chat:", error)
+    );
+  }, [uid]);
+  const pepoThinking = chat.some((m) => m.role === "user" && (m.status === "pending" || m.status === "answering"));
+
+  async function askPepo(text?: string) {
+    const q = (text ?? question).trim().slice(0, 1000);
+    if (!q || sending) return;
+    if (!uid) {
+      setChatError("Please log in to chat with Pepo.");
+      return;
+    }
+    setSending(true);
+    setChatError("");
+    try {
+      const batch = writeBatch(db);
+      batch.set(doc(collection(db, "users", uid, "pepoMessages")), {
+        role: "user",
+        text: q,
+        status: "pending",
+        petId: activePetId ?? null,
+        createdAt: serverTimestamp(),
+      });
+      batch.set(doc(db, "users", uid), { pepoPending: true }, { merge: true });
+      await batch.commit();
+      setQuestion("");
+    } catch (error: any) {
+      console.error("Could not send question to Pepo:", error);
+      setChatError(
+        String(error?.code ?? "").includes("permission")
+          ? "Pepo can't receive messages (Firestore permission denied)."
+          : "Couldn't send your question. Check your connection and try again."
+      );
+    } finally {
+      setSending(false);
+    }
+  }
+
+  // "Ask Pepo" in the tracker pop-up jumps down to the Ask Pepo chat box here.
+  const scrollRef = useRef<ScrollView>(null);
+  const pepoInputRef = useRef<TextInput>(null);
+  const sheetY = useRef(0);
+  const pepoCardY = useRef(0);
+  const goToPepo = () => {
+    scrollRef.current?.scrollTo({ y: Math.max(sheetY.current + pepoCardY.current - 20, 0), animated: true });
+    setTimeout(() => pepoInputRef.current?.focus(), 450);
+  };
   const [tracker, setTracker] = useState<TrackerKind>("activity");
   const [trackerOpen, setTrackerOpen] = useState(false);
   const openTracker = (kind: TrackerKind) => {
@@ -305,14 +667,19 @@ export default function PostHomepage() {
     setTrackerOpen(true);
   };
 
-  const tasks = useMemo(() => tasksFor(pet?.species), [pet?.species]);
-  const tips = useMemo(() => tipsFor(pet?.species), [pet?.species]);
+  const articles = useMemo(() => articlesFor(pet?.species), [pet?.species]);
+  const [showAllArticles, setShowAllArticles] = useState(false);
+  const shownArticles = showAllArticles ? articles : articles.slice(0, 2);
+  const [openArticleItem, setOpenArticleItem] = useState<Article | null>(null);
   const totalPoints = tasks.reduce((sum, task) => sum + task.points, 0);
   const earnedPoints = tasks.reduce(
     (sum, task) => sum + (done[task.id] ? task.points : 0),
     0
   );
   const progress = totalPoints ? earnedPoints / totalPoints : 0;
+  // The cheapest reward the user can't afford yet is the "next" goal.
+  const nextReward = REWARDS.find((r) => r.cost > pawPoints) ?? null;
+  const rewardProgress = nextReward ? Math.min(pawPoints / nextReward.cost, 1) : 1;
   const today = new Date().toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
@@ -415,9 +782,13 @@ export default function PostHomepage() {
     <View style={styles.screen}>
       <LinearGradient colors={[COLORS.peachLight, COLORS.peach]} style={StyleSheet.absoluteFill} />
 
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
       <ScrollView
+        ref={scrollRef}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
+        automaticallyAdjustKeyboardInsets
       >
         {/* The exact selected pet's Firestore photo and identity */}
         <Image source={photoFor(pet)} style={styles.heroPhoto} />
@@ -447,7 +818,7 @@ export default function PostHomepage() {
           </View>
         )}
 
-        <View style={styles.sheet}>
+        <View style={styles.sheet} onLayout={(e) => (sheetY.current = e.nativeEvent.layout.y)}>
           <Text style={styles.petMeta}>{meta || "Adopted companion"}</Text>
 
           {/* Individual Firestore pet details; nothing hardcoded as Barley */}
@@ -509,70 +880,185 @@ export default function PostHomepage() {
             ))}
           </View>
 
-          <View style={styles.pointsCard}>
+          <TouchableOpacity
+            style={styles.pointsCard}
+            activeOpacity={0.8}
+            onPress={() => {
+              setRewardMessage("");
+              setRewardsOpen(true);
+            }}
+            accessibilityLabel="Open Pawtnership rewards"
+          >
             <View style={styles.pointsLeft}>
-              <Text style={styles.pointsTitle}>Pawtnership Points</Text>
+              <Text style={styles.pointsTitle}>Pawtnership Points · {pawPoints} pts</Text>
               <View style={styles.pointsTrack}>
-                <View style={[styles.pointsFill, { width: `${progress * 100}%` }]} />
+                <View style={[styles.pointsFill, { width: `${rewardProgress * 100}%` }]} />
               </View>
-              <Text style={styles.pointsCaption}>Keep going for the next badge!</Text>
+              <Text style={styles.pointsCaption}>
+                {nextReward
+                  ? `${nextReward.cost - pawPoints} pts until ${nextReward.title.toLowerCase()}. Tap for rewards!`
+                  : "You can redeem any reward. Tap to choose!"}
+              </Text>
             </View>
             <View style={styles.badge}>
-              <PawPrint size={30} color="white" />
+              <Gift size={30} color="white" />
             </View>
-          </View>
+          </TouchableOpacity>
 
           <LinearGradient colors={["#EDBDB0", COLORS.cream]} style={styles.tipsCard}>
             <Text style={styles.sectionTitle}>Quick Tips & Articles</Text>
-            {tips.map((tip) => (
-              <TouchableOpacity key={tip.id} style={styles.tipRow}>
+            {shownArticles.map((article) => (
+              <TouchableOpacity
+                key={article.id}
+                style={styles.tipRow}
+                onPress={() => setOpenArticleItem(article)}
+                accessibilityRole="button"
+                accessibilityLabel={`${article.title}, from ${article.source}`}
+              >
                 <Newspaper size={36} color="#B9C3EC" strokeWidth={1.5} />
                 <View style={styles.tipText}>
-                  <Text style={styles.tipLabel}>{tip.label}</Text>
-                  <Text style={styles.tipTitle}>{tip.title}</Text>
+                  <Text style={styles.tipLabel}>{article.label}</Text>
+                  <Text style={styles.tipTitle}>{article.title}</Text>
+                  <Text style={styles.tipSource}>{article.source}</Text>
                 </View>
               </TouchableOpacity>
             ))}
-            <TouchableOpacity style={styles.seeMore}>
-              <Text style={styles.seeMoreText}>See More</Text>
-            </TouchableOpacity>
+            {articles.length > 2 && (
+              <TouchableOpacity style={styles.seeMore} onPress={() => setShowAllArticles((v) => !v)}>
+                <Text style={styles.seeMoreText}>{showAllArticles ? "Show Less" : "See More"}</Text>
+              </TouchableOpacity>
+            )}
           </LinearGradient>
 
           <LinearGradient
             colors={[COLORS.periwinkle, COLORS.periwinkleLight]}
             style={styles.pepoCard}
+            onLayout={(e) => (pepoCardY.current = e.nativeEvent.layout.y)}
           >
             <View style={styles.pepoHeader}>
               <View style={styles.pepoAvatar}>
-                <PawPrint size={26} color={COLORS.peach} />
+                <Image source={pepoGoat} style={styles.pepoImage} />
               </View>
               <Text style={styles.pepoTitle}>Ask Pepo</Text>
               <TouchableOpacity style={styles.bookmarkButton}>
                 <Bookmark size={20} color={COLORS.text} />
               </TouchableOpacity>
             </View>
+            <ScrollView
+              ref={chatScrollRef}
+              style={styles.chatArea}
+              contentContainerStyle={styles.chatContent}
+              nestedScrollEnabled
+              keyboardShouldPersistTaps="handled"
+              onContentSizeChange={() => chatScrollRef.current?.scrollToEnd({ animated: true })}
+            >
+              {chat.length === 0 ? (
+                <View style={styles.chatEmpty}>
+                  <Text style={styles.chatEmptyText}>
+                    Hi! I'm Pepo 🐐 Ask me anything about caring for {pet?.name || "your pet"}.
+                  </Text>
+                  {[
+                    `How can I help ${pet?.name || "my pet"} settle in?`,
+                    "What should a daily routine look like?",
+                    "What foods are dangerous for my pet?",
+                  ].map((s) => (
+                    <TouchableOpacity key={s} style={styles.chatChip} onPress={() => askPepo(s)}>
+                      <Text style={styles.chatChipText}>{s}</Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              ) : (
+                chat.map((m) =>
+                  m.role === "user" ? (
+                    <View key={m.id} style={[styles.bubble, styles.bubbleUser]}>
+                      <Text style={styles.bubbleText}>{m.text}</Text>
+                    </View>
+                  ) : (
+                    <View key={m.id} style={styles.pepoRow}>
+                      <View style={styles.bubbleAvatar}>
+                        <Image source={pepoGoat} style={styles.bubbleAvatarImage} />
+                      </View>
+                      <View style={[styles.bubble, styles.bubblePepo]}>
+                        <Text style={styles.bubbleText}>{m.text}</Text>
+                      </View>
+                    </View>
+                  )
+                )
+              )}
+              {pepoThinking && <Text style={styles.typing}>Pepo is typing…</Text>}
+            </ScrollView>
+
             <View style={styles.pepoInputRow}>
               <TextInput
+                ref={pepoInputRef}
                 style={styles.pepoInput}
                 placeholder="Ask a question"
                 placeholderTextColor="#9AA6D6"
                 value={question}
                 onChangeText={setQuestion}
+                onSubmitEditing={() => askPepo()}
+                onFocus={() => {
+                  setChatError("");
+                  setTimeout(() => {
+                    scrollRef.current?.scrollTo({
+                      y: Math.max(sheetY.current + pepoCardY.current - 20, 0),
+                      animated: true,
+                    });
+                  }, 250);
+                }}
+                returnKeyType="send"
+                maxLength={1000}
               />
-              <TouchableOpacity style={styles.micButton}>
-                <Mic size={18} color="#8C99D6" />
+              <TouchableOpacity
+                style={[styles.micButton, (!question.trim() || sending) && { opacity: 0.5 }]}
+                onPress={() => askPepo()}
+                disabled={!question.trim() || sending}
+                accessibilityLabel="Send question to Pepo"
+              >
+                {sending ? <ActivityIndicator size="small" color="#8C99D6" /> : <Send size={18} color="#8C99D6" />}
               </TouchableOpacity>
             </View>
+            {!!chatError && <Text style={styles.chatError}>{chatError}</Text>}
+            <Text style={styles.chatNote}>Pepo gives general tips, not veterinary advice.</Text>
           </LinearGradient>
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
 
       {bottomNav}
+
+      <Modal
+        visible={rewardsOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setRewardsOpen(false)}
+      >
+        <RewardsPopup
+          points={pawPoints}
+          coupons={coupons}
+          redeeming={redeeming}
+          message={rewardMessage}
+          onRedeem={redeem}
+          onClose={() => setRewardsOpen(false)}
+        />
+      </Modal>
+
+      <Modal
+        visible={!!openArticleItem}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setOpenArticleItem(null)}
+      >
+        {openArticleItem && (
+          <ArticlePopup article={openArticleItem} onClose={() => setOpenArticleItem(null)} />
+        )}
+      </Modal>
 
       <TrackerModal
         visible={trackerOpen}
         kind={tracker}
         onClose={() => setTrackerOpen(false)}
+        onAskPepo={goToPepo}
       />
     </View>
   );
@@ -582,7 +1068,7 @@ const NAV_RADIUS = 20;
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: COLORS.peach },
-  scrollContent: { alignItems: "center", paddingTop: 56, paddingBottom: 40 },
+  scrollContent: { alignItems: "center", paddingTop: 56, paddingBottom: 80 },
   center: {
     flex: 1,
     alignItems: "center",
@@ -708,7 +1194,7 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: "#3E8FE0",
+    backgroundColor: COLORS.peachLight,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -725,6 +1211,87 @@ const styles = StyleSheet.create({
   tipText: { flex: 1 },
   tipLabel: { fontSize: 10, letterSpacing: 1, color: "#B0BAE6" },
   tipTitle: { fontSize: 16, fontWeight: "700", color: COLORS.text },
+  tipSource: { fontSize: 11, color: COLORS.muted, marginTop: 2 },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(60, 60, 60, 0.35)",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 24,
+  },
+  popup: {
+    width: "100%",
+    maxWidth: 420,
+    backgroundColor: COLORS.cream,
+    borderRadius: 36,
+    borderWidth: 1.5,
+    borderColor: "#edab9b",
+    paddingHorizontal: 24,
+    paddingTop: 28,
+    paddingBottom: 24,
+    gap: 10,
+  },
+  closeButton: { position: "absolute", top: 14, right: 16, zIndex: 1 },
+  popupLabel: { fontSize: 11, letterSpacing: 1, color: "#9AA6D6", textAlign: "center", fontWeight: "700" },
+  popupTitle: {
+    fontSize: 20,
+    fontWeight: "900",
+    color: COLORS.text,
+    textAlign: "center",
+    textDecorationLine: "underline",
+    paddingHorizontal: 12,
+  },
+  popupSource: { fontSize: 13, color: COLORS.muted, textAlign: "center" },
+  popupTips: { backgroundColor: "white", borderRadius: 20, padding: 14, gap: 10, marginTop: 4 },
+  popupSection: { fontSize: 15, fontWeight: "800", color: COLORS.peach },
+  popupTipRow: { flexDirection: "row", gap: 8, alignItems: "flex-start" },
+  popupBody: { flex: 1, fontSize: 15, lineHeight: 21, color: COLORS.text },
+  readButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    backgroundColor: COLORS.peach,
+    borderRadius: 18,
+    paddingVertical: 13,
+    marginTop: 6,
+  },
+  readButtonText: { color: "white", fontSize: 16, fontWeight: "700" },
+  popupNote: { fontSize: 11, color: COLORS.muted, textAlign: "center" },
+  rewardsBalance: { fontSize: 34, fontWeight: "900", color: COLORS.peach, textAlign: "center" },
+  rewardRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    backgroundColor: "white",
+    borderRadius: 18,
+    padding: 12,
+  },
+  rewardTitle: { fontSize: 15, fontWeight: "800", color: COLORS.text },
+  rewardDetail: { fontSize: 12, color: COLORS.muted },
+  redeemButton: {
+    backgroundColor: COLORS.peach,
+    borderRadius: 14,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    minWidth: 76,
+    alignItems: "center",
+  },
+  redeemButtonOff: { backgroundColor: "#D9C9C3" },
+  redeemText: { color: "white", fontWeight: "800", fontSize: 13 },
+  rewardMessage: { textAlign: "center", fontSize: 14, fontWeight: "700", color: COLORS.text },
+  couponRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    backgroundColor: COLORS.periwinkleLight,
+    borderRadius: 16,
+    padding: 12,
+    borderWidth: 1,
+    borderStyle: "dashed",
+    borderColor: "#9AA6D6",
+  },
+  couponCode: { fontSize: 16, fontWeight: "900", letterSpacing: 1.5, color: COLORS.text },
   seeMore: {
     alignSelf: "center",
     backgroundColor: COLORS.peachTile,
@@ -733,7 +1300,39 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   seeMoreText: { color: "white", fontWeight: "600" },
-  pepoCard: { borderRadius: 22, padding: 16, minHeight: 240, justifyContent: "space-between" },
+  pepoCard: { borderRadius: 22, padding: 16, minHeight: 240, justifyContent: "space-between", gap: 10 },
+  chatArea: { maxHeight: 320, backgroundColor: "rgba(255,255,255,0.55)", borderRadius: 18 },
+  chatContent: { padding: 10, gap: 8 },
+  chatEmpty: { gap: 8 },
+  chatEmptyText: { fontSize: 14, color: COLORS.text, lineHeight: 20 },
+  chatChip: {
+    alignSelf: "flex-start",
+    backgroundColor: "white",
+    borderRadius: 14,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderWidth: 1,
+    borderColor: "#C5CEF0",
+  },
+  chatChipText: { fontSize: 13, color: COLORS.text },
+  pepoRow: { flexDirection: "row", alignItems: "flex-end", gap: 6, maxWidth: "88%" },
+  bubbleAvatar: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
+  },
+  bubbleAvatarImage: { width: 34, height: 34, resizeMode: "contain" },
+  bubble: { borderRadius: 16, paddingHorizontal: 12, paddingVertical: 8, maxWidth: "88%" },
+  bubbleUser: { alignSelf: "flex-end", backgroundColor: COLORS.peachLight, borderBottomRightRadius: 4 },
+  bubblePepo: { backgroundColor: "white", borderBottomLeftRadius: 4, flexShrink: 1 },
+  bubbleText: { fontSize: 14, lineHeight: 20, color: COLORS.text },
+  typing: { fontSize: 12, fontStyle: "italic", color: "#7C88C4", marginLeft: 34 },
+  chatNote: { fontSize: 10, color: "#7C88C4", textAlign: "center" },
+  chatError: { fontSize: 12, color: "#C0392B", textAlign: "center", fontWeight: "600" },
   pepoHeader: { flexDirection: "row", alignItems: "center", gap: 12 },
   pepoAvatar: {
     width: 46,
@@ -761,11 +1360,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     color: COLORS.text,
   },
+  pepoImage: {
+  width: 65,
+  height: 65,
+  resizeMode: "contain",
+  },
   micButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: "#C5CEF0",
+    backgroundColor: COLORS.peachLight,
     alignItems: "center",
     justifyContent: "center",
   },
