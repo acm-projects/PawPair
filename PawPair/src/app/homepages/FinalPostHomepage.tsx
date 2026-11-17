@@ -1,24 +1,11 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  ActivityIndicator,
-  Linking,
-  Modal,
-  Platform,
-  Pressable,
-  KeyboardAvoidingView,
-} from "react-native";
+import { View, Text, Image, ScrollView, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, Linking, Modal, Platform, Pressable, KeyboardAvoidingView, } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as WebBrowser from "expo-web-browser";
 import { useNavigation, useRouter, type Href } from "expo-router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
+  arrayUnion,
   collection,
   doc,
   increment,
@@ -592,6 +579,8 @@ export default function PostHomepage() {
   // Messages live in users/{uid}/pepoMessages. The worker answers anything with
   // status "pending" (see backend/ml-server/pepo.py) and adds Pepo's reply.
   type ChatMessage = { id: string; role: "user" | "pepo"; text: string; status?: string };
+  // Each pet gets its own chat: users/{uid}/pepoChats/{petId}/messages
+  const chatKey = activePetId ?? "general";
   const [chat, setChat] = useState<ChatMessage[]>([]);
   const [sending, setSending] = useState(false);
   const [chatError, setChatError] = useState("");
@@ -600,11 +589,11 @@ export default function PostHomepage() {
     setChat([]);
     if (!uid) return;
     return onSnapshot(
-      query(collection(db, "users", uid, "pepoMessages"), orderBy("createdAt"), limitToLast(30)),
+      query(collection(db, "users", uid, "pepoChats", chatKey, "messages"), orderBy("createdAt"), limitToLast(30)),
       (snap) => setChat(snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<ChatMessage, "id">) }))),
       (error) => console.error("Could not load Pepo chat:", error)
     );
-  }, [uid]);
+  }, [uid, chatKey]);
   const pepoThinking = chat.some((m) => m.role === "user" && (m.status === "pending" || m.status === "answering"));
 
   async function askPepo(text?: string) {
@@ -618,14 +607,18 @@ export default function PostHomepage() {
     setChatError("");
     try {
       const batch = writeBatch(db);
-      batch.set(doc(collection(db, "users", uid, "pepoMessages")), {
+      batch.set(doc(collection(db, "users", uid, "pepoChats", chatKey, "messages")), {
         role: "user",
         text: q,
         status: "pending",
         petId: activePetId ?? null,
         createdAt: serverTimestamp(),
       });
-      batch.set(doc(db, "users", uid), { pepoPending: true }, { merge: true });
+      batch.set(
+        doc(db, "users", uid),
+        { pepoPending: true, pepoPendingChats: arrayUnion(chatKey) },
+        { merge: true }
+      );
       await batch.commit();
       setQuestion("");
     } catch (error: any) {
@@ -697,6 +690,7 @@ export default function PostHomepage() {
     return (
       <View style={styles.screen}>
         <LinearGradient colors={[COLORS.peachLight, COLORS.peach]} style={StyleSheet.absoluteFill} />
+        <PawBackground />
         <View style={styles.center}>
           <ActivityIndicator size="large" color={COLORS.text} />
           <Text style={styles.emptyText}>Loading your pet...</Text>
@@ -709,13 +703,14 @@ export default function PostHomepage() {
   if (!uid || profileError || petError || !pet) {
     return (
       <View style={styles.screen}>
-        <LinearGradient colors={[COLORS.peachLight, COLORS.peach]} style={StyleSheet.absoluteFill} />
+        <LinearGradient colors={[COLORS.peachLight, COLORS.peach, COLORS.peach]} locations={[0, 0.35, 0.6]} style={StyleSheet.absoluteFill} />
+        <PawBackground />
         <View style={styles.center}>
           <PawPrint size={58} color={COLORS.cream} />
           <Text style={styles.emptyTitle}>
             {!uid ? "Log in to view your pet" : "Your post-adoption homepage"}
           </Text>
-          <Text style={styles.emptyText}>
+            <Text style={styles.emptyText}>
             {!uid
               ? "Your adopted pet is linked to your account."
               : profileError || petError ||
@@ -756,7 +751,12 @@ export default function PostHomepage() {
 
   return (
     <View style={styles.screen}>
-      <LinearGradient colors={[COLORS.peachLight, COLORS.peach]} style={StyleSheet.absoluteFill} />
+      <LinearGradient
+        colors={[COLORS.peachLight, COLORS.peach, COLORS.cream]}
+        locations={[0, 0.35, 0.6]}
+        style={StyleSheet.absoluteFill}
+      />
+      <PawBackground />
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
       <ScrollView
@@ -765,6 +765,7 @@ export default function PostHomepage() {
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
         automaticallyAdjustKeyboardInsets
+        contentInsetAdjustmentBehavior="never"
       >
         {/* The exact selected pet's Firestore photo and identity */}
         <Image source={photoFor(pet)} style={styles.heroPhoto} />
@@ -796,17 +797,6 @@ export default function PostHomepage() {
 
         <View style={styles.sheet} onLayout={(e) => (sheetY.current = e.nativeEvent.layout.y)}>
           <Text style={styles.petMeta}>{meta || "Adopted companion"}</Text>
-
-          {/* Individual Firestore pet details; nothing hardcoded as Barley */}
-          {(pet.description || pet.size || pet.energy || temperament) && (
-            <View style={styles.petDetailsCard}>
-              <Text style={styles.petDetailsTitle}>About {pet.name || "your pet"}</Text>
-              {!!pet.description && <Text style={styles.petDescription}>{pet.description}</Text>}
-              {!!pet.size && <Text style={styles.petAttribute}>Size: {pet.size}</Text>}
-              {!!pet.energy && <Text style={styles.petAttribute}>Energy: {pet.energy}</Text>}
-              {!!temperament && <Text style={styles.petAttribute}>Temperament: {temperament}</Text>}
-            </View>
-          )}
 
           {/* Daily Paw-gress: tasks adapt to the pet's species */}
           <LinearGradient colors={["#C5CDF0", COLORS.cream]} style={styles.dailyOuter}>
@@ -1040,11 +1030,35 @@ export default function PostHomepage() {
   );
 }
 
+// Light paw prints drawn over the background gradient (not tappable)
+function PawBackground() {
+  return (
+    <View style={StyleSheet.absoluteFill} pointerEvents="none">
+      {PAWS.map(({ size, rotate, ...position }, i) => (
+        <View key={i} style={{ position: "absolute", ...position, transform: [{ rotate }] }}>
+          <PawPrint size={size} color="rgb(248, 231, 233)" strokeWidth={1.5} opacity={0.5} />
+        </View>
+      ))}
+    </View>
+  );
+}
+
+const PAWS = [
+  { top: 6, left: 8, rotate: "-20deg", size: 45 },
+  { top: 30, right: 10, rotate: "15deg", size: 45 },
+  { top: "22%", left: 5, rotate: "25deg", size: 45 },
+  { top: "45%", left: 6, rotate: "-15deg", size: 45 },
+  { top: "66%", left: 5, rotate: "30deg", size: 45 },
+  { top: "15%", right: 5, rotate: "-25deg", size: 45 },
+  { top: "35%", right: 6, rotate: "10deg", size: 45 },
+  { top: "56%", right: 5, rotate: "-30deg", size: 45 },
+] as const;
+
 const NAV_RADIUS = 20;
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: COLORS.peach },
-  scrollContent: { alignItems: "center", paddingTop: 56, paddingBottom: 80 },
+  screen: { flex: 1, backgroundColor: COLORS.cream },
+  scrollContent: { flexGrow: 1, alignItems: "center", paddingTop: 56 },
   center: {
     flex: 1,
     alignItems: "center",
@@ -1096,6 +1110,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 44,
     borderTopRightRadius: 44,
     padding: 16,
+    paddingBottom: NAV_RADIUS + 8,
     gap: 16,
   },
   petMeta: { textAlign: "center", fontSize: 15, color: COLORS.text },

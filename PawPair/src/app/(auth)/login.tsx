@@ -15,7 +15,8 @@ import {
 const pepoGoat = require("../../../assets/images/pepo-goat.png");
 
 import { useEffect, useRef, useState } from "react";
-import { app } from "../../firebase.js";
+import { app, db } from "../../firebase.js";
+import { doc, getDoc } from "firebase/firestore";
 
 import {
   getAuth,
@@ -116,8 +117,15 @@ async function handleLogin() {
 
     console.log("Login successful:", response.user.email);
 
-
-    router.replace("/homepages/PreHomepage");
+// Fixed homepage navigation --> (if adopted pet, then goes to postadoption page if not then preadoption page)
+    let hasAdopted = false;
+    try {
+      const snap = await getDoc(doc(db, "users", response.user.uid));
+      hasAdopted = !!snap.data()?.adoptedPetId;
+    } catch (e) {
+      console.warn("Couldn't check adoption status, going to the pre-adoption homepage", e);
+    }
+    router.replace(hasAdopted ? "/homepages/FinalPostHomepage" : "/homepages/PreHomepage");
 
   } catch (error: any) {
     console.error("Login error:", error.code, error.message);
