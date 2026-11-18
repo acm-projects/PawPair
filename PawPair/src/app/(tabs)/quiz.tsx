@@ -128,7 +128,7 @@ function displayAnswer(answer: any): string {
 // Original PawPair styling constants
 const PINK = "#F5C0B3";
 const CORAL = "#E98F78";
-const CREAM = "#F6F3F1";
+const CREAM = "#F5EFEB";
 // Open Sans on web; system font on the phone
 const FONT = Platform.OS === "web" ? "'Open Sans', system-ui, sans-serif" : undefined;
 
@@ -594,33 +594,33 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
                   {error}
                 </Text>
               )}
-            </ScrollView>
 
-            {/* Back and Next buttons */}
-            <View style={s.nextWrap}>
-              {index > 0 && (
+              {/* Back and Next buttons: right under the answers */}
+              <View style={s.nextWrap}>
+                {index > 0 && (
+                  <Pressable
+                    disabled={busy || leaving}
+                    onPress={() => {
+                      setIndex((i) => i - 1);
+                      setError("");
+                    }}
+                    style={s.back}
+                  >
+                    <Text style={s.btnText}>Back</Text>
+                  </Pressable>
+                )}
+
                 <Pressable
-                  disabled={busy || leaving}
                   onPress={() => {
-                    setIndex((i) => i - 1);
-                    setError("");
+                    void next();
                   }}
-                  style={s.back}
+                  disabled={!nextEnabled}
+                  style={[s.next, { opacity: canNext && !busy ? 1 : 0.6 }]}
                 >
-                  <Text style={s.btnText}>Back</Text>
+                  <Text style={s.btnText}>{busy ? "Loading..." : isLast ? "Finish" : "Next"}</Text>
                 </Pressable>
-              )}
-
-              <Pressable
-                onPress={() => {
-                  void next();
-                }}
-                disabled={!nextEnabled}
-                style={[s.next, { opacity: canNext && !busy ? 1 : 0.6 }]}
-              >
-                <Text style={s.btnText}>{busy ? "Loading..." : isLast ? "Finish" : "Next"}</Text>
-              </Pressable>
-            </View>
+              </View>
+            </ScrollView>
 
             {/* Empty space so the Skip Quiz bar never covers Back/Next */}
             <View style={{ height: SKIP_H }} />
@@ -649,7 +649,7 @@ const s = StyleSheet.create({
     flex: 1,
     width: "100%",
     alignItems: "center",
-    backgroundColor: "#f2f2f2",
+    backgroundColor: CREAM,
     overflow: "hidden",
   },
   phone: {
@@ -692,10 +692,14 @@ const s = StyleSheet.create({
   },
   paw: { position: "absolute", width: 64, height: 64 },
   content: { flex: 1, zIndex: 1 },
+  // flexGrow + center: short questions sit in the middle of the card,
+  // long ones (like the breed list) still scroll
   contentInner: {
+    flexGrow: 1,
+    justifyContent: "center",
     paddingTop: 24,
     paddingHorizontal: 40,
-    paddingBottom: 8,
+    paddingBottom: 24,
     gap: 14,
   },
   options: { gap: 14 },
@@ -723,8 +727,7 @@ const s = StyleSheet.create({
   optionText: { fontSize: 14, color: "#222", textAlign: "center", fontFamily: FONT },
   nextWrap: {
     zIndex: 1,
-    paddingTop: 8,
-    paddingBottom: 12,
+    paddingTop: 10,
     flexDirection: "row",
     justifyContent: "center",
     gap: 12,

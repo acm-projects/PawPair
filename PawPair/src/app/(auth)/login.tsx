@@ -1,4 +1,5 @@
 import { useRouter } from "expo-router";
+import { getHomeRouteForUser } from "@/data/adoptionRoute";
 
 import {
   Text,
@@ -116,6 +117,8 @@ async function handleLogin() {
     );
 
     console.log("Login successful:", response.user.email);
+    const route = await getHomeRouteForUser(response.user.uid, "/PreHomepage");
+    router.replace(route as any);
 
 // Fixed homepage navigation --> (if adopted pet, then goes to postadoption page if not then preadoption page)
     let hasAdopted = false;
@@ -221,7 +224,7 @@ const paws = [
 export const styles = StyleSheet.create({
   outer: {
     flex: 1,
-    backgroundColor: "#6b6b6b",
+    backgroundColor: "#F3EDE8",
     alignItems: "center",
   },
   container: {

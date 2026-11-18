@@ -5,6 +5,7 @@ import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { PawPrint } from "lucide-react-native";
+import { useRouter } from "expo-router";
 import PawNavBar from "@/components/PawNavBar";
 
 // backend imports
@@ -299,9 +300,13 @@ export default function Scrollview() {
             placeholderTextColor="#786862"
           />
         </View>
-        <TouchableOpacity style={styles.filterButton}>
-          <Ionicons name="options-outline" size={22} color="#1a1a1a" />
-        </TouchableOpacity>
+           <TouchableOpacity
+            style={styles.filterButton}
+            onPress={() => router.navigate("/settings")}
+            accessibilityLabel="Open settings"
+          >
+            <Ionicons name="ellipsis-horizontal" size={22} color="#1a1a1a" />
+          </TouchableOpacity>
       </View>
 
       {/* Species filter chips */}
@@ -355,6 +360,7 @@ export default function Scrollview() {
     </LinearGradient>
   );
 }
+
 
 // 4) THE STYLES -------------------------------------------------------------
 // Like CSS, but: camelCase names, numbers instead of "16px", and every View
@@ -470,4 +476,5 @@ const styles = StyleSheet.create({
   matchRow: { flexDirection: "row", justifyContent: "space-between" },
   matchText: { fontSize: 14 },
   matchValue: { color: "#4f9a5e", fontWeight: "500" },
+  navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });

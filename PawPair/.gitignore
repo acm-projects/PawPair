@@ -41,3 +41,20 @@ example
 # generated native folders
 /ios
 /android
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets
+serviceAccountKey.json
+
+# ML data
+runs/
+backend/ml-server/test_images/*
+training/datasets/*
+
+
+# Editor / Mac
+.vscode/

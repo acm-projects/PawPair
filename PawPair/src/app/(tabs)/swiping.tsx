@@ -325,7 +325,7 @@ const s = StyleSheet.create({
   },
   outer: {
     flex: 1,
-    backgroundColor: "#F6F3EF",
+    backgroundColor: "#F4BFB2",
   },
   emptyWrap: {
     alignItems: "center",
@@ -341,7 +341,7 @@ const s = StyleSheet.create({
     paddingHorizontal: 22,
     height: 44,
     borderRadius: 22,
-    backgroundColor: "#F4BFB2",
+    backgroundColor: "#F6F3EF",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -349,7 +349,8 @@ const s = StyleSheet.create({
   emptyBtnText: { fontSize: 14, fontWeight: "600", color: "#000" },
   card: {
     width: "100%",
-    maxWidth: 340,
+    maxWidth: 390,
+    minHeight:800,
     backgroundColor: "#F6F3EF",
     overflow: "hidden",
     marginTop: 12,

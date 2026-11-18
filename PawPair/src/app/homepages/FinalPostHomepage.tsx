@@ -37,6 +37,7 @@ import {
   Gift,
   Ticket,
   Send,
+  ChevronLeft,
 } from "lucide-react-native";
 
 const COLORS = {
@@ -584,7 +585,7 @@ export default function PostHomepage() {
   const [chat, setChat] = useState<ChatMessage[]>([]);
   const [sending, setSending] = useState(false);
   const [chatError, setChatError] = useState("");
-  const chatScrollRef = useRef<ScrollView>(null);
+const chatScrollRef = useRef<any>(null);
   useEffect(() => {
     setChat([]);
     if (!uid) return;
@@ -634,8 +635,7 @@ export default function PostHomepage() {
   }
 
   // "Ask Pepo" in the tracker pop-up jumps down to the Ask Pepo chat box here.
-  const scrollRef = useRef<ScrollView>(null);
-  // react-native's TextInput ref typing is stricter than the emitted component instance here.
+const scrollRef = useRef<any>(null);  // react-native's TextInput ref typing is stricter than the emitted component instance here.
   const pepoInputRef = useRef<any>(null);
   const sheetY = useRef(0);
   const pepoCardY = useRef(0);
@@ -678,6 +678,16 @@ export default function PostHomepage() {
       <PawNavBar active="/homepage" />
     </View>
   );
+    const backToPre = (
+    <TouchableOpacity
+      style={styles.backButton}
+      onPress={() => router.replace("/homepages/PreHomepage" as Href)}
+      accessibilityLabel="Back to pre-adoption homepage"
+    >
+      <ChevronLeft size={18} color={COLORS.peach} strokeWidth={2.5} />
+      <Text style={styles.backText}>Pre-Adoption</Text>
+    </TouchableOpacity>
+  );
 
   // Never briefly show the previous pet while a different ID loads.
   const loading =
@@ -695,6 +705,7 @@ export default function PostHomepage() {
           <ActivityIndicator size="large" color={COLORS.text} />
           <Text style={styles.emptyText}>Loading your pet...</Text>
         </View>
+        {backToPre}
         {bottomNav}
       </View>
     );
@@ -738,6 +749,7 @@ export default function PostHomepage() {
             </TouchableOpacity>
           )}
         </View>
+        {backToPre}
         {bottomNav}
       </View>
     );
@@ -769,31 +781,33 @@ export default function PostHomepage() {
       >
         {/* The exact selected pet's Firestore photo and identity */}
         <Image source={photoFor(pet)} style={styles.heroPhoto} />
-        <TouchableOpacity
-          style={styles.nameTab}
-          disabled={adoptedPets.length <= 1}
-          onPress={() => setPickerOpen((open) => !open)}
-          accessibilityLabel="Choose your adopted pet"
-        >
-          <Text style={styles.petName}>{pet.name || "Your pet"}</Text>
-          {adoptedPets.length > 1 && <ChevronDown size={26} color={COLORS.text} />}
-        </TouchableOpacity>
+        <View style={styles.nameWrap}>
+          <TouchableOpacity
+            style={styles.nameTab}
+            disabled={adoptedPets.length <= 1}
+            onPress={() => setPickerOpen((open) => !open)}
+            accessibilityLabel="Choose your adopted pet"
+          >
+            <Text style={styles.petName}>{pet.name || "Your pet"}</Text>
+            {adoptedPets.length > 1 && <ChevronDown size={26} color={COLORS.text} />}
+          </TouchableOpacity>
 
-        {pickerOpen && adoptedPets.length > 1 && (
-          <View style={styles.pickerPanel}>
-            {adoptedPets.map((candidate) => (
-              <TouchableOpacity
-                key={String(candidate.id)}
-                style={styles.pickerOption}
-                disabled={savingSelection}
-                onPress={() => selectAdoptedPet(String(candidate.id))}
-              >
-                <Text style={styles.pickerText}>{candidate.name}</Text>
-                {String(candidate.id) === activePetId && <Check size={18} color={COLORS.text} />}
-              </TouchableOpacity>
-            ))}
-          </View>
-        )}
+          {pickerOpen && adoptedPets.length > 1 && (
+            <View style={styles.pickerPanel}>
+              {adoptedPets.map((candidate) => (
+                <TouchableOpacity
+                  key={String(candidate.id)}
+                  style={styles.pickerOption}
+                  disabled={savingSelection}
+                  onPress={() => selectAdoptedPet(String(candidate.id))}
+                >
+                  <Text style={styles.pickerText}>{candidate.name}</Text>
+                  {String(candidate.id) === activePetId && <Check size={18} color={COLORS.text} />}
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
+        </View>
 
         <View style={styles.sheet} onLayout={(e) => (sheetY.current = e.nativeEvent.layout.y)}>
           <Text style={styles.petMeta}>{meta || "Adopted companion"}</Text>
@@ -990,6 +1004,7 @@ export default function PostHomepage() {
         </View>
       </ScrollView>
       </KeyboardAvoidingView>
+      {backToPre}
 
       {bottomNav}
 
@@ -1077,16 +1092,23 @@ const styles = StyleSheet.create({
   chooseText: { color: COLORS.text, fontWeight: "700" },
   heroPhoto: {
     width: 230,
-    height: 190,
+    height: 190 + 32,
     borderTopLeftRadius: 115,
     borderTopRightRadius: 115,
     backgroundColor: "#eee",
+  },
+  // Holds the name tab and its dropdown. Sits above the cream card so the
+  // dropdown can float over it.
+  nameWrap: {
+    alignItems: "center",
+    marginTop: -26 - 32, // overlaps the bottom of the photo
+    zIndex: 10,
+    elevation: 10,
   },
   nameTab: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    marginTop: -26,
     backgroundColor: COLORS.cream,
     borderTopLeftRadius: 28,
     borderTopRightRadius: 28,
@@ -1095,12 +1117,19 @@ const styles = StyleSheet.create({
   },
   petName: { fontSize: 40, fontWeight: "800", color: COLORS.text },
   pickerPanel: {
+    position: "absolute",
+    top: "100%",
+    marginTop: 6,
     alignSelf: "center",
     minWidth: 230,
-    backgroundColor: COLORS.cream,
+    backgroundColor: "rgba(230, 232, 244, 0.95)",
     padding: 10,
     borderRadius: 16,
-    zIndex: 5,
+    shadowColor: "#000",
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 12,
   },
   pickerOption: { flexDirection: "row", gap: 10, justifyContent: "space-between", padding: 10 },
   pickerText: { fontWeight: "700", color: COLORS.text },
@@ -1127,6 +1156,26 @@ const styles = StyleSheet.create({
     padding: 16,
     gap: 14,
   },
+    backButton: {
+    position: Platform.OS === "web" ? ("fixed" as any) : "absolute",
+    top: 25,
+    left: 14,
+    zIndex: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 2,
+    height: 34,
+    paddingLeft: 8,
+    paddingRight: 14,
+    borderRadius: 17,
+    backgroundColor: "rgba(247, 241, 239, 0.95)",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 4,
+  },
+  backText: { fontSize: 12, fontWeight: "700", color: COLORS.peach },
   dailyTitle: { textAlign: "center", fontSize: 18, fontWeight: "700", color: COLORS.text },
   taskRow: { flexDirection: "row", gap: 12, alignItems: "flex-start" },
   taskBody: { flex: 1 },

@@ -212,8 +212,8 @@ export const styles = StyleSheet.create({
     letterSpacing: 2,
   },
   tagline: {
-    fontFamily: "NameFont",
-    fontSize: 26,
+    fontSize: 22,
+    fontWeight: "400",
     color: "#1c1c1c",
     marginTop: 4,
   },

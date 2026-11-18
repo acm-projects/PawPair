@@ -19,6 +19,7 @@ import {
   House,
   MoveRight,
   PartyPopper,
+  PawPrint,
   Send,
   ThumbsUp,
   LucideIcon,
@@ -39,8 +40,13 @@ const DEFAULT_PHOTO = require("../../../assets/images/pet-duo.png");
 const CORAL = "#E98F78";
 const GREEN = "#6EE08F";
 const BG = "#F3EDE8";
+const RING = "#BFCBEC";
+const RING_DEEP = "#9DB0E3"; // slightly deeper end of the ring gradient
+const GREEN_TINT = "#E2F7E9";
+const CORAL_TINT = "#FBE7E0";
 const FONT = Platform.OS === "web" ? "'Open Sans', system-ui, sans-serif" : undefined;
 const OUTER = 64 * 2 + 6;
+const POST_HOME = "/homepages/FinalPostHomepage";
 
 function loadFont() {
   if (typeof document === "undefined") return;
@@ -67,25 +73,51 @@ const CIRCLE = 64;
 function IconCircle({
   Icon,
   color,
+  tint,
+  label,
   count,
   onPress,
 }: {
   Icon: LucideIcon;
   color: string;
+  tint: string;
+  label: string;
   count: number;
   onPress: () => void;
 }) {
   return (
     <Pressable onPress={onPress} style={s.circleWrap}>
-      <View style={[s.circle, { borderColor: color }]}>
-        <Icon size={28} color={color} strokeWidth={2} />
-      </View>
+      <View style={s.ringBox}>
+        <LinearGradient
+          colors={[RING, RING_DEEP]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={s.ring}
+        >
+          <View style={s.gap}>
+            <View style={[s.fill, { backgroundColor: tint }]}>
+              {/* faint hidden paw prints */}
+              <View style={s.pawBig} pointerEvents="none">
+                <PawPrint size={25} color={color} strokeWidth={1.75} />
+              </View>
+              <View style={s.pawSmall} pointerEvents="none">
+                <PawPrint size={8} color={color} strokeWidth={1.75} />
+              </View>
 
-      {count > 0 && (
-        <View style={[s.count, { backgroundColor: color }]}>
-          <Text style={s.countText}>{count > 9 ? "9+" : count}</Text>
-        </View>
-      )}
+              <Icon size={26} color={color} strokeWidth={2} />
+            </View>
+          </View>
+        </LinearGradient>
+
+        {count > 0 && (
+          <View style={[s.count, { backgroundColor: color }]}>
+            <Text style={s.countText}>{count > 9 ? "9+" : count}</Text>
+          </View>
+        )}
+      </View>
+      <Text style={s.label} numberOfLines={1}>
+        {label}
+      </Text>
     </Pressable>
   );
 }
@@ -95,18 +127,23 @@ function TopRow() {
   const matches = useMatchedPets();
   const hasAdopted = useHadAdopted();
   const applied = matches.filter((p) => statusFor(statuses, p.id).stage >= 1);
+  const pending = matches.filter((p) => statusFor(statuses, p.id).stage < 1);
 
   return (
     <View style={s.row}>
       <IconCircle
         Icon={Check}
         color={GREEN}
-        count={matches.length}
+        tint={GREEN_TINT}
+        label="Matches"
+        count={pending.length}
         onPress={() => router.navigate("/matches" as any)}
       />
       <IconCircle
         Icon={ClipboardList}
         color={CORAL}
+        tint={CORAL_TINT}
+        label="Applications"
         count={applied.length}
         onPress={() => router.navigate("/status" as any)}
       />
@@ -115,7 +152,7 @@ function TopRow() {
       {hasAdopted && (
         <Pressable
           style={s.switchBtn}
-          onPress={() => router.replace("/homepages/PostHomepage" as any)}
+          onPress={() => router.replace(POST_HOME as any)}
         >
           <Text style={s.switchText}>I adopted!</Text>
         </Pressable>
@@ -124,10 +161,13 @@ function TopRow() {
   );
 }
 
+// The big pet-photo carousel in the middle of the homepage
 function MatchesHero() {
   const { width: screenW } = useWindowDimensions();
-  const matches = useMatchedPets();
+  const allMatches = useMatchedPets();
   const statuses = useStatuses();
+  // applied pets move to Applications, so they leave the carousel
+  const matches = allMatches.filter((p) => statusFor(statuses, p.id).stage < 1);
   const [index, setIndex] = useState(0);
   const [h, setH] = useState(0);
 
@@ -181,7 +221,6 @@ function MatchesHero() {
             scrollEventThrottle={16}
             style={{ height: cardH, flexGrow: 0 }}
             renderItem={({ item }) => {
-              const stage = statusFor(statuses, item.id).stage;
               const Icon = Check;
               const trait = item.traits?.[0]?.text ?? item.breed;
               return (
@@ -227,9 +266,21 @@ function MatchesHero() {
 export default function Homepage() {
   const navigation = useNavigation();
   const matchCount = useMatchedPets().length;
+  const hasAdopted = useHadAdopted();
 
   const sway = useRef(new Animated.Value(0)).current;
   const hop = useRef(new Animated.Value(0)).current;
+
+  // When a pet gets marked adopted (e.g. on the Applications screen),
+  // send them to PostHomepage automatically. Only fires on the change from
+  // "not adopted" -> "adopted", so it won't yank anyone who's already there.
+  const prevAdopted = useRef(hasAdopted);
+  useEffect(() => {
+    if (!prevAdopted.current && hasAdopted) {
+      router.replace(POST_HOME as any);
+    }
+    prevAdopted.current = hasAdopted;
+  }, [hasAdopted]);
 
   useLayoutEffect(() => {
     navigation.setOptions({ headerShown: false });
@@ -304,7 +355,6 @@ export default function Homepage() {
             <Image key={i} source={paw} style={[s.paw, p]} />
           ))}
         </View>
-
         <View style={s.header}>
           <View style={s.greeting}>
             <Image source={paw} style={s.headerPaw} />
@@ -349,7 +399,7 @@ export default function Homepage() {
 }
 
 const s = StyleSheet.create({
-  outer: { flex: 1, backgroundColor: "#6b6b6b", alignItems: "center" },
+  outer: { flex: 1, backgroundColor: "#F3EDE8", alignItems: "center" },
   container: {
     flex: 1,
     width: "100%",
@@ -373,23 +423,57 @@ const s = StyleSheet.create({
   hello: { position: "absolute", left: "55%", fontFamily: "HeadingFont", fontSize: 32, color: "#1F1F1F" },
   pepo: { width: 52, height: 52, resizeMode: "contain" },
 
+  // story-style circle row
   row: {
     flexDirection: "row",
-    alignItems: "center",
-    gap: 16,
+    alignItems: "flex-start",
+    gap: 14,
     paddingHorizontal: 18,
-    height: CIRCLE + 12,
-    marginBottom: 2,
+    paddingTop: 6,
+    marginBottom: 6,
   },
-  circleWrap: { width: CIRCLE, height: CIRCLE },
-  circle: {
+  circleWrap: { width: CIRCLE + 20, alignItems: "center" },
+  ringBox: { width: CIRCLE, height: CIRCLE },
+  ring: {
     width: CIRCLE,
     height: CIRCLE,
     borderRadius: CIRCLE / 2,
-    borderWidth: 2,
-    borderStyle: "dashed",
+    padding: 3,
+  },
+  gap: {
+    flex: 1,
+    borderRadius: CIRCLE / 2,
+    backgroundColor: "#fff",
+    padding: 3,
+  },
+  fill: {
+    flex: 1,
+    borderRadius: CIRCLE / 2,
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
+  },
+  // faint paw prints hidden in the fill
+  pawBig: {
+    position: "absolute",
+    right: -7,
+    bottom: -7,
+    opacity: 0.13,
+    transform: [{ rotate: "-20deg" }],
+  },
+  pawSmall: {
+    position: "absolute",
+    top: 9,
+    left: 10,
+    opacity: 0.1,
+    transform: [{ rotate: "18deg" }],
+  },
+  label: {
+    marginTop: 6,
+    fontFamily: FONT,
+    fontSize: 11,
+    fontWeight: "600",
+    color: "#4A4A4A",
   },
   count: {
     position: "absolute",
@@ -408,6 +492,8 @@ const s = StyleSheet.create({
 
   switchBtn: {
     marginLeft: "auto",
+    alignSelf: "flex-start",
+    marginTop: (CIRCLE - 34) / 2,
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
@@ -498,7 +584,7 @@ const s = StyleSheet.create({
     justifyContent: "center",
     gap: 10,
   },
-  swipeText: { fontFamily: "NameFont", fontSize: 32, lineHeight: 38, color: "#000" },
+  swipeText: { fontFamily: "HeadingFont", fontSize: 25, lineHeight: 38, color: "#000" },
 
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });

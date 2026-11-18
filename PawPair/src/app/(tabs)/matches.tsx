@@ -116,7 +116,8 @@ export default function Matches() {
 
         <Text style={s.heading}>MATCHES</Text>
 
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 110 }}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 110 }}
+        showsVerticalScrollIndicator={false}>
           {matches.length === 0 && (
             <Text style={s.empty}>No matches yet. Keep on swiping!</Text>
           )}
@@ -178,7 +179,8 @@ export default function Matches() {
 }
 
 const s = StyleSheet.create({
-  outer: { flex: 1, backgroundColor: "#6b6b6b", alignItems: "center" },
+  outer: { flex: 1, backgroundColor: "#F3EDE8", alignItems: "center" },
+  
   container: { flex: 1, width: "100%", maxWidth: 380, backgroundColor: "#F3EDE8", overflow: "hidden" },
   paw: { position: "absolute", width: 52, height: 52, resizeMode: "contain", opacity: 0.8 },
   heading: {
@@ -208,12 +210,12 @@ const s = StyleSheet.create({
   info: { flex: 1, marginLeft: 10, alignItems: "center" },
   infoInner: { alignItems: "flex-start", marginTop: -14 },
   name: {
-    fontFamily: "NameFont",
-    fontSize: 36,
+    fontSize: 24,
     lineHeight: 40,
-    color: "#1a1a1a",
+    color: "#000000",
     alignSelf: "center",
     textAlign: "center",
+    fontWeight: "500",
     marginBottom: -7,
   },
   trait: { flexDirection: "row", alignItems: "center", marginTop: 6 },
@@ -242,7 +244,7 @@ const s = StyleSheet.create({
   },
   backButton: {
     position: "absolute",
-    top: 25,
+    top: 55,
     left: 14,
     zIndex: 99,
     width: 38,
