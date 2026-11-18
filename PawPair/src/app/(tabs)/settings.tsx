@@ -8,13 +8,10 @@ import {
   StyleSheet,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import PawNavBar from "@/components/PawNavBar";
 import {
   User,
-  House,
-  Dog,
-  Camera as CameraIcon,
   ArrowLeft,
   SlidersHorizontal,
   Search,
@@ -58,13 +55,6 @@ const MENU: {
   { label: "Logout", Icon: LogOut, action: "logout" },
 ];
 
-const NAV_ITEMS = [
-  { href: "/profile", label: "Profile", Icon: User },
-  { href: "/homepage", label: "Homepage", Icon: House },
-  { href: "/scrollview", label: "Scrollview", Icon: Dog },
-  { href: "/camera", label: "Camera", Icon: CameraIcon },
-] as const;
-
 // 2) THE SCREEN -------------------------------------------------------------
 export default function Settings() {
   const router = useRouter();
@@ -75,6 +65,8 @@ export default function Settings() {
     item.label.toLowerCase().includes(search.trim().toLowerCase())
   );
 
+  // Back returns to whatever page the user came from
+  // (works because the tabs layout uses backBehavior="history").
   const goBack = () => {
     if (router.canGoBack()) router.back();
     else router.navigate("/homepage");
@@ -110,12 +102,12 @@ export default function Settings() {
           onPress={goBack}
           accessibilityLabel="Go back"
         >
-          <ArrowLeft size={18} color={COLORS.text} strokeWidth={2.25} />
+          <ArrowLeft size={18} color={COLORS.cream} strokeWidth={2.25} />
         </TouchableOpacity>
 
         {/* Avatar + title */}
         <View style={styles.avatar}>
-          <User size={140} color={COLORS.text} strokeWidth={1.25} />
+          <User size={140} color={COLORS.cream} strokeWidth={1.25} />
         </View>
         <View style={styles.titleRow}>
           <Text style={styles.title}>Settings & Privacy</Text>
@@ -155,22 +147,8 @@ export default function Settings() {
       </ScrollView>
 
       {/* Bottom nav (Profile is the highlighted tab on this screen) */}
-      <View style={styles.navBarBackground}>
-        <SafeAreaView style={styles.navBar} edges={["bottom"]}>
-          {NAV_ITEMS.map(({ href, label, Icon }) => {
-            const isActive = href === "/profile";
-            return (
-              <TouchableOpacity
-                key={href}
-                accessibilityLabel={label}
-                style={[styles.navItem, isActive && styles.navItemActive]}
-                onPress={() => router.navigate(href)}
-              >
-                <Icon size={32} color="white" strokeWidth={isActive ? 2.25 : 1.75} />
-              </TouchableOpacity>
-            );
-          })}
-        </SafeAreaView>
+      <View style={styles.navOverlap}>
+        <PawNavBar active="/settings" />
       </View>
     </View>
   );
@@ -188,7 +166,7 @@ const styles = StyleSheet.create({
     height: 34,
     borderRadius: 17,
     borderWidth: 1.5,
-    borderColor: COLORS.text,
+    borderColor: COLORS.search,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -199,7 +177,7 @@ const styles = StyleSheet.create({
     height: 168,
     borderRadius: 84,
     borderWidth: 2,
-    borderColor: COLORS.text,
+    borderColor: COLORS.search,
     alignItems: "center",
     justifyContent: "flex-end", // keeps the person low in the circle
     overflow: "hidden",
@@ -250,24 +228,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     elevation: 3,
   },
-  rowText: { fontSize: 21, fontWeight: "800", color: COLORS.text },
+  rowText: { fontSize: 21, fontWeight: "700", color: COLORS.text },
   empty: { textAlign: "center", color: COLORS.text, marginTop: 8 },
 
-  // Bottom nav (same as the other screens)
-  navBarBackground: {
-    backgroundColor: COLORS.peachLight,
-    borderTopLeftRadius: NAV_RADIUS,
-    borderTopRightRadius: NAV_RADIUS,
-    overflow: "hidden",
-    marginTop: -NAV_RADIUS,
-  },
-  navBar: { flexDirection: "row", justifyContent: "space-around", paddingTop: 8 },
-  navItem: {
-    width: 64,
-    height: 56,
-    borderRadius: 16,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  navItemActive: { backgroundColor: "rgba(255,255,255,0.28)" },
+  navOverlap: { marginTop: -NAV_RADIUS },
 });

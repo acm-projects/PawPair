@@ -12,7 +12,7 @@ export default function Profile() {
   return (
     <View>
         <Text>profile</Text>
-        <PawNavBar active="/profile" />
+        <PawNavBar active="/settings" />
     </View>
   );
 

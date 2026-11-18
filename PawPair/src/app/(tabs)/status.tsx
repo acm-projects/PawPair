@@ -65,7 +65,7 @@ export default function Status() {
         </View>
         <Pressable
           style={s.backButton}
-          onPress={() => router.navigate("homepages/PreHomepage" as any)}
+          onPress={() => router.navigate("/homepages/PreHomepage" as any)}
         >
           <ChevronLeft size={24} color="#222" strokeWidth={2.5} />
         </Pressable>
@@ -80,7 +80,7 @@ export default function Status() {
           {pets.length === 0 && (
             <View style={s.emptyBox}>
               <Text style={s.empty}>No applications yet</Text>
-              <Pressable style={s.emptyBtn} onPress={() => router.navigate("/(tabs)/matches" as any)}>
+              <Pressable style={s.emptyBtn} onPress={() => router.navigate("/matches" as any)}>
                 <Text style={s.emptyBtnText}>Go to Matches</Text>
               </Pressable>
             </View>
@@ -164,7 +164,7 @@ export default function Status() {
 }
 
 const s = StyleSheet.create({
-  outer: { flex: 1, backgroundColor: "#6b6b6b", alignItems: "center" },
+  outer: { flex: 1, backgroundColor: "#F3EDE8", alignItems: "center" },
   container: {
     flex: 1,
     width: "100%",
@@ -186,7 +186,7 @@ const s = StyleSheet.create({
   cardHeader: { flexDirection: "row", alignItems: "center", padding: 10, gap: 12 },
   photo: { width: 84, height: 84, borderRadius: 18 },
   headerText: { flex: 1, gap: 4 },
-  name: { fontFamily: "NameFont", fontSize: 30, lineHeight: 34, color: "#000" },
+  name: { fontWeight:"500", fontSize: 22, lineHeight: 34, color: "#000" },
   pill: {
     alignSelf: "flex-start",
     backgroundColor: "#fff",
@@ -239,7 +239,7 @@ const s = StyleSheet.create({
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
   backButton: {
     position: "absolute",
-    top: 23,
+    top: 55,
     left: 14,
     zIndex: 99,
     width: 38,

@@ -2,9 +2,12 @@ import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
   Dimensions,
   Image,
+  Linking,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -13,7 +16,11 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { PawPrint, X } from "lucide-react-native";
+import { MapPin, PawPrint, Phone, X } from "lucide-react-native";
+import { getAuth } from "firebase/auth";
+
+import { app } from "../firebase.js";
+import { getQuizAnswers } from "../services/quizService";
 
 import PawNavBar from "@/components/PawNavBar";
 import ScanNameEditor from "@/components/ScanNameEditor";
@@ -32,6 +39,163 @@ const COLORS = {
   overlay: "rgba(60, 60, 60, 0.35)",
   button: "#a9b4df",
 };
+
+// Which pets a hazard affects (added by the scan worker)
+type ForPet = { who: "adopting" | "spotted"; pet: string; label?: string | null; reason?: string };
+type PetHazard = Hazard & { for_pets?: ForPet[] };
+type PetScan = ScanDoc & { pets_spotted?: string[]; adopting_pet?: string };
+
+const PET_WORDS: Record<string, string> = {
+  dog: "dog",
+  cat: "cat",
+  bird: "bird",
+  small_animal: "small pet",
+};
+
+function petName(p: ForPet) {
+  return p.who === "adopting"
+    ? `your new ${PET_WORDS[p.pet] ?? p.pet}`
+    : `the ${p.label ?? PET_WORDS[p.pet] ?? p.pet} we spotted`;
+}
+
+// Hidden dangers for every pet
+const HIDDEN_DANGERS: Record<string, string[]> = {
+  dog: [
+    "Human medications, especially pain relievers like ibuprofen and acetaminophen",
+    "Xylitol in sugar-free gum, mints, some peanut butters, and baked goods",
+    "Chocolate, grapes, raisins, onions, and garlic, including in cooked food",
+    "Rodent poison, slug bait, and antifreeze in garages and behind furniture",
+    "Cigarettes, vapes, and nicotine gum",
+  ],
+  cat: [
+    "Lilies, including their pollen and vase water",
+    "Human medications. Acetaminophen is especially dangerous for cats",
+    "Dog flea and tick products with permethrin",
+    "Essential oils and diffusers",
+    "String, thread, hair ties, and rubber bands, which can be swallowed",
+  ],
+  bird: [
+    "Fumes from overheated nonstick (Teflon/PTFE) pans",
+    "Aerosol sprays, scented candles, and air fresheners",
+    "Avocado, chocolate, caffeine, alcohol, and salty foods",
+    "Lead and zinc in old paint, some toys, jewelry, and coins",
+    "Open water like toilets, sinks, and full cups",
+  ],
+  small_animal: [
+    "Electrical cords hidden behind furniture",
+    "Toxic houseplants and garden plants",
+    "Chocolate, onions, garlic, and sugary or salty human food",
+    "Gaps behind appliances and under furniture where they can get stuck",
+    "Hot rooms and direct sun, since small pets overheat easily",
+  ],
+};
+const LABEL_TO_PET: Record<string, string> = { hamster: "small_animal", rabbit: "small_animal" };
+
+function HiddenDangers({ scan }: { scan: PetScan }) {
+  const types: string[] = [];
+  if (scan.adopting_pet) types.push(scan.adopting_pet);
+  for (const label of scan.pets_spotted ?? []) types.push(LABEL_TO_PET[label] ?? label);
+  const unique = [...new Set(types)].filter((t) => HIDDEN_DANGERS[t]);
+  if (unique.length === 0) return null;
+
+  return (
+    <View style={styles.hiddenCard}>
+      <Text style={styles.hiddenTitle}>THINGS A SCAN CAN'T SEE</Text>
+      <Text style={styles.hiddenIntro}>These are often hidden in cabinets, bags, or food. Check for them too.</Text>
+      {unique.map((type) => (
+        <View key={type} style={styles.hiddenGroup}>
+          <Text style={styles.hiddenPet}>For your {PET_WORDS[type] ?? type}:</Text>
+          {HIDDEN_DANGERS[type].map((item) => (
+            <Text key={item} style={styles.hiddenItem}>
+              {"\u2022 "}
+              {item}
+            </Text>
+          ))}
+        </View>
+      ))}
+    </View>
+  );
+}
+
+// Emergency help: opens Maps near the ZIP from the quiz, or near the phone's location
+const POISON_CONTROL = { name: "ASPCA Animal Poison Control", display: "(888) 426-4435", tel: "8884264435" };
+
+function useQuizZip() {
+  const [zip, setZip] = useState<string | null>(null);
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const auth = getAuth(app);
+        await auth.authStateReady();
+        const uid = auth.currentUser?.uid;
+        if (!uid) return;
+        const answers = await getQuizAnswers(uid);
+        const saved = answers?.q19?.zip;
+        if (active && typeof saved === "string" && /^\d{5}$/.test(saved)) setZip(saved);
+      } catch (e) {
+        console.warn("Couldn't load the saved ZIP code", e);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, []);
+  return zip;
+}
+
+function emergencyVetMapsUrl(zip: string | null) {
+  const query = encodeURIComponent(zip ? `emergency vet near ${zip}` : "emergency vet");
+  return Platform.OS === "ios"
+    ? `http://maps.apple.com/?q=${query}`
+    : `https://www.google.com/maps/search/?api=1&query=${zip ? query : encodeURIComponent("emergency vet near me")}`;
+}
+
+async function openLink(url: string, fallbackMessage: string) {
+  try {
+    await Linking.openURL(url);
+  } catch {
+    Alert.alert("Couldn't open that", fallbackMessage);
+  }
+}
+
+function EmergencyHelp() {
+  const zip = useQuizZip();
+  return (
+    <View style={styles.emergencyCard}>
+      <Text style={styles.emergencyTitle}>IN AN EMERGENCY</Text>
+      <Text style={styles.hiddenIntro}>
+        If your pet ate something toxic, is having trouble breathing, or collapses, get help right away.
+      </Text>
+
+      <TouchableOpacity
+        style={[styles.emergencyButton, styles.emergencyButtonAlt]}
+        onPress={() =>
+          openLink(`tel:${POISON_CONTROL.tel}`, `Call ${POISON_CONTROL.name} at ${POISON_CONTROL.display}.`)
+        }
+      >
+        <Phone size={20} color={COLORS.hazardDot} />
+        <Text style={[styles.emergencyButtonText, { color: COLORS.hazardDot }]}>
+          Call Poison Control {POISON_CONTROL.display}
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.emergencyButton}
+        onPress={() =>
+          openLink(emergencyVetMapsUrl(zip), "Search for an emergency vet in your Maps app.")
+        }
+      >
+        <MapPin size={20} color="white" />
+        <Text style={styles.emergencyButtonText}>
+          {zip ? `Find an emergency vet near ${zip}` : "Find an emergency vet near me"}
+        </Text>
+      </TouchableOpacity>
+
+      <Text style={styles.disclaimer}>{POISON_CONTROL.name} is open 24/7. A consultation fee may apply.</Text>
+    </View>
+  );
+}
 
 const SCREEN_W = Dimensions.get("window").width;
 const IMAGE_W = SCREEN_W - 64;
@@ -136,6 +300,7 @@ function HazardPopup({
   snapshot?: Snapshot;
   onClose: () => void;
 }) {
+  const forPets = (hazard as PetHazard).for_pets ?? [];
   return (
     <Pressable style={styles.overlay} onPress={onClose}>
       <Pressable style={styles.popup} onPress={() => {}}>
@@ -149,7 +314,26 @@ function HazardPopup({
 
         {snapshot && <ZoomedHazard snapshot={snapshot} hazard={hazard} />}
 
+        {!!forPets.length && (
+          <View style={styles.affectsRow}>
+            <Text style={styles.affectsLabel}>Affects:</Text>
+            {forPets.map((p, i) => (
+              <View key={i} style={styles.affectsChip}>
+                <Text style={styles.affectsChipText}>{petName(p)}</Text>
+              </View>
+            ))}
+          </View>
+        )}
+
         <Text style={styles.popupBody}>{hazard.reason}</Text>
+        {forPets
+          .filter((p) => p.reason && p.reason !== hazard.reason)
+          .map((p, i) => (
+            <Text key={i} style={styles.popupBody}>
+              <Text style={styles.suggestionLabel}>For {petName(p)}: </Text>
+              {p.reason}
+            </Text>
+          ))}
         <Text style={styles.popupBody}>
           <Text style={styles.suggestionLabel}>Suggestion: </Text>
           {hazard.suggestion}
@@ -274,6 +458,14 @@ export default function CameraResults() {
                       ? "Click on the circles to view full hazard. Swipe for more photos."
                       : "Click on the circles to view full hazard"}
                 </Text>
+                {!!(scan as PetScan).pets_spotted?.length && (
+                  <Text style={styles.spotted}>
+                    🐾 We also spotted {(scan as PetScan).pets_spotted!.join(", ")} and checked hazards for{" "}
+                    {(scan as PetScan).pets_spotted!.length > 1 ? "them" : "it"} too.
+                  </Text>
+                )}
+                <HiddenDangers scan={scan as PetScan} />
+                <EmergencyHelp />
                 <Text style={styles.saved}>Scan saved.</Text>
                 <Text style={styles.disclaimer}>
                   Tips are general pet-safety guidance, not veterinary advice.
@@ -374,6 +566,103 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     color: COLORS.text,
+  },
+  emergencyCard: {
+    backgroundColor: "white",
+    borderWidth: 1.5,
+    borderColor: COLORS.hazardDot,
+    borderRadius: 20,
+    padding: 16,
+    marginTop: 16,
+    gap: 10,
+  },
+  emergencyTitle: {
+    fontSize: 16,
+    fontWeight: "900",
+    color: COLORS.hazardDot,
+  },
+  emergencyButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    backgroundColor: COLORS.hazardDot,
+    borderRadius: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+  },
+  emergencyButtonAlt: {
+    backgroundColor: "white",
+    borderWidth: 1.5,
+    borderColor: COLORS.hazardDot,
+  },
+  emergencyButtonText: {
+    color: "white",
+    fontSize: 15,
+    fontWeight: "700",
+    flexShrink: 1,
+    textAlign: "center",
+  },
+  hiddenCard: {
+    backgroundColor: "white",
+    borderWidth: 1.5,
+    borderColor: COLORS.pinkBorder,
+    borderRadius: 20,
+    padding: 16,
+    marginTop: 16,
+    gap: 6,
+  },
+  hiddenTitle: {
+    fontSize: 16,
+    fontWeight: "900",
+    color: COLORS.pink,
+  },
+  hiddenIntro: {
+    fontSize: 13,
+    color: COLORS.muted,
+  },
+  hiddenGroup: {
+    marginTop: 6,
+    gap: 3,
+  },
+  hiddenPet: {
+    fontSize: 14,
+    fontWeight: "700",
+    color: COLORS.text,
+  },
+  hiddenItem: {
+    fontSize: 13,
+    color: COLORS.text,
+    lineHeight: 19,
+  },
+  spotted: {
+    fontSize: 14,
+    color: COLORS.text,
+    marginTop: 10,
+  },
+  affectsRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    gap: 6,
+  },
+  affectsLabel: {
+    fontSize: 14,
+    fontWeight: "700",
+    color: COLORS.text,
+  },
+  affectsChip: {
+    backgroundColor: "white",
+    borderWidth: 1,
+    borderColor: COLORS.pinkBorder,
+    borderRadius: 12,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+  },
+  affectsChipText: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: COLORS.pink,
   },
   saved: {
     fontSize: 13,

@@ -1,30 +1,19 @@
 import { Text, View, StyleSheet } from "react-native";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "expo-router";
 import PawNavBar from "@/components/PawNavBar";
 import useHadAdopted from "@/data/hadAdopted";
+import { useSavedAdoption, FINAL_POST_HOME, PRE_HOME } from "@/data/adoptionRoute";
 
 export default function Homepage() {
   const router = useRouter();
-  const hasAdopted = useHadAdopted();
+  const adoptedThisSession = useHadAdopted();
+  const { ready, adopted } = useSavedAdoption();
 
-  const [homepageVersion, setHomepageVersion] = useState<"pre" | "post">(
-    hasAdopted ? "post" : "pre"
-  );
-
-  // automatically flip pre/post when adoption status changes
   useEffect(() => {
-    setHomepageVersion(hasAdopted ? "post" : "pre");
-  }, [hasAdopted]);
-
-  // go to the matching page
-  useEffect(() => {
-    if (homepageVersion === "post") {
-      router.replace("/homepages/PostHomepage" as any);
-    } else {
-      router.replace("/homepages/PreHomepage" as any);
-    }
-  }, [homepageVersion]);
+    if (!ready) return; // wait for Firestore so there's no flash of the wrong page
+    router.replace(((adopted || adoptedThisSession) ? FINAL_POST_HOME : PRE_HOME) as any);
+  }, [ready, adopted, adoptedThisSession]);
 
   return (
     <View style={styles.container}>

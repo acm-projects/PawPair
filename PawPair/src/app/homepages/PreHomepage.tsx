@@ -9,6 +9,7 @@ import {
   Animated,
   Easing,
   useWindowDimensions,
+  Platform,
 } from "react-native";
 import {
   Check,
@@ -43,9 +44,9 @@ const RING = "#BFCBEC";
 const RING_DEEP = "#9DB0E3"; // slightly deeper end of the ring gradient
 const GREEN_TINT = "#E2F7E9";
 const CORAL_TINT = "#FBE7E0";
-const FONT = "'Open Sans', system-ui, sans-serif";
+const FONT = Platform.OS === "web" ? "'Open Sans', system-ui, sans-serif" : undefined;
 const OUTER = 64 * 2 + 6;
-const POST_HOME = "/homepages/PostHomepage";
+const POST_HOME = "/homepages/FinalPostHomepage";
 
 function loadFont() {
   if (typeof document === "undefined") return;
@@ -136,7 +137,7 @@ function TopRow() {
         tint={GREEN_TINT}
         label="Matches"
         count={pending.length}
-        onPress={() => router.navigate("/(tabs)/matches" as any)}
+        onPress={() => router.navigate("/matches" as any)}
       />
       <IconCircle
         Icon={ClipboardList}
@@ -225,7 +226,7 @@ function MatchesHero() {
               return (
                 <Pressable
                   style={[s.heroCard, { width: cardW, height: cardH }]}
-                  onPress={() => router.navigate("/(tabs)/matches" as any)}
+                  onPress={() => router.navigate("/matches" as any)}
                 >
                   <Image
                     source={item.image ? { uri: item.image } : DEFAULT_PHOTO}
@@ -398,7 +399,7 @@ export default function Homepage() {
 }
 
 const s = StyleSheet.create({
-  outer: { flex: 1, backgroundColor: "#6b6b6b", alignItems: "center" },
+  outer: { flex: 1, backgroundColor: "#F3EDE8", alignItems: "center" },
   container: {
     flex: 1,
     width: "100%",

@@ -1,23 +1,42 @@
 import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
-import { PawPrint, Plus, User, House, Dog, Camera as CameraIcon } from "lucide-react-native";
+import { PawPrint, Plus } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect, useRef, useState } from "react";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { useIsFocused, Tabs, router } from "expo-router";
 
+import { getAuth } from "firebase/auth";
+
+import { app } from "../../firebase.js";
+import { getQuizAnswers } from "../../services/quizService";
 import { getNextScanName, uploadScan } from "@/services/scanApi";
 import ScanNameEditor from "@/components/ScanNameEditor";
-import type { PetType } from "@/types/scan";
 import PawNavBar from "@/components/PawNavBar";
+import type { PetType } from "@/types/scan";
 
 
 type ScanStatus = "idle" | "starting" | "recording" | "uploading";
 
-const SNAPSHOT_EVERY_MS = 1500;
-const MAX_SNAPSHOTS = 12;
+const SNAPSHOT_EVERY_MS = 1200;
+const MAX_SNAPSHOTS = 16;
 const MAX_SNAPSHOT_CHARS = 900_000;
-const PET_TYPE: PetType = "dog";
+
+// Turns the quiz's "What type of pet?" answer into the pet type the scanner uses.
+function petTypeFromQuiz(answer?: string): PetType {
+  const a = (answer ?? "").toLowerCase();
+  if (a.startsWith("cat")) return "cat" as PetType;
+  if (a.startsWith("bird")) return "bird" as PetType;
+  if (a.startsWith("small animal")) return "small_animal" as PetType;
+  return "dog" as PetType; // dog, "Not sure yet", or no quiz yet
+}
+
+const PET_WORDS: Record<string, string> = {
+  dog: "dog",
+  cat: "cat",
+  bird: "bird",
+  small_animal: "small pet",
+};
 
 function pickSmallPictureSize(sizes: string[]): string | undefined {
   const parsed = sizes
@@ -27,7 +46,8 @@ function pickSmallPictureSize(sizes: string[]): string | undefined {
     })
     .filter((x): x is { s: string; long: number } => x !== null)
     .sort((a, b) => a.long - b.long);
-  const good = parsed.find((p) => p.long >= 640);
+  // ~1280px photos: sharper, so small hazards like scissors are easier to spot
+  const good = parsed.find((p) => p.long >= 1280) ?? parsed.find((p) => p.long >= 640);
   if (good) return good.s;
   return sizes.find((s) => s === "Medium") ?? sizes.find((s) => s === "Low");
 }
@@ -42,6 +62,31 @@ export default function Camera() {
   const [snapshotCount, setSnapshotCount] = useState(0);
   const [pictureSize, setPictureSize] = useState<string | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
+
+  // The pet the user is adopting, from their quiz answers
+  const [petType, setPetType] = useState<PetType>("dog" as PetType);
+  const petTypeRef = useRef(petType);
+  petTypeRef.current = petType;
+
+  useEffect(() => {
+    if (!isFocused) return;
+    let active = true;
+    (async () => {
+      try {
+        const auth = getAuth(app);
+        await auth.authStateReady();
+        const uid = auth.currentUser?.uid;
+        if (!uid) return;
+        const answers = await getQuizAnswers(uid);
+        if (active) setPetType(petTypeFromQuiz(answers?.q1));
+      } catch (e) {
+        console.warn("Couldn't load the adopting pet type", e);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [isFocused]);
 
   const [scanName, setScanName] = useState("Environment Scan");
   const renamedRef = useRef(false);
@@ -130,7 +175,7 @@ export default function Camera() {
 
     setStatus("uploading");
     try {
-      const scanId = await uploadScan(snapshots, PET_TYPE, scanNameRef.current);
+      const scanId = await uploadScan(snapshots, petTypeRef.current, scanNameRef.current);
       renamedRef.current = false;
       setStatus("idle");
       router.push({ pathname: "/cameraResults", params: { scanId, name: scanNameRef.current } });
@@ -230,9 +275,15 @@ export default function Camera() {
         <View style={styles.card}>
           <Text style={styles.instructions}>
             {status === "recording"
-              ? "Scanning… slowly turn all the way around (360°), then tap Stop Scan."
+              ? "Turn slowly, tilt down toward the floor, and pause near tables and counters. Tap Stop Scan when done."
               : "Ensure to scan all around you (360 degrees). Move the camera slowly."}
           </Text>
+
+          {status === "idle" && (
+            <Text style={styles.petLine}>
+              Checking for hazards for your new {PET_WORDS[petType] ?? petType}, plus any pets we spot.
+            </Text>
+          )}
 
           {error && <Text style={styles.error}>{error}</Text>}
 
@@ -260,20 +311,14 @@ export default function Camera() {
             </View>
           )}
         </View>
-        <View style={styles.navWrapper}>
-          <PawNavBar active="/homepage" />
+
+        <View style={styles.navOverlap}>
+          <PawNavBar active="/camera" disabled={status === "uploading"} />
         </View>
       </SafeAreaView>
     </LinearGradient>
   );
 }
-
-const NAV_ITEMS = [
-  { href: "/profile", label: "Profile", Icon: User },
-  { href: "/homepage", label: "Homepage", Icon: House },
-  { href: "/scrollview", label: "Scrollview", Icon: Dog },
-  { href: "/camera", label: "Camera", Icon: CameraIcon },
-] as const;
 
 const PAWS = [
   { top: 6, left: 8, rotate: "-20deg", size: 45 },
@@ -406,6 +451,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#222",
   },
+  petLine: {
+    fontSize: 13,
+    textAlign: "center",
+    color: "#8B5E57",
+    marginTop: -8,
+  },
   error: {
     fontSize: 14,
     textAlign: "center",
@@ -440,5 +491,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-  navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
+  navOverlap: {
+    marginTop: -NAV_RADIUS,
+  },
 });

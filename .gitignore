@@ -58,4 +58,12 @@ serviceAccountKey.json
 .vscode/
 .DS_Store
 node_modules
-node_modules/
+<<<<<<< HEAD
+backend/ml-server/.env
+backend/ml-server/.env
+backend/ml-server/.env
+PawPair/.expo/
+=======
+.expo/
+>>>>>>> origin/camera-demo
+debug_scans/

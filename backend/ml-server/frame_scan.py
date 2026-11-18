@@ -19,6 +19,20 @@ MIN_SIGHTINGS = 2
 VERY_SURE = 0.8
 MIN_SNAPSHOTS_FOR_CHECK = 3
 
+# Small hazards are often visible in only one snapshot while you turn,
+# so they count from a single sighting if YOLO is fairly sure.
+SMALL_HAZARDS = {
+    "knife", "scissors", "fork", "screwdriver", "nail", "syringe", "dice", "grapes",
+    "candy", "remote", "cell phone", "toothbrush", "balloon", "perfume", "spray_can",
+}
+SMALL_HAZARD_ONE_SIGHTING = 0.5
+
+# Thin, straight hazards that look a lot like everyday things (cabinet handles,
+# drawer pulls, pens, cables). These need stronger proof before we flag them:
+# seen in 2+ snapshots, OR seen once with high confidence.
+LOOKALIKE_HAZARDS = {"nail", "screwdriver", "syringe", "knife"}
+LOOKALIKE_ONE_SIGHTING = 0.75
+
 
 def scan_images(images: list[Image.Image], pet_type: str) -> dict:
     """Returns hazards (each with a frame_index) and the shrunk snapshots they appear in."""
@@ -39,7 +53,11 @@ def scan_images(images: list[Image.Image], pet_type: str) -> dict:
     if len(images) >= MIN_SNAPSHOTS_FOR_CHECK:
         for label in list(best):
             seen = sightings.get(label, 0)
-            very_sure = best[label]["hazard"]["confidence"] >= VERY_SURE
+            conf = best[label]["hazard"]["confidence"]
+            if label in LOOKALIKE_HAZARDS:
+                very_sure = conf >= LOOKALIKE_ONE_SIGHTING
+            else:
+                very_sure = conf >= VERY_SURE or (label in SMALL_HAZARDS and conf >= SMALL_HAZARD_ONE_SIGHTING)
             if seen < MIN_SIGHTINGS and not very_sure:
                 print(f"  (ignored {label}: seen in only {seen} snapshot)", flush=True)
                 del best[label]

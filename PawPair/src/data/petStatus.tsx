@@ -1,4 +1,7 @@
 import { useSyncExternalStore } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, doc, onSnapshot, serverTimestamp, setDoc } from "firebase/firestore";
+import { app, db } from "../firebase.js";
 
 export const STAGES = [
   "Matched",
@@ -15,14 +18,52 @@ export type PetStatus = {
 // Pet ids can be numbers or strings
 type PetId = string | number;
 
+// Statuses are saved per user in Firestore:
+//   users/{uid}/petStatus/{petId} -> { stage, dates, updatedAt }
+// so application progress survives app restarts and stays with the account.
 let state: Record<string, PetStatus> = {};
+let uid: string | null = null;
 const listeners = new Set<() => void>();
 
 function emit() {
   listeners.forEach((l) => l());
 }
 
+let started = false;
+let stopSnapshot: (() => void) | undefined;
+
+function start() {
+  if (started) return;
+  started = true;
+  onAuthStateChanged(getAuth(app), (user) => {
+    stopSnapshot?.();
+    stopSnapshot = undefined;
+    state = {};
+    uid = user?.uid ?? null;
+    emit();
+    if (!user) return;
+
+    stopSnapshot = onSnapshot(
+      collection(db, "users", user.uid, "petStatus"),
+      (snap) => {
+        const next: Record<string, PetStatus> = {};
+        snap.forEach((d) => {
+          const data = d.data();
+          next[d.id] = {
+            stage: typeof data.stage === "number" ? data.stage : 0,
+            dates: (data.dates as Record<number, string>) ?? {},
+          };
+        });
+        state = next;
+        emit();
+      },
+      (error) => console.warn("Couldn't load application statuses:", error)
+    );
+  });
+}
+
 function subscribe(l: () => void) {
+  start();
   listeners.add(l);
   return () => {
     listeners.delete(l);
@@ -43,8 +84,17 @@ export function setStage(petId: PetId, stage: number) {
   for (let i = 0; i <= stage; i++) {
     dates[i] = prev[i] ?? today();
   }
+
+  // Update the screen right away; Firestore confirms a moment later.
   state = { ...state, [key]: { stage, dates } };
   emit();
+
+  if (!uid) return;
+  setDoc(
+    doc(db, "users", uid, "petStatus", key),
+    { stage, dates, updatedAt: serverTimestamp() },
+    { merge: false }
+  ).catch((error) => console.error("Couldn't save application status:", error));
 }
 
 export function useStatuses() {

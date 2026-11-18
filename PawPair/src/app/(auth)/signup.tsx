@@ -252,7 +252,7 @@ const paws = [
 const styles = StyleSheet.create({
   outer: {
       flex: 1,
-      backgroundColor: "#6b6b6b",
+      backgroundColor: "#F3EDE8",
       alignItems: "center",
     },
     container: {
