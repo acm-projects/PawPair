@@ -190,6 +190,7 @@ function Attribute({
 
 // 3) THE SCREEN -------------------------------------------------------------
 export default function Scrollview() {
+  const router = useRouter();
   const [search, setSearch] = useState("");
   const [speciesFilter, setSpeciesFilter] = useState("all");
 
