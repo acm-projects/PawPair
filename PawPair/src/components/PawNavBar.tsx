@@ -46,13 +46,13 @@ const styles = StyleSheet.create({
   },
   bar: {
     flexDirection: "row",
-    paddingTop: 8,
+    paddingTop: 9,
   },
   item: {
     flex: 1,
     alignItems: "center",
     gap: 2,
-    paddingBottom: 4,
+    paddingBottom: 5,
   },
   label: {
     color: "transparent",

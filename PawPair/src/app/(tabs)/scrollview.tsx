@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { PawPrint } from "lucide-react-native";
+import { useRouter } from "expo-router";
 import PawNavBar from "@/components/PawNavBar";
 
 // backend imports
@@ -276,9 +278,16 @@ export default function Scrollview() {
     .sort((a, b) => b.matchPercent - a.matchPercent);
 
   return (
-    
-    <LinearGradient colors={[ "#F5C0B3","#E98F78"]} style={styles.container}>
-    
+    <LinearGradient colors={["#F5C0B3", "#E98F78"]} style={styles.container}>
+      {/* Light paw prints in the background (behind everything, not tappable) */}
+      <View style={StyleSheet.absoluteFill} pointerEvents="none">
+        {PAWS.map(({ size, rotate, ...position }, i) => (
+          <View key={i} style={{ position: "absolute", ...position, transform: [{ rotate }] }}>
+            <PawPrint size={size} color="rgb(248, 231, 233)" strokeWidth={1.5} opacity={0.5} />
+          </View>
+        ))}
+      </View>
+
       {/* Search bar + filter button */}
       <View style={styles.searchRow}>
         <View style={styles.searchBar}>
@@ -356,6 +365,18 @@ export default function Scrollview() {
 // 4) THE STYLES -------------------------------------------------------------
 // Like CSS, but: camelCase names, numbers instead of "16px", and every View
 // is already a flexbox that stacks its children top-to-bottom.
+const PAWS = [
+  { top: 6, left: 8, rotate: "-20deg", size: 45 },
+  { top: 30, right: 10, rotate: "15deg", size: 45 },
+  { top: "22%", left: 5, rotate: "25deg", size: 45 },
+  { top: "45%", left: 6, rotate: "-15deg", size: 45 },
+  { top: "66%", left: 5, rotate: "30deg", size: 45 },
+  { top: "15%", right: 5, rotate: "-25deg", size: 45 },
+  { top: "35%", right: 6, rotate: "10deg", size: 45 },
+  { top: "56%", right: 5, rotate: "-30deg", size: 45 },
+] as const;
+
+
 const NAV_RADIUS = 20;
 const styles = StyleSheet.create({
   container: { flex: 1, paddingTop: 56 },

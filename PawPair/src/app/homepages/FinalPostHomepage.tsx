@@ -1,25 +1,12 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  ActivityIndicator,
-  Linking,
-  Modal,
-  Platform,
-  Pressable,
-  KeyboardAvoidingView,
-} from "react-native";
+import { View, Text, Image, ScrollView, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, Linking, Modal, Platform, Pressable, KeyboardAvoidingView, } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as WebBrowser from "expo-web-browser";
 import { useNavigation, useRouter, type Href } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
+  arrayUnion,
   collection,
   doc,
   increment,
@@ -595,6 +582,8 @@ export default function PostHomepage() {
   // Messages live in users/{uid}/pepoMessages. The worker answers anything with
   // status "pending" (see backend/ml-server/pepo.py) and adds Pepo's reply.
   type ChatMessage = { id: string; role: "user" | "pepo"; text: string; status?: string };
+  // Each pet gets its own chat: users/{uid}/pepoChats/{petId}/messages
+  const chatKey = activePetId ?? "general";
   const [chat, setChat] = useState<ChatMessage[]>([]);
   const [sending, setSending] = useState(false);
   const [chatError, setChatError] = useState("");
@@ -603,11 +592,11 @@ export default function PostHomepage() {
     setChat([]);
     if (!uid) return;
     return onSnapshot(
-      query(collection(db, "users", uid, "pepoMessages"), orderBy("createdAt"), limitToLast(30)),
+      query(collection(db, "users", uid, "pepoChats", chatKey, "messages"), orderBy("createdAt"), limitToLast(30)),
       (snap) => setChat(snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<ChatMessage, "id">) }))),
       (error) => console.error("Could not load Pepo chat:", error)
     );
-  }, [uid]);
+  }, [uid, chatKey]);
   const pepoThinking = chat.some((m) => m.role === "user" && (m.status === "pending" || m.status === "answering"));
 
   async function askPepo(text?: string) {
@@ -621,14 +610,18 @@ export default function PostHomepage() {
     setChatError("");
     try {
       const batch = writeBatch(db);
-      batch.set(doc(collection(db, "users", uid, "pepoMessages")), {
+      batch.set(doc(collection(db, "users", uid, "pepoChats", chatKey, "messages")), {
         role: "user",
         text: q,
         status: "pending",
         petId: activePetId ?? null,
         createdAt: serverTimestamp(),
       });
-      batch.set(doc(db, "users", uid), { pepoPending: true }, { merge: true });
+      batch.set(
+        doc(db, "users", uid),
+        { pepoPending: true, pepoPendingChats: arrayUnion(chatKey) },
+        { merge: true }
+      );
       await batch.commit();
       setQuestion("");
     } catch (error: any) {
@@ -711,7 +704,7 @@ export default function PostHomepage() {
     return (
       <View style={styles.screen}>
         <LinearGradient colors={[COLORS.peachLight, COLORS.peach]} style={StyleSheet.absoluteFill} />
-        {backToPre}
+        <PawBackground />
         <View style={styles.center}>
           <ActivityIndicator size="large" color={COLORS.text} />
           <Text style={styles.emptyText}>Loading your pet...</Text>
@@ -724,14 +717,14 @@ export default function PostHomepage() {
   if (!uid || profileError || petError || !pet) {
     return (
       <View style={styles.screen}>
-        <LinearGradient colors={[COLORS.peachLight, COLORS.peach]} style={StyleSheet.absoluteFill} />
-        {backToPre}
+        <LinearGradient colors={[COLORS.peachLight, COLORS.peach, COLORS.peach]} locations={[0, 0.35, 0.6]} style={StyleSheet.absoluteFill} />
+        <PawBackground />
         <View style={styles.center}>
           <PawPrint size={58} color={COLORS.cream} />
           <Text style={styles.emptyTitle}>
             {!uid ? "Log in to view your pet" : "Your post-adoption homepage"}
           </Text>
-          <Text style={styles.emptyText}>
+            <Text style={styles.emptyText}>
             {!uid
               ? "Your adopted pet is linked to your account."
               : profileError || petError ||
@@ -772,19 +765,25 @@ export default function PostHomepage() {
 
   return (
     <View style={styles.screen}>
-      <LinearGradient colors={[COLORS.peachLight, COLORS.peach]} style={StyleSheet.absoluteFill} />
-      {backToPre}
+      <LinearGradient
+        colors={[COLORS.peachLight, COLORS.peach, COLORS.cream]}
+        locations={[0, 0.35, 0.6]}
+        style={StyleSheet.absoluteFill}
+      />
+      <PawBackground />
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
-        <ScrollView
-          ref={scrollRef}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.scrollContent}
-          keyboardShouldPersistTaps="handled"
-          automaticallyAdjustKeyboardInsets
-        >
-          {/* The exact selected pet's Firestore photo and identity */}
-          <Image source={photoFor(pet)} style={styles.heroPhoto} />
+      <ScrollView
+        ref={scrollRef}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
+        automaticallyAdjustKeyboardInsets
+        contentInsetAdjustmentBehavior="never"
+      >
+        {/* The exact selected pet's Firestore photo and identity */}
+        <Image source={photoFor(pet)} style={styles.heroPhoto} />
+        <View style={styles.nameWrap}>
           <TouchableOpacity
             style={styles.nameTab}
             disabled={adoptedPets.length <= 1}
@@ -810,20 +809,10 @@ export default function PostHomepage() {
               ))}
             </View>
           )}
+        </View>
 
-          <View style={styles.sheet} onLayout={(e) => (sheetY.current = e.nativeEvent.layout.y)}>
-            <Text style={styles.petMeta}>{meta || "Adopted companion"}</Text>
-
-            {/* Individual Firestore pet details; nothing hardcoded as Barley */}
-            {(pet.description || pet.size || pet.energy || temperament) && (
-              <View style={styles.petDetailsCard}>
-                <Text style={styles.petDetailsTitle}>About {pet.name || "your pet"}</Text>
-                {!!pet.description && <Text style={styles.petDescription}>{pet.description}</Text>}
-                {!!pet.size && <Text style={styles.petAttribute}>Size: {pet.size}</Text>}
-                {!!pet.energy && <Text style={styles.petAttribute}>Energy: {pet.energy}</Text>}
-                {!!temperament && <Text style={styles.petAttribute}>Temperament: {temperament}</Text>}
-              </View>
-            )}
+        <View style={styles.sheet} onLayout={(e) => (sheetY.current = e.nativeEvent.layout.y)}>
+          <Text style={styles.petMeta}>{meta || "Adopted companion"}</Text>
 
             {/* Daily Paw-gress: tasks adapt to the pet's species */}
             <LinearGradient colors={["#C5CDF0", COLORS.cream]} style={styles.dailyOuter}>
@@ -1057,41 +1046,35 @@ export default function PostHomepage() {
   );
 }
 
+// Light paw prints drawn over the background gradient (not tappable)
+function PawBackground() {
+  return (
+    <View style={StyleSheet.absoluteFill} pointerEvents="none">
+      {PAWS.map(({ size, rotate, ...position }, i) => (
+        <View key={i} style={{ position: "absolute", ...position, transform: [{ rotate }] }}>
+          <PawPrint size={size} color="rgb(248, 231, 233)" strokeWidth={1.5} opacity={0.5} />
+        </View>
+      ))}
+    </View>
+  );
+}
+
+const PAWS = [
+  { top: 6, left: 8, rotate: "-20deg", size: 45 },
+  { top: 30, right: 10, rotate: "15deg", size: 45 },
+  { top: "22%", left: 5, rotate: "25deg", size: 45 },
+  { top: "45%", left: 6, rotate: "-15deg", size: 45 },
+  { top: "66%", left: 5, rotate: "30deg", size: 45 },
+  { top: "15%", right: 5, rotate: "-25deg", size: 45 },
+  { top: "35%", right: 6, rotate: "10deg", size: 45 },
+  { top: "56%", right: 5, rotate: "-30deg", size: 45 },
+] as const;
+
 const NAV_RADIUS = 20;
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: COLORS.peach,
-    // on web, stop the browser page itself from scrolling so only the inner list scrolls
-    ...(Platform.OS === "web" ? ({ height: "100vh", overflow: "hidden" } as any) : {}),
-  },
-  scrollContent: { alignItems: "center", paddingTop: 8, paddingBottom: 80 },
-
-  // top bar that holds the back button (above the scroll area, never scrolls)
-  topBar: {
-    paddingLeft: 14,
-    paddingBottom: 8,
-    alignItems: "flex-start",
-    zIndex: 20,
-  },
-  backButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 2,
-    height: 34,
-    paddingLeft: 8,
-    paddingRight: 14,
-    borderRadius: 17,
-    backgroundColor: "rgba(247, 241, 239, 0.95)",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    elevation: 4,
-  },
-  backText: { fontSize: 12, fontWeight: "700", color: COLORS.peach },
-
+  screen: { flex: 1, backgroundColor: COLORS.cream },
+  scrollContent: { flexGrow: 1, alignItems: "center", paddingTop: 56 },
   center: {
     flex: 1,
     alignItems: "center",
@@ -1110,16 +1093,23 @@ const styles = StyleSheet.create({
   chooseText: { color: COLORS.text, fontWeight: "700" },
   heroPhoto: {
     width: 230,
-    height: 190,
+    height: 190 + 32,
     borderTopLeftRadius: 115,
     borderTopRightRadius: 115,
     backgroundColor: "#eee",
+  },
+  // Holds the name tab and its dropdown. Sits above the cream card so the
+  // dropdown can float over it.
+  nameWrap: {
+    alignItems: "center",
+    marginTop: -26 - 32, // overlaps the bottom of the photo
+    zIndex: 10,
+    elevation: 10,
   },
   nameTab: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    marginTop: -26,
     backgroundColor: COLORS.cream,
     borderTopLeftRadius: 28,
     borderTopRightRadius: 28,
@@ -1128,12 +1118,19 @@ const styles = StyleSheet.create({
   },
   petName: { fontSize: 40, fontWeight: "800", color: COLORS.text },
   pickerPanel: {
+    position: "absolute",
+    top: "100%",
+    marginTop: 6,
     alignSelf: "center",
     minWidth: 230,
-    backgroundColor: COLORS.cream,
+    backgroundColor: "rgba(230, 232, 244, 0.95)",
     padding: 10,
     borderRadius: 16,
-    zIndex: 5,
+    shadowColor: "#000",
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 12,
   },
   pickerOption: { flexDirection: "row", gap: 10, justifyContent: "space-between", padding: 10 },
   pickerText: { fontWeight: "700", color: COLORS.text },
@@ -1143,6 +1140,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 44,
     borderTopRightRadius: 44,
     padding: 16,
+    paddingBottom: NAV_RADIUS + 8,
     gap: 16,
   },
   petMeta: { textAlign: "center", fontSize: 15, color: COLORS.text },
@@ -1159,6 +1157,26 @@ const styles = StyleSheet.create({
     padding: 16,
     gap: 14,
   },
+    backButton: {
+    position: Platform.OS === "web" ? ("fixed" as any) : "absolute",
+    top: 25,
+    left: 14,
+    zIndex: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 2,
+    height: 34,
+    paddingLeft: 8,
+    paddingRight: 14,
+    borderRadius: 17,
+    backgroundColor: "rgba(247, 241, 239, 0.95)",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 4,
+  },
+  backText: { fontSize: 12, fontWeight: "700", color: COLORS.peach },
   dailyTitle: { textAlign: "center", fontSize: 18, fontWeight: "700", color: COLORS.text },
   taskRow: { flexDirection: "row", gap: 12, alignItems: "flex-start" },
   taskBody: { flex: 1 },
