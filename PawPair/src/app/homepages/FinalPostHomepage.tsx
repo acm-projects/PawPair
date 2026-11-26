@@ -3,7 +3,6 @@ import { View, Text, Image, ScrollView, TextInput, TouchableOpacity, StyleSheet,
 import { LinearGradient } from "expo-linear-gradient";
 import * as WebBrowser from "expo-web-browser";
 import { useNavigation, useRouter, type Href } from "expo-router";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   arrayUnion,
@@ -356,7 +355,6 @@ function CheckBox({ checked, size = 22 }: { checked: boolean; size?: number }) {
 
 export default function PostHomepage() {
   const router = useRouter();
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation();
   const statuses = useStatuses();
   const matchedPets = useMatchedPets();
@@ -587,7 +585,7 @@ export default function PostHomepage() {
   const [chat, setChat] = useState<ChatMessage[]>([]);
   const [sending, setSending] = useState(false);
   const [chatError, setChatError] = useState("");
-  const chatScrollRef = useRef<any>(null);
+const chatScrollRef = useRef<any>(null);
   useEffect(() => {
     setChat([]);
     if (!uid) return;
@@ -637,9 +635,7 @@ export default function PostHomepage() {
   }
 
   // "Ask Pepo" in the tracker pop-up jumps down to the Ask Pepo chat box here.
-  // (refs are typed as any because react-native's ScrollView/TextInput ref typings
-  // are stricter than the component instances at runtime)
-  const scrollRef = useRef<any>(null);
+const scrollRef = useRef<any>(null);  // react-native's TextInput ref typing is stricter than the emitted component instance here.
   const pepoInputRef = useRef<any>(null);
   const sheetY = useRef(0);
   const pepoCardY = useRef(0);
@@ -658,6 +654,12 @@ export default function PostHomepage() {
   const [showAllArticles, setShowAllArticles] = useState(false);
   const shownArticles = showAllArticles ? articles : articles.slice(0, 2);
   const [openArticleItem, setOpenArticleItem] = useState<Article | null>(null);
+  const totalPoints = tasks.reduce((sum, task) => sum + task.points, 0);
+  const earnedPoints = tasks.reduce(
+    (sum, task) => sum + (done[task.id] ? task.points : 0),
+    0
+  );
+  const progress = totalPoints ? earnedPoints / totalPoints : 0;
   // The cheapest reward the user can't afford yet is the "next" goal.
   const nextReward = REWARDS.find((r) => r.cost > pawPoints) ?? null;
   const rewardProgress = nextReward ? Math.min(pawPoints / nextReward.cost, 1) : 1;
@@ -676,21 +678,15 @@ export default function PostHomepage() {
       <PawNavBar active="/homepage" />
     </View>
   );
-
-  // Top bar with the back button. It sits in normal layout ABOVE the scroll area
-  // (not floating on top of it), so it can't move when the page scrolls.
-  // insets.top is the status bar / notch on phones and 0 on web.
-  const backToPre = (
-    <View style={[styles.topBar, { paddingTop: insets.top + 8 }]}>
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => router.replace("/homepages/PreHomepage" as Href)}
-        accessibilityLabel="Back to pre-adoption homepage"
-      >
-        <ChevronLeft size={18} color={COLORS.peach} strokeWidth={2.5} />
-        <Text style={styles.backText}>Pre-Adoption</Text>
-      </TouchableOpacity>
-    </View>
+    const backToPre = (
+    <TouchableOpacity
+      style={styles.backButton}
+      onPress={() => router.replace("/homepages/PreHomepage" as Href)}
+      accessibilityLabel="Back to pre-adoption homepage"
+    >
+      <ChevronLeft size={18} color={COLORS.peach} strokeWidth={2.5} />
+      <Text style={styles.backText}>Pre-Adoption</Text>
+    </TouchableOpacity>
   );
 
   // Never briefly show the previous pet while a different ID loads.
@@ -709,6 +705,7 @@ export default function PostHomepage() {
           <ActivityIndicator size="large" color={COLORS.text} />
           <Text style={styles.emptyText}>Loading your pet...</Text>
         </View>
+        {backToPre}
         {bottomNav}
       </View>
     );
@@ -752,6 +749,7 @@ export default function PostHomepage() {
             </TouchableOpacity>
           )}
         </View>
+        {backToPre}
         {bottomNav}
       </View>
     );
@@ -814,198 +812,199 @@ export default function PostHomepage() {
         <View style={styles.sheet} onLayout={(e) => (sheetY.current = e.nativeEvent.layout.y)}>
           <Text style={styles.petMeta}>{meta || "Adopted companion"}</Text>
 
-            {/* Daily Paw-gress: tasks adapt to the pet's species */}
-            <LinearGradient colors={["#C5CDF0", COLORS.cream]} style={styles.dailyOuter}>
-              <View style={styles.dailyInner}>
-                <Text style={styles.dailyTitle}>{today} - Daily Paw-gress</Text>
-                {tasks.map((task) => (
-                  <TouchableOpacity
-                    key={task.id}
-                    style={styles.taskRow}
-                    onPress={() => toggle(task.id)}
-                    activeOpacity={0.7}
-                  >
-                    <CheckBox checked={!!done[task.id]} />
-                    <View style={styles.taskBody}>
-                      <Text style={styles.taskTitle}>{task.title}</Text>
-                      <View style={styles.taskSubRow}>
-                        {task.subItems ? (
-                          <View style={styles.subItems}>
-                            {task.subItems.map((item) => (
-                              <View key={item} style={styles.subItem}>
-                                <CheckBox checked={!!done[task.id]} size={14} />
-                                <Text style={styles.taskDetail}>{item}</Text>
-                              </View>
-                            ))}
-                          </View>
-                        ) : (
-                          <Text style={styles.taskDetail}>{task.detail}</Text>
-                        )}
-                        <Text style={styles.taskPoints}>{task.points} pts</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </LinearGradient>
-
-            <View style={styles.trackerRow}>
-              {TRACKERS.map(({ label, Icon, kind }) => (
+          {/* Daily Paw-gress: tasks adapt to the pet's species */}
+          <LinearGradient colors={["#C5CDF0", COLORS.cream]} style={styles.dailyOuter}>
+            <View style={styles.dailyInner}>
+              <Text style={styles.dailyTitle}>{today} - Daily Paw-gress</Text>
+              {tasks.map((task) => (
                 <TouchableOpacity
-                  key={label}
-                  style={styles.trackerTile}
-                  onPress={() => openTracker(kind)}
+                  key={task.id}
+                  style={styles.taskRow}
+                  onPress={() => toggle(task.id)}
+                  activeOpacity={0.7}
                 >
-                  <Icon size={44} color={COLORS.cream} strokeWidth={1.75} />
-                  <Text style={styles.trackerLabel}>{label}</Text>
+                  <CheckBox checked={!!done[task.id]} />
+                  <View style={styles.taskBody}>
+                    <Text style={styles.taskTitle}>{task.title}</Text>
+                    <View style={styles.taskSubRow}>
+                      {task.subItems ? (
+                        <View style={styles.subItems}>
+                          {task.subItems.map((item) => (
+                            <View key={item} style={styles.subItem}>
+                              <CheckBox checked={!!done[task.id]} size={14} />
+                              <Text style={styles.taskDetail}>{item}</Text>
+                            </View>
+                          ))}
+                        </View>
+                      ) : (
+                        <Text style={styles.taskDetail}>{task.detail}</Text>
+                      )}
+                      <Text style={styles.taskPoints}>{task.points} pts</Text>
+                    </View>
+                  </View>
                 </TouchableOpacity>
               ))}
             </View>
+          </LinearGradient>
 
-            <TouchableOpacity
-              style={styles.pointsCard}
-              activeOpacity={0.8}
-              onPress={() => {
-                setRewardMessage("");
-                setRewardsOpen(true);
-              }}
-              accessibilityLabel="Open Pawtnership rewards"
-            >
-              <View style={styles.pointsLeft}>
-                <Text style={styles.pointsTitle}>Pawtnership Points · {pawPoints} pts</Text>
-                <View style={styles.pointsTrack}>
-                  <View style={[styles.pointsFill, { width: `${rewardProgress * 100}%` }]} />
-                </View>
-                <Text style={styles.pointsCaption}>
-                  {nextReward
-                    ? `${nextReward.cost - pawPoints} pts until ${nextReward.title.toLowerCase()}. Tap for rewards!`
-                    : "You can redeem any reward. Tap to choose!"}
-                </Text>
-              </View>
-              <View style={styles.badge}>
-                <Gift size={30} color="white" />
-              </View>
-            </TouchableOpacity>
-
-            <LinearGradient colors={["#EDBDB0", COLORS.cream]} style={styles.tipsCard}>
-              <Text style={styles.sectionTitle}>Quick Tips & Articles</Text>
-              {shownArticles.map((article) => (
-                <TouchableOpacity
-                  key={article.id}
-                  style={styles.tipRow}
-                  onPress={() => setOpenArticleItem(article)}
-                  accessibilityRole="button"
-                  accessibilityLabel={`${article.title}, from ${article.source}`}
-                >
-                  <Newspaper size={36} color="#B9C3EC" strokeWidth={1.5} />
-                  <View style={styles.tipText}>
-                    <Text style={styles.tipLabel}>{article.label}</Text>
-                    <Text style={styles.tipTitle}>{article.title}</Text>
-                    <Text style={styles.tipSource}>{article.source}</Text>
-                  </View>
-                </TouchableOpacity>
-              ))}
-              {articles.length > 2 && (
-                <TouchableOpacity style={styles.seeMore} onPress={() => setShowAllArticles((v) => !v)}>
-                  <Text style={styles.seeMoreText}>{showAllArticles ? "Show Less" : "See More"}</Text>
-                </TouchableOpacity>
-              )}
-            </LinearGradient>
-
-            <LinearGradient
-              colors={[COLORS.periwinkle, COLORS.periwinkleLight]}
-              style={styles.pepoCard}
-              onLayout={(e) => (pepoCardY.current = e.nativeEvent.layout.y)}
-            >
-              <View style={styles.pepoHeader}>
-                <View style={styles.pepoAvatar}>
-                  <Image source={pepoGoat} style={styles.pepoImage} />
-                </View>
-                <Text style={styles.pepoTitle}>Ask Pepo</Text>
-                <TouchableOpacity style={styles.bookmarkButton}>
-                  <Bookmark size={20} color={COLORS.text} />
-                </TouchableOpacity>
-              </View>
-              <ScrollView
-                ref={chatScrollRef}
-                style={styles.chatArea}
-                contentContainerStyle={styles.chatContent}
-                nestedScrollEnabled
-                keyboardShouldPersistTaps="handled"
-                onContentSizeChange={() => chatScrollRef.current?.scrollToEnd({ animated: true })}
+          <View style={styles.trackerRow}>
+            {TRACKERS.map(({ label, Icon, kind }) => (
+              <TouchableOpacity
+                key={label}
+                style={styles.trackerTile}
+                onPress={() => openTracker(kind)}
               >
-                {chat.length === 0 ? (
-                  <View style={styles.chatEmpty}>
-                    <Text style={styles.chatEmptyText}>
-                      Hi! I'm Pepo 🐐 Ask me anything about caring for {pet?.name || "your pet"}.
-                    </Text>
-                    {[
-                      `How can I help ${pet?.name || "my pet"} settle in?`,
-                      "What should a daily routine look like?",
-                      "What foods are dangerous for my pet?",
-                    ].map((s) => (
-                      <TouchableOpacity key={s} style={styles.chatChip} onPress={() => askPepo(s)}>
-                        <Text style={styles.chatChipText}>{s}</Text>
-                      </TouchableOpacity>
-                    ))}
-                  </View>
-                ) : (
-                  chat.map((m) =>
-                    m.role === "user" ? (
-                      <View key={m.id} style={[styles.bubble, styles.bubbleUser]}>
+                <Icon size={44} color={COLORS.cream} strokeWidth={1.75} />
+                <Text style={styles.trackerLabel}>{label}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          <TouchableOpacity
+            style={styles.pointsCard}
+            activeOpacity={0.8}
+            onPress={() => {
+              setRewardMessage("");
+              setRewardsOpen(true);
+            }}
+            accessibilityLabel="Open Pawtnership rewards"
+          >
+            <View style={styles.pointsLeft}>
+              <Text style={styles.pointsTitle}>Pawtnership Points · {pawPoints} pts</Text>
+              <View style={styles.pointsTrack}>
+                <View style={[styles.pointsFill, { width: `${rewardProgress * 100}%` }]} />
+              </View>
+              <Text style={styles.pointsCaption}>
+                {nextReward
+                  ? `${nextReward.cost - pawPoints} pts until ${nextReward.title.toLowerCase()}. Tap for rewards!`
+                  : "You can redeem any reward. Tap to choose!"}
+              </Text>
+            </View>
+            <View style={styles.badge}>
+              <Gift size={30} color="white" />
+            </View>
+          </TouchableOpacity>
+
+          <LinearGradient colors={["#EDBDB0", COLORS.cream]} style={styles.tipsCard}>
+            <Text style={styles.sectionTitle}>Quick Tips & Articles</Text>
+            {shownArticles.map((article) => (
+              <TouchableOpacity
+                key={article.id}
+                style={styles.tipRow}
+                onPress={() => setOpenArticleItem(article)}
+                accessibilityRole="button"
+                accessibilityLabel={`${article.title}, from ${article.source}`}
+              >
+                <Newspaper size={36} color="#B9C3EC" strokeWidth={1.5} />
+                <View style={styles.tipText}>
+                  <Text style={styles.tipLabel}>{article.label}</Text>
+                  <Text style={styles.tipTitle}>{article.title}</Text>
+                  <Text style={styles.tipSource}>{article.source}</Text>
+                </View>
+              </TouchableOpacity>
+            ))}
+            {articles.length > 2 && (
+              <TouchableOpacity style={styles.seeMore} onPress={() => setShowAllArticles((v) => !v)}>
+                <Text style={styles.seeMoreText}>{showAllArticles ? "Show Less" : "See More"}</Text>
+              </TouchableOpacity>
+            )}
+          </LinearGradient>
+
+          <LinearGradient
+            colors={[COLORS.periwinkle, COLORS.periwinkleLight]}
+            style={styles.pepoCard}
+            onLayout={(e) => (pepoCardY.current = e.nativeEvent.layout.y)}
+          >
+            <View style={styles.pepoHeader}>
+              <View style={styles.pepoAvatar}>
+                <Image source={pepoGoat} style={styles.pepoImage} />
+              </View>
+              <Text style={styles.pepoTitle}>Ask Pepo</Text>
+              <TouchableOpacity style={styles.bookmarkButton}>
+                <Bookmark size={20} color={COLORS.text} />
+              </TouchableOpacity>
+            </View>
+            <ScrollView
+              ref={chatScrollRef}
+              style={styles.chatArea}
+              contentContainerStyle={styles.chatContent}
+              nestedScrollEnabled
+              keyboardShouldPersistTaps="handled"
+              onContentSizeChange={() => chatScrollRef.current?.scrollToEnd({ animated: true })}
+            >
+              {chat.length === 0 ? (
+                <View style={styles.chatEmpty}>
+                  <Text style={styles.chatEmptyText}>
+                    Hi! I'm Pepo 🐐 Ask me anything about caring for {pet?.name || "your pet"}.
+                  </Text>
+                  {[
+                    `How can I help ${pet?.name || "my pet"} settle in?`,
+                    "What should a daily routine look like?",
+                    "What foods are dangerous for my pet?",
+                  ].map((s) => (
+                    <TouchableOpacity key={s} style={styles.chatChip} onPress={() => askPepo(s)}>
+                      <Text style={styles.chatChipText}>{s}</Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              ) : (
+                chat.map((m) =>
+                  m.role === "user" ? (
+                    <View key={m.id} style={[styles.bubble, styles.bubbleUser]}>
+                      <Text style={styles.bubbleText}>{m.text}</Text>
+                    </View>
+                  ) : (
+                    <View key={m.id} style={styles.pepoRow}>
+                      <View style={styles.bubbleAvatar}>
+                        <Image source={pepoGoat} style={styles.bubbleAvatarImage} />
+                      </View>
+                      <View style={[styles.bubble, styles.bubblePepo]}>
                         <Text style={styles.bubbleText}>{m.text}</Text>
                       </View>
-                    ) : (
-                      <View key={m.id} style={styles.pepoRow}>
-                        <View style={styles.bubbleAvatar}>
-                          <Image source={pepoGoat} style={styles.bubbleAvatarImage} />
-                        </View>
-                        <View style={[styles.bubble, styles.bubblePepo]}>
-                          <Text style={styles.bubbleText}>{m.text}</Text>
-                        </View>
-                      </View>
-                    )
+                    </View>
                   )
-                )}
-                {pepoThinking && <Text style={styles.typing}>Pepo is typing…</Text>}
-              </ScrollView>
+                )
+              )}
+              {pepoThinking && <Text style={styles.typing}>Pepo is typing…</Text>}
+            </ScrollView>
 
-              <View style={styles.pepoInputRow}>
-                <TextInput
-                  ref={pepoInputRef}
-                  style={styles.pepoInput}
-                  placeholder="Ask a question"
-                  placeholderTextColor="#9AA6D6"
-                  value={question}
-                  onChangeText={setQuestion}
-                  onSubmitEditing={() => askPepo()}
-                  onFocus={() => {
-                    setChatError("");
-                    setTimeout(() => {
-                      scrollRef.current?.scrollTo({
-                        y: Math.max(sheetY.current + pepoCardY.current - 20, 0),
-                        animated: true,
-                      });
-                    }, 250);
-                  }}
-                  returnKeyType="send"
-                  maxLength={1000}
-                />
-                <TouchableOpacity
-                  style={[styles.micButton, (!question.trim() || sending) && { opacity: 0.5 }]}
-                  onPress={() => askPepo()}
-                  disabled={!question.trim() || sending}
-                  accessibilityLabel="Send question to Pepo"
-                >
-                  {sending ? <ActivityIndicator size="small" color="#8C99D6" /> : <Send size={18} color="#8C99D6" />}
-                </TouchableOpacity>
-              </View>
-              {!!chatError && <Text style={styles.chatError}>{chatError}</Text>}
-              <Text style={styles.chatNote}>Pepo gives general tips, not veterinary advice.</Text>
-            </LinearGradient>
-          </View>
-        </ScrollView>
+            <View style={styles.pepoInputRow}>
+              <TextInput
+                ref={pepoInputRef}
+                style={styles.pepoInput}
+                placeholder="Ask a question"
+                placeholderTextColor="#9AA6D6"
+                value={question}
+                onChangeText={setQuestion}
+                onSubmitEditing={() => askPepo()}
+                onFocus={() => {
+                  setChatError("");
+                  setTimeout(() => {
+                    scrollRef.current?.scrollTo({
+                      y: Math.max(sheetY.current + pepoCardY.current - 20, 0),
+                      animated: true,
+                    });
+                  }, 250);
+                }}
+                returnKeyType="send"
+                maxLength={1000}
+              />
+              <TouchableOpacity
+                style={[styles.micButton, (!question.trim() || sending) && { opacity: 0.5 }]}
+                onPress={() => askPepo()}
+                disabled={!question.trim() || sending}
+                accessibilityLabel="Send question to Pepo"
+              >
+                {sending ? <ActivityIndicator size="small" color="#8C99D6" /> : <Send size={18} color="#8C99D6" />}
+              </TouchableOpacity>
+            </View>
+            {!!chatError && <Text style={styles.chatError}>{chatError}</Text>}
+            <Text style={styles.chatNote}>Pepo gives general tips, not veterinary advice.</Text>
+          </LinearGradient>
+        </View>
+      </ScrollView>
       </KeyboardAvoidingView>
+      {backToPre}
 
       {bottomNav}
 
@@ -1402,9 +1401,9 @@ const styles = StyleSheet.create({
     color: COLORS.text,
   },
   pepoImage: {
-    width: 65,
-    height: 65,
-    resizeMode: "contain",
+  width: 65,
+  height: 65,
+  resizeMode: "contain",
   },
   micButton: {
     width: 40,

@@ -10,12 +10,12 @@ import {
   Easing,
   StyleSheet,
   Platform,
+  Keyboard,
   KeyboardAvoidingView,
   type ViewStyle,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { SafeAreaView } from "react-native-safe-area-context";
-
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter, type Href } from "expo-router";
 import { getAuth } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
@@ -36,10 +36,15 @@ const ROUTES = {
 } as const;
 
 const LEAVE_MS = 350;
-const SKIP_H = 44; // height of the Skip Quiz bar
+const SKIP_H = 39;
 let enterPlayed = false;
 
-// Loads Open Sans once on web (does nothing on iOS/Android).
+// Original PawPair styling constants
+const PINK = "#F5C0B3";
+const CORAL = "#E98F78";
+const CREAM = "#F5EFEB";
+const FONT = Platform.OS === "web" ? "'Open Sans', system-ui, sans-serif" : undefined;
+
 function loadFont() {
   if (typeof document === "undefined") return;
   if (document.getElementById("open-sans-font")) return;
@@ -66,7 +71,6 @@ type QuizProps = {
   onFinish?: (answers: string[]) => void;
 };
 
-// Convert questions from quizQuestions.js
 function toScreenQuestion(q: any): Question {
   return {
     id: q.id,
@@ -79,7 +83,6 @@ function toScreenQuestion(q: any): Question {
   };
 }
 
-// Validate answers before moving to the next question
 function validate(question: Question, answers: Answers): string {
   const value = answers[question.id];
 
@@ -115,7 +118,6 @@ function validate(question: Question, answers: Answers): string {
   return value ? "" : "Select an answer.";
 }
 
-// Convert complex answers to strings for onFinish
 function displayAnswer(answer: any): string {
   if (Array.isArray(answer)) return answer.join(", ");
   if (typeof answer === "string") return answer;
@@ -125,14 +127,6 @@ function displayAnswer(answer: any): string {
   return "";
 }
 
-// Original PawPair styling constants
-const PINK = "#F5C0B3";
-const CORAL = "#E98F78";
-const CREAM = "#F5EFEB";
-// Open Sans on web; system font on the phone
-const FONT = Platform.OS === "web" ? "'Open Sans', system-ui, sans-serif" : undefined;
-
-// Paw watermark
 function Paw({ style }: { style?: ViewStyle }) {
   return (
     <Image
@@ -146,30 +140,38 @@ function Paw({ style }: { style?: ViewStyle }) {
 
 export default function Quiz({ onFinish = () => {} }: QuizProps) {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
-  // Quiz navigation and answers
   const [index, setIndex] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<Answers>({});
 
-  // Firebase animal information
   const [availablePets, setAvailablePets] = useState<any[]>([]);
   const [petsLoaded, setPetsLoaded] = useState(false);
 
-  // Loading and error states
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState("");
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
 
-  // Animation states
   const [leaving, setLeaving] = useState(false);
   const [playEnter] = useState(() => !enterPlayed);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
-  // Screen enter/leave animation (opacity + slide)
   const screenAnim = useRef(new Animated.Value(playEnter ? 0 : 1)).current;
-  // Question-to-question slide
   const questionAnim = useRef(new Animated.Value(1)).current;
 
-  // Load font and play enter animation
+  useEffect(() => {
+    const showEvent = Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow";
+    const hideEvent = Platform.OS === "ios" ? "keyboardWillHide" : "keyboardDidHide";
+
+    const showSub = Keyboard.addListener(showEvent, () => setKeyboardVisible(true));
+    const hideSub = Keyboard.addListener(hideEvent, () => setKeyboardVisible(false));
+
+    return () => {
+      showSub.remove();
+      hideSub.remove();
+    };
+  }, []);
+
   useEffect(() => {
     loadFont();
     enterPlayed = true;
@@ -184,7 +186,6 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
     return () => clearTimeout(timer.current);
   }, []);
 
-  // Slide each new question in (not the first one)
   useEffect(() => {
     if (index === 0) return;
     questionAnim.setValue(0);
@@ -196,7 +197,6 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
     }).start();
   }, [index]);
 
-  // STEP 1: Load Firestore animals and saved quiz answers
   useEffect(() => {
     let active = true;
 
@@ -241,7 +241,6 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
     };
   }, []);
 
-  // STEP 2: Get applicable quiz questions
   const questions = useMemo(
     () => getVisibleQuestions(quizAnswers).map(toScreenQuestion),
     [quizAnswers]
@@ -252,7 +251,6 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
   const isLast = index === questions.length - 1;
   const canNext = !!current && validate(current, quizAnswers) === "";
 
-  // STEP 3: Retrieve available breeds
   const breeds = useMemo(() => {
     const type = quizAnswers.q1;
 
@@ -269,13 +267,12 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
     return [...new Set(pets.map((pet) => pet.breed).filter(Boolean))].sort() as string[];
   }, [availablePets, quizAnswers.q1]);
 
-  // STEP 4: Leave animation, then go to Swiping
   const goToSwipe = () => {
     if (leaving) return;
     enterPlayed = false;
     setLeaving(true);
     Animated.timing(screenAnim, {
-      toValue: 2, // 2 = "leaving" position in the interpolations below
+      toValue: 2,
       duration: LEAVE_MS,
       easing: Easing.bezier(0.4, 0, 0.2, 1),
       useNativeDriver: true,
@@ -283,32 +280,28 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
     timer.current = setTimeout(() => router.replace(ROUTES.swipe as Href), LEAVE_MS);
   };
 
-  // STEP 5: Update a quiz answer
-  function change(next: any) {
+  function change(nextVal: any) {
     setError("");
     setQuizAnswers((prev) => {
-      const update: Answers = { ...prev, [current.id]: next };
-      // Clear breed selection when species changes
-      if (current.id === "q1" && prev.q1 !== next) delete update["q2"];
+      const update: Answers = { ...prev, [current.id]: nextVal };
+      if (current.id === "q1" && prev.q1 !== nextVal) delete update["q2"];
       return update;
     });
   }
 
   const choose = (option: string) => change(option);
 
-  // STEP 6: Multi-select questions
   function chooseMulti(option: string) {
     const prior: string[] = Array.isArray(selected) ? selected : [];
-    const next =
+    const nextVal =
       option === current.exclusive
         ? [option]
         : prior.includes(option)
           ? prior.filter((item) => item !== option)
           : [...prior.filter((item) => item !== current.exclusive), option];
-    change(next);
+    change(nextVal);
   }
 
-  // STEP 7: ZIP-code or device-location question
   async function chooseLocation(option: string) {
     if (option === "Enter a ZIP code") {
       change({ choice: option, zip: selected?.zip ?? "" });
@@ -327,7 +320,6 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
     }
   }
 
-  // STEP 8: Next question or Finish
   const next = async () => {
     if (busy || leaving) return;
 
@@ -345,12 +337,9 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
         const uid = auth.currentUser?.uid;
         if (!uid) throw new Error("Please log in to save your PawPair quiz.");
 
-        // Save answers to Firestore
         await saveQuizAnswers(uid, quizAnswers);
-        // Let Matches, Applications and the homepage see the new answers right away
         void refreshQuizAnswers();
 
-        // Apply weights and calculate matches
         if (petsLoaded) {
           try {
             const appliedWeights: Record<string, number> = {};
@@ -366,7 +355,6 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
               reasons: item.reasons ?? [],
             }));
 
-            // Save recommendations to Firestore
             await setDoc(
               doc(db, "users", uid),
               {
@@ -376,8 +364,6 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
               },
               { merge: true }
             );
-
-            console.log("Top-five PawPair matches:", topFive);
           } catch (matchError) {
             console.warn("Quiz saved, but recommendations weren't cached:", matchError);
           }
@@ -398,8 +384,7 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
     setError("");
   };
 
-  // STEP 9: Reusable pink/coral answer buttons
-  const optionButton = (label: string, active: boolean, onPress: () => void) => (
+  const renderOptionButton = (label: string, active: boolean, onPress: () => void) => (
     <Pressable
       key={label}
       onPress={onPress}
@@ -412,19 +397,139 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
         pressed && { opacity: 0.85 },
       ]}
     >
-      <Text style={s.optionText}>{label}</Text>
+      <Text style={[s.optionText, active && s.optionTextActive]}>{label}</Text>
     </Pressable>
   );
 
+  const renderQuestionBody = () => {
+    switch (current.type) {
+      case "breeds":
+        return (
+          <>
+            {renderOptionButton("No preference", selected?.mode === "none", () =>
+              change({ mode: "none", breeds: [], other: "" })
+            )}
+
+            {breeds.length > 0 && (
+              <Text style={s.subheading}>Preferred breeds (select multiple)</Text>
+            )}
+
+            {breeds.map((breed) =>
+              renderOptionButton(breed, (selected?.breeds ?? []).includes(breed), () => {
+                const previous: string[] = selected?.breeds ?? [];
+                change({
+                  mode: "selected",
+                  breeds: previous.includes(breed)
+                    ? previous.filter((item) => item !== breed)
+                    : [...previous, breed],
+                  other: selected?.other ?? "",
+                });
+              })
+            )}
+
+            <TextInput
+              style={s.input}
+              accessibilityLabel="Other preferred breed"
+              placeholder="Other breed (optional)"
+              placeholderTextColor="#999"
+              value={selected?.other ?? ""}
+              onChangeText={(text) =>
+                change({ mode: "other", breeds: selected?.breeds ?? [], other: text })
+              }
+            />
+          </>
+        );
+
+      case "restrictions":
+        return (
+          <>
+            {current.options.map((option) =>
+              renderOptionButton(option, selected?.choice === option, () =>
+                change({ choice: option, maxWeightLbs: "", disallowedText: "" })
+              )
+            )}
+
+            {selected?.choice === "Size or weight limits" && (
+              <TextInput
+                style={s.input}
+                accessibilityLabel="Maximum allowed pet weight"
+                keyboardType="number-pad"
+                placeholder="Maximum pet weight (lb)"
+                placeholderTextColor="#999"
+                value={String(selected.maxWeightLbs ?? "")}
+                onChangeText={(text) =>
+                  change({ ...selected, maxWeightLbs: text.replace(/[^\d.]/g, "") })
+                }
+              />
+            )}
+
+            {selected?.choice === "Certain breeds or species" && (
+              <TextInput
+                style={s.input}
+                accessibilityLabel="Prohibited breeds or species"
+                placeholder="Prohibited breeds/species, comma-separated"
+                placeholderTextColor="#999"
+                value={selected.disallowedText ?? ""}
+                onChangeText={(text) => change({ ...selected, disallowedText: text })}
+              />
+            )}
+          </>
+        );
+
+      case "location":
+        return (
+          <>
+            {current.options.map((option) =>
+              renderOptionButton(option, selected?.choice === option, () => {
+                void chooseLocation(option);
+              })
+            )}
+
+            {selected?.choice === "Enter a ZIP code" && (
+              <TextInput
+                style={s.input}
+                accessibilityLabel="Five-digit ZIP code"
+                placeholder="5-digit US ZIP code"
+                placeholderTextColor="#999"
+                keyboardType="number-pad"
+                maxLength={5}
+                value={selected.zip ?? ""}
+                onChangeText={(text) =>
+                  change({ choice: "Enter a ZIP code", zip: text.replace(/\D/g, "") })
+                }
+              />
+            )}
+
+            {!!selected?.zip && (
+              <Text style={s.note}>ZIP: {selected.zip} (only ZIP saved)</Text>
+            )}
+          </>
+        );
+
+      case "multi":
+        return current.options.map((option) =>
+          renderOptionButton(option, (selected ?? []).includes(option), () =>
+            chooseMulti(option)
+          )
+        );
+
+      default:
+        return current.options.map((option) =>
+          renderOptionButton(option, selected === option, () => choose(option))
+        );
+    }
+  };
+
   if (!current) {
     return (
-      <View style={[s.page, { alignItems: "center", justifyContent: "center" }]}>
-        <Text style={s.optionText}>{busy ? "Loading quiz..." : "No quiz questions were found."}</Text>
+      <View style={[s.page, s.centered]}>
+        <Text style={s.optionText}>
+          {busy ? "Loading quiz..." : "No quiz questions were found."}
+        </Text>
       </View>
     );
   }
 
-  // Screen animation: 0 = entering, 1 = shown, 2 = leaving
   const screenStyle = {
     opacity: screenAnim.interpolate({ inputRange: [0, 1, 2], outputRange: [0, 1, 0] }),
     transform: [
@@ -432,6 +537,7 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
       { scale: screenAnim.interpolate({ inputRange: [0, 1, 2], outputRange: [1, 1, 0.97] }) },
     ],
   };
+
   const slideStyle = {
     opacity: questionAnim,
     transform: [
@@ -440,242 +546,189 @@ export default function Quiz({ onFinish = () => {} }: QuizProps) {
   };
 
   const nextEnabled = canNext && !busy && !leaving;
+  const progressPercent = `${Math.round(((index + 1) / questions.length) * 100)}%` as const;
+  const skipHeight = SKIP_H + insets.bottom;
 
-  // STEP 10: PawPair design
   return (
-    <View style={s.page}>
+    <KeyboardAvoidingView
+      style={s.page}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    >
       <Animated.View
         style={[s.phone, screenStyle]}
         pointerEvents={leaving ? "none" : "auto"}
       >
-        <SafeAreaView style={{ flex: 1 }} edges={["top"]}>
-          {/* Header */}
-          <LinearGradient colors={[PINK, CORAL]} style={s.header}>
-            <View style={s.pill}>
-              <Text style={s.pillText}>
-                Question {index + 1} of {questions.length}
-              </Text>
-            </View>
-            <Animated.Text key={current.id} style={[s.title, slideStyle]}>
-              {current.question}
-            </Animated.Text>
-          </LinearGradient>
+        {/* Header with progress bar */}
+        <LinearGradient
+          colors={[PINK, CORAL]}
+          style={[s.header, { paddingTop: insets.top + 16 }]}
+        >
+          <View style={s.pill}>
+            <Text style={s.pillText}>
+              Question {index + 1} of {questions.length}
+            </Text>
+          </View>
 
-          {/* Card */}
-          <KeyboardAvoidingView
-            style={s.card}
-            behavior={Platform.OS === "ios" ? "padding" : undefined}
+          <View style={s.progressTrack}>
+            <View style={[s.progressFill, { width: progressPercent }]} />
+          </View>
+
+          <Animated.Text key={current.id} style={[s.title, slideStyle]}>
+            {current.question}
+          </Animated.Text>
+        </LinearGradient>
+
+        {/* Main Card */}
+        <View style={s.card}>
+          <Paw style={{ top: "3%", right: "14%" }} />
+          <Paw style={{ top: "14%", right: -14, transform: [{ rotate: "25deg" }] }} />
+          <Paw style={{ top: "38%", left: "34%", transform: [{ rotate: "-10deg" }] }} />
+          <Paw style={{ bottom: "26%", left: -6, transform: [{ rotate: "-20deg" }] }} />
+          <Paw style={{ bottom: "14%", right: "6%", transform: [{ rotate: "15deg" }] }} />
+
+          <ScrollView
+            style={s.content}
+            contentContainerStyle={[
+              s.contentInner,
+              { paddingBottom: skipHeight + 24 },
+            ]}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
           >
-            <Paw style={{ top: "3%", right: "14%" }} />
-            <Paw style={{ top: "14%", right: -14, transform: [{ rotate: "25deg" }] }} />
-            <Paw style={{ top: "38%", left: "34%", transform: [{ rotate: "-10deg" }] }} />
-            <Paw style={{ bottom: "26%", left: -6, transform: [{ rotate: "-20deg" }] }} />
-            <Paw style={{ bottom: "14%", right: "6%", transform: [{ rotate: "15deg" }] }} />
+            {!!current.note && <Text style={s.note}>{current.note}</Text>}
 
-            <ScrollView
-              style={s.content}
-              contentContainerStyle={s.contentInner}
-              keyboardShouldPersistTaps="handled"
-            >
-              {!!current.note && <Text style={s.note}>{current.note}</Text>}
+            <Animated.View key={current.id} style={[s.options, slideStyle]}>
+              {renderQuestionBody()}
+            </Animated.View>
 
-              <Animated.View key={current.id} style={[s.options, slideStyle]}>
-                {current.type === "breeds" ? (
-                  <>
-                    {optionButton("No preference", selected?.mode === "none", () =>
-                      change({ mode: "none", breeds: [], other: "" })
-                    )}
+            {!!error && (
+              <Text accessibilityRole="alert" style={s.error}>
+                {error}
+              </Text>
+            )}
 
-                    <Text style={s.subheading}>Preferred breeds (select multiple)</Text>
-
-                    {breeds.map((breed) =>
-                      optionButton(breed, (selected?.breeds ?? []).includes(breed), () => {
-                        const previous: string[] = selected?.breeds ?? [];
-                        change({
-                          mode: "selected",
-                          breeds: previous.includes(breed)
-                            ? previous.filter((item) => item !== breed)
-                            : [...previous, breed],
-                          other: selected?.other ?? "",
-                        });
-                      })
-                    )}
-
-                    <TextInput
-                      style={s.input}
-                      accessibilityLabel="Other preferred breed"
-                      placeholder="Other breed (optional)"
-                      placeholderTextColor="#999"
-                      value={selected?.other ?? ""}
-                      onChangeText={(text) =>
-                        change({ mode: "other", breeds: selected?.breeds ?? [], other: text })
-                      }
-                    />
-                  </>
-                ) : current.type === "restrictions" ? (
-                  <>
-                    {current.options.map((option) =>
-                      optionButton(option, selected?.choice === option, () =>
-                        change({ choice: option, maxWeightLbs: "", disallowedText: "" })
-                      )
-                    )}
-
-                    {selected?.choice === "Size or weight limits" && (
-                      <TextInput
-                        style={s.input}
-                        accessibilityLabel="Maximum allowed pet weight"
-                        keyboardType="number-pad"
-                        placeholder="Maximum pet weight (lb)"
-                        placeholderTextColor="#999"
-                        value={String(selected.maxWeightLbs ?? "")}
-                        onChangeText={(text) =>
-                          change({ ...selected, maxWeightLbs: text.replace(/[^\d.]/g, "") })
-                        }
-                      />
-                    )}
-
-                    {selected?.choice === "Certain breeds or species" && (
-                      <TextInput
-                        style={s.input}
-                        accessibilityLabel="Prohibited breeds or species"
-                        placeholder="Prohibited breeds/species, comma-separated"
-                        placeholderTextColor="#999"
-                        value={selected.disallowedText ?? ""}
-                        onChangeText={(text) => change({ ...selected, disallowedText: text })}
-                      />
-                    )}
-                  </>
-                ) : current.type === "location" ? (
-                  <>
-                    {current.options.map((option) =>
-                      optionButton(option, selected?.choice === option, () => {
-                        void chooseLocation(option);
-                      })
-                    )}
-
-                    {selected?.choice === "Enter a ZIP code" && (
-                      <TextInput
-                        style={s.input}
-                        accessibilityLabel="Five-digit ZIP code"
-                        placeholder="5-digit US ZIP code"
-                        placeholderTextColor="#999"
-                        keyboardType="number-pad"
-                        maxLength={5}
-                        value={selected.zip ?? ""}
-                        onChangeText={(text) =>
-                          change({ choice: "Enter a ZIP code", zip: text.replace(/\D/g, "") })
-                        }
-                      />
-                    )}
-
-                    {!!selected?.zip && (
-                      <Text style={s.note}>ZIP: {selected.zip} (only ZIP saved)</Text>
-                    )}
-                  </>
-                ) : current.type === "multi" ? (
-                  <>
-                    {current.options.map((option) =>
-                      optionButton(option, (selected ?? []).includes(option), () =>
-                        chooseMulti(option)
-                      )
-                    )}
-                  </>
-                ) : (
-                  <>
-                    {current.options.map((option) =>
-                      optionButton(option, selected === option, () => choose(option))
-                    )}
-                  </>
-                )}
-              </Animated.View>
-
-              {!!error && (
-                <Text accessibilityRole="alert" style={s.error}>
-                  {error}
-                </Text>
+            {/* Back and Next buttons */}
+            <View style={s.nextWrap}>
+              {index > 0 && (
+                <Pressable
+                  disabled={busy || leaving}
+                  onPress={() => {
+                    setIndex((i) => i - 1);
+                    setError("");
+                  }}
+                  style={({ pressed }) => [s.back, pressed && { opacity: 0.85 }]}
+                >
+                  <Text style={s.backText}>Back</Text>
+                </Pressable>
               )}
 
-              {/* Back and Next buttons: right under the answers */}
-              <View style={s.nextWrap}>
-                {index > 0 && (
-                  <Pressable
-                    disabled={busy || leaving}
-                    onPress={() => {
-                      setIndex((i) => i - 1);
-                      setError("");
-                    }}
-                    style={s.back}
-                  >
-                    <Text style={s.btnText}>Back</Text>
-                  </Pressable>
-                )}
+              <Pressable
+                onPress={() => {
+                  void next();
+                }}
+                disabled={!nextEnabled}
+                style={({ pressed }) => [
+                  s.next,
+                  !nextEnabled && s.nextDisabled,
+                  pressed && nextEnabled && { opacity: 0.88 },
+                ]}
+              >
+                <Text style={s.nextText}>
+                  {busy ? "Loading..." : isLast ? "Finish" : "Next"}
+                </Text>
+              </Pressable>
+            </View>
+          </ScrollView>
+        </View>
 
-                <Pressable
-                  onPress={() => {
-                    void next();
-                  }}
-                  disabled={!nextEnabled}
-                  style={[s.next, { opacity: canNext && !busy ? 1 : 0.6 }]}
-                >
-                  <Text style={s.btnText}>{busy ? "Loading..." : isLast ? "Finish" : "Next"}</Text>
-                </Pressable>
-              </View>
-            </ScrollView>
-
-            {/* Empty space so the Skip Quiz bar never covers Back/Next */}
-            <View style={{ height: SKIP_H }} />
-          </KeyboardAvoidingView>
-        </SafeAreaView>
-
-        {/* Skip Quiz button */}
-        <Pressable disabled={busy || leaving} onPress={goToSwipe} style={s.skipWrap}>
-          <LinearGradient
-            colors={[PINK, CORAL]}
-            start={{ x: 0, y: 0.5 }}
-            end={{ x: 1, y: 0.5 }}
-            style={s.skip}
+        {/* Bottom Skip Quiz bar with linear gradient */}
+        {!keyboardVisible && (
+          <Pressable
+            disabled={busy || leaving}
+            onPress={goToSwipe}
+            style={({ pressed }) => [
+              s.skipWrap,
+              pressed && { opacity: 0.9 },
+            ]}
           >
-            <Text style={s.skipText}>Skip Quiz</Text>
-          </LinearGradient>
-        </Pressable>
+            <LinearGradient
+              colors={[PINK, CORAL]}
+              start={{ x: 0, y: 0.5 }}
+              end={{ x: 1, y: 0.5 }}
+              style={[
+                s.skip,
+                {
+                  height: skipHeight,
+                  paddingBottom: insets.bottom - 18,
+                },
+              ]}
+            >
+              <Text style={s.skipText}>Skip Quiz</Text>
+            </LinearGradient>
+          </Pressable>
+        )}
       </Animated.View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
-// Pink/coral design
 const s = StyleSheet.create({
   page: {
     flex: 1,
     width: "100%",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: CREAM,
-    overflow: "hidden",
+  },
+  centered: {
+    alignItems: "center",
+    justifyContent: "center",
   },
   phone: {
     flex: 1,
     width: "100%",
-    maxWidth: 390,
-    maxHeight: 844,
-    overflow: "hidden",
     backgroundColor: CORAL,
+    overflow: "hidden",
+    ...(Platform.OS === "web"
+      ? {
+          maxWidth: 390,
+          maxHeight: 844,
+        }
+      : {}),
   },
   header: {
     alignItems: "center",
-    paddingTop: 18,
-    paddingHorizontal: 24,
-    paddingBottom: 40,
+    paddingHorizontal: 20,
+    paddingBottom: 32,
   },
   pill: {
     backgroundColor: CREAM,
-    paddingVertical: 8,
-    paddingHorizontal: 40,
+    paddingVertical: 7,
+    paddingHorizontal: 28,
     borderRadius: 999,
   },
-  pillText: { color: "#222", fontSize: 18, fontFamily: FONT },
-  title: {
+  pillText: {
+    color: "#222",
+    fontSize: 16,
+    fontWeight: "600",
+    fontFamily: FONT,
+  },
+  progressTrack: {
+    width: "70%",
+    height: 6,
+    backgroundColor: "rgba(255, 255, 255, 0.35)",
+    borderRadius: 999,
     marginTop: 14,
-    maxWidth: 280,
+    overflow: "hidden",
+  },
+  progressFill: {
+    height: "100%",
+    backgroundColor: "#fff",
+    borderRadius: 999,
+  },
+  title: {
+    marginTop: 16,
+    maxWidth: 290,
     color: "#fff",
     fontSize: 24,
     fontWeight: "400",
@@ -690,24 +743,30 @@ const s = StyleSheet.create({
     borderTopRightRadius: 30,
     overflow: "hidden",
   },
-  paw: { position: "absolute", width: 64, height: 64 },
-  content: { flex: 1, zIndex: 1 },
-  // flexGrow + center: short questions sit in the middle of the card,
-  // long ones (like the breed list) still scroll
+  paw: {
+    position: "absolute",
+    width: 64,
+    height: 64,
+  },
+  content: {
+    flex: 1,
+    zIndex: 1,
+  },
   contentInner: {
-    flexGrow: 1,
-    justifyContent: "center",
-    paddingTop: 24,
-    paddingHorizontal: 40,
-    paddingBottom: 24,
+    paddingTop: 40,
+    paddingHorizontal: 34,
     gap: 14,
   },
-  options: { gap: 14 },
+  options: {
+    width: "100%",
+    gap: 14,
+  },
   option: {
-    minHeight: 38,
-    paddingVertical: 9,
-    paddingHorizontal: 12,
-    borderRadius: 14,
+    width: "100%",
+    minHeight: 48,
+    paddingVertical: 11,
+    paddingHorizontal: 16,
+    borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -715,43 +774,68 @@ const s = StyleSheet.create({
     backgroundColor: PINK,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.07,
+    shadowOpacity: 0.08,
     shadowRadius: 4,
-    elevation: 1,
+    elevation: 2,
   },
   optionActive: {
     backgroundColor: CORAL,
     borderWidth: 2,
-    borderColor: "rgba(255,255,255,0.53)",
+    borderColor: "#fff",
   },
-  optionText: { fontSize: 14, color: "#222", textAlign: "center", fontFamily: FONT },
+  optionText: {
+    fontSize: 16,
+    color: "#222",
+    textAlign: "center",
+    fontFamily: FONT,
+  },
+  optionTextActive: {
+    color: "#fff",
+    fontWeight: "600",
+  },
   nextWrap: {
-    zIndex: 1,
-    paddingTop: 10,
+    paddingTop: 16,
     flexDirection: "row",
     justifyContent: "center",
     gap: 12,
   },
   next: {
-    backgroundColor: PINK,
-    paddingVertical: 8,
-    paddingHorizontal: 32,
-    borderRadius: 12,
+    flex: 1,
+    maxWidth: 220,
+    minHeight: 48,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: CORAL,
+    borderRadius: 15,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.07,
-    shadowRadius: 4,
-    elevation: 1,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.12,
+    shadowRadius: 5,
+    elevation: 2,
+  },
+  nextDisabled: {
+    opacity: 0.5,
+  },
+  nextText: {
+    color: "#fff",
+    fontSize: 17,
+    fontWeight: "600",
+    fontFamily: FONT,
   },
   back: {
+    minHeight: 48,
+    justifyContent: "center",
     borderWidth: 1,
     borderColor: "#b76b5b",
     backgroundColor: CREAM,
-    paddingVertical: 8,
     paddingHorizontal: 22,
-    borderRadius: 12,
+    borderRadius: 15,
   },
-  btnText: { color: "#222", fontSize: 14, fontFamily: FONT },
+  backText: {
+    color: "#222",
+    fontSize: 16,
+    fontFamily: FONT,
+  },
   skipWrap: {
     position: "absolute",
     left: 0,
@@ -760,16 +844,32 @@ const s = StyleSheet.create({
     zIndex: 2,
   },
   skip: {
-    height: SKIP_H,
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
     justifyContent: "center",
     alignItems: "flex-end",
-    paddingHorizontal: 20,
+    paddingHorizontal: 24,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
-  skipText: { color: "#fff", fontSize: 14, fontWeight: "600", fontFamily: FONT },
-  note: { marginBottom: 10, color: "#555", fontSize: 12, lineHeight: 17, fontFamily: FONT },
-  subheading: { fontSize: 13, fontWeight: "600", marginTop: 8, color: "#222", fontFamily: FONT },
+  skipText: {
+    color: "#fff",
+    fontSize: 17,
+    fontWeight: "600",
+    fontFamily: FONT,
+  },
+  note: {
+    marginBottom: 10,
+    color: "#555",
+    fontSize: 12,
+    lineHeight: 17,
+    fontFamily: FONT,
+  },
+  subheading: {
+    fontSize: 13,
+    fontWeight: "600",
+    marginTop: 8,
+    color: "#222",
+    fontFamily: FONT,
+  },
   input: {
     width: "100%",
     borderWidth: 1,
@@ -778,9 +878,14 @@ const s = StyleSheet.create({
     borderRadius: 12,
     paddingVertical: 10,
     paddingHorizontal: 12,
-    fontSize: 14,
+    fontSize: 15,
     color: "#222",
     fontFamily: FONT,
   },
-  error: { color: "#a02323", fontSize: 12, lineHeight: 17, fontFamily: FONT },
+  error: {
+    color: "#a02323",
+    fontSize: 12,
+    lineHeight: 17,
+    fontFamily: FONT,
+  },
 });
