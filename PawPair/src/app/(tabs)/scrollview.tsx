@@ -12,9 +12,11 @@ import PawNavBar from "@/components/PawNavBar";
 import { getAuth } from "firebase/auth";
 import { app } from "../../firebase.js";
 import { getAnimals } from "../../services/animalServices";
-import { addFavorite, getFavorites } from "../../services/favoriteServices";
+import { addFavorite, getFavorites, removeFavorite } from "../../services/favoriteServices";
 import { getQuizAnswers } from "../../services/quizService";
 import { matchPets } from "../../services/matchingService";
+import { favoritePet, removePet } from "../../store/petLists";
+import { MIN_MATCH } from "@/data/livePets";
 
 // 1) THE DATA ---------------------------------------------------------------
 type PhotoSource = number | { uri: string };
@@ -83,21 +85,21 @@ function toCard(pet: any, score?: number, hasQuiz = false): Card {
   };
 }
 
-function getMatchColor(percent: number) {
-  if (percent < 0.25) return "#D9534F";
-  if (percent < 0.5) return "#F0C040";
-  if (percent < 0.75) return "#9BD16B";
-  return "#2E8B57";
-}
+const BLUE = "#9DB0E3";
+const BLUE_DARK = "#7F93CC";
+const BLUE_LIGHT = "#BFCBEC";
+const BLUE_TRACK = "#E4E9F7";
 
 function DogCard({
   dog,
   isFavorite,
+  isLocked,
   isSaving,
   onFavorite,
 }: {
   dog: Card;
   isFavorite: boolean;
+  isLocked: boolean;
   isSaving: boolean;
   onFavorite: () => void;
 }) {
@@ -108,7 +110,7 @@ function DogCard({
         <View style={styles.tagsOverlay}>
           {dog.tags.map((tag) => (
             <View key={tag} style={styles.tag}>
-              <Ionicons name="checkmark-circle" size={14} color="#3b78d0" />
+              <Ionicons name="checkmark-circle" size={14} color={BLUE_DARK} />
               <Text style={styles.tagText}>{tag}</Text>
             </View>
           ))}
@@ -124,7 +126,7 @@ function DogCard({
               {dog.age ? ` · ${dog.age}` : ""}
             </Text>
           </View>
-          <TouchableOpacity onPress={onFavorite} disabled={isFavorite || isSaving} hitSlop={10}>
+          <TouchableOpacity onPress={onFavorite} disabled={isLocked || isSaving} hitSlop={10}>
             {isSaving ? (
               <ActivityIndicator color="#E98F78" />
             ) : (
@@ -151,7 +153,7 @@ function DogCard({
           <View
             style={[
               styles.fill,
-              { width: `${dog.matchPercent * 100}%`, backgroundColor: getMatchColor(dog.matchPercent) },
+              { width: `${dog.matchPercent * 100}%` },
             ]}
           />
         </View>
@@ -252,14 +254,33 @@ export default function Scrollview() {
       setMessage("Please log in to save pets.");
       return;
     }
-    if (favoriteIds.includes(petId)) return;
+    const pet = animals.find((a) => a.id === petId);
+
+    if (favoriteIds.includes(petId)) {
+      if ((scores[petId] ?? 0) >= MIN_MATCH) return;
+      setSavingPetId(petId);
+      setMessage("");
+      try {
+        await removeFavorite(uid, petId);
+        removePet("matches", petId);
+        removePet("favorites", petId);
+        setFavoriteIds((prev) => prev.filter((id) => id !== petId));
+        setMessage(`${pet?.name || "Pet"} removed from favorites.`);
+      } catch (e) {
+        console.error("Error removing favorite:", e);
+        setMessage("Could not remove favorite. Please try again.");
+      } finally {
+        setSavingPetId(null);
+      }
+      return;
+    }
 
     setSavingPetId(petId);
     setMessage("");
     try {
       await addFavorite(uid, petId);
+      favoritePet(petId);
       setFavoriteIds((prev) => [...prev, petId]);
-      const pet = animals.find((a) => a.id === petId);
       setMessage(`${pet?.name || "Pet"} added to favorites!`);
     } catch (e) {
       console.error("Error saving favorite:", e);
@@ -318,7 +339,9 @@ export default function Scrollview() {
             style={[styles.chip, speciesFilter === sp && styles.chipActive]}
             onPress={() => setSpeciesFilter(sp)}
           >
-            <Text style={styles.chipText}>{speciesLabel(sp)}</Text>
+            <Text style={[styles.chipText, speciesFilter === sp && styles.chipTextActive]}>
+              {speciesLabel(sp)}
+            </Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -346,6 +369,7 @@ export default function Scrollview() {
             <DogCard
               dog={item}
               isFavorite={favoriteIds.includes(item.id)}
+              isLocked={favoriteIds.includes(item.id) && (scores[item.id] ?? 0) >= MIN_MATCH}
               isSaving={savingPetId === item.id}
               onFavorite={() => handleFavorite(item.id)}
             />
@@ -412,8 +436,9 @@ const styles = StyleSheet.create({
   },
   chipRow: { flexDirection: "row", flexWrap: "wrap", gap: 8, paddingHorizontal: 24, marginBottom: 12 },
   chip: { paddingVertical: 6, paddingHorizontal: 14, borderRadius: 16, backgroundColor: "#fff" },
-  chipActive: { backgroundColor: "#dbe5ed" },
+  chipActive: { backgroundColor: BLUE_TRACK },
   chipText: { fontSize: 13, fontWeight: "600", color: "#1a1a1a" },
+  chipTextActive: { color: "#5B6FB0" },
 
   center: { flex: 1, alignItems: "center", justifyContent: "center", gap: 10 },
   statusText: { textAlign: "center", color: "#fff", fontSize: 15, marginTop: 20 },
@@ -440,7 +465,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 5,
-    backgroundColor: "#dbe5ed",
+    backgroundColor: "#fff",
     borderRadius: 14,
     paddingVertical: 4,
     paddingLeft: 6,
@@ -470,12 +495,12 @@ const styles = StyleSheet.create({
   track: {
     height: 12,
     borderRadius: 6,
-    backgroundColor: "#dbe5ed",
+    backgroundColor: BLUE_TRACK,
     overflow: "hidden",
   },
-  fill: { height: 12, backgroundColor: "#5f9a68" },
+  fill: { height: 12, backgroundColor: BLUE },
   matchRow: { flexDirection: "row", justifyContent: "space-between" },
   matchText: { fontSize: 14 },
-  matchValue: { color: "#4f9a5e", fontWeight: "500" },
+  matchValue: { color: BLUE_DARK, fontWeight: "600" },
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });

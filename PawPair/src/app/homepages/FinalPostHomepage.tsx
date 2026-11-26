@@ -36,6 +36,10 @@ import {
   ExternalLink,
   Gift,
   Ticket,
+  Bath,
+  Cookie,
+  ShoppingBag,
+  Scissors,
   Send,
   ChevronLeft,
 } from "lucide-react-native";
@@ -51,10 +55,12 @@ const COLORS = {
   muted: "#786862",
 };
 
+const BLUE = "#9DB0E3";
+const BLUE_DEEP = "#7F93CC";
+const BLUE_LIGHT = "#E4E9F7";
+
 const pepoGoat = require("../../../assets/images/pepo-goat.png");
 
-// The last application stage is the completed-adoption stage in this app.
-// If your STAGES array changes, adjust this threshold.
 const ADOPTED_STAGE = STAGES.length - 1;
 
 const PLACEHOLDERS: Record<string, number> = {
@@ -133,6 +139,13 @@ const REWARDS: Reward[] = [
   { id: "nailtrim", title: "Free nail trim", detail: "At a partner groomer", cost: 250 },
 ];
 
+const REWARD_ICONS: Record<string, typeof Gift> = {
+  groom10: Bath,
+  bakery: Cookie,
+  supplies15: ShoppingBag,
+  nailtrim: Scissors,
+};
+
 type Coupon = { id: string; rewardId: string; title: string; code: string; used?: boolean };
 
 function makeCouponCode() {
@@ -145,6 +158,16 @@ function makeCouponCode() {
 function todayKey() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function TicketDashes() {
+  return (
+    <View style={styles.ticketDivider}>
+      {Array.from({ length: 7 }).map((_, i) => (
+        <View key={i} style={styles.ticketDash} />
+      ))}
+    </View>
+  );
 }
 
 function RewardsPopup({
@@ -168,17 +191,21 @@ function RewardsPopup({
         <TouchableOpacity style={styles.closeButton} onPress={onClose} hitSlop={12}>
           <X size={20} color={COLORS.peach} />
         </TouchableOpacity>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 10 }}>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 12 }}>
           <Text style={styles.popupTitle}>PAWTNERSHIP REWARDS</Text>
           <Text style={styles.rewardsBalance}>{points} pts</Text>
           <Text style={styles.popupSource}>Earn points by finishing daily care tasks.</Text>
 
           {REWARDS.map((r) => {
             const canAfford = points >= r.cost;
+            const Icon = REWARD_ICONS[r.id] ?? Gift;
             return (
-              <View key={r.id} style={styles.rewardRow}>
-                <Gift size={26} color={COLORS.peach} />
-                <View style={{ flex: 1 }}>
+              <View key={r.id} style={styles.ticket}>
+                <View style={styles.ticketStub}>
+                  <Icon size={26} color={BLUE_DEEP} />
+                </View>
+                <TicketDashes />
+                <View style={styles.ticketBody}>
                   <Text style={styles.rewardTitle}>{r.title}</Text>
                   <Text style={styles.rewardDetail}>{r.detail}</Text>
                 </View>
@@ -193,6 +220,8 @@ function RewardsPopup({
                     <Text style={styles.redeemText}>{r.cost} pts</Text>
                   )}
                 </TouchableOpacity>
+                <View style={[styles.notch, styles.notchLeft]} />
+                <View style={[styles.notch, styles.notchRight]} />
               </View>
             );
           })}
@@ -203,15 +232,23 @@ function RewardsPopup({
           {coupons.length === 0 ? (
             <Text style={styles.popupSource}>No coupons yet. Keep earning points!</Text>
           ) : (
-            coupons.map((c) => (
-              <View key={c.id} style={styles.couponRow}>
-                <Ticket size={22} color={COLORS.peach} />
-                <View style={{ flex: 1 }}>
-                  <Text style={styles.rewardTitle}>{c.title}</Text>
-                  <Text style={styles.couponCode}>{c.code}</Text>
+            coupons.map((c) => {
+              const Icon = REWARD_ICONS[c.rewardId] ?? Ticket;
+              return (
+                <View key={c.id} style={[styles.ticket, styles.ticketOwned]}>
+                  <View style={styles.ticketStub}>
+                    <Icon size={24} color={BLUE_DEEP} />
+                  </View>
+                  <TicketDashes />
+                  <View style={styles.ticketBody}>
+                    <Text style={styles.rewardTitle}>{c.title}</Text>
+                    <Text style={styles.couponCode}>{c.code}</Text>
+                  </View>
+                  <View style={[styles.notch, styles.notchLeft]} />
+                  <View style={[styles.notch, styles.notchRight]} />
                 </View>
-              </View>
-            ))
+              );
+            })
           )}
           <Text style={styles.popupNote}>Sample rewards for demo purposes. Show your code at checkout.</Text>
         </ScrollView>
@@ -1235,6 +1272,8 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: 32,
     backgroundColor: COLORS.peachLight,
+    borderWidth: 2,
+    borderColor: "white",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -1299,38 +1338,56 @@ const styles = StyleSheet.create({
   readButtonText: { color: "white", fontSize: 16, fontWeight: "700" },
   popupNote: { fontSize: 11, color: COLORS.muted, textAlign: "center" },
   rewardsBalance: { fontSize: 34, fontWeight: "900", color: COLORS.peach, textAlign: "center" },
-  rewardRow: {
+  ticket: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
     backgroundColor: "white",
-    borderRadius: 18,
-    padding: 12,
+    borderRadius: 14,
+    paddingRight: 22,
+    minHeight: 76,
   },
+  ticketOwned: { borderWidth: 1.5, borderColor: BLUE },
+  ticketStub: {
+    width: 64,
+    alignSelf: "stretch",
+    backgroundColor: BLUE_LIGHT,
+    borderTopLeftRadius: 14,
+    borderBottomLeftRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  ticketDivider: {
+    alignSelf: "stretch",
+    justifyContent: "space-evenly",
+    paddingVertical: 8,
+    marginRight: 12,
+  },
+  ticketDash: { width: 2, height: 5, borderRadius: 1, backgroundColor: BLUE },
+  ticketBody: { flex: 1, paddingVertical: 12, paddingRight: 8 },
+  notch: {
+    position: "absolute",
+    top: "50%",
+    marginTop: -9,
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: COLORS.cream,
+  },
+  notchLeft: { left: -9 },
+  notchRight: { right: -9 },
   rewardTitle: { fontSize: 15, fontWeight: "800", color: COLORS.text },
-  rewardDetail: { fontSize: 12, color: COLORS.muted },
+  rewardDetail: { fontSize: 12, color: COLORS.muted, marginTop: 4 },
   redeemButton: {
-    backgroundColor: COLORS.peach,
+    backgroundColor: BLUE,
     borderRadius: 14,
     paddingHorizontal: 12,
     paddingVertical: 8,
     minWidth: 76,
     alignItems: "center",
   },
-  redeemButtonOff: { backgroundColor: "#D9C9C3" },
+  redeemButtonOff: { backgroundColor: COLORS.peachLight },
   redeemText: { color: "white", fontWeight: "800", fontSize: 13 },
   rewardMessage: { textAlign: "center", fontSize: 14, fontWeight: "700", color: COLORS.text },
-  couponRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-    backgroundColor: COLORS.periwinkleLight,
-    borderRadius: 16,
-    padding: 12,
-    borderWidth: 1,
-    borderStyle: "dashed",
-    borderColor: "#9AA6D6",
-  },
   couponCode: { fontSize: 16, fontWeight: "900", letterSpacing: 1.5, color: COLORS.text },
   seeMore: {
     alignSelf: "center",
