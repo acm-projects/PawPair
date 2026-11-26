@@ -7,6 +7,7 @@ import { router, useNavigation } from "expo-router";
 import { useFonts } from "expo-font";
 import { STAGES, setStage, statusFor, useStatuses } from "../../data/petStatus";
 import { useMatchedPets } from "@/data/livePets";
+import { usePetLists } from "../../store/petLists";
 import PawNavBar from "@/components/PawNavBar";
 
 const paw = require("../../../assets/images/paw-watermark.png");
@@ -32,7 +33,7 @@ const PAW_BLUE = "#AFC0E3";
 
 const THEMES = [
   { colors: ["#F4BFB2", "#F3E6DF"] as const, accent: "#E98F78", track: "#e3d6ce" },
-  { colors: ["#BFCBEC", "#ECEFF8"] as const, accent: "#7F93CC", track: "#d6dcec" },
+  { colors: ["#B3C1E6", "#D5DCF0"] as const, accent: "#7F93CC", track: "#d6dcec" },
 ];
 
 const paws = [
@@ -58,6 +59,7 @@ export default function Status() {
 
   const statuses = useStatuses();
   const allMatches = useMatchedPets();
+  const { favorites: favoriteIds } = usePetLists();
   // only pets that have been applied to (stage 1+); the rest live on Matches
   const pets = allMatches.filter((p) => statusFor(statuses, p.id).stage >= 1);
 
@@ -119,10 +121,11 @@ export default function Status() {
             </View>
           )}
 
-          {pets.map((pet, index) => {
+          {pets.map((pet) => {
             const status = statusFor(statuses, pet.id);
             const open = (openIds ?? []).includes(String(pet.id));
-            const theme = THEMES[index % THEMES.length];
+            const isFavorite = (favoriteIds ?? []).some((f) => String(f) === String(pet.id));
+            const theme = isFavorite ? THEMES[1] : THEMES[0];
             return (
               <View key={String(pet.id)} style={s.cardShadow}>
                 <LinearGradient
