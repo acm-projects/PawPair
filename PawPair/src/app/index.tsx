@@ -277,6 +277,7 @@ export const styles = StyleSheet.create({
     fontWeight: "400",
     color: "#1c1c1c",
     marginTop: 4,
+    fontFamily: FONT,
   },
   actions: {
     width: "100%",
