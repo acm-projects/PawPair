@@ -116,10 +116,18 @@ export default function Matches() {
 
         <Text style={s.heading}>MATCHES</Text>
 
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 110 }}
-        showsVerticalScrollIndicator={false}>
+        <ScrollView
+          style={{ flex: 1 }}
+          contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 110 }}
+          showsVerticalScrollIndicator={false}
+        >
           {matches.length === 0 && (
-            <Text style={s.empty}>No matches yet. Keep on swiping!</Text>
+            <View style={s.emptyBox}>
+              <Text style={s.empty}>No matches yet</Text>
+              <Pressable style={s.emptyBtn} onPress={() => router.push("/quiz" as Href)}>
+                <Text style={s.emptyBtnText}>Edit Quiz</Text>
+              </Pressable>
+            </View>
           )}
 
           {matches.map((pet) => (
@@ -164,10 +172,6 @@ export default function Matches() {
               </View>
             </LinearGradient>
           ))}
-
-          <Pressable style={s.clear} onPress={() => router.push("/quiz" as Href)}>
-            <Text style={s.clearText}>Edit my quiz answers</Text>
-          </Pressable>
         </ScrollView>
 
         <View style={s.navWrapper}>
@@ -180,7 +184,7 @@ export default function Matches() {
 
 const s = StyleSheet.create({
   outer: { flex: 1, backgroundColor: "#F3EDE8", alignItems: "center" },
-  
+
   container: { flex: 1, width: "100%", maxWidth: 380, backgroundColor: "#F3EDE8", overflow: "hidden" },
   paw: { position: "absolute", width: 52, height: 52, resizeMode: "contain", opacity: 0.8 },
   heading: {
@@ -191,7 +195,15 @@ const s = StyleSheet.create({
     marginTop: 24,
     marginBottom: 14,
   },
-  empty: { fontFamily: FONT, textAlign: "center", fontSize: 14, color: "#555", marginTop: 24 },
+  emptyBox: { alignItems: "center", marginTop: 40, gap: 14 },
+  empty: { fontFamily: FONT, textAlign: "center", fontSize: 14, color: "#555" },
+  emptyBtn: {
+    backgroundColor: "#E98F78",
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 22,
+  },
+  emptyBtnText: { fontFamily: FONT, color: "#fff", fontWeight: "500" },
 
   match: {
     flexDirection: "row",
@@ -234,7 +246,6 @@ const s = StyleSheet.create({
   },
 
   clear: { alignSelf: "center", paddingTop: 6, paddingBottom: 14 },
-  clearText: { fontFamily: FONT, fontSize: 11, color: "#8B1A1A", textDecorationLine: "underline" },
 
   navWrapper: {
     position: "absolute",
