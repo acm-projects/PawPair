@@ -134,11 +134,13 @@ export default function TrackerModal({
   kind,
   onClose,
   onAskPepo,
+  petName,
 }: {
   visible: boolean;
   kind: TrackerKind;
   onClose: () => void;
-  onAskPepo?: () => void; // opens the Ask Pepo chat on the homepage
+  onAskPepo?: (prompt?: string) => void; // opens the Ask Pepo chat, optionally sending a question about this log
+  petName?: string;
 }) {
   const [selected, setSelected] = useState(new Date());
   // All saved days, keyed by date, e.g. { "2026-10-9": { activities: [...], ... } }
@@ -168,6 +170,25 @@ export default function TrackerModal({
 
   const monthName = selected.toLocaleDateString("en-US", { month: "long" });
   const dateLabel = `Date - ${monthName} ${ordinal(selected.getDate())} ${selected.getFullYear()}`;
+
+  // Turns this tracker's log for the selected day into a question for Pepo.
+  const buildPrompt = (): string | undefined => {
+    const name = petName || "my pet";
+    const day = `${monthName} ${ordinal(selected.getDate())}`;
+    if (kind === "activity" && log.activities.length > 0) {
+      if (log.activities.includes("No Activity")) {
+        return `${name} had no activity on ${day}. Is that okay, and what easy activities could I try tomorrow?`;
+      }
+      return `On ${day}, ${name} did these activities: ${log.activities.join(", ")}. Is that a good amount of activity, and what would you suggest adding or changing?`;
+    }
+    if (kind === "mood" && log.mood) {
+      return `${name} seemed ${log.mood} on ${day}. What might be causing this, and how can I help?`;
+    }
+    if (kind === "meal" && log.meals.trim()) {
+      return `On ${day}, ${name} ate: ${log.meals.trim()}. Is this a healthy meal for them? Any feedback or changes you'd suggest?`;
+    }
+    return undefined;
+  };
 
   return (
     <Modal
@@ -268,7 +289,7 @@ export default function TrackerModal({
               style={styles.askPepo}
               onPress={() => {
                 onClose();
-                onAskPepo?.();
+                onAskPepo?.(buildPrompt());
               }}
               accessibilityLabel="Ask Pepo"
             >

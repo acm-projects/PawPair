@@ -676,9 +676,13 @@ const scrollRef = useRef<any>(null);  // react-native's TextInput ref typing is 
   const pepoInputRef = useRef<any>(null);
   const sheetY = useRef(0);
   const pepoCardY = useRef(0);
-  const goToPepo = () => {
+  const goToPepo = (prompt?: string) => {
     scrollRef.current?.scrollTo({ y: Math.max(sheetY.current + pepoCardY.current - 20, 0), animated: true });
-    setTimeout(() => pepoInputRef.current?.focus(), 450);
+    if (prompt) {
+      askPepo(prompt);
+    } else {
+      setTimeout(() => pepoInputRef.current?.focus(), 450);
+    }
   };
   const [tracker, setTracker] = useState<TrackerKind>("activity");
   const [trackerOpen, setTrackerOpen] = useState(false);
@@ -1077,6 +1081,7 @@ const scrollRef = useRef<any>(null);  // react-native's TextInput ref typing is 
         kind={tracker}
         onClose={() => setTrackerOpen(false)}
         onAskPepo={goToPepo}
+        petName={pet?.name}
       />
     </View>
   );
