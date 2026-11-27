@@ -63,7 +63,7 @@ const HEADER_PAWS = [
   { top: -4, left: 108, size: 30, rotate: "16deg" },
   { top: 4, left: "48%", size: 28, rotate: "-10deg" },
   { top: -2, right: 24, size: 34, rotate: "20deg" },
-  { bottom: -14, right: 124, size: 32, rotate: "18deg" },
+  { bottom: 0, right: 175, size: 32, rotate: "18deg" },
 ] as const;
 
 const cap = (s?: string) => (s ? s[0].toUpperCase() + s.slice(1) : "");
