@@ -41,7 +41,8 @@ const CORAL = "#E98F78";
 const GREEN = "#6EE08F";
 const BG = "#F3EDE8";
 const RING = "#BFCBEC";
-const RING_DEEP = "#9DB0E3"; // slightly deeper end of the ring gradient
+const RING_DEEP = "#9DB0E3";
+const BLUE_BTN = "#A9B5DA";
 const GREEN_TINT = "#E2F7E9";
 const CORAL_TINT = "#FBE7E0";
 const FONT = Platform.OS === "web" ? "'Open Sans', system-ui, sans-serif" : undefined;
@@ -58,12 +59,18 @@ function loadFont() {
   document.head.appendChild(link);
 }
 
+// Background paws: peach + blue like the other pages.
+// They only sit where nothing else is (the header gap, and peeking out
+// from behind the card's sides), so they never cover text or buttons.
+const PAW_PEACH = "#F2C4B8";
+const PAW_BLUE = "#AFC0E3";
+const PAW_OPACITY = 0.5;
+
 const paws = [
-  { top: 0, left: "80%" },
-  { top: "10%", left: "60%" },
-  { top: "85%", left: "85%" },
-  { top: "82%", left: "10%" },
-  { top: "78%", left: "73%" },
+  { top: "1%", left: "57%", size: 40, rotate: "14deg" },   // between WELCOME! and Pepo
+  { top: "-1%", left: "90%", size: 46, rotate: "-12deg" }, // top-right corner, behind Pepo's edge
+  { top: "36%", left: "-5%", size: 50, rotate: "18deg" },  // peeks out left of the card
+  { top: "60%", left: "92%", size: 50, rotate: "-16deg" }, // peeks out right of the card
 ] as const;
 
 const STAGE_ICONS = [Check, Send, Handshake, House, ThumbsUp, PartyPopper] as const;
@@ -352,7 +359,21 @@ export default function Homepage() {
       <SafeAreaView style={s.container} edges={["top"]}>
         <View style={StyleSheet.absoluteFill} pointerEvents="none">
           {paws.map((p, i) => (
-            <Image key={i} source={paw} style={[s.paw, p]} />
+            <Image
+              key={i}
+              source={paw}
+              style={[
+                s.paw,
+                {
+                  top: p.top,
+                  left: p.left,
+                  width: p.size,
+                  height: p.size,
+                  transform: [{ rotate: p.rotate }],
+                  tintColor: i % 2 === 1 ? PAW_BLUE : PAW_PEACH,
+                },
+              ]}
+            />
           ))}
         </View>
         <View style={s.header}>
@@ -374,20 +395,13 @@ export default function Homepage() {
         <MatchesHero />
 
         <View style={s.swipeWrap}>
-          <LinearGradient
-            colors={["#F4BFB2", "#F3E6DF"]}
-            start={{ x: 0.5, y: 0 }}
-            end={{ x: 0.5, y: 1 }}
-            style={s.swipeBtn}
+          <Pressable
+            style={({ pressed }) => [s.swipeBtn, pressed && s.swipeBtnPressed]}
+            onPress={() => router.navigate("/swiping" as any)}
           >
-            <Pressable
-              style={s.swipePress}
-              onPress={() => router.navigate("/swiping" as any)}
-            >
-              <Text style={s.swipeText}>Start Swiping</Text>
-              <MoveRight size={34} color="#000" strokeWidth={1.25} />
-            </Pressable>
-          </LinearGradient>
+            <Text style={s.swipeText}>Start Swiping</Text>
+            <MoveRight size={34} color="#FFFFFF" strokeWidth={2} />
+          </Pressable>
         </View>
 
         <View style={s.navWrapper}>
@@ -407,9 +421,9 @@ const s = StyleSheet.create({
     backgroundColor: BG,
     overflow: "hidden",
     paddingBottom: 80,
-    paddingTop: 4,
+    paddingTop: 20,
   },
-  paw: { position: "absolute", width: 52, height: 52, resizeMode: "contain" },
+  paw: { position: "absolute", resizeMode: "contain", opacity: PAW_OPACITY },
 
   header: {
     flexDirection: "row",
@@ -419,7 +433,13 @@ const s = StyleSheet.create({
     paddingRight: 22,
   },
   greeting: { flexDirection: "row", alignItems: "center", gap: 4 },
-  headerPaw: { width: 38, height: 38, resizeMode: "contain", opacity: 0.6 },
+  headerPaw: {
+    width: 38,
+    height: 38,
+    resizeMode: "contain",
+    opacity: PAW_OPACITY,
+    tintColor: PAW_BLUE, // the little paw behind WELCOME!
+  },
   hello: { position: "absolute", left: "55%", fontFamily: "HeadingFont", fontSize: 32, color: "#1F1F1F" },
   pepo: { width: 52, height: 52, resizeMode: "contain" },
 
@@ -501,10 +521,10 @@ const s = StyleSheet.create({
     height: 34,
     borderRadius: 17,
     borderWidth: 1.5,
-    borderColor: CORAL,
+    borderColor: RING,
     backgroundColor: "#fff",
   },
-  switchText: { fontFamily: FONT, fontSize: 12, fontWeight: "600", color: CORAL },
+  switchText: { fontFamily: FONT, fontSize: 12, fontWeight: "600", color: RING_DEEP },
 
   hero: { flex: 1, marginTop: 2 },
   heroCard: {
@@ -570,21 +590,28 @@ const s = StyleSheet.create({
   swipeBtn: {
     height: 64,
     borderRadius: 20,
-    overflow: "hidden",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.12,
-    shadowRadius: 6,
-    elevation: 3,
-  },
-  swipePress: {
-    flex: 1,
+    backgroundColor: BLUE_BTN,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     gap: 10,
+    shadowColor: "#5B6FB0",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 4,
   },
-  swipeText: { fontFamily: "HeadingFont", fontSize: 25, lineHeight: 38, color: "#000" },
+  swipeBtnPressed: {
+    backgroundColor: "#95A3CF",
+    transform: [{ scale: 0.98 }],
+  },
+  swipeText: {
+    fontSize: 24,
+    fontWeight: "800",
+    letterSpacing: 0.5,
+    textTransform: "uppercase",
+    color: "#FFFFFF",
+  },
 
   navWrapper: { position: "absolute", bottom: 0, left: 0, right: 0 },
 });

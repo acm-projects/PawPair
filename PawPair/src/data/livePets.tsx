@@ -157,13 +157,16 @@ export function useRecommendedPets(): LivePet[] {
   }, [all, a]);
 }
 
-/** Pets this user matched with. A pet only shows if it is also a
- *  recommended pet, so never-recommended or stale ones are hidden. */
+/** Pets this user matched with (swiped right) plus pets they hearted on the browse page. */
 export function useMatchedPets(): LivePet[] {
   useSyncFavorites(); // loads saved favorites into the matches list
-  const { matches: matchIds } = usePetLists();
-  const recommended = useRecommendedPets();
-  return (matchIds as (string | number)[])
-    .map((id) => recommended.find((p) => String(p.id) === String(id)))
+  const { matches, favorites } = usePetLists();
+  const all = usePets();
+  const ids = [
+    ...matches,
+    ...(favorites ?? []).filter((f) => !matches.some((m) => String(m) === String(f))),
+  ];
+  return ids
+    .map((id) => all.find((p) => String(p.id) === String(id)))
     .filter((p): p is LivePet => !!p);
 }

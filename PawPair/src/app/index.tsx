@@ -1,3 +1,5 @@
+// Updated landing page
+
 import { Link, useRouter } from "expo-router";
 import { useEffect, useRef } from "react";
 import {
@@ -17,12 +19,13 @@ const pepoGoat = require("../../assets/images/pepo-goat.png");
 
 const FONT = "'Open Sans', system-ui, sans-serif";
 
-// ---------- DOG + CAT TUNING (only change these) ----------
-const PETS_WIDTH = 0.8; // fraction of the screen width
-const PETS_SINK = 0.08; // how much of the image's HEIGHT to push below the bottom edge.
-                        // Still floating? raise it (0.12, 0.16, 0.2...). Cut off? lower it.
-const PETS_SHIFT_X = 0.04; // nudges left to cancel uneven side padding. 0 = no nudge
-// ----------------------------------------------------------
+const PAW_PEACH = "#F2C4B8";
+const PAW_BLUE = "#AFC0E3";
+const PAW_OPACITY = 0.3;
+
+const PETS_WIDTH = 0.8;
+const PETS_SINK = 0.08; 
+const PETS_SHIFT_X = 0.04; 
 
 function loadFont() {
   if (typeof document === "undefined") return;
@@ -35,13 +38,29 @@ function loadFont() {
   document.head.appendChild(link);
 }
 
-const paws = [
-  { top: "4%", left: "8%", size: 54, rotate: "-12deg" },
-  { top: "35%", left: "84%", size: 54, rotate: "10deg" },
-  { top: "52%", left: "4%", size: 54, rotate: "-10deg" },
-  { top: "54%", left: "86%", size: 54, rotate: "12deg" },
-  { top: "90%", left: "2%", size: 54, rotate: "-15deg" },
-  { top: "88%", left: "88%", size: 54, rotate: "12deg" },
+
+const topPaws = [
+  { top: "12%", left: "6%", size: 56, rotate: "-12deg" },
+  { top: "8%", left: "44%", size: 52, rotate: "14deg" },
+  { top: "18%", left: "80%", size: 58, rotate: "18deg" },
+  { top: "52%", left: "22%", size: 50, rotate: "-8deg" },
+  { top: "48%", left: "64%", size: 54, rotate: "10deg" },
+] as const;
+
+
+const sidePaws = [
+  { top: "-6%", left: "5%", size: 44, rotate: "-14deg" },
+  { top: "58%", left: "17%", size: 40, rotate: "10deg" },
+  { top: "4%", right: "16%", size: 40, rotate: "16deg" },
+  { top: "64%", right: "4%", size: 44, rotate: "-10deg" },
+] as const;
+
+const bottomPaws = [
+  { top: "14%", left: "10%", size: 54, rotate: "-16deg" },
+  { top: "10%", left: "70%", size: 56, rotate: "12deg" },
+  { top: "42%", left: "40%", size: 52, rotate: "8deg" },
+  { top: "62%", left: "4%", size: 58, rotate: "-18deg" },
+  { top: "60%", left: "80%", size: 56, rotate: "14deg" },
 ] as const;
 
 export default function Index() {
@@ -51,7 +70,7 @@ export default function Index() {
 
   const colW = Math.min(screenW, 380);
   const petW = colW * PETS_WIDTH;
-  const goatSize = colW * 0.36; // same size as your original circle
+  const goatSize = colW * 0.36; 
 
   useEffect(() => {
     const loop = Animated.loop(
@@ -104,70 +123,97 @@ export default function Index() {
   return (
     <View style={styles.outer}>
       <View style={styles.container}>
-        {/* paw watermarks */}
-        {paws.map((p, i) => (
-          <Image
-            key={i}
-            source={paw}
-            style={[
-              styles.paw,
-              {
-                top: p.top,
-                left: p.left,
-                width: p.size,
-                height: p.size,
-                transform: [{ rotate: p.rotate }],
-              },
-            ]}
-          />
-        ))}
+        {/* empty space ABOVE the content, paws go here */}
+        <View style={styles.pawZone}>{renderPaws(topPaws, 0)}</View>
 
         {/* goat + title + buttons, centered as one group */}
         <View style={styles.centerGroup}>
-          {/* goat circle (circle stays still, goat sways) */}
-          <View
-            style={[styles.goatCircle, { width: goatSize, height: goatSize }]}
-          >
-            <Animated.Image
-              source={pepoGoat}
-              style={{
-                width: "100%",
-                height: "100%",
-                resizeMode: "contain",
-                transform: [{ translateX }, { rotate }],
-              }}
-            />
+          {/* goat row: side paws + goat circle */}
+          <View style={styles.goatRow}>
+            {renderPaws(sidePaws, 1)}
+
+            {/* goat circle (circle stays still, goat sways) */}
+            <View
+              style={[styles.goatCircle, { width: goatSize, height: goatSize }]}
+            >
+              <Animated.Image
+                source={pepoGoat}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  resizeMode: "contain",
+                  transform: [{ translateX }, { rotate }],
+                }}
+              />
+            </View>
           </View>
 
           {/* logo + tagline */}
           <View style={styles.header}>
             <Text style={styles.title}>PAWPAIR</Text>
-            <Text style={styles.tagline}>Find your paw-tner</Text>
+            <Text style={styles.tagline}>From First Match to Forever Home</Text>
           </View>
 
-          {/* login button + signup link */}
+          {/* signup button + login button */}
           <View style={styles.actions}>
-            <Pressable
+              <Pressable
               style={({ pressed }) => [
                 styles.button,
                 pressed && styles.buttonPressed,
               ]}
+              onPress={() => router.push("/signup")}
+              accessibilityRole="button"
+            >
+              <Text style={styles.buttonText}>Sign up</Text>
+            </Pressable>
+          
+            <Pressable
+              style={({ pressed }) => [
+                styles.secondaryButton,
+                pressed && styles.secondaryPressed,
+              ]}
               onPress={() => router.push("/login")}
             >
-              <Text style={styles.buttonText}>Login</Text>
+              <Text style={styles.buttonText}>Log in</Text>
             </Pressable>
 
-            <Text style={styles.signupText}>
-              Don't have an account?{" "}
-              <Link href="/signup" style={styles.link}>
-                Sign up.
-              </Link>
-            </Text>
           </View>
         </View>
+
+        {/* empty space BELOW the content, paws go here */}
+        <View style={styles.pawZone}>{renderPaws(bottomPaws, 1)}</View>
       </View>
     </View>
   );
+}
+
+type PawSpot = {
+  top: string;
+  left?: string;
+  right?: string;
+  size: number;
+  rotate: string;
+};
+
+function renderPaws(list: readonly PawSpot[], offset: number) {
+  return list.map((p, i) => (
+    <Image
+      key={i}
+      source={paw}
+      style={[
+        styles.paw,
+        {
+          top: p.top as any,
+          left: p.left as any,
+          right: p.right as any,
+          width: p.size,
+          height: p.size,
+          transform: [{ rotate: p.rotate }],
+          tintColor: (i + offset) % 2 === 1 ? PAW_BLUE : PAW_PEACH,
+        },
+      ]}
+    />
+  ));
 }
 
 export const styles = StyleSheet.create({
@@ -183,17 +229,26 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F5EFEB",
     overflow: "hidden",
     alignItems: "center",
-    justifyContent: "center", // puts the group in the middle of the screen
+    justifyContent: "center",
+  },
+  pawZone: {
+    flex: 1,
+    width: "100%",
+    overflow: "hidden",
   },
   paw: {
     position: "absolute",
     resizeMode: "contain",
-    opacity: 1,
+    opacity: PAW_OPACITY,
   },
   centerGroup: {
     width: "100%",
     alignItems: "center",
-    gap: 28, // space between goat, title and button. Raise/lower to taste
+    gap: 28, 
+  },
+  goatRow: {
+    width: "100%",
+    alignItems: "center",
   },
   goatCircle: {
     borderRadius: 999,
@@ -212,7 +267,13 @@ export const styles = StyleSheet.create({
     letterSpacing: 2,
   },
   tagline: {
-    fontSize: 22,
+    fontSize: 20,
+    color: "#5C514A",
+    marginTop: 10,
+    letterSpacing: 0.3,
+  },
+  subtitle: {
+    fontSize: 15,
     fontWeight: "400",
     color: "#1c1c1c",
     marginTop: 4,
@@ -225,8 +286,8 @@ export const styles = StyleSheet.create({
   },
   button: {
     width: "78%",
-    height: 60,
-    borderRadius: 20,
+    height: 50,
+    borderRadius: 15,
     backgroundColor: "#F7BEB0",
     justifyContent: "center",
     alignItems: "center",
@@ -245,15 +306,23 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     color: "#1c1c1c",
   },
-  signupText: {
-    fontFamily: FONT,
-    fontSize: 13,
-    color: "#1c1c1c",
+  secondaryButton: {
+    width: "78%",
+    height: 50,
+    borderRadius: 15,
+    borderWidth: 2,
+    borderColor: "#F7BEB0",
+    backgroundColor: "transparent",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  link: {
+  secondaryPressed: {
+    backgroundColor: "#F7BEB0",
+    opacity: 0.8,
+  },
+  secondaryText: {
     fontFamily: FONT,
-    fontSize: 13,
-    color: "#1c1c1c",
-    textDecorationLine: "underline",
+    fontSize: 20,
+    color: "#C2654F",
   },
 });
