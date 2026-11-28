@@ -40,12 +40,10 @@ function loadFont() {
 const PAW_PEACH = "#F2C4B8";
 const PAW_BLUE = "#AFC0E3";
 
-
 const PEACH_CARD = ["#F4BFB2", "#F8DBD4"] as const;
 const BLUE_CARD = ["#B3C1E6", "#D5DCF0"] as const;
 const FAV_BLUE = "#7F93CC";
 const QUIZ_PEACH = "#E98F78";
-const BG = "#F3EDE8";
 
 const paws = [
   { top: "30%", left: "80%", size: 52, rotate: "14deg" },
@@ -196,51 +194,45 @@ export default function Matches() {
           {matches.length === 0 && (
             <View style={s.emptyBox}>
               <Text style={s.empty}>No matches yet</Text>
-              <Pressable style={s.emptyBtn} onPress={() => router.push("/quiz" as Href)}>
-                <Text style={s.emptyBtnText}>Edit Quiz</Text>
-              </Pressable>
             </View>
           )}
 
-            {quizMatches.length > 0 && (
-              <>
-                <View style={s.sectionHead}>
-                  <View style={s.sectionRow}>
-                    <PawPrint size={18} color={QUIZ_PEACH} fill={QUIZ_PEACH} strokeWidth={2} />
-                    <Text style={s.sectionText}>From your quiz</Text>
-                  </View>
+          {quizMatches.length > 0 && (
+            <>
+              <View style={s.sectionHead}>
+                <View style={s.sectionRow}>
+                  <PawPrint size={18} color={QUIZ_PEACH} fill={QUIZ_PEACH} strokeWidth={2} />
+                  <Text style={s.sectionText}>From your quiz</Text>
                 </View>
-                {quizMatches.map((pet) => renderCard(pet, PEACH_CARD))}
-              </>
-            )}
-
-            {favorites.length > 0 && (
-              <>
-                <Pressable
-                  style={[s.sectionHead, s.sectionToggle, quizMatches.length > 0 && s.sectionGap]}
-                  onPress={() => setShowFavorites((v) => !v)}
-                >
-                  <View style={s.sectionRow}>
-                    <Heart size={18} color={FAV_BLUE} fill={FAV_BLUE} strokeWidth={2} />
-                    <Text style={s.sectionText}>Favorites</Text>
-                    <Text style={s.sectionCount}>({favorites.length})</Text>
-                  </View>
-                  {showFavorites ? (
-                    <ChevronUp size={22} color="#1a1a1a" />
-                  ) : (
-                    <ChevronDown size={22} color="#1a1a1a" />
-                  )}
-                </Pressable>
-                {/* ✕ = remove from matches (and from saved favorites) */}
-                <Pressable
-                  style={[s.btn, { borderColor: "#D32F2F" }]}
-                  onPress={() => removeMatch(pet.id)}
-                >
-                  <X size={30} color="#D32F2F" strokeWidth={1.75} />
-                </Pressable>
               </View>
-            </LinearGradient>
-          ))}
+              {quizMatches.map((pet) => renderCard(pet, PEACH_CARD))}
+            </>
+          )}
+
+          {favorites.length > 0 && (
+            <>
+              <Pressable
+                style={[s.sectionHead, s.sectionToggle, quizMatches.length > 0 && s.sectionGap]}
+                onPress={() => setShowFavorites((v) => !v)}
+              >
+                <View style={s.sectionRow}>
+                  <Heart size={18} color={FAV_BLUE} fill={FAV_BLUE} strokeWidth={2} />
+                  <Text style={s.sectionText}>Favorites</Text>
+                  <Text style={s.sectionCount}>({favorites.length})</Text>
+                </View>
+                {showFavorites ? (
+                  <ChevronUp size={22} color="#1a1a1a" />
+                ) : (
+                  <ChevronDown size={22} color="#1a1a1a" />
+                )}
+              </Pressable>
+              {showFavorites && favorites.map((pet) => renderCard(pet, BLUE_CARD))}
+            </>
+          )}
+
+          <Pressable style={s.clear} onPress={() => router.push("/quiz" as Href)}>
+            <Text style={s.clearText}>Edit my quiz answers</Text>
+          </Pressable>
         </ScrollView>
 
         <View style={s.navWrapper}>
@@ -270,18 +262,22 @@ const s = StyleSheet.create({
     fontSize: 38,
     color: "#1a1a1a",
     textAlign: "center",
-    marginTop: 24,
-    marginBottom: 14,
   },
   emptyBox: { alignItems: "center", marginTop: 40, gap: 14 },
   empty: { fontFamily: FONT, textAlign: "center", fontSize: 14, color: "#555" },
-  emptyBtn: {
-    backgroundColor: "#E98F78",
-    borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 22,
+
+  sectionHead: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 10,
+    paddingHorizontal: 4,
   },
-  emptyBtnText: { fontFamily: FONT, color: "#fff", fontWeight: "500" },
+  sectionToggle: { paddingVertical: 2 },
+  sectionGap: { marginTop: 6 },
+  sectionRow: { flexDirection: "row", alignItems: "center", gap: 8 },
+  sectionText: { fontFamily: FONT, fontSize: 15, fontWeight: "600", color: "#241e1e" },
+  sectionCount: { fontFamily: FONT, fontSize: 13, fontWeight: "600", color: "#6b5d58" },
 
   match: {
     flexDirection: "row",
@@ -320,6 +316,7 @@ const s = StyleSheet.create({
   },
 
   clear: { alignSelf: "center", paddingTop: 6, paddingBottom: 14 },
+  clearText: { fontFamily: FONT, fontSize: 11, color: "#8B1A1A", textDecorationLine: "underline" },
 
   navWrapper: {
     position: "absolute",

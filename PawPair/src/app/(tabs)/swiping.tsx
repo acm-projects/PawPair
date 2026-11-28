@@ -18,7 +18,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import { markSwiped, useSwiped } from "../../store/swiped";
 import { matchPet, removePet } from "../../store/petLists";
-import { useRouter } from "expo-router";
+import { useRouter, useNavigation } from "expo-router";
 import {
   PawPrint,
   Ruler,
@@ -121,8 +121,24 @@ export default function SwipingScreen() {
   const busy = useRef(false);
   const dragDistance = useRef(0);
   const router = useRouter();
+  const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const swiped = useSwiped();
+
+  useEffect(() => {
+    let parent = navigation.getParent();
+    while (parent) {
+      parent.setOptions({ gestureEnabled: false });
+      parent = parent.getParent();
+    }
+    return () => {
+      let p = navigation.getParent();
+      while (p) {
+        p.setOptions({ gestureEnabled: true });
+        p = p.getParent();
+      }
+    };
+  }, [navigation]);
 
   const [fontsLoaded] = useFonts({
     HeadingFont: require("../../../assets/Fonts/Matcha Style.ttf"),
@@ -245,7 +261,7 @@ export default function SwipingScreen() {
 
     Animated.timing(position, {
       toValue: { x: xTarget, y: 18 },
-      duration: 200,
+      duration: 220,
       easing: Easing.out(Easing.quad),
       useNativeDriver: false,
     }).start(() => {
@@ -258,15 +274,10 @@ export default function SwipingScreen() {
   const panResponder = useMemo(
     () =>
       PanResponder.create({
-        onStartShouldSetPanResponder: () => false,
-        onMoveShouldSetPanResponder: (_, gesture) =>
-          !busy.current &&
-          Math.abs(gesture.dx) > 6 &&
-          Math.abs(gesture.dx) > Math.abs(gesture.dy),
-        onMoveShouldSetPanResponderCapture: (_, gesture) =>
-          !busy.current &&
-          Math.abs(gesture.dx) > 8 &&
-          Math.abs(gesture.dx) > Math.abs(gesture.dy) * 1.15,
+        onStartShouldSetPanResponder: () => !busy.current,
+        onStartShouldSetPanResponderCapture: () => !busy.current,
+        onMoveShouldSetPanResponder: () => !busy.current,
+        onMoveShouldSetPanResponderCapture: () => !busy.current,
         onShouldBlockNativeResponder: () => true,
         onPanResponderTerminationRequest: () => false,
         onPanResponderGrant: () => {
@@ -280,12 +291,14 @@ export default function SwipingScreen() {
           const moved = dragDistance.current;
           dragDistance.current = 0;
 
-          if (moved >= 8 && (gesture.dx > SWIPE_THRESHOLD || gesture.vx > VELOCITY_THRESHOLD)) {
+          if (moved < 8) {
+            setDetailsOpen(true);
+            return;
+          }
+
+          if (gesture.dx > SWIPE_THRESHOLD || gesture.vx > VELOCITY_THRESHOLD) {
             handleAction("match");
-          } else if (
-            moved >= 8 &&
-            (gesture.dx < -SWIPE_THRESHOLD || gesture.vx < -VELOCITY_THRESHOLD)
-          ) {
+          } else if (gesture.dx < -SWIPE_THRESHOLD || gesture.vx < -VELOCITY_THRESHOLD) {
             handleAction("reject");
           } else {
             Animated.spring(position, {
@@ -314,16 +327,15 @@ export default function SwipingScreen() {
     outputRange: ["-11deg", "0deg", "11deg"],
   });
 
-  // Slightly brighter green/red wash as you drag right/left
   const greenTintOpacity = position.x.interpolate({
-    inputRange: [0, 65],
-    outputRange: [0, 0.58],
+    inputRange: [0, 38],
+    outputRange: [0, 0.78],
     extrapolate: "clamp",
   });
 
   const redTintOpacity = position.x.interpolate({
-    inputRange: [-65, 0],
-    outputRange: [0.58, 0],
+    inputRange: [-38, 0],
+    outputRange: [0.78, 0],
     extrapolate: "clamp",
   });
 
@@ -421,17 +433,12 @@ export default function SwipingScreen() {
           <Animated.View
             {...panResponder.panHandlers}
             style={[s.card, animatedCardStyle]}
+            accessibilityLabel={`${currentPet.name}, tap for details or swipe left to pass and right to match`}
           >
-            <Pressable
-              style={s.cardInner}
-              onPress={() => {
-                if (dragDistance.current < 10) setDetailsOpen(true);
-              }}
-              accessibilityLabel={`${currentPet.name}, tap for details or swipe left to pass and right to match`}
-            >
+            <View style={s.cardInner}>
               <Image source={currentPet.photo} style={s.cardPhoto} resizeMode="cover" />
 
-              {/* Brighter muted green & red swipe wash overlays */}
+              {/* Green & red swipe wash overlays */}
               <Animated.View
                 pointerEvents="none"
                 style={[s.tintOverlay, s.greenTint, { opacity: greenTintOpacity }]}
@@ -475,7 +482,7 @@ export default function SwipingScreen() {
                   </View>
                 </View>
               </LinearGradient>
-            </Pressable>
+            </View>
           </Animated.View>
         </View>
 
@@ -662,10 +669,10 @@ const s = StyleSheet.create({
     zIndex: 2,
   },
   greenTint: {
-    backgroundColor: "rgba(96, 198, 124, 0.85)",
+    backgroundColor: "rgba(46, 178, 86, 0.85)",
   },
   redTint: {
-    backgroundColor: "rgba(226, 98, 92, 0.85)",
+    backgroundColor: "rgba(220, 56, 56, 0.85)",
   },
   scoreBadge: {
     position: "absolute",
